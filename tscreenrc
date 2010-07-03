@@ -1,0 +1,42 @@
+defscrollback 10000
+
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+
+escape ^Jj
+hardstatus alwayslastline "%`%-w%{=b bw}%n %t%{-}%+w"
+defscrollback 10000
+startup_message off
+bind -c REGION o focus down
+bind -c REGION p focus up
+bind -c REGION 0 remove
+bind -c REGION 1 only
+bind -c REGION 2 split
+bind -c REGION 3 split -v
+bind -c REGION \^ resize +2
+bind -c REGION } resize +2
+bind -c REGION { resize -2
+bind ^x command -c REGION
+
+bind 'U' eval "encoding utf8" "stuff 'export LANG=ja_JP.UTF-8\012'"
+bind 'E' eval "encoding euc" "stuff 'export LANG=ja_JP.EUC-JP\012'"
+bind 'J' eval "encoding sjis"  "stuff 'export LANG=ja_JP.SJIS\012'"
+
+markkeys ^b=^^:h=^b:l=^f:$=^e:^d=^v
+
+
+termcap kterm hs@
+terminfo kterm hs@
+vbell off
+bell_msg "Bell in window %^G"
+bind w windowlist -b
+hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+shell -$SHELL
+startup_message off
+autodetach on
+
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
