@@ -16,7 +16,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
-#setopt share_history        # share command history data
+setopt share_history        # share command history data
 
 #search history config
 autoload history-search-end
@@ -46,14 +46,16 @@ setopt correct
 alias ls='ls -G'
 alias ll='ls -lG'
 alias rm='rm -i'
-alias emacsA='open -a EmacsCarbon'
-alias sshfs='/Applications/sshfs/bin/mount_sshfs'
-alias sshfsVM='/Applications/sshfs/bin/mount_sshfs shiba_yu36@172.16.10.128'
 
 #complement config
 autoload -U compinit
 compinit
 
+#colorのロード
+autoload -U colors
+
+#補完のときに大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
