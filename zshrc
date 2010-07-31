@@ -43,13 +43,25 @@ setopt correct
 #補完時に色表示
 #zstyle ':completion:*' list-colors ''
 
+#--prefixのイコールの後の部分を補完
+setopt magic_equal_subst
+
+#makeを色づけ
+e_normal=`echo -e "\033[0;30m"`
+e_RED=`echo -e "\033[1;31m"`
+e_BLUE=`echo -e "\033[1;36m"`
+
+function make() {
+    LANG=C command make "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot\sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+}
+function cwaf() {
+    LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot\sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+}
+
 #alias
 alias ls='ls -G'
 alias ll='ls -lG'
 alias rm='rm -i'
-# grep 行数, 再帰的, ファイル名表示, 行数表示, バイナリファイルは処理しない
-alias grep='grep -i -r -H -n -I'
-
 
 #complement config
 autoload -U compinit
