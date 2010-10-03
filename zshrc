@@ -1,3 +1,6 @@
+# PATH指定
+export GEM_HOME=~/.gem/ruby/1.8/
+
 #Prompt display config
 PROMPT="%/%% "
 PROMPT2="%_%% "
@@ -83,3 +86,6 @@ unsetopt promptcr            # 改行のない出力をプロンプトで上書�
 
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
+
+#if .zshrc.function exist, do source this
+[ -f ~/.zshrc.function ] && source ~/.zshrc.function

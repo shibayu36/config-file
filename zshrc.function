@@ -1,0 +1,18 @@
+function cdup() {
+    echo
+    cd ..
+    echo "=> $PWD"
+    zle reset-prompt
+}
+
+function cdprev() {
+    echo
+    popd
+    zle reset-prompt
+}
+
+zle -N cdup
+zle -N cdprev
+
+bindkey '^[' cdup
+bindkey '^]' cdprev
