@@ -1,0 +1,4 @@
+#compdef gisty
+
+_arguments '1:first:(list help post sync_delete sync about private_post pull_all)' \
+           '*:tail:_files'

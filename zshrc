@@ -70,6 +70,7 @@ alias ll='ls -lG'
 alias rm='rm -i'
 
 #complement config
+fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit -u
 
