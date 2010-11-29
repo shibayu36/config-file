@@ -85,6 +85,9 @@ zstyle ':completion:*' use-cache true
 
 unsetopt promptcr            # 改行のない出力をプロンプトで上書きするのを防ぐ
 
+# perlbrew
+source ~/perl5/perlbrew/etc/bashrc
+
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
