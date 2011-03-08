@@ -28,8 +28,8 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
-bindkey "^s" history-incremental-search-forward
-bindkey "^r" history-incremental-search-backward
+bindkey "^r" history-incremental-pattern-search-backward
+bindkey "^s" history-incremental-pattern-search-forward
 
 
 #needless input cd
@@ -87,6 +87,9 @@ unsetopt promptcr            # 改行のない出力をプロンプトで上書�
 
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
+
+# coreutils
+# source /usr/local/Cellar/coreutils/8.5/aliases
 
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
