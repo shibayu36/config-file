@@ -31,7 +31,6 @@ bindkey "^n" history-beginning-search-forward-end
 bindkey "^r" history-incremental-pattern-search-backward
 bindkey "^s" history-incremental-pattern-search-forward
 
-
 #needless input cd
 setopt auto_cd
 

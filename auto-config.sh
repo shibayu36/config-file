@@ -8,6 +8,7 @@ ln -s ~/development/config-file/proverc ~/.proverc
 ln -s ~/development/config-file/my.cnf ~/.my.cnf
 ln -s ~/development/config-file/zsh ~/.zsh
 ln -s ~/development/config-file/globalrc ~/.globalrc
+ln -s ~/development/config-file/minicpanrc ~/.minicpanrc
 
 #zsh関数群
 ln -s ~/development/config-file/zshrc.function ~/.zshrc.function
