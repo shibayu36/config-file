@@ -40,3 +40,6 @@ autodetach on
 logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
 log on
 deflog on
+
+# スクロール用
+termcapinfo xterm* ti@:te@
