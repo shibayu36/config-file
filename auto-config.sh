@@ -9,6 +9,7 @@ ln -s ~/development/config-file/.my.cnf ~/.my.cnf
 ln -s ~/development/config-file/.zsh ~/.zsh
 ln -s ~/development/config-file/.globalrc ~/.globalrc
 ln -s ~/development/config-file/.minicpanrc ~/.minicpanrc
+ln -s ~/development/config-file/.keysnail.js ~/.keysnail.js
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/.zshrc.function
