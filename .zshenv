@@ -5,4 +5,5 @@ export MANPATH=/opt/local/man:/usr/local/man:$MANPATH
 export TERM=xterm-color
 export LANG=ja_JP.UTF-8
 export XDG_DATA_HOME=/opt/local/share
+export PERLDOC_PAGER=lv
 

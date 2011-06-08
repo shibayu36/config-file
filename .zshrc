@@ -84,8 +84,13 @@ zstyle ':completion:*' use-cache true
 
 unsetopt promptcr            # 改行のない出力をプロンプトで上書きするのを防ぐ
 
+# ------------- perl setting -------------
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
+
+# perldoc-complete
+
+# ----------------------------------------
 
 # coreutils
 # source /usr/local/Cellar/coreutils/8.5/aliases
