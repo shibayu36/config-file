@@ -100,7 +100,18 @@ key.defineKey([key.modes.VIEW, key.modes.CARET], 'm', function (ev, arg) {
 
 plugins.options["kkk.sites"] = ["^https?://ja\\.wikipedia\\.org/"];
 
-
+plugins.options["ril.keymap"] = {
+    // "C-z"   : "prompt-toggle-edit-mode",
+    // "j"     : "prompt-next-completion",
+    // "k"     : "prompt-previous-completion",
+    // "g"     : "prompt-beginning-of-candidates",
+    // "G"     : "prompt-end-of-candidates",
+    // "D"     : "prompt-cancel",
+    // // RILnail specific actions
+    // "o"     : "open,c",
+    // "O"     : "open-background,c",
+    // "d"     : "delete"
+};
 //}}%PRESERVE%
 // ========================================================================= //
 
@@ -118,7 +129,6 @@ key.negativeArgument3Key = "C-M-m";
 key.suspendKey           = "<f12>";
 
 // ================================= Hooks ================================= //
-
 
 hook.setHook('KeyBoardQuit', function (aEvent) {
     if (key.currentKeySequence.length) {
@@ -166,8 +176,6 @@ hook.addToHook('KeyBoardQuit', function (aEvent) {
         key.generateKey(aEvent.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
     }
 });
-
-
 
 
 
@@ -260,6 +268,10 @@ key.setGlobalKey(['C-x', 'C-b', 'C-l'], function (ev, arg) {
 key.setGlobalKey(['C-x', 'C-b', 'C-c'], function (ev, arg) {
     ext.exec("list-hateb-comments", arg, ev);
 }, 'このページのはてなブックマークコメントを一覧表示');
+
+key.setGlobalKey(['C-x', '.'], function (ev, arg) {
+    ext.exec("focus-to-content", arg, ev);
+}, 'コンテンツへフォーカス', true);
 
 key.setGlobalKey('C-l', function (ev, arg) {
     ext.exec("hok-start-foreground-mode", arg, ev);
@@ -663,3 +675,7 @@ key.setCaretKey('M-p', function (ev) {
 key.setCaretKey('M-n', function (ev) {
     command.walkInputElement(command.elementsRetrieverButton, false, true);
 }, '前のボタンへフォーカスを当てる');
+
+key.setGlobalKey(['C-x', 'C-r'], function (ev, arg) {
+    ext.exec('ril-show-reading-list', arg, ev);
+}, 'RIL - リストを表示', true);
