@@ -8,7 +8,7 @@
 // wikipedia ゴロし
 if (KeySnail.windowType === "navigator:browser")
 {
-    const whiteList = [
+    var whiteList = [
         // ["URL (RegExp)", ["k", "e", "y"]]
         ["http://twitter\.com/", ["f"]],
         ["http://wikipedia\.com/", ["j", "o"]]

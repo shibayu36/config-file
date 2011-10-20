@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+(file, line) = *ARGV
+
+Dir.chdir(File.dirname(file))
+
+blame = `git blame -p -L #{line},+1 #{file} 2> /dev/null`
+
+exit if $?.to_i != 0
+
+data = {}
+
+blame.each_line{|line|
+  match = line.match(/^([^ ]+) (.*)$/)
+  next unless match
+  data[match[1]] = match[2]
+}
+
+print [Time.at(data['author-time'].to_i), data['author'], data['summary']].join(' ')

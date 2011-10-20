@@ -1,1 +1,0 @@
-/Users/shibazaki/development/config-file/.zsh

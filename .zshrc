@@ -84,13 +84,28 @@ zstyle ':completion:*' use-cache true
 
 unsetopt promptcr            # 改行のない出力をプロンプトで上書きするのを防ぐ
 
+# setting for cdd
+source ~/.zsh/functions/cdd
+function chpwd() {
+    _reg_pwd_screennum
+}
+
 # ------------- perl setting -------------
 # perlbrew
 source ~/perl5/perlbrew/etc/bashrc
 
 # perldoc-complete
 
+# alias
+alias minicpanm='cpanm --mirror ~/mirrors/cpan --mirror-only'
+
+# ------------- ruby setting -------------
+if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
+
 # ----------------------------------------
+
+# 表示の設定
+[ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
 
 # coreutils
 # source /usr/local/Cellar/coreutils/8.5/aliases

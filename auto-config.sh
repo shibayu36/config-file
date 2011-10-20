@@ -1,18 +1,18 @@
 #!/bin/sh
-ln -s ~/development/config-file/.tscreenrc ~/.tscreenrc
-ln -s ~/development/config-file/.zprofile  ~/.zprofile
-ln -s ~/development/config-file/.zshenv ~/.zshenv
-ln -s ~/development/config-file/.zshrc ~/.zshrc
-ln -s ~/development/config-file/.gitignore ~/.gitignore
-ln -s ~/development/config-file/.proverc ~/.proverc
-ln -s ~/development/config-file/.my.cnf ~/.my.cnf
-ln -s ~/development/config-file/.zsh ~/.zsh
-ln -s ~/development/config-file/.globalrc ~/.globalrc
-ln -s ~/development/config-file/.minicpanrc ~/.minicpanrc
-ln -s ~/development/config-file/.keysnail.js ~/.keysnail.js
+ln -s ~/development/config-file/.tscreenrc ~/
+ln -s ~/development/config-file/.zprofile  ~/
+ln -s ~/development/config-file/.zshenv ~/
+ln -s ~/development/config-file/.zshrc ~/
+ln -s ~/development/config-file/.gitignore ~/
+ln -s ~/development/config-file/.proverc ~/
+ln -s ~/development/config-file/.my.cnf ~/
+ln -s ~/development/config-file/.zsh ~/
+ln -s ~/development/config-file/.globalrc ~/
+ln -s ~/development/config-file/.minicpanrc ~/
+ln -s ~/development/config-file/.keysnail.js ~/
 
 #zsh関数群
-ln -s ~/development/config-file/.zshrc.function ~/.zshrc.function
+ln -s ~/development/config-file/.zshrc.function ~/
 
 #bin
 ln -s ~/development/config-file/bin/* ~/bin/
