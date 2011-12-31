@@ -1,1 +1,8 @@
---state=save -l -It/lib
+--lib
+--color
+--failures
+--recurse
+--merge
+--timer
+--trap
+--exec "perl -Ilib -MTest::Name::FromLine"

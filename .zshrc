@@ -1,37 +1,3 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-
-##############################
-# Customize to your needs...##
-##############################
 # PATH指定
 export GEM_HOME=~/.gem/ruby/1.8/
 
@@ -42,8 +8,8 @@ SPROMPT="%r is correct? [n,y,a,e]: "
 
 #config history
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=10000000
+SAVEHIST=10000000
 setopt hist_ignore_dups      # ignore duplication command history list
 setopt share_history         # share command history data
 setopt hist_ignore_all_dups  # 重複するコマンド行は古い方を削除
@@ -53,6 +19,10 @@ unsetopt hist_verify         # ヒストリを呼び出してから実行する�
 setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 setopt hist_save_no_dups     # ヒストリファイルに書き出すときに、古いコマンドと同じものは無視する。
 setopt hist_no_store         # historyコマンドは履歴に登録しない
+## C-sでのヒストリ検索が潰されてしまうため、出力停止・開始用にC-s/C-qを使わない。
+setopt no_flow_control
+## すぐにヒストリファイルに追記する。
+setopt inc_append_history
 
 
 
@@ -143,7 +113,7 @@ source ~/perl5/perlbrew/etc/bashrc
 # perldoc-complete
 
 # alias
-alias minicpanm='cpanm --mirror ~/mirrors/cpan --mirror-only'
+alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 
 # ------------- ruby setting -------------
 if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
