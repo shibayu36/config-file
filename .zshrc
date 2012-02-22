@@ -1,6 +1,3 @@
-# PATH指定
-export GEM_HOME=~/.gem/ruby/1.8/
-
 #Prompt display config
 PROMPT="%/%% "
 PROMPT2="%_%% "
@@ -23,8 +20,6 @@ setopt hist_no_store         # historyコマンドは履歴に登録しない
 setopt no_flow_control
 ## すぐにヒストリファイルに追記する。
 setopt inc_append_history
-
-
 
 #search history config
 autoload history-search-end
@@ -100,15 +95,32 @@ zstyle ':completion:*' use-cache true
 
 unsetopt promptcr            # 改行のない出力をプロンプトで上書きするのを防ぐ
 
+setopt no_beep # beep
+
+## cdr system stuff.
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+
 # setting for cdd
 source ~/.zsh/functions/cdd
 function chpwd() {
     _reg_pwd_screennum
 }
 
-# ------------- perl setting -------------
-# perlbrew
-source ~/perl5/perlbrew/etc/bashrc
+# seting for zaw
+source ~/.zsh/zaw/zaw.zsh
+zstyle ':filter-select' case-insensitive yes
+bindkey '^r' zaw-history
+bindkey '^@' zaw-cdr
+
+# ---------------- setting for auto-fu --------------------------
+source ~/.zsh/auto-fu/auto-fu.zsh
+zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+zstyle ':completion:*' completer _oldlist _complete
+zle -N zle-keymap-select auto-fu-zle-keymap-select
 
 # perldoc-complete
 
@@ -117,6 +129,9 @@ alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 
 # ------------- ruby setting -------------
 if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
+
+# ------------- setting for perlbrew ------------------------
+source ~/perl5/perlbrew/etc/bashrc
 
 # ----------------------------------------
 
@@ -131,3 +146,8 @@ if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
 
 #if .zshrc.function exist, do source this
 [ -f ~/.zshrc.function ] && source ~/.zshrc.function
+
+## create emacs env file
+perl -wle \
+    'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
+    PATH > ~/.emacs.d/shellenv.el

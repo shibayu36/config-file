@@ -1,3 +1,6 @@
 [submodule ".zsh/zaw"]
 	path = .zsh/zaw
 	url = https://github.com/zsh-users/zaw.git
+[submodule ".zsh/auto-fu"]
+	path = .zsh/auto-fu
+	url = https://github.com/hchbaw/auto-fu.zsh.git
