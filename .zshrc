@@ -97,6 +97,15 @@ unsetopt promptcr            # 改行のない出力をプロンプトで上書�
 
 setopt no_beep # beep
 
+# copyするやつ
+pbcopy-buffer(){
+    print -rn $BUFFER | pbcopy
+    zle -M "pbcopy: ${BUFFER}" 
+}
+
+zle -N pbcopy-buffer
+bindkey '^x^p' pbcopy-buffer
+
 ## cdr system stuff.
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
@@ -132,6 +141,12 @@ if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
 
 # ------------- setting for perlbrew ------------------------
 source ~/perl5/perlbrew/etc/bashrc
+
+# ------------- setting for tmux ----------------------------
+# alias tmux='tmuxx'
+# alias tm='tmuxx'
+# alias tma='tmux attach'
+# alias tml='tmux list-window'
 
 # ----------------------------------------
 

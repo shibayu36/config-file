@@ -1,0 +1,8 @@
+set input-meta on
+set output-meta on
+set convert-meta off
+
+$if mysql
+"\C-xd": "show databases;"
+"\C-xt": "show tables;"
+$endif
