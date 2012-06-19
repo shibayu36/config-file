@@ -12,9 +12,13 @@ ln -s ~/development/config-file/.minicpanrc ~/
 ln -s ~/development/config-file/.keysnail.js ~/
 ln -s ~/development/config-file/.inputrc ~/
 ln -s ~/development/config-file/.tmux.conf ~/
+ln -s ~/development/config-file/.gitconfig ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
 
 #bin
 ln -s ~/development/config-file/bin/* ~/bin/
+
+# tools 
+ln -s ~/development/config-file/tools ~/tools

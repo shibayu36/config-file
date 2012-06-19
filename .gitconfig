@@ -1,0 +1,33 @@
+[user]
+	name = shiba_yu36
+	email = shibayu36@gmail.com
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = /usr/local/bin/emacsclient --alternate-editor /usr/bin/vim
+	excludesfile = /Users/shibazaki/.gitignore
+[alias]
+        st = status -sb
+        di = diff
+        pr = pull --rebase
+        co = checkout
+        ci = commit
+        br = branch
+        wd = diff --word-diff
+        logg = log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d'
+        loggr = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
+        stat = log --stat --summary
+
+[push]
+	default = current
+[branch]
+	autosetuprebase = always
+[merge]
+	ff = false
+[rerere]
+	enabled = 1
+[submodule]
+	cachedir = /Users/shibazaki/.cache/git-submodules

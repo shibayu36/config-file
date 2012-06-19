@@ -5,4 +5,3 @@
 --merge
 --timer
 --trap
---exec "perl -Ilib -MTest::Name::FromLine"
