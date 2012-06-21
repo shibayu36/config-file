@@ -12,6 +12,7 @@
 [alias]
         st = status -sb
         di = diff
+        dic = diff --cached
         pr = pull --rebase
         co = checkout
         ci = commit
