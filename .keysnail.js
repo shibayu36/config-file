@@ -130,6 +130,7 @@ key.suspendKey           = "<f12>";
 
 // ================================= Hooks ================================= //
 
+
 hook.setHook('KeyBoardQuit', function (aEvent) {
     if (key.currentKeySequence.length) {
         return;
@@ -176,6 +177,7 @@ hook.addToHook('KeyBoardQuit', function (aEvent) {
         key.generateKey(aEvent.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
     }
 });
+
 
 
 
@@ -272,6 +274,10 @@ key.setGlobalKey(['C-x', 'C-b', 'C-c'], function (ev, arg) {
 key.setGlobalKey(['C-x', '.'], function (ev, arg) {
     ext.exec("focus-to-content", arg, ev);
 }, 'コンテンツへフォーカス', true);
+
+key.setGlobalKey(['C-x', 'C-r'], function (ev, arg) {
+    ext.exec("ril-show-reading-list", arg, ev);
+}, 'RIL - リストを表示', true);
 
 key.setGlobalKey('C-l', function (ev, arg) {
     ext.exec("hok-start-foreground-mode", arg, ev);
@@ -676,6 +682,6 @@ key.setCaretKey('M-n', function (ev) {
     command.walkInputElement(command.elementsRetrieverButton, false, true);
 }, '前のボタンへフォーカスを当てる');
 
-key.setGlobalKey(['C-x', 'C-r'], function (ev, arg) {
-    ext.exec('ril-show-reading-list', arg, ev);
-}, 'RIL - リストを表示', true);
+key.setGlobalKey(['C-x', 'C-h'], function (ev, arg) {
+    ext.exec('history-show', arg, ev);
+}, 'History - リストを表示', true);
