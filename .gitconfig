@@ -8,7 +8,7 @@
 	branch = auto
 [core]
 	editor = /usr/local/bin/emacsclient --alternate-editor /usr/bin/vim
-	excludesfile = /Users/shibazaki/.gitignore
+	excludesfile = ~/.gitignore
 [alias]
         st = status -sb
         di = diff
@@ -31,4 +31,4 @@
 [rerere]
 	enabled = 1
 [submodule]
-	cachedir = /Users/shibazaki/.cache/git-submodules
+	cachedir = ~/.cache/git-submodules
