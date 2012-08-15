@@ -112,6 +112,13 @@ plugins.options["ril.keymap"] = {
     // "O"     : "open-background,c",
     // "d"     : "delete"
 };
+
+plugins.options["K2Emacs.editor"]    = "/Applications/EmacsClient.app";
+plugins.options["K2Emacs.ext"] = "org";
+plugins.options["K2Emacs.encode"] = "UTF-8";
+plugins.options["K2Emacs.sep"] = "/";
+
+
 //}}%PRESERVE%
 // ========================================================================= //
 
@@ -575,6 +582,10 @@ key.setEditKey('M-n', function (ev) {
 key.setEditKey('M-p', function (ev) {
     command.walkInputElement(command.elementsRetrieverTextarea, false, true);
 }, '前のテキストエリアへフォーカス');
+
+key.setEditKey(["C-c", "e"], function (ev, arg) {
+    ext.exec("edit_text", arg, ev);
+}, "外部エディタで編集", true);
 
 key.setCaretKey('m', function (ev, arg) {
     shell.input("weblio " + (content.getSelection() || ""));

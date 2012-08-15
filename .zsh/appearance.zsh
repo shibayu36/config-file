@@ -31,11 +31,15 @@ precmd () {
   local pwdsize=${#${(%):-%~}}
   local vcssize=${#${(%):-%1(v|%1v%f |-----)}}
 
+  local perl_version=$(perlbrew list | grep "\*" | awk '{ print $2 }')
+  local perl_version_size=${#${perl_version}}+1 # 空白分も
+  PR_PERL_VERSION=$perl_version
 
-  if [[ "$promptsize + $pwdsize + $vcssize - 32" -gt $COLUMNS ]]; then
+
+  if [[ "$promptsize + $pwdsize + $vcssize + $perl_version_size - 32" -gt $COLUMNS ]]; then
     PR_FILLBAR=""
   else
-    PR_FILLBAR="\${(l.(($COLUMNS - ($vcssize + $promptsize + $pwdsize - 32)))..-.)}"
+    PR_FILLBAR="\${(l.(($COLUMNS - ($vcssize + $promptsize + $pwdsize + $perl_version_size - 32)))..-.)}"
   fi
   # if [ -n "${WINDOW}" -a $UNAME = "Darwin" ]; then
   #   $HOME/config/bin/precmd.pl `history -n -1 | head -1`
@@ -64,7 +68,7 @@ function setprompt () {
     *)
       PR_BC=${fg[white]}
   esac
-  PROMPT='${fg[yellow]}%<...<%~%<< %1(v|${fg[red]}%1v%f |)${PR_BC}${(e)PR_FILLBAR}
+  PROMPT='${fg[yellow]}%<...<%~%<< %1(v|${fg[red]}%1v%f |)${fg[blue]}${PR_PERL_VERSION} ${PR_BC}${(e)PR_FILLBAR}
 ${fg[blue]}%D{%H:%M:%S} ${fg[green]}${USER}${fg[white]}@${fg[green]}%m${fg[white]}%(!.#.$) '
 }
 
