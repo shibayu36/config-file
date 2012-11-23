@@ -31,7 +31,7 @@ precmd () {
   local pwdsize=${#${(%):-%~}}
   local vcssize=${#${(%):-%1(v|%1v%f |-----)}}
 
-  local perl_version=$(perlbrew list | grep "\*" | awk '{ print $2 }')
+  local perl_version=$(perlbrew list | grep "^\*" | awk '{ print $2 }')
   local perl_version_size=${#${perl_version}}+1 # 空白分も
   PR_PERL_VERSION=$perl_version
 

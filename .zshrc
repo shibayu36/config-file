@@ -62,20 +62,6 @@ function cwaf() {
     LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot\sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
-#alias
-alias ls='ls -G'
-alias ll='ls -lG'
-alias rm='rm -i'
-alias glgg='git logg'
-alias glg='git logg | head'
-
-# alias for git
-alias gst='git st'
-alias gch='git cherry -v'
-
-
-
-
 # clipboard copy
 if which pbcopy >/dev/null 2>&1 ; then 
     # Mac  
@@ -92,6 +78,21 @@ fi
 fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit -u
+
+#alias
+alias ls='ls -G'
+alias ll='ls -lG'
+alias rm='rm -i'
+
+alias git=hub
+compdef hub=git
+alias glgg='git logg'
+alias glg='git logg | head'
+
+# alias for git
+alias gst='git st'
+alias gch='git cherry -v'
+
 
 #colorのロード
 autoload -U colors
