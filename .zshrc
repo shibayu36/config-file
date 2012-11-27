@@ -79,21 +79,6 @@ fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit -u
 
-#alias
-alias ls='ls -G'
-alias ll='ls -lG'
-alias rm='rm -i'
-
-alias git=hub
-compdef hub=git
-alias glgg='git logg'
-alias glg='git logg | head'
-
-# alias for git
-alias gst='git st'
-alias gch='git cherry -v'
-
-
 #colorのロード
 autoload -U colors
 
@@ -194,3 +179,19 @@ perl -wle \
 # add-zsh-hook precmd _rprompt_using_perl
 
 [[ -r "$HOME/.smartcd_config" ]] && source ~/.smartcd_config
+
+
+#alias
+alias ls='ls -G'
+alias ll='ls -lG'
+alias rm='rm -i'
+
+alias git=hub
+alias glgg='git logg'
+alias glg='git logg | head'
+compdef hub=git
+
+# alias for git
+alias gst='git st'
+alias gch='git cherry -v'
+
