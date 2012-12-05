@@ -95,6 +95,10 @@ unsetopt promptcr            # 改行のない出力をプロンプトで上書�
 
 setopt no_beep # beep
 
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W -i'
+
 # copyするやつ
 pbcopy-buffer(){
     print -rn $BUFFER | pbcopy
@@ -164,19 +168,6 @@ source ~/perl5/perlbrew/etc/bashrc
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
     PATH > ~/.emacs.d/shellenv.el
-
-# function _rprompt_perl_version {
-#     version=$(perl -v | awk 'match($0, /v[0-9]\.[0-9]{1,2}\.[0-9]{1,2}/) { print substr($0,RSTART,RLENGTH) }')
-#     RPROMPT="perl:$version"
-# }
-
-# function _rprompt_using_perl {
-#     version=$(perlbrew list | grep "\*" | awk '{ print $2 }')
-#     RPROMPT="$version"
-# }
-
-# autoload -U add-zsh-hook
-# add-zsh-hook precmd _rprompt_using_perl
 
 [[ -r "$HOME/.smartcd_config" ]] && source ~/.smartcd_config
 
