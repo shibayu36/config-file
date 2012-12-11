@@ -21,4 +21,4 @@ ln -s ~/development/config-file/.zshrc.function ~/
 ln -s ~/development/config-file/bin/* ~/bin/
 
 # tools 
-ln -s ~/development/config-file/tools ~/tools
+ln -s ~/development/config-file/tools/ ~/tools/
