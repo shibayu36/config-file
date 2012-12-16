@@ -4,7 +4,7 @@ use warnings;
 
 my $lastcmd = join ' ', @ARGV;
 
-my $current = $ENV{WINDOW};
+my $current = $ENV{WINDOW} or exit;
 
 my $windows = qx{ tmux list-windows };
 

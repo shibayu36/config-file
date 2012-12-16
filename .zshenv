@@ -11,5 +11,7 @@ export XDG_DATA_HOME=/usr/local/share
 export XDG_DATA_DIRS=/usr/local/share
 export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
-export PATH=$PATH:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
+# 最初の$PATH抜いてみたけどどうなるか
+export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
+# export PATH=$PATH:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
