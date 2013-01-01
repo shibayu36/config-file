@@ -173,10 +173,6 @@ precmd () {
     # fi
     # print $vcs_size
 
-    local perl_version=$(perlbrew list | grep "^\*" | awk '{ print $2 }')
-    local perl_version_size=${#${perl_version}}+1 # 空白分も
-    PR_PERL_VERSION=$perl_version
-
     # if [[ "$promptsize + $pwdsize + $vcs_size + $perl_version_size - 32" -gt $COLUMNS ]]; then
     #     PR_FILLBAR=""
     # else
@@ -190,7 +186,7 @@ precmd () {
 function setprompt () {
 #   PROMPT='${fg[yellow]}%<...<%~%<< %1(v|${fg[red]}%1v%f |)${fg[blue]}${PR_PERL_VERSION} ${PR_BC}${(e)PR_FILLBAR}
 # ${fg[blue]}%D{%H:%M:%S} ${fg[green]}${USER}${fg[white]}@${fg[green]}%m${fg[white]}%(!.#.$) '
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PR_PERL_VERSION}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERLBREW_PERL}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
       RPROMPT='----------------------------------'
 }
