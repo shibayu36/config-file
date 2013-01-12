@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+my $commit = shift @ARGV || "HEAD";
+$commit = qx{git rev-parse $commit};
+
+my $host = qx{git config --get hub.host} || "github.com";
+chomp $host;
+
+my $remote_url = qx{git config --get remote.origin.url};
+my ($user, $repo) = $remote_url =~ qr{[:/](.+)/(.+)[.]git$};
+
+system "open https://$host/$user/$repo/commit/$commit";
