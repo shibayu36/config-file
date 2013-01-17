@@ -10,6 +10,6 @@ chomp $host;
 
 my ($remote_url) = qx{git config --get remote.origin.url};
 chomp $remote_url;
-my ($user, $repo) = $remote_url =~ qr{[:/]([^/]+)/([^/]+)(?:[.]git)?$};
+my ($user, $repo) = $remote_url =~ qr{[:/]([^/]+)/([^/.]+)(?:[.]git)?$};
 
 system "open https://$host/$user/$repo/commit/$commit";
