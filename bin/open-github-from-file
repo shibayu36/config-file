@@ -14,7 +14,7 @@ chomp $host;
 
 my ($remote_url) = qx{git config --get remote.origin.url};
 chomp $remote_url;
-my ($user, $repo) = $remote_url =~ qr{[:/]([^/]+)/([^/.]+)(?:[.]git)?$};
+my ($user, $repo) = $remote_url =~ qr{[:/]([^/]+)/([^/]+?)(?:[.]git)?$};
 
 my $branch = qx{git symbolic-ref HEAD 2> /dev/null};
 $branch =~ s{^refs/heads/}{};
