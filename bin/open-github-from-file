@@ -6,7 +6,8 @@ use Cwd;
 
 my $arg = shift @ARGV // "";
 my $filename = getcwd() . "/" . $arg; # absolute path
-my $line = shift @ARGV;
+my $line_start = shift @ARGV;
+my $line_end   = shift @ARGV;
 
 my $host = qx{git config --get hub.host} || "github.com";
 chomp $host;
@@ -25,5 +26,6 @@ chomp $git_top;
 $filename =~ s{^$git_top/}{};
 
 my $url = "https://$host/$user/$repo/tree/$branch/$filename";
-$url .= "#L$line" if $line;
+$url .= "#L$line_start" if $line_start;
+$url .= "..L$line_end"  if $line_end;
 system "open $url";
