@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+my $issue = shift @ARGV or die "please specify issue";
+
+my $host = qx{git config --get hub.host} || "github.com";
+chomp $host;
+
+my ($remote_url) = qx{git config --get remote.origin.url};
+chomp $remote_url;
+my ($user, $repo) = $remote_url =~ qr{[:/]([^/]+)/([^/]+?)(?:[.]git)?$};
+
+system "open https://$host/$user/$repo/issues/$issue";
