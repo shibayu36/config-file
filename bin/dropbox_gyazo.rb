@@ -14,6 +14,8 @@ if File.exist?(file) then
   system "sips -d profile --deleteColorManagementProperties \"#{file}\""
 end
 
+p url;
+
 begin
   open(url)
 rescue

@@ -18,11 +18,13 @@
         ci = commit
         br = branch
         wd = diff --word-diff
+        gr = grep -C 3
         logg = log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d'
         loggr = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
         stat = log --stat --summary
         bro  = browse
         see = browse
+        br-recent = branch-recent
 
 [push]
 	default = current

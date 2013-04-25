@@ -9,11 +9,12 @@ export PERLDOC_PAGER=lv
 export RLWRAP_HOME=$HOME/.rlwrap
 export XDG_DATA_HOME=/usr/local/share
 export XDG_DATA_DIRS=/usr/local/share
-export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+# export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
 # Path config
-export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/Users/shibayu36/development/Hatena/servers/bin:$HOME/.rbenv/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
+eval "$(rbenv init -)"
 
 #Prompt display config
 PROMPT="%/%% "
@@ -145,21 +146,22 @@ bindkey '^r' zaw-history
 bindkey '^@' zaw-cdr
 
 # ---------------- setting for auto-fu --------------------------
-source ~/.zsh/auto-fu/auto-fu.zsh
-zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-zstyle ':completion:*' completer _oldlist _complete
-zle -N zle-keymap-select auto-fu-zle-keymap-select
+# source ~/.zsh/auto-fu/auto-fu.zsh
+# zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+# zstyle ':completion:*' completer _oldlist _complete
+# zle -N zle-keymap-select auto-fu-zle-keymap-select
 
 # perldoc-complete
 
 # alias
 alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 
-# ------------- ruby setting -------------
-if [ -s ${HOME}/.rvm/scripts/rvm ] ; then source ${HOME}/.rvm/scripts/rvm ; fi
-
 # ------------- setting for perlbrew ------------------------
 source ~/perl5/perlbrew/etc/bashrc
+
+# ------------- setting for plenv ------------------------
+# export PATH="$HOME/.plenv/bin:$PATH"
+# eval "$(plenv init -)"
 
 # ------------- setting for tmux ----------------------------
 # alias tmux='tmuxx'
@@ -171,6 +173,9 @@ source ~/perl5/perlbrew/etc/bashrc
 
 # 表示の設定
 [ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
+
+# direnv
+eval `direnv hook $0`
 
 # coreutils
 # source /usr/local/Cellar/coreutils/8.5/aliases
@@ -213,4 +218,3 @@ alias glg='git logg | head'
 # alias for git
 alias gst='git st'
 alias gch='git cherry -v'
-
