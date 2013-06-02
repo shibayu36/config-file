@@ -3,4 +3,4 @@
 	url = https://github.com/hchbaw/auto-fu.zsh.git
 [submodule ".zsh/zaw"]
 	path = .zsh/zaw
-	url = git@github.com:shibayu36/zaw.git
+	url = git://github.com/nakamuray/zaw.git
