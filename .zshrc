@@ -147,6 +147,7 @@ zstyle ':filter-select' case-insensitive yes
 bindkey '^r' zaw-history
 bindkey '^@' zaw-cdr
 bindkey '^x^b' zaw-git-recent-branches
+bindkey '^xb' zaw-git-recent-all-branches
 
 # ---------------- setting for auto-fu --------------------------
 # source ~/.zsh/auto-fu/auto-fu.zsh
