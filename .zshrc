@@ -161,11 +161,11 @@ bindkey '^xb' zaw-git-recent-all-branches
 alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 
 # ------------- setting for perlbrew ------------------------
-source ~/perl5/perlbrew/etc/bashrc
+# source ~/perl5/perlbrew/etc/bashrc
 
 # ------------- setting for plenv ------------------------
-# export PATH="$HOME/.plenv/bin:$PATH"
-# eval "$(plenv init -)"
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
 
 # ------------- setting for tmux ----------------------------
 # alias tmux='tmuxx'

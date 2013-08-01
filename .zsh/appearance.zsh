@@ -159,34 +159,12 @@ precmd () {
         PR_VCS="${(j: :)vcs_messages}"
     fi
 
-    # LANG=en_US.UTF-8 vcs_info
-    # [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-
-    ###
-    # Truncate the path if it's too long.
-
-    # local promptsize=${#${(%):---(-----------------)---()--}}
-    # local pwdsize=${#${(%):-%~}}
-    # local vcs_size=${#PR_VCS}
-    # if [[ "${vcs_size}" -eq 0 ]]; then
-    #     vcs_size=6
-    # fi
-    # print $vcs_size
-
-    # if [[ "$promptsize + $pwdsize + $vcs_size + $perl_version_size - 32" -gt $COLUMNS ]]; then
-    #     PR_FILLBAR=""
-    # else
-    #     PR_FILLBAR="\${(l.(($COLUMNS - ($vcs_size + $promptsize + $pwdsize + $perl_version_size - 32)))..-.)}"
-    # fi
-    # if [ -n "${WINDOW}" -a $UNAME = "Darwin" ]; then
-    #   $HOME/config/bin/precmd.pl `history -n -1 | head -1`
-    # fi
+    PERL_VERSION_STRING="perl:"$(plenv version-name)
+    RUBY_VERSION_STRING="ruby:"$(rbenv version-name)
 }
 
 function setprompt () {
-#   PROMPT='${fg[yellow]}%<...<%~%<< %1(v|${fg[red]}%1v%f |)${fg[blue]}${PR_PERL_VERSION} ${PR_BC}${(e)PR_FILLBAR}
-# ${fg[blue]}%D{%H:%M:%S} ${fg[green]}${USER}${fg[white]}@${fg[green]}%m${fg[white]}%(!.#.$) '
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERLBREW_PERL}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
       RPROMPT='----------------------------------'
 }
