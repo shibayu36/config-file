@@ -12,6 +12,8 @@ FileUtils.mkdir_p File.dirname(file)
 system "screencapture -i \"#{file}\""
 if File.exist?(file) then
   system "sips -d profile --deleteColorManagementProperties \"#{file}\""
+else
+  exit
 end
 
 p url;
