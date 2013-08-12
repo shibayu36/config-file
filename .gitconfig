@@ -17,7 +17,7 @@
         dic = diff --cached
         pr = pull --rebase
         co = checkout
-        ci = commit
+        ci = commit -v
         br = branch
         wd = diff --word-diff
         gr = grep -C 3
