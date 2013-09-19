@@ -1,0 +1,77 @@
+### Sample Settings
+
+# aliases
+# in this example you can open extensions page by the command ':ext'
+# and Chrome's option page by the command ':option'
+alias ext TabOpenNew chrome://extensions/
+alias option TabOpenNew chrome://settings/browser
+alias downloads TabOpenNew chrome://downloads
+alias history TabOpenNew chrome://history
+
+# mappings for opening your favorite web page
+nmap <Space>tw :TabOpenNew http://www.twitter.com
+nmap <Space>gr :TabOpenNew http://www.google.com/reader
+nmap <Space>m  :TabOpenNew https://mail.google.com/mail/#inbox
+
+# F for continuous f-Mode
+# this is recomended setting but commented out by default.
+# if you want to use this setting, use the following
+#nmap F :GoFMode --newtab --continuous
+
+# you can use <DISCARD> to discard the key so that chrome's default
+# action isn't triggered.
+#nmap <BS> <DISCARD>
+
+# if you want to change the key used to escape EmergencyMode mode,
+# use emap like the following
+#emap <ESC> :Escape
+
+## pagecmd offers you page specific key mapping.
+# in this example you can use <C-l>, <C-h> for moving between tabs
+# on all web pages regardless of your ignored list setting
+# because pagecmd has higher priority than ignored URLs.
+pagecmd * nmap <C-l> :TabFocusNext
+pagecmd * nmap <C-h> :TabFocusPrev
+
+# almost all Vichrome functions don't work properly for pdf contents
+# so it's useful to enable default key bindings for pdf file.
+pagecmd *.pdf nmap <C-f> <NOP>
+
+# if you want to use twitter web's key binding, write settings like below
+#pagecmd http*://twitter.com/* nmap f <NOP>
+#pagecmd http*://twitter.com/* nmap r <NOP>
+
+### ページ内の移動
+nmap j :ScrollDown
+nmap k :ScrollUp
+nmap f :PageDown
+nmap b :PageUp
+
+### 戻る進む
+nmap B :BackHist
+nmap F :ForwardHist
+
+# EscapeをC-gで
+nmap <C-g> : Escape
+imap <C-g> : Escape
+cmap <C-g> : Escape
+emap <C-g> : Escape
+<C-g> : Escape
+
+### search mode
+nmap <C-s> :GoSearchModeForward
+nmap <C-r> :GoSearchModeBackward
+
+### コマンド選択
+nmap <M-x> :GoCommandMode # M-xでコマンド
+# C-n, C-pでコマンド選択できる
+cmap <C-n> :FocusNextCandidate
+cmap <C-p> :FocusPrevCandidate
+
+### Hit a Hint mode
+pagecmd * nmap <C-l> :GoFMode
+pagecmd * nmap <C-x><C-l> :GoFMode --newtab
+
+### Tab操作
+nmap <C-x>k :TabCloseCurrent
+nmap <C-t> :TabList
