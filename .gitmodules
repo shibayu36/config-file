@@ -4,3 +4,6 @@
 [submodule ".zsh/zaw"]
 	path = .zsh/zaw
 	url = git://github.com/nakamuray/zaw.git
+[submodule "modules/git-grep-perl-statement"]
+	path = modules/git-grep-perl-statement
+	url = https://github.com/hitode909/git-grep-perl-statement.git
