@@ -1,7 +1,7 @@
 [include]
     path = .gitconfig.local
 [user]
-	name = shiba_yu36
+	name = shibayu36
 	email = shibayu36@gmail.com
 [color]
 	ui = auto
