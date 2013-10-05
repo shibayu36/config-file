@@ -149,6 +149,9 @@ bindkey '^@' zaw-cdr
 bindkey '^x^b' zaw-git-recent-branches
 bindkey '^xb' zaw-git-recent-all-branches
 
+# setting for percol
+source ~/.zsh/percol.zsh
+
 # ---------------- setting for auto-fu --------------------------
 # source ~/.zsh/auto-fu/auto-fu.zsh
 # zle-line-init () {auto-fu-init;}; zle -N zle-line-init
