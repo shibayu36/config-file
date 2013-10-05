@@ -225,3 +225,5 @@ alias glg='git logg | head'
 # alias for git
 alias gst='git st'
 alias gch='git cherry -v'
+
+alias P='percol --match-method migemo'
