@@ -1,9 +1,14 @@
-function percol_select_history() {
+function percol-select-history() {
     local tac
-    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-    BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
-    CURSOR=$#BUFFER         # move cursor
-    zle -R -c               # refresh
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(history -n 1 | \
+        eval $tac | \
+        percol --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
 }
-
-zle -N percol_select_history
+zle -N percol-select-history

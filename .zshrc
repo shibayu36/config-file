@@ -144,13 +144,13 @@ source ~/.zsh/zaw/zaw.zsh
 source ~/.zsh/zaw-sources/git-recent-branches.zsh
 
 zstyle ':filter-select' case-insensitive yes
-bindkey '^r' zaw-history
 bindkey '^@' zaw-cdr
 bindkey '^x^b' zaw-git-recent-branches
 bindkey '^xb' zaw-git-recent-all-branches
 
 # setting for percol
 source ~/.zsh/percol.zsh
+bindkey "^r" percol-select-history
 
 # ---------------- setting for auto-fu --------------------------
 # source ~/.zsh/auto-fu/auto-fu.zsh

@@ -13,6 +13,7 @@ ln -s ~/development/config-file/.keysnail.js ~/
 ln -s ~/development/config-file/.inputrc ~/
 ln -s ~/development/config-file/.tmux.conf ~/
 ln -s ~/development/config-file/.gitconfig ~/
+ln -s ~/development/config-file/.percol.d ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
