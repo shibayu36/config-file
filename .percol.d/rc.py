@@ -35,6 +35,12 @@ if sys.platform == "darwin":
     SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
     SelectorCommand.yank = paste_as_yank
 
+## 表示の設定
+percol.view.CANDIDATES_LINE_BASIC    = ("on_default", "default")
+percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_white", "black")
+percol.view.CANDIDATES_LINE_MARKED   = ("bold", "on_yellow", "black")
+percol.view.CANDIDATES_LINE_QUERY    = ("underline", "magenta", "bold")
+
 ## keymap
 # Mac で delete（backspace）が効くようにする
 SPECIAL_KEYS.update({
