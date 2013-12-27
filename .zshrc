@@ -188,7 +188,7 @@ eval "$(plenv init -)"
 [ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
 
 # direnv
-eval `direnv hook $0`
+eval "$(direnv hook $0)"
 
 # coreutils
 # source /usr/local/Cellar/coreutils/8.5/aliases
