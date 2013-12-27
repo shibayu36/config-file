@@ -223,6 +223,8 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias rm='rm -i'
 
+alias ack='ack --pager="less -R" -H'
+
 # alias git=hub
 alias glgg='git logg'
 alias glg='git logg | head'
