@@ -16,6 +16,10 @@ export XDG_DATA_DIRS=/usr/local/share
 export PATH=/Users/shibayu36/development/Hatena/servers/bin:$HOME/.rbenv/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
 eval "$(rbenv init -)"
 
+# Go PATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 #Prompt display config
 PROMPT="%/%% "
 PROMPT2="%_%% "
