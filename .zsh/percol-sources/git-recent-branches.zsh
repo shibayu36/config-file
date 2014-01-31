@@ -15,7 +15,7 @@ function percol-git-recent-all-branches () {
         perl -pne 's{^refs/(heads|remotes)/}{}' | \
         percol --query "$LBUFFER")
     if [ -n "$selected_branch" ]; then
-        BUFFER="git checkout -t ${selected_branch}"
+        BUFFER="git checkout ${selected_branch}"
         zle accept-line
     fi
     zle clear-screen
