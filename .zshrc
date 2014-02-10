@@ -18,7 +18,8 @@ eval "$(rbenv init -)"
 
 # Go PATH
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #Prompt display config
 PROMPT="%/%% "
