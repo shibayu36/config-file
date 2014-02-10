@@ -178,6 +178,7 @@ export PATH="$HOME/.plenv/bin:$PATH"
 eval "$(plenv init -)"
 
 # ------------- setting for tmux ----------------------------
+[ -n "$TMUX" ] && export TERM=screen-256color
 # alias tmux='tmuxx'
 # alias tm='tmuxx'
 # alias tma='tmux attach'
@@ -236,3 +237,5 @@ alias gst='git st'
 alias gch='git cherry -v'
 
 alias P='percol --match-method migemo'
+
+alias ssh='TERM=xterm-256color ssh'
