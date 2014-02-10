@@ -1,5 +1,5 @@
 function percol-cdr () {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | percol --query "$LBUFFER")
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | percol)
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
