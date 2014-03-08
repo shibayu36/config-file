@@ -13,13 +13,19 @@ export XDG_DATA_DIRS=/usr/local/share
 # export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
 # Path config
-export PATH=/Users/shibayu36/development/Hatena/servers/bin:$HOME/.rbenv/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
-eval "$(rbenv init -)"
+export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin:$JRUBY_HOME/bin
+
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
 
 # Go PATH
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# Docker env
+export DOCKER_HOST=localhost
 
 #Prompt display config
 PROMPT="%/%% "
@@ -172,10 +178,6 @@ alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 
 # ------------- setting for perlbrew ------------------------
 # source ~/perl5/perlbrew/etc/bashrc
-
-# ------------- setting for plenv ------------------------
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
 
 # ------------- setting for tmux ----------------------------
 [ -n "$TMUX" ] && export TERM=screen-256color
