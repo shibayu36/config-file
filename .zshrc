@@ -241,3 +241,6 @@ alias gch='git cherry -v'
 alias P='percol --match-method migemo'
 
 alias ssh='TERM=xterm-256color ssh'
+
+# alias for perl
+alias ce='carton exec --'
