@@ -37,5 +37,6 @@ if ($file->exists) {
     );
 
     run(['echo', $url], '|', [qw(pbcopy)]);
+    system "open $url";
     print "Successfully uploaded: $url\n";
 }
