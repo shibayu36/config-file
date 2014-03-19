@@ -29,7 +29,7 @@ if ($file->exists) {
         folder   => $folder,
     ) =~ /(\d{14})$/;
     my $url = sprintf(
-        "http://f.st-hatena.com/images/fotolife/%s/%s/%s/%s.png",
+        "http://f.st-hatena.com/images/fotolife/%s/%s/%s/%s_original.png",
         substr($username, 0, 1),
         $username,
         substr($date, 0, 8),
