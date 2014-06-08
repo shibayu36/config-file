@@ -192,7 +192,7 @@ alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
 [ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
 
 # direnv
-eval "$(direnv hook $0)"
+eval "$(direnv hook zsh)"
 
 # coreutils
 # source /usr/local/Cellar/coreutils/8.5/aliases
