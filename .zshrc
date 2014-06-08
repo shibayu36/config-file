@@ -246,3 +246,5 @@ alias ssh='TERM=xterm-256color ssh'
 
 # alias for perl
 alias ce='carton exec --'
+
+alias pc='proxychains4'
