@@ -34,6 +34,7 @@
 	autosetuprebase = always
 [merge]
 	ff = false
+	conflictstyle = diff3
 [rerere]
 	enabled = 1
 [submodule]
