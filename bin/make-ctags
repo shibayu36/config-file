@@ -1,1 +1,1 @@
-ctags --verbose -R --fields="+afikKlmnsSzt" --langmap=Perl:+.t --exclude=".git*" --exclude="local/*" --exclude="vendor/*" --exclude="tmp/*" --exclude="node_modules/*"
+ctags --verbose -R --fields="+afikKlmnsSzt" --langmap=Perl:+.t --exclude=".git*" --exclude="local/*" --exclude="vendor/*" --exclude="static/js/vendor/*" --exclude="tmp/*" --exclude="node_modules/*"
