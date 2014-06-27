@@ -1,3 +1,5 @@
+# config-fileで管理してるのでそっち見ましょう
+
 ### Sample Settings
 
 # aliases
@@ -75,3 +77,6 @@ pagecmd * nmap <C-x><C-l> :GoFMode --newtab
 ### Tab操作
 nmap <C-x>k :TabCloseCurrent
 nmap <C-t> :TabList
+
+### rでリロードはしない
+nmap r <NOP>
