@@ -25,7 +25,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Docker env
-export DOCKER_HOST=localhost
+export DOCKER_HOST=tcp://localhost:4243
 
 #Prompt display config
 PROMPT="%/%% "
