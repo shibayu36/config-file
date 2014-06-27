@@ -158,12 +158,15 @@ zstyle ':filter-select' case-insensitive yes
 
 # setting for percol
 source ~/.zsh/percol.zsh
-bindkey "^r" percol-select-history
 bindkey '^x^b' percol-git-recent-branches
 bindkey '^xb' percol-git-recent-all-branches
-bindkey '^@' percol-cdr
 
 alias gstp="percol-git-status-files"
+
+# setting for peco
+for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+bindkey '^@' peco-cdr
+bindkey '^r' peco-select-history
 
 # ---------------- setting for auto-fu --------------------------
 # source ~/.zsh/auto-fu/auto-fu.zsh
