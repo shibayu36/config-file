@@ -265,10 +265,6 @@ key.setGlobalKey(['C-x', 'C-s'], function (ev) {
     saveDocument(window.content.document);
 }, 'ファイルを保存', true);
 
-key.setGlobalKey(['C-x', 'C-l'], function (ev, arg) {
-    ext.exec("hok-start-background-mode", arg, ev);
-}, 'HoK - リンクをバックグラウンドで開く', true);
-
 key.setGlobalKey(['C-x', 'C-b', 'C-b'], function (ev, arg) {
     ext.exec("hateb-bookmark-this-page", arg, ev);
 }, 'このページをはてなブックマークに追加');
@@ -292,10 +288,6 @@ key.setGlobalKey(['C-x', 'C-r'], function (ev, arg) {
 key.setGlobalKey(['C-x', 'C-h'], function (ev, arg) {
     ext.exec("history-show", arg, ev);
 }, 'History - リストを表示', true);
-
-key.setGlobalKey('C-l', function (ev, arg) {
-    ext.exec("hok-start-foreground-mode", arg, ev);
-}, 'HoK - リンクをフォアグラウンドで開く');
 
 key.setGlobalKey([['M-w'], ['ESC', 'w']], function (ev) {
     command.copyRegion(ev);
@@ -707,3 +699,15 @@ key.setCaretKey([['M-n'], ['ESC', 'n']], function (ev) {
 key.setCaretKey(['ESC', 'ESC'], function (ev, arg) {
     ev.originalTarget.dispatchEvent(key.stringToKeyEvent("ESC", true));
 }, 'ESC キーイベントを投げる');
+
+key.setGlobalKey('C-l', function (ev, arg) {
+    ext.exec("hok-start-foreground-mode", arg, ev);
+}, 'HoK - リンクをフォアグラウンドで開く');
+
+key.setGlobalKey(['C-x', 'C-l'], function (ev, arg) {
+    ext.exec("hok-start-background-mode", arg, ev);
+}, 'HoK - リンクをバックグラウンドで開く', true);
+
+key.setViewKey(';', function (aEvent, aArg) {
+    ext.exec("hok-start-extended-mode", aArg);
+}, 'HoK - 拡張ヒントモード', true);
