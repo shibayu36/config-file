@@ -246,3 +246,6 @@ alias ssh='TERM=xterm-256color ssh'
 alias ce='carton exec --'
 
 alias pc='proxychains4'
+
+# peco
+alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
