@@ -220,11 +220,6 @@ if [ "$TMUX" != "" ] ; then
     export WINDOW=`tmux respawn-window 2>&1 > /dev/null | cut -d ':' -f 3`
 fi
 
-function cmd-exit-notify() {
-    $HOME/bin/cmd-exit-notify.pl `history -n -1`
-}
-add-zsh-hook precmd cmd-exit-notify
-
 #alias
 alias ls='ls -G'
 alias ll='ls -lG'
