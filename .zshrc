@@ -249,3 +249,4 @@ alias pc='proxychains4'
 
 # peco
 alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
+p() { peco | while read LINE; do $@ $LINE; done }
