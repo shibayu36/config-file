@@ -163,7 +163,7 @@ alias gstp="percol-git-status-files"
 
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-bindkey '^@' peco-cdr
+bindkey '^@' peco-cd
 bindkey '^r' peco-select-history
 bindkey '^x^b' peco-git-recent-branches
 bindkey '^xb' peco-git-recent-all-branches
@@ -250,3 +250,6 @@ alias pc='proxychains4'
 # peco
 alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
 p() { peco | while read LINE; do $@ $LINE; done }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
