@@ -19,8 +19,11 @@ export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/pyt
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
+# gh alias
+eval "$(gh alias -s)"
+
 # Go PATH
-export GOPATH=$HOME/development/go
+export GOPATH=$HOME/development
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
