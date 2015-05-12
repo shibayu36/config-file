@@ -56,3 +56,5 @@
 [ghq]
 	root = ~/development/src
 	root = ~/development/go/src
+[ghi]
+	token = !security find-internet-password -a shibayu36 -s github.com -l 'ghi token' -w
