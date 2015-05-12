@@ -16,6 +16,7 @@ ln -s ~/development/config-file/.gitconfig ~/
 ln -s ~/development/config-file/.percol.d ~/
 ln -s ~/development/config-file/.copyhook ~/
 ln -s ~/development/config-file/.copyhook.js ~/
+ln -s ~/development/config-file/.proxychains ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
