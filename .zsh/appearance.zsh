@@ -166,7 +166,6 @@ precmd () {
 function setprompt () {
       PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
-      RPROMPT='----------------------------------'
 }
 
 setprompt
