@@ -17,7 +17,6 @@ ln -s ~/development/config-file/.percol.d ~/
 ln -s ~/development/config-file/.copyhook ~/
 ln -s ~/development/config-file/.copyhook.js ~/
 ln -s ~/development/config-file/.proxychains ~/
-ln -s ~/development/config-file/.sbt ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
