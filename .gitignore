@@ -20,3 +20,4 @@ GRTAGS
 .zsh/cdd_pwd_list.t
 .envrc
 *.elc
+.sbt/boot
