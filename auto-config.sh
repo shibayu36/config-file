@@ -26,4 +26,4 @@ ln -s ~/development/config-file/bin/* ~/bin/
 ln -s ~/development/config-file/modules/git-grep-perl-statement/git-grep-perl-statement ~/bin/
 
 # tools 
-ln -s ~/development/config-file/tools/ ~/tools/
+# ln -s ~/development/config-file/tools/ ~/tools
