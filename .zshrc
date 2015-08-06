@@ -245,3 +245,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # gibo
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
+
+# IntelliJ
+alias ij="open -a /Applications/IntelliJ\ IDEA\ 14\ CE.app"
