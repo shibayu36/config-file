@@ -1,0 +1,7 @@
+#!/bin/bash
+
+path=$(git ls-files | peco)
+if [ -z "$path" ]; then
+    exit
+fi
+perl -MTest::UsedModules -MTest::More -e "used_modules_ok('$path');done_testing()"
