@@ -161,10 +161,11 @@ precmd () {
 
     PERL_VERSION_STRING="perl:"$(plenv version-name)
     RUBY_VERSION_STRING="ruby:"$(rbenv version-name)
+    NODE_VERSION_STRING="node:"$(ndenv version-name)
 }
 
 function setprompt () {
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
 }
 
