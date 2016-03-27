@@ -20,7 +20,7 @@ col=$3
 
        ;; Raise/focus our window; depends on the windowing system
        (if (string-equal system-type \"darwin\")
-         (ns-do-applescript \"tell application \\\"Emacs\\\" to activate\")
+         (mac-do-applescript \"tell application \\\"Emacs\\\" to activate\")
          (raise-frame))
 
        ;; Automatically pick up changes made in IntelliJ

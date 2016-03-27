@@ -34,15 +34,12 @@
 	autosetuprebase = always
 [merge]
 	ff = false
-	conflictstyle = diff3
 [rerere]
 	enabled = 1
 [submodule]
 	cachedir = /Users/shibayu36/.cache/git-submodules
 [pull]
 	rebase = true
-[grep]
-	lineNumber = true
 [pager]
     log = diff-highlight | less
     show = diff-highlight | less

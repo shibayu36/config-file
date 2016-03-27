@@ -14,7 +14,7 @@ my $changed_files = [
 ];
 close $fh;
 
-my $target_files = [ grep { $_ =~ /(?:\.pm|\.t)\z/ } @$changed_files ];
+my $target_files = [ grep { $_ =~ /(?:\.pm|\.t|\.pl)\z/ } @$changed_files ];
 for my $file (@$target_files) {
     used_modules_ok($file);
 }

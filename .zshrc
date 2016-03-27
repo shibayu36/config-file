@@ -1,9 +1,16 @@
 # Path config
 export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
 
+# 一定時間を超えたら自動でtimeする
+export REPORTTIME=1
+
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+# mysql-build
+export PATH="$HOME/.mysql-build/bin:$PATH"
+export PATH="$HOME/.mysql/5.6.27/bin:$PATH"
 
 # gh alias
 eval "$(gh alias -s)"
@@ -225,8 +232,8 @@ alias glg='git logg | head'
 # alias for git
 alias gst='git st'
 alias gch='git cherry -v'
-alias gg='git grep -H --break'
-alias ggg='git grep -H --break -C 5'
+alias gg='git grep -H --break -n'
+alias ggg='git grep -H --break -C 5 -n'
 
 alias P='percol --match-method migemo'
 
