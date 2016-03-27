@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cache_file=~/.cache/mkr-hosts-tsv/cache
+cache_minutes=1440
+
+if [ -n "$MACKEREL_APIKEY_NAME" ]; then
+    cache_file="$cache_file.$MACKEREL_APIKEY_NAME"
+fi
+
+if [ ! -r "$cache_file" -o -n "$(find \"$cache_file\" -mmin +$cache_minutes 2>/dev/null)" ]; then
+    mkdir -p $(dirname $cache_file)
+
+    echo 'cache file is too old, updating...' >&2
+    mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{range .Interfaces}}{{if (eq .Name "eth0")}}{{.IPAddress}}{{end}}{{end}}{{"\t"}}{{.Name}}{{"\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}} {{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
+    chmod go-r $cache_file
+else
+    cat $cache_file
+fi
