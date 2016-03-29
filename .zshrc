@@ -45,6 +45,8 @@ setopt hist_no_store         # historyコマンドは履歴に登録しない
 setopt no_flow_control
 ## すぐにヒストリファイルに追記する。
 setopt inc_append_history
+# コマンド実行時にコメントを使えるように
+setopt interactivecomments
 
 #search history config
 autoload history-search-end
