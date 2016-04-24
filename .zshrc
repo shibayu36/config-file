@@ -12,9 +12,6 @@ eval "$(anyenv init -)"
 export PATH="$HOME/.mysql-build/bin:$PATH"
 export PATH="$HOME/.mysql/5.6.27/bin:$PATH"
 
-# gh alias
-eval "$(gh alias -s)"
-
 # Go PATH
 export GOPATH=$HOME/development/go
 export GOROOT=/usr/local/opt/go/libexec
