@@ -18,6 +18,7 @@ ln -s ~/development/config-file/.copyhook ~/
 ln -s ~/development/config-file/.copyhook.js ~/
 ln -s ~/development/config-file/.proxychains ~/
 ln -s ~/development/config-file/.ctags ~/
+ln -s ~/development/config-file/.cheat ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/

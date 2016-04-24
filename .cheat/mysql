@@ -1,0 +1,5 @@
+# 日間の集計
+SELECT DATE(date_column) as date, COUNT(*) as count FROM table_name GROUP BY DATE(date_column);
+
+# 週間の集計
+SELECT YEARWEEK(date_column) as `yearweek`, COUNT(*) as count FROM table_name GROUP BY YEARWEEK(date_column);
