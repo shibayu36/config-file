@@ -55,3 +55,8 @@
 	root = ~/development/go/src
 [ghi]
 	token = !security find-internet-password -a shibayu36 -s github.com -l 'ghi token' -w
+[tig]
+	main-view = id date author commit-title:graph=yes,refs=yes
+	vertical-split = auto
+	split-view-height = 80%
+	split-view-width  = 66%
