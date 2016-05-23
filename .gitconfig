@@ -12,22 +12,16 @@
 	editor = /usr/local/bin/emacsclient --alternate-editor /usr/bin/vim
 	excludesfile = /Users/shibayu36/.gitignore
 [alias]
-        st = status -sb
-        di = diff
-        dic = diff --cached
-        pr = pull --rebase
-        co = checkout
-        ci = commit -v
-        br = branch
-        wd = diff --word-diff
-        gr = grep -C 3
-        logg = log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d'
-        loggr = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
-        stat = log --stat --summary
-        bro  = browse
-        see = browse
-        br-recent = branch-recent
-
+	st = status -sb
+	di = diff
+	dic = diff --cached
+	pr = pull --rebase
+	co = checkout
+	ci = commit -v
+	br = branch
+	stashes = stash list
+	graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	stat = log --stat --summary
 [push]
 	default = current
 [branch]
