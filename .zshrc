@@ -8,9 +8,8 @@ export REPORTTIME=1
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
-# mysql-build
-export PATH="$HOME/.mysql-build/bin:$PATH"
-export PATH="$HOME/.mysql/5.6.27/bin:$PATH"
+# mysqlenv
+source ~/.mysqlenv/etc/bashrc
 
 # Go PATH
 export GOPATH=$HOME/development/go
