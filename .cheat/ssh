@@ -1,0 +1,30 @@
+# To ssh via pem file (which normally needs 0600 permissions):
+ssh -i /path/to/file.pem user@example.com
+
+# To connect on an non-standard port:
+ssh -p 2222 user@example.com
+
+# To connect and forward the authentication agent
+ssh -A user@example.com
+
+# To execute a command on a remote server:
+ssh -t user@example.com 'the-remote-command'
+
+# To tunnel an x session over SSH:
+ssh -X user@example.com
+
+# Redirect traffic with a tunnel between local host (port 8080) and a remote
+# host (remote.example.com:5000) through a proxy (personal.server.com):
+ssh -f -L 8080:remote.example.com:5000 user@personal.server.com -N
+
+# To launch a specific x application over SSH:
+ssh -X -t user@example.com 'chromium-browser'
+
+# -X use an xsession, -C compress data, "-c blowfish" use the encryption blowfish
+ssh user@example.com -C -c blowfish -X
+
+# For more information, see:
+# http://unix.stackexchange.com/q/12755/44856
+
+# To create a SOCKS proxy on localhost:10000
+ssh -f -N -D 10000 user@example.com &>/dev/null </dev/null

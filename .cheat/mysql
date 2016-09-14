@@ -3,3 +3,6 @@ SELECT DATE(date_column) as date, COUNT(*) as count FROM table_name GROUP BY DAT
 
 # 週間の集計
 SELECT YEARWEEK(date_column) as `yearweek`, COUNT(*) as count FROM table_name GROUP BY YEARWEEK(date_column);
+
+# 数字の桁数ごとの集計
+SELECT char_length(number_column) as number_of_digit, COUNT(*) as count from table_name GROUP BY char_length(number_column);
