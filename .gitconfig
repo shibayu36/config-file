@@ -9,7 +9,7 @@
 	status = auto
 	branch = auto
 [core]
-	editor = /usr/local/bin/emacsclient --alternate-editor /usr/bin/vim
+	editor = /usr/local/bin/emacsclient
 	excludesfile = /Users/shibayu36/.gitignore
 [alias]
 	st = status -sb
