@@ -16,6 +16,11 @@ export GOPATH=$HOME/development/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+# Scala
+export JAVA_HOME=`/usr/libexec/java_home`
+export SCALA_HOME=/usr/local/opt/scala
+export PATH=$PATH:$SCALA_HOME/bin
+
 # Docker env
 export DOCKER_HOST=tcp://localhost:4243
 
@@ -253,7 +258,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
 
 # IntelliJ
-alias ij="open -a /Applications/IntelliJ\ IDEA\ 14\ CE.app"
+alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
 
 # openssl
 OPENSSL_PATH=/usr/local/opt/openssl
@@ -262,3 +267,12 @@ if [ -d "$OPENSSL_PATH" ];then
   export LD_LIBRARY_PATH=$OPENSSL_PATH/lib:$LD_LIBRARY_PATH
   export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
 fi
+
+# alias for emacsclient
+alias e='/usr/local/bin/emacsclient -n'
+
+# editor
+export EDITOR='/usr/local/bin/emacsclient'
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
