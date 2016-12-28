@@ -1,11 +1,11 @@
 # 日間の集計
-SELECT DATE(date_column) as date, COUNT(*) as count FROM table_name GROUP BY DATE(date_column);
+SELECT DATE(date_column) as date, COUNT(*) as count FROM table_name GROUP BY date;
 
 # 週間の集計
-SELECT YEARWEEK(date_column) as `yearweek`, COUNT(*) as count FROM table_name GROUP BY YEARWEEK(date_column);
+SELECT YEARWEEK(date_column) as `yearweek`, COUNT(*) as count FROM table_name GROUP BY yearweek;
 
 # 数字の桁数ごとの集計
-SELECT char_length(number_column) as number_of_digit, COUNT(*) as count from table_name GROUP BY char_length(number_column);
+SELECT char_length(number_column) as number_of_digit, COUNT(*) as count from table_name GROUP BY number_of_digit;
 
 # INTERVALを使った時間差分
 SELECT * FROM table_name WHERE created_at >= (NOW() - INTERVAL 7 DAY);
