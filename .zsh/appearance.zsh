@@ -159,13 +159,14 @@ precmd () {
         PR_VCS="${(j: :)vcs_messages}"
     fi
 
-    PERL_VERSION_STRING="perl:"$(plenv version-name)
-    RUBY_VERSION_STRING="ruby:"$(rbenv version-name)
-    NODE_VERSION_STRING="node:"$(ndenv version-name)
+    PERL_VERSION_STRING="pl:"$(plenv version-name)
+    RUBY_VERSION_STRING="rb:"$(rbenv version-name)
+    NODE_VERSION_STRING="nd:"$(ndenv version-name)
+    PYTHON_VERSION_STRING="py:"$(pyenv version-name)
 }
 
 function setprompt () {
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING} ${PYTHON_VERSION_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
 }
 
