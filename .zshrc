@@ -21,6 +21,10 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export SCALA_HOME=/usr/local/opt/scala
 export PATH=$PATH:$SCALA_HOME/bin
 
+# Python
+# virtualenvでpromptを変更しない
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Docker env
 export DOCKER_HOST=tcp://localhost:4243
 

@@ -163,10 +163,15 @@ precmd () {
     RUBY_VERSION_STRING="rb:"$(rbenv version-name)
     NODE_VERSION_STRING="nd:"$(ndenv version-name)
     PYTHON_VERSION_STRING="py:"$(pyenv version-name)
+
+    PYTHON_VIRTUAL_ENV_STRING=""
+    if [ -n "$VIRTUAL_ENV" ]; then
+        PYTHON_VIRTUAL_ENV_STRING=":`basename \"$VIRTUAL_ENV\"`"
+    fi
 }
 
 function setprompt () {
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING} ${PYTHON_VERSION_STRING}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING} ${PYTHON_VERSION_STRING}${PYTHON_VIRTUAL_ENV_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
 }
 
