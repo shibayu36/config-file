@@ -1,32 +1,5 @@
-# Path config
-export PATH=/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
-
 # 一定時間を超えたら自動でtimeする
 export REPORTTIME=1
-
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
-# mysqlenv
-source ~/.mysqlenv/etc/bashrc
-
-# Go PATH
-export GOPATH=$HOME/development/go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# Scala
-export JAVA_HOME=`/usr/libexec/java_home`
-export SCALA_HOME=/usr/local/opt/scala
-export PATH=$PATH:$SCALA_HOME/bin
-
-# Python
-# virtualenvでpromptを変更しない
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# Docker env
-export DOCKER_HOST=tcp://localhost:4243
 
 #Prompt display config
 PROMPT="%/%% "
@@ -255,22 +228,11 @@ alias pc='proxychains4'
 alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
 p() { peco | while read LINE; do $@ $LINE; done }
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # gibo
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
 
 # IntelliJ
 alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
-
-# openssl
-OPENSSL_PATH=/usr/local/opt/openssl
-if [ -d "$OPENSSL_PATH" ];then
-  export PATH=$OPENSSL_PATH/bin:$PATH
-  export LD_LIBRARY_PATH=$OPENSSL_PATH/lib:$LD_LIBRARY_PATH
-  export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
-fi
 
 # alias for emacsclient
 alias e='/usr/local/bin/emacsclient -n'
@@ -280,3 +242,6 @@ export EDITOR='/usr/local/bin/emacsclient'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# 文字化けした時の対処用
+alias clear2="echo -e '\026\033c'"
