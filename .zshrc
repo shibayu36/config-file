@@ -209,3 +209,19 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # 文字化けした時の対処用
 alias clear2="echo -e '\026\033c'"
+
+# ---------------- setting for zplug --------------------------
+source ~/.zplug/init.zsh
+
+zplug "Tarrasch/zsh-autoenv"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# プラグインを読み込み、コマンドにパスを通す
+zplug load --verbose
