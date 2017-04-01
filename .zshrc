@@ -107,7 +107,7 @@ alias zmv='noglob zmv -W -i'
 # copyするやつ
 pbcopy-buffer(){
     print -rn $BUFFER | pbcopy
-    zle -M "pbcopy: ${BUFFER}" 
+    zle -M "pbcopy: ${BUFFER}"
 }
 
 zle -N pbcopy-buffer
@@ -126,17 +126,6 @@ function chpwd() {
     _reg_pwd_screennum
 }
 
-# seting for zaw
-source ~/.zsh/zaw/zaw.zsh
-source ~/.zsh/zaw-sources/git-recent-branches.zsh
-
-zstyle ':filter-select' case-insensitive yes
-
-# setting for percol
-source ~/.zsh/percol.zsh
-
-alias gstp="percol-git-status-files"
-
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
 bindkey '^@' peco-cd
@@ -145,37 +134,14 @@ bindkey '^x^b' peco-git-recent-branches
 bindkey '^xb' peco-git-recent-all-branches
 bindkey '^x^h' peco-complete-mackerel-host-ip
 
-# ---------------- setting for auto-fu --------------------------
-# source ~/.zsh/auto-fu/auto-fu.zsh
-# zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-# zstyle ':completion:*' completer _oldlist _complete
-# zle -N zle-keymap-select auto-fu-zle-keymap-select
-
-# perldoc-complete
-
-# alias
-alias minicpanm='cpanm --mirror ~/mirrors/minicpan --mirror-only'
-
-# ------------- setting for perlbrew ------------------------
-# source ~/perl5/perlbrew/etc/bashrc
-
 # ------------- setting for tmux ----------------------------
 [ -n "$TMUX" ] && export TERM=screen-256color
-# alias tmux='tmuxx'
-# alias tm='tmuxx'
-# alias tma='tmux attach'
-# alias tml='tmux list-window'
-
-# ----------------------------------------
 
 # 表示の設定
 [ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
 
 # direnv
 eval "$(direnv hook zsh)"
-
-# coreutils
-# source /usr/local/Cellar/coreutils/8.5/aliases
 
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
@@ -187,8 +153,6 @@ eval "$(direnv hook zsh)"
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
     PATH > ~/.emacs.d/shellenv.el
-
-[[ -r "$HOME/.smartcd_config" ]] && source ~/.smartcd_config
 
 autoload -Uz add-zsh-hook
 
