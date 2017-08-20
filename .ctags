@@ -1,5 +1,3 @@
---fields=+afikKlmnsSzt
-
 --exclude=local/*
 --exclude=vendor/*
 --exclude=static/js/vendor/*
@@ -9,7 +7,8 @@
 --exclude=target/*
 --exclude=.ensime_cache/*
 --exclude=elasticsearch/*
---exclude=public/javascript/src
+--exclude=public/javascripts/src/*
+--exclude=public/javascripts/compiled/*
 
 --langmap=Perl:+.t
 
