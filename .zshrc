@@ -55,18 +55,6 @@ setopt correct
 #--prefixのイコールの後の部分を補完
 setopt magic_equal_subst
 
-#makeを色づけ
-e_normal=`echo -e "\033[0;30m"`
-e_RED=`echo -e "\033[1;31m"`
-e_BLUE=`echo -e "\033[1;36m"`
-
-function make() {
-    LANG=C command make "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot\sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
-}
-function cwaf() {
-    LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot\sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
-}
-
 # clipboard copy
 if which pbcopy >/dev/null 2>&1 ; then 
     # Mac  
