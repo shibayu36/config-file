@@ -1,0 +1,2 @@
+# 特定の範囲に値を含まないものを探す
+=ISNA(VLOOKUP(A2, I:I, 1, false))

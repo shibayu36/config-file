@@ -1,0 +1,23 @@
+#!/bin/bash
+
+hosts=("$@")
+session_name="tmux-ssh-$$"
+
+tmux start-server
+
+is_first="true"
+for host in ${hosts[@]}; do
+    cmd="ssh $SSH_OPTION $USER@$host"
+    if [ "${is_first}" == "true" ]; then
+        tmux new-session -d -s $session_name "$cmd"
+
+        is_first="false"
+    else
+        tmux split-window  -t $session_name "$cmd"
+        tmux select-layout -t $session_name tiled 1>/dev/null
+    fi
+done
+
+tmux set-window-option -t $session_name synchronize-panes on
+tmux select-pane -t 0
+tmux attach-session -t $session_name
