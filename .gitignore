@@ -21,3 +21,7 @@ GRTAGS
 .envrc
 *.elc
 .ensime
+.autoenv.zsh
+.autoenv_leave.zsh
+.ensime_cache
+ensime.sbt
