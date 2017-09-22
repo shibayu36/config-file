@@ -9,7 +9,7 @@ export XDG_DATA_HOME=/usr/local/share
 export XDG_DATA_DIRS=/usr/local/share
 
 # Path config
-export PATH=/Users/shibayu36/development/apache-maven/bin:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
+export PATH=~/.local/bin:/Users/shibayu36/development/apache-maven/bin:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -31,9 +31,6 @@ export PATH=$PATH:$SCALA_HOME/bin
 # Python
 # virtualenvでpromptを変更しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# Docker env
-export DOCKER_HOST=tcp://localhost:4243
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
