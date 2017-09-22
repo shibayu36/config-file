@@ -54,3 +54,5 @@
 	vertical-split = auto
 	split-view-height = 80%
 	split-view-width  = 66%
+[rebase]
+	autosquash = true
