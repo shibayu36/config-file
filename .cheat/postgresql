@@ -1,0 +1,23 @@
+# activeで1分以上待っているクエリを探す
+SELECT pid,client_addr, query, query_start FROM pg_stat_activity WHERE state = 'active' AND query_start < ( current_timestamp - interval '1' minute ) AND pid <> pg_backend_pid() ORDER BY query_start;
+
+# 指定したpidのクエリを殺す
+SELECT pg_terminate_backend(<pid>);
+
+# ロック開放待ちのクエリを探す
+SELECT locktype, pg_locks.pid, mode, usename, application_name, client_addr, query_start, state_change, waiting, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid;
+
+# master/slave確認。マスタとして動作していた場合はfalseが変えるし、slaveの時はtrue。レプリが切れていたら両方false
+SELECT pg_is_in_recovery();
+
+# レプリケーションが出来ているか。レプリケーションが出来ていないと空が返る。
+SELECT * FROM pg_stat_replication;
+
+# タブ区切りで出力する
+psql -h ... -A -F $'\t' -c "SQL" table_name > result.tsv
+
+# テーブルサイズの大きい順に、テーブル名・行数・占有サイズ(Mbyte)・平均サイズ(byte)を表示する
+SELECT relname, reltuples, (relpages / 128) as mbytes, (relpages * 8192.0 / (reltuples + 1e-10)) as average_row_size FROM pg_class ORDER BY mbytes DESC;
+
+# テーブルのサイズや行数などを色んな情報込みで眺める
+SELECT pgn.nspname, relname, pg_size_pretty(relpages::bigint * 8 * 1024) AS size, CASE WHEN relkind = 't' THEN (SELECT pgd.relname FROM pg_class pgd WHERE pgd.reltoastrelid = pg.oid) WHEN nspname = 'pg_toast' AND relkind = 'i' THEN (SELECT pgt.relname FROM pg_class pgt WHERE SUBSTRING(pgt.relname FROM 10) = REPLACE(SUBSTRING(pg.relname FROM 10), '_index', '')) ELSE (SELECT pgc.relname FROM pg_class pgc WHERE pg.reltoastrelid = pgc.oid) END::varchar AS refrelname, CASE WHEN nspname = 'pg_toast' AND relkind = 'i' THEN (SELECT pgts.relname FROM pg_class pgts WHERE pgts.reltoastrelid = (SELECT pgt.oid FROM pg_class pgt WHERE SUBSTRING(pgt.relname FROM 10) = REPLACE(SUBSTRING(pg.relname FROM 10), '_index', ''))) END AS relidxrefrelname, relfilenode, relkind, reltuples::bigint, relpages FROM pg_class pg, pg_namespace pgn WHERE pg.relnamespace = pgn.oid AND pgn.nspname NOT IN ('information_schema', 'pg_catalog') ORDER BY relpages DESC; 
