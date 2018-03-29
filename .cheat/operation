@@ -1,0 +1,9 @@
+# LinuxサーバでネットワークI/Oで刺さっている接続先を発見する
+sudo strace -p 10471
+Process 10471 attached - interrupt to quit
+read(58,  <unfinished ...>
+Process 10471 detached
+$ sudo readlink /proc/10471/fd/58
+socket:[1148032788]
+$ netstat -ane | grep 1148032788
+tcp        0      0 10.0.0.10:44566            10.0.0.11:3306           ESTABLISHED 48         1148032788

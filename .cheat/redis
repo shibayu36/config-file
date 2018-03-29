@@ -1,11 +1,11 @@
 # 設定いろいろ見る
 CONFIG GET '*'
 
-# readonlyか確認
-config get 'slave-read-only'
-
 # サーバ状態やレプリ状態、統計情報などを見れる
 INFO
+
+# readonly slaveか確認
+INFO Replication # role:slaveでslave_read_only:1ならreadonly slave
 
 # データベースの選択
 SELECT <number>
