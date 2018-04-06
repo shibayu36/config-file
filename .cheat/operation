@@ -7,3 +7,6 @@ $ sudo readlink /proc/10471/fd/58
 socket:[1148032788]
 $ netstat -ane | grep 1148032788
 tcp        0      0 10.0.0.10:44566            10.0.0.11:3306           ESTABLISHED 48         1148032788
+
+# threadも含めてstraceする
+sudo strace -f -p <pid>

@@ -1,0 +1,5 @@
+# コンテナ起動して落とした時にコンテナ削除する
+docker run --rm -ti <image>
+
+# 起動しているコンテナに別のところから入る
+docker exec -ti <container id> /bin/bash

@@ -1,17 +1,27 @@
+\l # SHOW DATABASES
+\c dbname # USE dbname
+\dt # SHOW TABLES
+
 # クエリ実行時間を表示する
 \timing
+
+# 実行計画と時間を知る
+BEGIN; EXPLAIN ANALYZE ...; ROLLBACK;
 
 # 実行中のクエリ一覧
 SELECT * FROM pg_stat_activity where state != 'idle' order by query_start asc;
 
 # activeで1分以上待っているクエリを探す
-SELECT pid,client_addr, query, query_start FROM pg_stat_activity WHERE state = 'active' AND query_start < ( current_timestamp - interval '1' minute ) AND pid <> pg_backend_pid() ORDER BY query_start;
+SELECT pid,client_addr, query_start, query FROM pg_stat_activity WHERE state = 'active' AND query_start < ( current_timestamp - interval '1' minute ) AND pid <> pg_backend_pid() ORDER BY query_start;
 
 # 指定したpidのクエリを殺す
 SELECT pg_terminate_backend(<pid>);
 
-# ロック開放待ちのクエリを探す
-SELECT locktype, pg_locks.pid, mode, usename, application_name, client_addr, query_start, state_change, waiting, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid;
+# ロック状況を見る
+SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid;
+
+# ロック待ちで待機しているクエリを見る
+SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid WHERE granted = false;
 
 # master/slave確認。マスタとして動作していた場合はfalseが変えるし、slaveの時はtrue。レプリが切れていたら両方false
 SELECT pg_is_in_recovery();
@@ -39,3 +49,8 @@ select * from pg_stats where tablename = 'table' and attname = 'column';
 
 # 設定パラメータの確認
 SHOW <setting parameter>;
+
+# 条件にマッチする設定パラメータを表示
+select name, setting, unit, short_desc from pg_settings where name LIKE '%hoge%';
+
+select <oid>::regclass; # oidをrelation名などに変換
