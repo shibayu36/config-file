@@ -10,3 +10,25 @@ tcp        0      0 10.0.0.10:44566            10.0.0.11:3306           ESTABLIS
 
 # threadも含めてstraceする
 sudo strace -f -p <pid>
+
+# プロセスツリーで見る
+ps auxf
+
+# 負荷状況確認
+top -c # して1押すとCPUコアごとの負荷見れる
+
+# thread単体にstraceする
+ps aux -L
+sudo strace -p <LWP>
+
+# プロセスツリー状に表示
+ps axjf
+
+# スレッドも含めてps
+ps aux -L
+
+# JVMの様子見る
+ps aux -L | grep -e java -e PID | perl -ple '$_ = substr($_, 0, 180);'
+
+# systemdで管理されているアプリケーションの操作
+sudo systemctl start nginx

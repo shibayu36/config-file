@@ -1,0 +1,5 @@
+# ユーザーデータを確認する
+curl http://169.254.169.254/latest/user-data # sshしてから
+
+# CloudFormationのメタデータ確認
+aws cloudformation describe-stack-resource --stack-name=... --logical-resource-id=...

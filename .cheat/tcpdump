@@ -51,6 +51,9 @@ tcpdump -X
 # tracerouteのパケットをwiresharkで見るためのいろいろフィルタリング
 tcpdump -n -i en0 -s 0 -A -w dump.cap '(udp and ip[8] < 15 and dst 8.8.8.8) or (icmp and (icmp[icmptype] == 11 or icmp[icmptype] == 3))'
 
+# MySQLのDBにクエリが流れてくる様子を観察。
+tcpdump -tttt -l -i eth0 -A -n -s 0 dst port 3306 | grep -iE "select|update|delete|insert"
+
 # Note on packet maching:
 # Port matching:
 # - portrange 22-23

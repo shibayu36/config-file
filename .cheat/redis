@@ -1,6 +1,9 @@
 # 設定いろいろ見る
 CONFIG GET '*'
 
+# 特定のconfigを見る
+CONFIG GET 'maxmemory'
+
 # サーバ状態やレプリ状態、統計情報などを見れる
 INFO
 

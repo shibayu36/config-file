@@ -1,3 +1,9 @@
+# 日間の集計
+SELECT DATE(date_column) as date, COUNT(*) as count FROM table_name GROUP BY date;
+
+# 月間の集計
+SELECT date_trunc('month', created_at) as "month", COUNT(*) as count FROM users GROUP BY month order by month;
+
 \l # SHOW DATABASES
 \c dbname # USE dbname
 \dt # SHOW TABLES
@@ -18,10 +24,10 @@ SELECT pid,client_addr, query_start, query FROM pg_stat_activity WHERE state = '
 SELECT pg_terminate_backend(<pid>);
 
 # ロック状況を見る
-SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid;
+SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid WHERE pg_locks.pid <> pg_backend_pid();
 
 # ロック待ちで待機しているクエリを見る
-SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid WHERE granted = false;
+SELECT locktype, pg_locks.pid, mode, relation::regclass, usename, application_name, client_addr, query_start, state_change, granted, state, query FROM pg_locks INNER JOIN pg_stat_activity ON pg_locks.pid = pg_stat_activity.pid WHERE granted = false AND pg_locks.pid <> pg_backend_pid();
 
 # master/slave確認。マスタとして動作していた場合はfalseが変えるし、slaveの時はtrue。レプリが切れていたら両方false
 SELECT pg_is_in_recovery();
