@@ -1,0 +1,61 @@
+{
+  "title": "Swap ¥ and \\ in IntelliJ IDEA on JIS Keyboards",
+  "rules": [
+    {
+      "description": "Change ¥ to Alt+¥ in IntelliJ IDEA",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "international3"
+          },
+          "to": [
+            {
+              "key_code": "international3",
+              "modifiers": [
+                "option"
+              ]
+            }
+          ],
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.jetbrains\\.intellij\\.ce$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Change Alt+¥ to ¥ in IntelliJ IDEA",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "international3",
+            "modifiers": {
+              "mandatory": [
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "international3"
+            }
+          ],
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.jetbrains\\.intellij\\.ce$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
