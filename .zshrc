@@ -1,5 +1,5 @@
 # 一定時間を超えたら自動でtimeする
-export REPORTTIME=1
+export REPORTTIME=10
 
 #Prompt display config
 PROMPT="%/%% "
@@ -154,8 +154,6 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias rm='rm -i'
 
-alias ack='ack --pager="less -R" -H'
-
 # alias git=hub
 alias glgg='git logg'
 alias glg='git logg | head'
@@ -180,6 +178,9 @@ alias pc='proxychains4'
 alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
 p() { peco | while read LINE; do $@ $LINE; done }
 
+# psを選択して殺す
+alias pskl="ps aux | peco | awk '{ print \$2 }' | xargs kill -9"
+
 # gibo
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
 
@@ -189,6 +190,8 @@ alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
 # alias for emacsclient
 alias e='/usr/local/bin/emacsclient -n'
 
+alias c='code -a'
+
 # editor
 export EDITOR='/usr/local/bin/emacsclient'
 
@@ -197,6 +200,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # 文字化けした時の対処用
 alias clear2="echo -e '\026\033c'"
+
+alias tssh="tssh --ssh_args '-o StrictHostKeyChecking=no'"
+alias pctssh="proxychains4 ssh"
 
 # ---------------- setting for zplug --------------------------
 source ~/.zplug/init.zsh
@@ -213,3 +219,9 @@ fi
 
 # プラグインを読み込み、コマンドにパスを通す
 zplug load
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc'; fi

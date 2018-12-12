@@ -43,6 +43,15 @@ if [ -d "$OPENSSL_PATH" ];then
   export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
 fi
 
+# texinfo
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
+# cheat
+export CHEATPATH="/Users/shibayu36/.cheat-private:$CHEATPATH"
+
+# GCP
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/shibayu36/.config/gcloud/application_default_credentials.json"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/shibayu36/.sdkman"
 [[ -s "/Users/shibayu36/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shibayu36/.sdkman/bin/sdkman-init.sh"
