@@ -39,14 +39,6 @@
         "when": "editorTextFocus && !suggestWidgetVisible"
     },
     {
-        "key": "ctrl+alt+n",
-        "command": "scrollkey.down1"
-    },
-    {
-        "key": "ctrl+alt+p",
-        "command": "scrollkey.up1"
-    },
-    {
         "key": "cmd+[Semicolon]",
         "command": "editor.action.commentLine",
         "when": "editorTextFocus && !editorReadonly"
@@ -73,5 +65,131 @@
         "key": "ctrl+p",
         "command": "-workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "onelinescroll.scrollDown"
+    },
+    {
+        "key": "alt+n",
+        "command": "-onelinescroll.scrollDown"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "onelinescroll.scrollUp"
+    },
+    {
+        "key": "alt+p",
+        "command": "-onelinescroll.scrollUp"
+    },
+    {
+        "key": "ctrl+x 3",
+        "command": "-workbench.action.toggleEditorGroupLayout"
+    },
+    {
+        "key": "ctrl+x 3",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+x 2",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-editor.action.transposeLetters",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeWindow",
+        "when": "!editorIsOpen && !multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w",
+        "command": "emacs.M-w",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "-emacs.M-w",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+c y",
+        "command": "editor.action.insertSnippet"
+    },
+    {
+        "key": "ctrl+[BracketLeft]",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "cmd+[BracketLeft]",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.goToDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+c c",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "-code-runner.run"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "[Equal]",
+        "command": "extension.dired.goUpDir",
+        "when": "dired.open"
+    },
+    {
+        "key": "shift+b",
+        "command": "-extension.dired.goUpDir",
+        "when": "dired.open"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "extension.dired.open",
+        "when": "editorTextFocus && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+x f",
+        "command": "-extension.dired.open",
+        "when": "editorTextFocus && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+c t",
+        "command": "go.test.cursor",
+        "when": "editorTextFocus && resourceLangId == go"
+    },
+    {
+        "key": "ctrl+c ctrl+t",
+        "command": "go.test.file",
+        "when": "editorTextFocus && resourceLangId == go"
     }
 ]

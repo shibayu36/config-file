@@ -1,5 +1,9 @@
 {
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
     "editor.minimap.enabled": false,
     "editor.wordWrap": "on",
-    "scrollkey.line1": 1
+    "files.useExperimentalFileWatcher": true,
+    "breadcrumbs.enabled": true,
+    "editor.formatOnSave": true,
+    "search.location": "panel",
 }
