@@ -11,6 +11,7 @@
 [core]
 	editor = /usr/local/bin/emacsclient
 	excludesfile = /Users/shibayu36/.gitignore
+	quotepath = false
 [alias]
 	st = status -sb
 	di = diff
@@ -21,6 +22,7 @@
 	br = branch
 	stashes = stash list
 	graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
 	stat = log --stat --summary
 [push]
 	default = current
@@ -56,3 +58,5 @@
 	split-view-width  = 66%
 [rebase]
 	autosquash = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

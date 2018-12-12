@@ -25,3 +25,4 @@ GRTAGS
 .autoenv_leave.zsh
 .ensime_cache
 ensime.sbt
+.dir-locals.el
