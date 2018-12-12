@@ -1,0 +1,3 @@
+#!/bin/bash
+
+proxychains4 ssh $@
