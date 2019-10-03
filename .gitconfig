@@ -9,7 +9,7 @@
 	status = auto
 	branch = auto
 [core]
-	editor = /usr/local/bin/emacsclient
+	editor = emacsclient
 	excludesfile = /Users/shibayu36/.gitignore
 	quotepath = false
 [alias]
@@ -24,6 +24,7 @@
 	graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
 	stat = log --stat --summary
+	showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
 [push]
 	default = current
 [branch]
