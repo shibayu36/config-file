@@ -161,7 +161,7 @@ precmd () {
 
     PERL_VERSION_STRING="pl:"$(plenv version-name)
     RUBY_VERSION_STRING="rb:"$(rbenv version-name)
-    NODE_VERSION_STRING="nd:"$(ndenv version-name)
+    NODE_VERSION_STRING="nd:"$(nodenv version-name)
     PYTHON_VERSION_STRING="py:"$(pyenv version-name)
 
     PYTHON_VIRTUAL_ENV_STRING=""
