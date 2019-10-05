@@ -1,9 +1,17 @@
 {
-    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
-    "editor.minimap.enabled": false,
-    "editor.wordWrap": "on",
-    "files.useExperimentalFileWatcher": true,
-    "breadcrumbs.enabled": true,
-    "editor.formatOnSave": true,
-    "search.location": "panel",
+  "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "files.useExperimentalFileWatcher": true,
+  "breadcrumbs.enabled": true,
+  "editor.formatOnSave": true,
+  "search.location": "panel",
+  "go.alternateTools": {
+    "go-langserver": "bingo"
+  },
+  "go.languageServerExperimentalFeatures": {
+    "format": true,
+    "autoComplete": true
+  },
+  "go.useLanguageServer": true
 }
