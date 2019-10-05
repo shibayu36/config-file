@@ -13,5 +13,7 @@
     "format": true,
     "autoComplete": true
   },
-  "go.useLanguageServer": true
+  "go.useLanguageServer": true,
+  "alt-editor.binary": "emacsclient",
+  "alt-editor.args": "-n +{line}:{column} {filename}"
 }
