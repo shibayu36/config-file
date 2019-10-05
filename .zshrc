@@ -68,7 +68,7 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
 
 #complement config
-fpath=(~/.zsh/functions/Completion ${fpath})
+fpath=(~/.zsh/functions/Completion /usr/local/share/zsh/functions/ ${fpath})
 autoload -U compinit
 compinit -u
 
@@ -188,12 +188,12 @@ alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | 
 alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
 
 # alias for emacsclient
-alias e='/usr/local/bin/emacsclient -n'
+alias e='emacsclient -n'
 
 alias c='code -a'
 
 # editor
-export EDITOR='/usr/local/bin/emacsclient'
+export EDITOR='emacsclient'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
