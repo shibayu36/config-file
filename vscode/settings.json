@@ -2,6 +2,7 @@
   "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
   "editor.minimap.enabled": false,
   "editor.wordWrap": "on",
+  "files.insertFinalNewline": true,
   "files.useExperimentalFileWatcher": true,
   "breadcrumbs.enabled": true,
   "editor.formatOnSave": true,
@@ -14,6 +15,11 @@
     "autoComplete": true
   },
   "go.useLanguageServer": true,
+  "alt-editor.name": "emacs",
   "alt-editor.binary": "emacsclient",
-  "alt-editor.args": "-n +{line}:{column} {filename}"
+  "alt-editor.args": "-n +{line}:{column} {filename}",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[javascript]": {
+    "editor.tabSize": 2
+  }
 }
