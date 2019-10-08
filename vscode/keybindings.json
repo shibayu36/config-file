@@ -219,5 +219,44 @@
         "key": "ctrl+c ctrl+d",
         "command": "extension.dash.specific",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+. ctrl+n",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+. ctrl+p",
+        "command": "editor.action.addSelectionToPreviousFindMatch"
+    },
+    {
+        "key": "cmd+/",
+        "command": "-toggleExplainMode",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+/",
+        "command": "redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+z",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+c r",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+5",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus"
     }
 ]
