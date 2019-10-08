@@ -1,0 +1,2 @@
+> 無限繰り返し
+while true; do command; sleep 1s; done;
