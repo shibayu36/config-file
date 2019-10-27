@@ -7,19 +7,47 @@
   "breadcrumbs.enabled": true,
   "editor.formatOnSave": true,
   "search.location": "panel",
+  // golangのLanguage Server設定
+  "go.useLanguageServer": true,
   "go.alternateTools": {
-    "go-langserver": "bingo"
+    "go-langserver": "gopls"
   },
   "go.languageServerExperimentalFeatures": {
     "format": true,
     "autoComplete": true
   },
-  "go.useLanguageServer": true,
+  "gopls": {
+    "usePlaceholders": true,
+    "enhancedHover": true
+  },
+  // open in external editor
   "alt-editor.name": "emacs",
-  "alt-editor.binary": "emacsclient",
+  "alt-editor.binary": "/Users/shibayu36/bin/emacsclient",
   "alt-editor.args": "-n +{line}:{column} {filename}",
   "vsicons.dontShowNewVersionMessage": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "bracketPairColorizer.excludedLanguages": [],
+  "[go]": {
+    "editor.snippetSuggestions": "none",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+  },
   "[javascript]": {
     "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "[graphql]": {
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2
   }
+  // 拡張子との関連付け
+  // "files.associations": {
+  //   "*.tmpl": "go",
+  // }
 }
