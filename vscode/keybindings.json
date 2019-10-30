@@ -360,5 +360,13 @@
         "key": "alt+b",
         "command": "-emacs.cursorWordLeft",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x shift+s",
+        "command": "workbench.action.files.saveAll"
+    },
+    {
+        "key": "alt+cmd+s",
+        "command": "-workbench.action.files.saveAll"
     }
 ]

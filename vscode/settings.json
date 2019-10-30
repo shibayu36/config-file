@@ -1,9 +1,11 @@
 {
   "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
   "editor.minimap.enabled": false,
-  "editor.wordWrap": "on",
-  "files.insertFinalNewline": true,
+  "editor.wordWrap": "on", // 折り返し表示
+  "files.insertFinalNewline": true, // 行末に改行自動入力
+  "editor.renderControlCharacters": true, // 制御文字表示
   "files.useExperimentalFileWatcher": true,
+  "workbench.editor.closeEmptyGroups": false, // エディタレイアウトの保持
   "breadcrumbs.enabled": true,
   "editor.formatOnSave": true,
   "search.location": "panel",
@@ -44,7 +46,8 @@
     "editor.tabSize": 2
   },
   "[typescriptreact]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
   // 拡張子との関連付け
   // "files.associations": {
