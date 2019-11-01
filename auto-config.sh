@@ -22,6 +22,11 @@ ln -s ~/development/config-file/.cheat ~/
 ln -s ~/development/config-file/.tigrc ~/
 ln -s ~/development/config-file/.hammerspoon ~/
 ln -s ~/development/config-file/karabiner ~/.config/karabiner
+ln -s ~/development/config-file/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/development/config-file/vscode/ ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Code/User/
+
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
