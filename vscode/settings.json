@@ -9,6 +9,7 @@
   "breadcrumbs.enabled": true,
   "editor.formatOnSave": true,
   "search.location": "panel",
+  "workbench.editor.enablePreview": false,
   // golangのLanguage Server設定
   "go.useLanguageServer": true,
   "go.alternateTools": {
