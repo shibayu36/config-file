@@ -30,6 +30,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "bracketPairColorizer.excludedLanguages": [],
+  "workbench.list.keyboardNavigation": "filter", // File Treeでのフィルタ
   "[go]": {
     "editor.snippetSuggestions": "none",
     "editor.formatOnSave": true,
