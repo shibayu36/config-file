@@ -381,7 +381,7 @@
     },
     {
         "key": "ctrl+g",
-pp        "command": "search.action.cancel",
+        "command": "search.action.cancel",
         "when": "listFocus && searchViewletVisible && !inputFocus"
     },
     {
