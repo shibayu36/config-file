@@ -173,11 +173,6 @@
         "when": "dired.open"
     },
     {
-        "key": "ctrl+x ctrl+f",
-        "command": "extension.dired.open",
-        "when": "editorTextFocus && !inDebugRepl"
-    },
-    {
         "key": "ctrl+x f",
         "command": "-extension.dired.open",
         "when": "editorTextFocus && !inDebugRepl"
@@ -368,5 +363,30 @@
     {
         "key": "alt+cmd+s",
         "command": "-workbench.action.files.saveAll"
+    },
+    // Files Explorerのショートカット
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "workbench.explorer.fileView.focus"
+    },
+    {
+        "key": "enter",
+        "command": "list.toggleExpand",
+        "when": "listFocus && !inputFocus && explorerViewletVisible && filesExplorerFocus && explorerResourceIsFolder"
+    },
+    {
+        "key": "enter",
+        "command": "filesExplorer.openFilePreserveFocus",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    },
+    {
+        "key": "ctrl+g",
+pp        "command": "search.action.cancel",
+        "when": "listFocus && searchViewletVisible && !inputFocus"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "editor.cancelOperation",
+        "when": "cancellableOperation"
     }
 ]
