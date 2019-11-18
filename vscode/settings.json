@@ -43,14 +43,14 @@
   },
   "[typescript]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[graphql]": {
     "editor.tabSize": 2
   },
   "[typescriptreact]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.formatOnSave": true
   }
   // 拡張子との関連付け
   // "files.associations": {
