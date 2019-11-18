@@ -408,5 +408,10 @@
         "key": "shift+alt+f",
         "command": "-filesExplorer.findInFolder",
         "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+x 0",
+        "command": "workbench.action.closeEditorsAndGroup",
+        "when": "multipleEditorGroups"
     }
 ]
