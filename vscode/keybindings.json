@@ -375,7 +375,7 @@
         "when": "listFocus && !inputFocus && explorerViewletVisible && filesExplorerFocus && explorerResourceIsFolder"
     },
     {
-        "key": "enter",
+        "key": "ctrl+o",
         "command": "filesExplorer.openFilePreserveFocus",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
     },
@@ -388,5 +388,25 @@
         "key": "ctrl+g",
         "command": "editor.cancelOperation",
         "when": "cancellableOperation"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "explorer.newFile",
+        "when": "listFocus && !inputFocus && explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "ctrl+c ctrl+g",
+        "command": "filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     }
 ]
