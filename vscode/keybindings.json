@@ -83,18 +83,6 @@
         "command": "-onelinescroll.scrollUp"
     },
     {
-        "key": "ctrl+x 3",
-        "command": "-workbench.action.toggleEditorGroupLayout"
-    },
-    {
-        "key": "ctrl+x 3",
-        "command": "workbench.action.splitEditor"
-    },
-    {
-        "key": "ctrl+x 2",
-        "command": "-workbench.action.splitEditor"
-    },
-    {
         "key": "ctrl+t",
         "command": "-editor.action.transposeLetters",
         "when": "textInputFocus && !editorReadonly"
@@ -409,9 +397,34 @@
         "command": "-filesExplorer.findInFolder",
         "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
+    // editor groupsのレイアウト操作
     {
         "key": "ctrl+x 0",
         "command": "workbench.action.closeEditorsAndGroup",
         "when": "multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.editorLayoutSingle"
+    },
+    {
+        "key": "ctrl+x 0",
+        "command": "-workbench.action.closeEditorsInGroup"
+    },
+    {
+        "key": "ctrl+x 1",
+        "command": "-workbench.action.closeEditorsInOtherGroups"
+    },
+    {
+        "key": "ctrl+x 3",
+        "command": "-workbench.action.toggleEditorGroupLayout"
+    },
+    {
+        "key": "ctrl+x 3",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+x 2",
+        "command": "-workbench.action.splitEditor"
     }
 ]
