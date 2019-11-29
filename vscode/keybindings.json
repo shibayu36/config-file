@@ -397,6 +397,11 @@
         "command": "-filesExplorer.findInFolder",
         "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
+    {
+        "key": "ctrl+y",
+        "command": "emacs.C-y",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
+    },
     // editor groupsのレイアウト操作
     {
         "key": "ctrl+x 0",
