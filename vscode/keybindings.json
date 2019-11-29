@@ -437,4 +437,16 @@
         "command": "clipring.selectAndPasteRingItem",
         "when": "editorTextFocus",
     },
+    // ペーストを便利にする
+    {
+        "key": "ctrl+y",
+        "command": "emacs.C-y",
+        "when": "editorTextFocus && !editorReadonly && !editorHasSelection"
+    },
+    // 範囲選択時には範囲を消してからペーストする
+    {
+        "key": "ctrl+y",
+        "command": "deleteSelectionAndPaste",
+        "when": "editorTextFocus && !editorReadonly && editorHasSelection"
+    }
 ]
