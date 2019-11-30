@@ -67,22 +67,6 @@
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+alt+n",
-        "command": "onelinescroll.scrollDown"
-    },
-    {
-        "key": "alt+n",
-        "command": "-onelinescroll.scrollDown"
-    },
-    {
-        "key": "ctrl+alt+p",
-        "command": "onelinescroll.scrollUp"
-    },
-    {
-        "key": "alt+p",
-        "command": "-onelinescroll.scrollUp"
-    },
-    {
         "key": "ctrl+t",
         "command": "-editor.action.transposeLetters",
         "when": "textInputFocus && !editorReadonly"
@@ -447,5 +431,26 @@
         "key": "ctrl+y",
         "command": "-emacs.C-y",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    // 一行スクロール
+    {
+        "key": "ctrl+alt+p",
+        "command": "scrollLineUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-scrollLineUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "scrollLineDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-scrollLineDown",
+        "when": "textInputFocus"
     },
 ]
