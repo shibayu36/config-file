@@ -55,11 +55,11 @@
   "ego.power-tools": {},
   "ego.power-tools.user": {
     "commands": {
-      // 範囲選択時に範囲を消してからペーストする
-      "deleteSelectionAndPaste": {
-        "name": "Delete selection and paste",
-        "description": "Delete selection and paste",
-        "script": "delete-selection-and-paste.js"
+      // emacs.C-yの挙動を変え、選択範囲は消えるようにする
+      "emacs.better-C-y": {
+        "name": "emacs better C-y",
+        "description": "emacs better C-y",
+        "script": "emacs-better-c-y.js"
       }
     }
   },

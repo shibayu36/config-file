@@ -399,7 +399,7 @@
     },
     {
         "key": "ctrl+y",
-        "command": "emacs.C-y",
+        "command": "emacs.better-C-y",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
     },
     // editor groupsのレイアウト操作
@@ -435,18 +435,17 @@
     {
         "key": "cmd+y",
         "command": "clipring.selectAndPasteRingItem",
-        "when": "editorTextFocus",
+        "when": "editorTextFocus"
     },
-    // ペーストを便利にする
+    // emacs.C-yと違い、範囲選択時には範囲を消してからペーストするように
     {
         "key": "ctrl+y",
-        "command": "emacs.C-y",
-        "when": "editorTextFocus && !editorReadonly && !editorHasSelection"
+        "command": "emacs.better-C-y",
+        "when": "editorTextFocus && !editorReadonly"
     },
-    // 範囲選択時には範囲を消してからペーストする
     {
         "key": "ctrl+y",
-        "command": "deleteSelectionAndPaste",
-        "when": "editorTextFocus && !editorReadonly && editorHasSelection"
-    }
+        "command": "-emacs.C-y",
+        "when": "editorTextFocus && !editorReadonly"
+    },
 ]
