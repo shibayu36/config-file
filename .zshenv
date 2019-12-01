@@ -27,7 +27,6 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Scala
-export JAVA_HOME=`/usr/libexec/java_home`
 export SCALA_HOME=/usr/local/opt/scala
 export PATH=$PATH:$SCALA_HOME/bin
 
