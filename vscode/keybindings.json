@@ -386,6 +386,11 @@
         "command": "emacs.better-C-y",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
     },
+    {
+        "key": "ctrl+b",
+        "command": "list.focusParent",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
     // editor groupsのレイアウト操作
     {
         "key": "ctrl+x 0",
