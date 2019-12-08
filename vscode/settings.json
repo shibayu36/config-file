@@ -79,6 +79,7 @@
       "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
     },
   ],
+  "typescript.updateImportsOnFileMove.enabled": "always"
   // 拡張子との関連付け
   // "files.associations": {
   //   "*.tmpl": "go",
