@@ -121,6 +121,7 @@ bindkey '^r' peco-select-history
 bindkey '^x^b' peco-git-recent-branches
 bindkey '^xb' peco-git-recent-all-branches
 bindkey '^x^h' peco-complete-mackerel-host-ip
+bindkey '^x^f' peco-open-code-by-git-ls-files
 
 # ------------- setting for tmux ----------------------------
 [ -n "$TMUX" ] && export TERM=screen-256color

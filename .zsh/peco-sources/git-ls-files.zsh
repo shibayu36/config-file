@@ -3,6 +3,6 @@ function peco-git-ls-files () {
 }
 
 function peco-open-code-by-git-ls-files () {
-    code peco-git-ls-files | code
+    code $(peco-git-ls-files)
 }
 zle -N peco-open-code-by-git-ls-files
