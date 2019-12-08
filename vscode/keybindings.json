@@ -387,7 +387,7 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
     },
     {
-        "key": "ctrl+b",
+        "key": "ctrl+[Equal]",
         "command": "list.focusParent",
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
