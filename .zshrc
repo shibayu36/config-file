@@ -153,6 +153,7 @@ fi
 alias ls='ls -G'
 alias ll='ls -lG'
 alias rm='rm -i'
+alias cg='code $(git ls-files | peco --query "$LBUFFER")'
 
 # alias git=hub
 alias glgg='git logg'
@@ -190,7 +191,7 @@ alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
 # alias for emacsclient
 alias e='emacsclient -n'
 
-alias c='code -a'
+alias c='code'
 
 # editor
 export EDITOR='emacsclient'
