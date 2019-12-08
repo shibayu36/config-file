@@ -63,6 +63,8 @@
       }
     }
   },
+  "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
+  "sync.autoUpload": true,
   // 拡張子との関連付け
   // "files.associations": {
   //   "*.tmpl": "go",
