@@ -65,6 +65,20 @@
   },
   "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
   "sync.autoUpload": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "renovate.json"
+      ],
+      "url": "https://raw.githubusercontent.com/renovatebot/renovate/master/renovate-schema.json"
+    },
+    {
+      "fileMatch": [
+        "tslint.json"
+      ],
+      "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
+    },
+  ],
   // 拡張子との関連付け
   // "files.associations": {
   //   "*.tmpl": "go",
