@@ -25,6 +25,7 @@
 	fpr = "!f(){ git fetch origin pull/$1/head:$1; git checkout $1; };f"
 	stat = log --stat --summary
 	showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+	conflicts = !git ls-files -u | cut -f 2 | sort -u
 [push]
 	default = current
 [branch]
