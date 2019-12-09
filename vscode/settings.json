@@ -7,7 +7,6 @@
   "files.useExperimentalFileWatcher": true,
   "workbench.editor.closeEmptyGroups": false, // エディタレイアウトの保持
   "breadcrumbs.enabled": true,
-  "editor.formatOnSave": true,
   "search.location": "panel",
   "workbench.editor.enablePreview": false,
   // golangのLanguage Server設定
@@ -65,6 +64,12 @@
   },
   "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
   "sync.autoUpload": true,
+  "formattingToggle.affects": [
+    "formatOnSave"
+  ],
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
   "json.schemas": [
     {
       "fileMatch": [
