@@ -42,7 +42,7 @@
   },
   "[typescript]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[graphql]": {
     "editor.tabSize": 2,
@@ -50,7 +50,6 @@
   },
   "[typescriptreact]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true
   },
   "ego.power-tools": {},
   "ego.power-tools.user": {
@@ -85,7 +84,19 @@
       "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
     },
   ],
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.packageManager": "yarn",
+  "files.exclude": {
+    "**/.next/**": true,
+    "**/node_modules/**": true
+  },
   // 拡張子との関連付け
   // "files.associations": {
   //   "*.tmpl": "go",
