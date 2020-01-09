@@ -49,8 +49,8 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [ghq]
-	root = ~/development/src
 	root = ~/development/go/src
+	root = ~/development/src
 [ghi]
 	token = !security find-internet-password -a shibayu36 -s github.com -l 'ghi token' -w
 [tig]
