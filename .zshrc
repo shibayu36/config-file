@@ -25,6 +25,8 @@ setopt no_flow_control
 setopt inc_append_history
 # コマンド実行時にコメントを使えるように
 setopt interactivecomments
+# dotfilesなどがマッチ&補完されるように
+setopt globdots
 
 #search history config
 autoload history-search-end
@@ -151,8 +153,8 @@ if [ "$TMUX" != "" ] ; then
 fi
 
 #alias
-alias ls='ls -G'
-alias ll='ls -lG'
+alias ls='ls -a -G'
+alias ll='ls -a -lG'
 alias rm='rm -i'
 alias cg='code $(git ls-files | peco --query "$LBUFFER")'
 
