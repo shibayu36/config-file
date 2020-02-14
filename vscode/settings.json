@@ -98,7 +98,7 @@
     "**/node_modules/**": true
   },
   // 拡張子との関連付け
-  // "files.associations": {
-  //   "*.tmpl": "go",
-  // }
+  "files.associations": {
+    "Dockerfile.*": "dockerfile"
+  }
 }
