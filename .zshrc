@@ -170,8 +170,8 @@ alias glg='git logg | head'
 # alias for git
 alias gst='git st'
 alias gch='git cherry -v'
-alias gg='git grep -H --break -n'
-alias ggg='git grep -H --break -C 5 -n'
+alias gg='git grep -H --break -n --recurse-submodule'
+alias ggg='git grep -H --break -C 5 -n --recurse-submodule'
 
 alias P='percol --match-method migemo'
 
