@@ -499,4 +499,8 @@
         "command": "-breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
     },
+    {
+        "key": "ctrl+x v",
+        "command": "gitlens.views.repositories:gitlens.focus"
+    },
 ]

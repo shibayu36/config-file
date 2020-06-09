@@ -7,7 +7,6 @@
   "files.useExperimentalFileWatcher": true,
   "workbench.editor.closeEmptyGroups": false, // エディタレイアウトの保持
   "breadcrumbs.enabled": true,
-  "search.location": "panel",
   "workbench.editor.enablePreview": false,
   // golangのLanguage Server設定
   "go.useLanguageServer": true,
@@ -19,8 +18,7 @@
     "autoComplete": true
   },
   "gopls": {
-    "usePlaceholders": true,
-    "enhancedHover": true
+    "usePlaceholders": true
   },
   // open in external editor
   "alt-editor.name": "emacs",
@@ -35,7 +33,7 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    },
+    }
   },
   "[javascript]": {
     "editor.tabSize": 2
@@ -46,10 +44,10 @@
   },
   "[graphql]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[typescriptreact]": {
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
   "ego.power-tools": {},
   "ego.power-tools.user": {
@@ -64,25 +62,19 @@
   },
   "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
   "sync.autoUpload": true,
-  "formattingToggle.affects": [
-    "formatOnSave"
-  ],
+  "formattingToggle.affects": ["formatOnSave"],
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,
   "json.schemas": [
     {
-      "fileMatch": [
-        "renovate.json"
-      ],
+      "fileMatch": ["renovate.json"],
       "url": "https://raw.githubusercontent.com/renovatebot/renovate/master/renovate-schema.json"
     },
     {
-      "fileMatch": [
-        "tslint.json"
-      ],
+      "fileMatch": ["tslint.json"],
       "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
-    },
+    }
   ],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "eslint.alwaysShowStatus": true,
@@ -94,11 +86,27 @@
   ],
   "eslint.packageManager": "yarn",
   "files.exclude": {
-    "**/.next/**": true,
-    "**/node_modules/**": true
+    "**/.next/**": true
   },
+  "eslint.migration.2_x": "off",
+  "diffEditor.renderSideBySide": false,
   // 拡張子との関連付け
   "files.associations": {
-    "Dockerfile.*": "dockerfile"
+    "Dockerfile.*": "dockerfile",
+    "*.nginx.conf.*": "nginx"
+  },
+  "cSpell.userWords": [
+    "Hatena",
+    "checkstyle",
+    "junit",
+    "kakuyomu",
+    "typecheck"
+  ],
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "window.zoomLevel": 0,
+  "[yaml]": {
+    "editor.tabSize": 2
   }
 }
