@@ -33,6 +33,7 @@ brew install mysql@5.6
 brew install ctags-exuberant
 brew install tig
 brew install awscli
+brew install mycli
 brew cask install session-manager-plugin
 
 brew install --HEAD motemen/furoshiki2/furoshiki2
@@ -43,7 +44,20 @@ brew install telnet
 brew install mackerelio/mackerel-agent/mackerel-agent
 brew install mackerelio/mackerel-agent/mkr
 brew install hub
+brew install prettier
+brew install tree
+brew install gibo
+brew install colordiff
+brew install aws/tap/aws-sam-cli
+brew install awslogs
+brew install terraform
+brew install scalacenter/bloop/bloop
 
 brew cask install adoptopenjdk8
 brew cask install sequel-pro
 brew cask install spotify
+brew cask install jasper
+brew cask install night-owl
+brew cask install postman
+brew cask install tableplus
+brew cask install steam
