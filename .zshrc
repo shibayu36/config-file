@@ -229,7 +229,7 @@ fi
 zplug load
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc'; fi
