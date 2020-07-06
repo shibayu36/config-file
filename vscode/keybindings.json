@@ -507,4 +507,14 @@
     "key": "ctrl+x v",
     "command": "gitlens.views.repositories:gitlens.focus"
   },
+  {
+    "key": "ctrl+o",
+    "command": "search-in-current-file.searchInCurrentFile",
+    "when": "editorFocus && findInputFocussed"
+  },
+  {
+    "key": "ctrl+cmd+o",
+    "command": "search-in-current-file.searchInCurrentFile",
+    "when": "editorFocus"
+  },
 ]
