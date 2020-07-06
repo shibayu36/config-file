@@ -243,7 +243,11 @@
   },
   {
     "key": "ctrl+c g",
-    "command": "workbench.action.findInFiles"
+    "command": "workbench.action.findInFiles",
+    "args": {
+      "query": "",
+      "filesToInclude": ""
+    }
   },
   {
     "key": "shift+cmd+f",
