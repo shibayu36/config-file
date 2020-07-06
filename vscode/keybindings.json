@@ -517,4 +517,13 @@
     "command": "search-in-current-file.searchInCurrentFile",
     "when": "editorFocus"
   },
+  {
+    "key": "ctrl+y",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "execPaste"
+  }
 ]
