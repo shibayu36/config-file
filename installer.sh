@@ -52,6 +52,9 @@ brew install aws/tap/aws-sam-cli
 brew install awslogs
 brew install terraform
 brew install scalacenter/bloop/bloop
+brew install weaveworks/tap/eksctl
+brew install aws-iam-authenticator
+brew install graphviz
 
 brew cask install adoptopenjdk8
 brew cask install sequel-pro
