@@ -39,7 +39,6 @@ brew cask install session-manager-plugin
 brew install --HEAD motemen/furoshiki2/furoshiki2
 
 brew install amazon-ecs-cli
-brew install jq
 brew install telnet
 brew install mackerelio/mackerel-agent/mackerel-agent
 brew install mackerelio/mackerel-agent/mkr
@@ -55,6 +54,7 @@ brew install scalacenter/bloop/bloop
 brew install weaveworks/tap/eksctl
 brew install aws-iam-authenticator
 brew install graphviz
+brew install itchyny/tap/gojq
 
 brew cask install adoptopenjdk8
 brew cask install sequel-pro
@@ -64,3 +64,4 @@ brew cask install night-owl
 brew cask install postman
 brew cask install tableplus
 brew cask install steam
+brew cask install gpg
