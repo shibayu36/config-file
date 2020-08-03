@@ -7,7 +7,7 @@
   "files.useExperimentalFileWatcher": true,
   "workbench.editor.closeEmptyGroups": false, // エディタレイアウトの保持
   "breadcrumbs.enabled": true,
-  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreview": false, // searchバーはパネルで表示
   // golangのLanguage Server設定
   "go.useLanguageServer": true,
   "go.alternateTools": {
@@ -108,5 +108,18 @@
   "window.zoomLevel": 0,
   "[yaml]": {
     "editor.tabSize": 2
+  },
+  "customizeUI.stylesheet": {
+    ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
+  },
+  "search.searchOnType": true,
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "auto-close-tag.SublimeText3Mode": true,
+  "search.exclude": {
+    "**/tsconfig.build.tsbuildinfo": true
   }
 }

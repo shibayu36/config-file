@@ -519,11 +519,11 @@
   },
   {
     "key": "ctrl+y",
-    "command": "editor.action.clipboardPasteAction",
+    "command": "emacs.better-C-y",
     "when": "textInputFocus && !editorReadonly"
   },
   {
     "key": "ctrl+y",
-    "command": "execPaste"
+    "command": "emacs.better-C-y"
   }
 ]
