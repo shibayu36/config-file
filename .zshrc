@@ -209,7 +209,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # 文字化けした時の対処用
 alias clear2="echo -e '\026\033c'"
 
-alias tssh="tssh --ssh_args '-o StrictHostKeyChecking=no'"
+alias tssh="tssh --ssh-option '-o StrictHostKeyChecking=no'"
 alias pctssh="proxychains4 ssh"
 
 # ---------------- setting for zplug --------------------------
