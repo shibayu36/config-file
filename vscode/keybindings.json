@@ -525,5 +525,47 @@
   {
     "key": "ctrl+y",
     "command": "emacs.better-C-y"
+  },
+
+  // Find Widget
+  {
+    "key": "ctrl+a",
+    "command": "emacs.cursorHome",
+    "when": "findWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "emacs.cursorEnd",
+    "when": "findWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "emacs.cursorRight",
+    "when": "findWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "emacs.cursorLeft",
+    "when": "findWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
   }
 ]
