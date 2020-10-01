@@ -567,5 +567,16 @@
     "key": "ctrl+b",
     "command": "-closeFindWidget",
     "when": "editorFocus && findWidgetVisible"
+  },
+  // replaceでy/nでreplaceするかしないか選べることを模倣
+  {
+    "key": "cmd+y",
+    "command": "editor.action.replaceOne",
+    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
+  },
+  {
+    "key": "cmd+n",
+    "command": "editor.action.nextMatchFindAction",
+    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
   }
 ]
