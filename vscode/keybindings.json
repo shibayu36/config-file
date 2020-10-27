@@ -351,11 +351,6 @@
     "when": "listFocus && !inputFocus && explorerViewletVisible && filesExplorerFocus && explorerResourceIsFolder"
   },
   {
-    "key": "ctrl+o",
-    "command": "filesExplorer.openFilePreserveFocus",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
-  },
-  {
     "key": "ctrl+g",
     "command": "search.action.cancel",
     "when": "listFocus && searchViewletVisible && !inputFocus"
@@ -394,6 +389,11 @@
     "key": "ctrl+[Equal]",
     "command": "list.focusParent",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "open-to-other-editor-group.openToOtherEditorGroup",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
   },
   // editor groupsのレイアウト操作
   {

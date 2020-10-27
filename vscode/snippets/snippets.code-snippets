@@ -24,5 +24,10 @@
     "prefix": "it",
     "body": ["it('$1', () => {", "\t$0", "});"],
     "scope": "typescript,typescriptreact"
+  },
+  "dumper": {
+    "prefix": "dumper",
+    "body": ["console.log(JSON.stringify($0, undefined, 2));"],
+    "scope": "typescript,typescriptreact"
   }
 }
