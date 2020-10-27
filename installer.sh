@@ -55,6 +55,11 @@ brew install weaveworks/tap/eksctl
 brew install aws-iam-authenticator
 brew install graphviz
 brew install itchyny/tap/gojq
+brew install github/gh/gh
+brew install envchain
+brew install Songmu/tap/blogsync
+brew install git-subrepo
+brew install htop
 
 brew cask install adoptopenjdk8
 brew cask install sequel-pro
@@ -65,3 +70,4 @@ brew cask install postman
 brew cask install tableplus
 brew cask install steam
 brew cask install gpg
+brew cask install clipy
