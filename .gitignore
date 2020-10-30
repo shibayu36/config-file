@@ -28,3 +28,4 @@ ensime.sbt
 .dir-locals.el
 /vscode/workspaces/mackerel.code-workspace
 /.vscode-powertools/*.log
+.metals/

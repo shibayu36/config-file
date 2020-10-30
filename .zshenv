@@ -12,7 +12,7 @@ export XDG_DATA_HOME=/usr/local/share
 export XDG_DATA_DIRS=/usr/local/share
 
 # Path config
-export PATH=~/.local/bin:/Users/shibayu36/development/apache-maven/bin:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
+export PATH=~/development/src/github.com/hatena/mackerel-operation-tools/bin:~/.local/bin:/Users/shibayu36/development/apache-maven/bin:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -53,6 +53,9 @@ export CHEATPATH="/Users/shibayu36/.cheat-private:$CHEATPATH"
 
 # GCP
 export GOOGLE_APPLICATION_CREDENTIALS="/Users/shibayu36/.config/gcloud/application_default_credentials.json"
+
+# AWS CLI v1
+# export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/shibayu36/.sdkman"

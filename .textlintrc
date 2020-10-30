@@ -1,5 +1,13 @@
 {
-    "rules": {
-        "preset-ja-technical-writing": true
-    }
+  "filters": {},
+  "rules": {
+    "preset-ja-spacing": true,
+    "preset-ja-technical-writing": {
+      "max-ten": {
+          max: 4
+      },
+      "ja-no-mixed-period": false
+    },
+    "spellcheck-tech-word": true
+  }
 }
