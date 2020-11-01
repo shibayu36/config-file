@@ -342,7 +342,7 @@
   },
   {
     "key": "ctrl+y",
-    "command": "execPaste",
+    "command": "editor.action.clipboardPasteAction",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
   },
   {
@@ -487,5 +487,17 @@
     "key": "alt+f12",
     "command": "-editor.action.peekDefinition",
     "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-  }
+  },
+
+  // Find Widget入力中にC-yでPaste
+  {
+    "key": "ctrl+y",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorFocus && findWidgetVisible"
+  },
 ]
