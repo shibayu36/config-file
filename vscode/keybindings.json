@@ -385,11 +385,6 @@
     "key": "ctrl+x 2",
     "command": "-workbench.action.splitEditor"
   },
-  {
-    "key": "cmd+y",
-    "command": "clipring.selectAndPasteRingItem",
-    "when": "editorTextFocus"
-  },
   // 一行スクロール
   {
     "key": "ctrl+alt+p",
