@@ -140,5 +140,5 @@
   "hediet.vscode-drawio.theme": "min",
   "prettier.requireConfig": true,
   "githubIssues.createIssueTriggers": [],
-  "emacs-mcx.useMetaPrefixMacCmd": true
+  "emacs-mcx.useMetaPrefixMacCmd": true,
 }

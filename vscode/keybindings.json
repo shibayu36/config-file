@@ -495,4 +495,9 @@
     "command": "editor.action.clipboardPasteAction",
     "when": "editorFocus && findWidgetVisible"
   },
+  {
+    "key": "cmd+c",
+    "command": "-emacs-mcx.transformToTitlecase",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
+  },
 ]
