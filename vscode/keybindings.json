@@ -29,16 +29,6 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "cmd+v",
-    "command": "emacs.cursorPageUp",
-    "when": "editorTextFocus && !suggestWidgetVisible"
-  },
-  {
-    "key": "alt+v",
-    "command": "-emacs.cursorPageUp",
-    "when": "editorTextFocus && !suggestWidgetVisible"
-  },
-  {
     "key": "cmd+[Semicolon]",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
@@ -93,16 +83,6 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
-  },
-  {
-    "key": "cmd+w",
-    "command": "emacs.M-w",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+w",
-    "command": "-emacs.M-w",
-    "when": "editorTextFocus"
   },
   {
     "key": "ctrl+c y",
@@ -313,26 +293,6 @@
     "command": "-workbench.action.toggleSidebarVisibility"
   },
   {
-    "key": "cmd+f",
-    "command": "emacs.cursorWordRight",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+f",
-    "command": "-emacs.cursorWordRight",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+b",
-    "command": "emacs.cursorWordLeft",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+b",
-    "command": "-emacs.cursorWordLeft",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+x shift+s",
     "command": "workbench.action.files.saveAll"
   },
@@ -382,7 +342,7 @@
   },
   {
     "key": "ctrl+y",
-    "command": "emacs.better-C-y",
+    "command": "editor.action.clipboardPasteAction",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && inputFocus"
   },
   {
@@ -424,22 +384,6 @@
   {
     "key": "ctrl+x 2",
     "command": "-workbench.action.splitEditor"
-  },
-  {
-    "key": "cmd+y",
-    "command": "clipring.selectAndPasteRingItem",
-    "when": "editorTextFocus"
-  },
-  // emacs.C-yと違い、範囲選択時には範囲を消してからペーストするように
-  {
-    "key": "ctrl+y",
-    "command": "emacs.better-C-y",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+y",
-    "command": "-emacs.C-y",
-    "when": "editorTextFocus && !editorReadonly"
   },
   // 一行スクロール
   {
@@ -517,57 +461,7 @@
     "command": "search-in-current-file.searchInCurrentFile",
     "when": "editorFocus"
   },
-  {
-    "key": "ctrl+y",
-    "command": "emacs.better-C-y",
-    "when": "textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+y",
-    "command": "emacs.better-C-y"
-  },
 
-  // Find Widget
-  {
-    "key": "ctrl+a",
-    "command": "emacs.cursorHome",
-    "when": "findWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "emacs.cursorEnd",
-    "when": "findWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "emacs.cursorRight",
-    "when": "findWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "emacs.cursorLeft",
-    "when": "findWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "-closeFindWidget",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "-closeFindWidget",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "-closeFindWidget",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "-closeFindWidget",
-    "when": "editorFocus && findWidgetVisible"
-  },
   // replaceでy/nでreplaceするかしないか選べることを模倣
   {
     "key": "cmd+y",
