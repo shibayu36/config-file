@@ -17,17 +17,28 @@
   // }
   "test describe": {
     "prefix": "describe",
-    "body": ["describe('$1', () => {", "\t$0", "});"],
+    "body": ["describe(\"$1\", () => {", "\t$0", "});"],
     "scope": "typescript,typescriptreact"
   },
   "test it": {
     "prefix": "it",
-    "body": ["it('$1', () => {", "\t$0", "});"],
+    "body": ["it(\"$1\", () => {", "\t$0", "});"],
+    "scope": "typescript,typescriptreact"
+  },
+  "test it.each": {
+    "prefix": "it.each",
+    "body": [
+      "it.each([",
+      "\t$1",
+      "])(\"${2:%s の時}\"($3) => {",
+      "\t$0",
+      "});"
+    ],
     "scope": "typescript,typescriptreact"
   },
   "dumper": {
     "prefix": "dumper",
     "body": ["console.log(JSON.stringify($0, undefined, 2));"],
     "scope": "typescript,typescriptreact"
-  }
+  },
 }

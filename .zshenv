@@ -33,6 +33,7 @@ export PATH=$PATH:$SCALA_HOME/bin
 # Python
 # virtualenvでpromptを変更しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PATH=$PATH:$HOME/.poetry/bin
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -42,6 +43,7 @@ OPENSSL_PATH=/usr/local/opt/openssl
 if [ -d "$OPENSSL_PATH" ];then
   export PATH=$OPENSSL_PATH/bin:$PATH
   export LD_LIBRARY_PATH=$OPENSSL_PATH/lib:$LD_LIBRARY_PATH
+  export LIBRARY_PATH=$OPENSSL_PATH/lib:$LIBRARY_PATH
   export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
 fi
 

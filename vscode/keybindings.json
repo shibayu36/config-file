@@ -448,10 +448,6 @@
     "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
   },
   {
-    "key": "ctrl+x v",
-    "command": "gitlens.views.repositories:gitlens.focus"
-  },
-  {
     "key": "ctrl+o",
     "command": "search-in-current-file.searchInCurrentFile",
     "when": "editorFocus && findInputFocussed"
@@ -499,5 +495,18 @@
     "key": "cmd+c",
     "command": "-emacs-mcx.transformToTitlecase",
     "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "enter",
+    "command": "-closeFindWidget",
+    "when": "editorFocus && findWidgetVisible && !replaceInputFocussed"
+  },
+  {
+    "key": "ctrl+x v",
+    "command": "magit.status"
+  },
+  {
+    "key": "alt+x g",
+    "command": "-magit.status"
   },
 ]

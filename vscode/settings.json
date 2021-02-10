@@ -132,8 +132,7 @@
   "files.watcherExclude": {
     "**/.ammonite": true,
     "**/.bloop": true,
-    "**/.metals": true,
-    "**/target": true
+    "**/.metals": true
   },
   "zentabs.maximumOpenedTabs": 30,
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W10sXCJmb3JtYXRXaWR0aFwiOlwiMjQwXCIsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
@@ -141,4 +140,11 @@
   "prettier.requireConfig": true,
   "githubIssues.createIssueTriggers": [],
   "emacs-mcx.useMetaPrefixMacCmd": true,
+  "python.languageServer": "Microsoft",
+  "typescript.suggest.autoImports": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
+  "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
 }
