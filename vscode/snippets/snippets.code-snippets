@@ -30,7 +30,7 @@
     "body": [
       "it.each([",
       "\t$1",
-      "])(\"${2:%s の時}\"($3) => {",
+      "])(\"${2:%s の時}\", ($3) => {",
       "\t$0",
       "});"
     ],
@@ -40,5 +40,5 @@
     "prefix": "dumper",
     "body": ["console.log(JSON.stringify($0, undefined, 2));"],
     "scope": "typescript,typescriptreact"
-  },
+  }
 }

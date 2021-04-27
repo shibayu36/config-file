@@ -509,4 +509,14 @@
     "key": "alt+x g",
     "command": "-magit.status"
   },
+  {
+    "key": "ctrl+g",
+    "command": "emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible && !isComposing"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-emacs-mcx.isearchAbort",
+    "when": "editorFocus && findWidgetVisible && !isComposing"
+  },
 ]

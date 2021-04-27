@@ -53,6 +53,10 @@
     "editor.formatOnSave": false
   },
   "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
     "editor.tabSize": 2
   },
   "ego.power-tools": {},
@@ -112,9 +116,6 @@
     "editor.formatOnSave": false
   },
   "window.zoomLevel": 0,
-  "[yaml]": {
-    "editor.tabSize": 2
-  },
   "customizeUI.stylesheet": {
     ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
   },
@@ -147,4 +148,14 @@
   },
   "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
+  "emacs-mcx.cursorMoveOnFindWidget": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "go.toolsManagement.autoUpdate": true,
+  "textlint.configPath": "~/.textlintrc",
+  "window.titleBarStyle": "native",
 }
