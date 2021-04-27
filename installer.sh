@@ -60,6 +60,9 @@ brew install envchain
 brew install Songmu/tap/blogsync
 brew install git-subrepo
 brew install htop
+brew install git-secrets
+brew install heroku/brew/heroku
+brew install --cask wireshark
 
 brew cask install adoptopenjdk8
 brew cask install sequel-pro
