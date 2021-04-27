@@ -9,7 +9,7 @@
 	status = auto
 	branch = auto
 [core]
-	editor = emacsclient
+	editor = code --wait
 	excludesfile = /Users/shibayu36/.gitignore
 	quotepath = false
 [alias]
