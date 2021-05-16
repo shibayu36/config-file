@@ -69,6 +69,34 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                      "description": "control-英数の無効化",
+                      "manipulators": [
+                        {
+                          "type": "basic",
+                          "from": {
+                            "key_code": "japanese_eisuu",
+                            "modifiers": {
+                              "mandatory": ["control"]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "description": "control-かなの無効化",
+                      "manipulators": [
+                        {
+                          "type": "basic",
+                          "from": {
+                            "key_code": "japanese_kana",
+                            "modifiers": {
+                              "mandatory": ["control"]
+                            }
+                          }
+                        }
+                      ]
                     }
                 ]
             },
