@@ -14,8 +14,6 @@
       "editor.findMatchBorder": "#FDFF0C"
     }
   },
-  // golangのLanguage Server設定
-  "go.useLanguageServer": true,
   "go.alternateTools": {
     "go-langserver": "gopls"
   },
