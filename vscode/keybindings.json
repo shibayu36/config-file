@@ -519,4 +519,10 @@
     "command": "-emacs-mcx.isearchAbort",
     "when": "editorFocus && findWidgetVisible && !isComposing"
   },
+
+  // zen即時切り替え(デバッガ使いたい時はon)
+  {
+    "key": "F3",
+    "command": "settings.cycle.zen",
+  }
 ]

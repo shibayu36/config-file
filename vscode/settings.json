@@ -1,6 +1,9 @@
 {
   "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
   "editor.minimap.enabled": false,
+  "editor.folding": false,
+  "editor.glyphMargin": false,
+  "editor.lineNumbers": "off",
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
   "editor.renderControlCharacters": true, // 制御文字表示
@@ -168,4 +171,23 @@
   },
   "leetcode.hint.commentDescription": false,
   "workbench.activityBar.visible": false,
+
+  // 自分の中のZen即時切り替え
+  "settings.cycle": [
+    {
+      "id": "zen",
+      "values": [
+        {
+          "editor.folding": false,
+          "editor.glyphMargin": false,
+          "editor.lineNumbers": "off",
+        },
+        {
+          "editor.folding": true,
+          "editor.glyphMargin": true,
+          "editor.lineNumbers": "off",
+        }
+      ]
+    }
+  ],
 }
