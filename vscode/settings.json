@@ -158,4 +158,16 @@
   "go.toolsManagement.autoUpdate": true,
   "textlint.configPath": "~/.textlintrc",
   "window.titleBarStyle": "native",
+  "leetcode.defaultLanguage": "typescript",
+  "leetcode.enableStatusBar": false,
+  "leetcode.workspaceFolder": "/Users/shibayu36/development/src/github.com/shibayu36/leetcode",
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.filePath": {
+    "default": {
+      "folder": "",
+      "filename": "${id}.${kebab-case-name}.${ext}"
+    }
+  },
+  "leetcode.hint.commentDescription": false,
 }
