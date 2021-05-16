@@ -167,4 +167,5 @@
     }
   },
   "leetcode.hint.commentDescription": false,
+  "workbench.activityBar.visible": false,
 }
