@@ -4,9 +4,15 @@
     "preset-ja-spacing": true,
     "preset-ja-technical-writing": {
       "max-ten": {
-          max: 4
+        max: 4
       },
-      "ja-no-mixed-period": false
+      "ja-no-mixed-period": false,
+      "sentence-length": {
+        max: 100,
+        skipPatterns: [
+          "/\[https?:\/\/[^\]]+\]/",
+        ]
+      },
     },
     "spellcheck-tech-word": true
   }
