@@ -8,8 +8,7 @@
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
   "editor.renderControlCharacters": true, // 制御文字表示
-  "workbench.editor.closeEmptyGroups": false, // エディタレイアウトの保持
-  "workbench.activityBar.visible": false, // ActivityBarの表示非表示
+  "workbench.editor.closeEmptyGroups": false, // ActivityBarの表示非表示
   "breadcrumbs.enabled": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false, // searchバーはパネルで表示
@@ -89,7 +88,6 @@
     "kakuyomu",
     "typecheck"
   ],
-  "window.zoomLevel": 0,
   "customizeUI.stylesheet": {
     ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
   },
@@ -117,12 +115,9 @@
   "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
   "emacs-mcx.cursorMoveOnFindWidget": true,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "go.toolsManagement.autoUpdate": true,
   "textlint.configPath": "~/.textlintrc",
   "window.titleBarStyle": "custom",
@@ -193,4 +188,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "workbench.activityBar.visible": false,
+  "redhat.telemetry.enabled": false,
 }
