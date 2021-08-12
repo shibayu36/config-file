@@ -34,7 +34,7 @@ brew install ctags-exuberant
 brew install tig
 brew install awscli
 brew install mycli
-brew cask install session-manager-plugin
+brew install --cask session-manager-plugin
 
 brew install --HEAD motemen/furoshiki2/furoshiki2
 
@@ -64,13 +64,14 @@ brew install git-secrets
 brew install heroku/brew/heroku
 brew install --cask wireshark
 
-brew cask install adoptopenjdk8
-brew cask install sequel-pro
-brew cask install spotify
-brew cask install jasper
-brew cask install night-owl
-brew cask install postman
-brew cask install tableplus
-brew cask install steam
-brew cask install gpg
-brew cask install clipy
+brew install --cask adoptopenjdk8
+brew install --cask sequel-pro
+brew install --cask spotify
+brew install --cask jasper
+brew install --cask night-owl
+brew install --cask postman
+brew install --cask tableplus
+brew install --cask steam
+brew install --cask gpg
+brew install --cask clipy
+brew install --cask asana
