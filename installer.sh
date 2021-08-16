@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# development fundamental
 brew install coreutils
 brew install autoconf
 brew install automake
@@ -16,27 +17,30 @@ brew install shared-mime-info
 brew install libjpeg
 brew install little-cms2
 
+# for zshrc
+brew install zplug
+brew install tmux
+brew install git-secrets
 brew install peco
 brew install anyenv
+anyenv install plenv
+anyenv install rbenv
+anyenv install nodenv
+anyenv install pyenv
+
 brew install direnv
-brew install zplug
 brew install keychain
-brew install tmux
 brew install memcached
 brew install redis
 brew install go
 brew install cmigemo
 brew install sshuttle
-brew install mysqlenv
 brew install yarn
 brew install mysql@5.6
 brew install ctags-exuberant
 brew install tig
 brew install awscli
 brew install mycli
-brew install --cask session-manager-plugin
-
-brew install --HEAD motemen/furoshiki2/furoshiki2
 
 brew install amazon-ecs-cli
 brew install telnet
@@ -60,10 +64,10 @@ brew install envchain
 brew install Songmu/tap/blogsync
 brew install git-subrepo
 brew install htop
-brew install git-secrets
 brew install heroku/brew/heroku
-brew install --cask wireshark
 
+brew install --cask session-manager-plugin
+brew install --cask wireshark
 brew install --cask adoptopenjdk8
 brew install --cask sequel-pro
 brew install --cask spotify
@@ -72,6 +76,8 @@ brew install --cask night-owl
 brew install --cask postman
 brew install --cask tableplus
 brew install --cask steam
-brew install --cask gpg
 brew install --cask clipy
 brew install --cask asana
+
+# mysqlenv
+curl -kL http://bit.ly/mysqlenv | bash
