@@ -213,7 +213,8 @@ alias tssh="tssh --ssh-option '-o StrictHostKeyChecking=no'"
 alias pctssh="proxychains4 ssh"
 
 # ---------------- setting for zplug --------------------------
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 zplug "Tarrasch/zsh-autoenv"
 
