@@ -78,6 +78,8 @@ brew install --cask tableplus
 brew install --cask steam
 brew install --cask clipy
 brew install --cask asana
+brew install --cask istat-menus
+brew install --cask realforce
 
 # mysqlenv
 curl -kL http://bit.ly/mysqlenv | bash
