@@ -70,4 +70,4 @@
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
-	templateDir = /Users/shibayu36/.git-templates/git-secrets
+	templateDir = ~/.git-templates/git-secrets
