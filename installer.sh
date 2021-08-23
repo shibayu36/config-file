@@ -65,6 +65,8 @@ brew install Songmu/tap/blogsync
 brew install git-subrepo
 brew install htop
 brew install heroku/brew/heroku
+brew install wget
+brew install ghq
 
 brew install --cask session-manager-plugin
 brew install --cask wireshark
@@ -80,6 +82,11 @@ brew install --cask clipy
 brew install --cask asana
 brew install --cask istat-menus
 brew install --cask realforce
+brew install --cask docker
 
 # mysqlenv
 curl -kL http://bit.ly/mysqlenv | bash
+
+# diff-highlight
+# https://udomomo.hatenablog.com/entry/2019/12/01/181404
+sudo ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
