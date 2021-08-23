@@ -10,7 +10,7 @@
 	branch = auto
 [core]
 	editor = code --wait
-	excludesfile = /Users/shibayu36/.gitignore
+	excludesfile = ~/.gitignore
 	quotepath = false
 [alias]
 	st = status -sb
@@ -35,7 +35,7 @@
 [rerere]
 	enabled = 1
 [submodule]
-	cachedir = /Users/shibayu36/.cache/git-submodules
+	cachedir = ~/.cache/git-submodules
 [pull]
 	rebase = true
 [pager]
