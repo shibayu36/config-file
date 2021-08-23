@@ -142,12 +142,12 @@
         {
           "editor.folding": false,
           "editor.glyphMargin": false,
-          "editor.lineNumbers": "off",
+          "workbench.activityBar.visible": false,
         },
         {
           "editor.folding": true,
           "editor.glyphMargin": true,
-          "editor.lineNumbers": "off",
+          "workbench.activityBar.visible": true,
         }
       ]
     }
