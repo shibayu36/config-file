@@ -83,6 +83,7 @@ brew install --cask asana
 brew install --cask istat-menus
 brew install --cask realforce
 brew install --cask docker
+brew install --cask krisp
 
 # mysqlenv
 curl -kL http://bit.ly/mysqlenv | bash
