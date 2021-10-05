@@ -16,17 +16,41 @@
                 },
                 "rules": [
                     {
-                        "description": "Change ¥ to Alt+¥ in IntelliJ IDEA",
+                        "description": "control-英数の無効化",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.jetbrains\\.intellij\\.ce$"
-                                        ],
-                                        "type": "frontmost_application_if"
+                                "from": {
+                                    "key_code": "japanese_eisuu",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
                                     }
-                                ],
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "control-かなの無効化",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "japanese_kana",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change ¥ to Alt+¥",
+                        "manipulators": [
+                            {
                                 "from": {
                                     "key_code": "international3"
                                 },
@@ -43,17 +67,9 @@
                         ]
                     },
                     {
-                        "description": "Change Alt+¥ to ¥ in IntelliJ IDEA",
+                        "description": "Change Alt+¥ to ¥",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.jetbrains\\.intellij\\.ce$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "international3",
                                     "modifiers": {
@@ -70,34 +86,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                      "description": "control-英数の無効化",
-                      "manipulators": [
-                        {
-                          "type": "basic",
-                          "from": {
-                            "key_code": "japanese_eisuu",
-                            "modifiers": {
-                              "mandatory": ["control"]
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "description": "control-かなの無効化",
-                      "manipulators": [
-                        {
-                          "type": "basic",
-                          "from": {
-                            "key_code": "japanese_kana",
-                            "modifiers": {
-                              "mandatory": ["control"]
-                            }
-                          }
-                        }
-                      ]
                     }
                 ]
             },
