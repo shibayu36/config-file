@@ -199,4 +199,5 @@
     "editor.tabSize": 2
   },
   "redhat.telemetry.enabled": false,
+  "sync.quietSync": true
 }
