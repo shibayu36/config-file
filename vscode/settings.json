@@ -29,7 +29,7 @@
   },
   // open in external editor
   "alt-editor.name": "emacs",
-  "alt-editor.binary": "/Users/shibayu36/bin/emacsclient",
+  "alt-editor.binary": "~/bin/emacsclient",
   "alt-editor.args": "-n +{line}:{column} {filename}",
   "vsicons.dontShowNewVersionMessage": true,
   "editor.multiCursorModifier": "alt",
@@ -112,7 +112,7 @@
   "emacs-mcx.useMetaPrefixMacCmd": true,
   "python.languageServer": "Microsoft",
   "typescript.suggest.autoImports": false,
-  "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
+  "openjunk.junkDirectory": "/Users/yuki.shibazaki/Dropbox/development/junk",
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
   "emacs-mcx.cursorMoveOnFindWidget": true,
   "workbench.editorAssociations": {
@@ -123,7 +123,7 @@
   "window.titleBarStyle": "custom",
   "leetcode.defaultLanguage": "typescript",
   "leetcode.enableStatusBar": false,
-  "leetcode.workspaceFolder": "/Users/shibayu36/development/src/github.com/shibayu36/leetcode",
+  "leetcode.workspaceFolder": "/Users/yuki.shibazaki/development/src/github.com/shibayu36/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.filePath": {
