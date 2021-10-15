@@ -67,6 +67,8 @@ brew install htop
 brew install heroku/brew/heroku
 brew install wget
 brew install ghq
+brew install itchyny/tap/fillin
+brew install mkcert
 
 brew install --cask session-manager-plugin
 brew install --cask wireshark
@@ -84,6 +86,7 @@ brew install --cask istat-menus
 brew install --cask realforce
 brew install --cask docker
 brew install --cask krisp
+brew install --cask authy
 
 # mysqlenv
 curl -kL http://bit.ly/mysqlenv | bash
