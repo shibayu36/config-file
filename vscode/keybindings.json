@@ -523,6 +523,26 @@
   // zen即時切り替え(デバッガ使いたい時はon)
   {
     "key": "F3",
-    "command": "settings.cycle.zen",
+    "command": "settings.cycle.zen"
+  },
+
+  // For ruby mode
+  {
+    "key": "ctrl+c t",
+    "command": "extension.runSpecLine",
+    "when": "editorTextFocus && resourceLangId == ruby"
+  },
+  {
+    "key": "ctrl+c ctrl+t",
+    "command": "extension.runFileSpecs",
+    "when": "editorTextFocus && resourceLangId == ruby"
+  },
+  {
+    "key": "ctrl+cmd+l",
+    "command": "-extension.runSpecLine"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "-extension.runFileSpecs"
   }
 ]
