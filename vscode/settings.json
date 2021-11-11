@@ -8,7 +8,8 @@
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
   "editor.renderControlCharacters": true, // 制御文字表示
-  "workbench.editor.closeEmptyGroups": false, // ActivityBarの表示非表示
+  "workbench.activityBar.visible": false, // ActivityBarの表示非表示
+  "workbench.editor.closeEmptyGroups": false,
   "breadcrumbs.enabled": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false, // searchバーはパネルで表示
@@ -142,12 +143,12 @@
         {
           "editor.folding": false,
           "editor.glyphMargin": false,
-          "workbench.activityBar.visible": false,
+          "workbench.activityBar.visible": false
         },
         {
           "editor.folding": true,
           "editor.glyphMargin": true,
-          "workbench.activityBar.visible": true,
+          "workbench.activityBar.visible": true
         }
       ]
     }
@@ -188,7 +189,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.activityBar.visible": false,
   "ruby.useLanguageServer": true,
   "ruby.useBundler": false,
   "ruby.format": "rubocop",
