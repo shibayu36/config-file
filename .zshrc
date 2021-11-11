@@ -202,7 +202,7 @@ alias e='emacsclient -n'
 alias c='code'
 
 # editor
-export EDITOR='emacsclient'
+export EDITOR='code -w'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
