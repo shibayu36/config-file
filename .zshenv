@@ -62,3 +62,10 @@ export GOOGLE_APPLICATION_CREDENTIALS="/Users/shibayu36/.config/gcloud/applicati
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/shibayu36/.sdkman"
 [[ -s "/Users/shibayu36/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shibayu36/.sdkman/bin/sdkman-init.sh"
+
+# imagemagick
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
+
+# mysql
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
