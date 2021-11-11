@@ -190,10 +190,12 @@
   },
   "workbench.activityBar.visible": false,
   "ruby.useLanguageServer": true,
-  "ruby.useBundler": true,
+  "ruby.useBundler": false,
   "ruby.format": "rubocop",
   "ruby.lint": {
-    "rubocop": true
+    "rubocop": {
+      "useBundler": false
+    }
   },
   "[ruby]": {
     "editor.tabSize": 2
