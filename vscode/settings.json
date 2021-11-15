@@ -73,7 +73,8 @@
   ],
   "eslint.packageManager": "yarn",
   "files.exclude": {
-    "**/.next/**": true
+    "**/.next/**": true,
+    "**/vendor/bundle/**": true
   },
   "eslint.migration.2_x": "off",
   "diffEditor.renderSideBySide": false,
@@ -200,6 +201,24 @@
   "[ruby]": {
     "editor.tabSize": 2
   },
+  "[slim]": {
+    "editor.tabSize": 2
+  },
+  "[haml]": {
+    "editor.tabSize": 2
+  },
+  "ctags": {
+    "executePath": "/Users/yuki.shibazaki/.anyenv/envs/rbenv/shims/ripper-tags",
+    "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/",
+    "fileName": ".tags"
+  },
   "redhat.telemetry.enabled": false,
-  "sync.quietSync": true
+  "sync.quietSync": true,
+  "solargraph.logLevel": "debug",
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+  "beautify.language": {
+    "html": ["htm", "html", "erb"]
+  }
 }
