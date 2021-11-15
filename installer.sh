@@ -37,7 +37,7 @@ brew install cmigemo
 brew install sshuttle
 brew install yarn
 brew install mysql@5.6
-brew install ctags-exuberant
+brew install universal-ctags
 brew install tig
 brew install awscli
 brew install mycli
@@ -69,6 +69,7 @@ brew install wget
 brew install ghq
 brew install itchyny/tap/fillin
 brew install mkcert
+brew install findutils
 
 brew install --cask session-manager-plugin
 brew install --cask wireshark
