@@ -19,7 +19,7 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 # mysqlenv
-source ~/.mysqlenv/etc/bashrc
+# source ~/.mysqlenv/etc/bashrc
 
 # Go PATH
 export GOPATH=$HOME/development/go
