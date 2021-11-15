@@ -1,0 +1,2 @@
+#!/bin/bash
+git ls-files -z -- "$@" | xargs -L 1 -P 20 -0 -n1 -I{} -- git log -1 --format="%at {}" {} | sort | cut -d " " -f2-
