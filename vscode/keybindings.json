@@ -547,7 +547,7 @@
   },
   {
     "key": "ctrl+[BracketLeft]",
-    "command": "extension.searchCTags",
+    "command": "extension.ctag_search",
     "when": "editorTextFocus && resourceLangId == ruby"
   }
 ]
