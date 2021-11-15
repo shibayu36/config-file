@@ -544,5 +544,10 @@
   {
     "key": "ctrl+cmd+t",
     "command": "-extension.runFileSpecs"
+  },
+  {
+    "key": "ctrl+[BracketLeft]",
+    "command": "extension.searchCTags",
+    "when": "editorTextFocus && resourceLangId == ruby"
   }
 ]
