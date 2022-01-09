@@ -1,4 +1,4 @@
 #!/bin/bash
 
 default_branch=`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`
-hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...$default_branch | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`
+gh browse -- `git log --merges --oneline --reverse --ancestry-path $1...$default_branch | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%%'`
