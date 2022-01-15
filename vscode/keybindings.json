@@ -549,5 +549,10 @@
     "key": "ctrl+[BracketLeft]",
     "command": "extension.ctag_search",
     "when": "editorTextFocus && resourceLangId == ruby"
+  },
+  {
+    "key": "ctrl+c shift+p",
+    "command": "mymacro.open-pr-from-line",
+    "when": "editorTextFocus"
   }
 ]
