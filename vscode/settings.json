@@ -36,14 +36,18 @@
   "editor.multiCursorModifier": "alt",
   "bracketPairColorizer.excludedLanguages": [],
   "workbench.list.keyboardNavigation": "filter", // File Treeでのフィルタ
-  "ego.power-tools": {},
-  "ego.power-tools.user": {
+  "ego.power-tools": {
     "commands": {
       // emacs.C-yの挙動を変え、選択範囲は消えるようにする
       "emacs.better-C-y": {
         "name": "emacs better C-y",
         "description": "emacs better C-y",
         "script": "emacs-better-c-y.js"
+      },
+      "mymacro.open-pr-from-line": {
+        "name": "Open PR from current line",
+        "description": "Open PR from current line",
+        "script": "open-pr-from-line.js"
       }
     }
   },
