@@ -27,6 +27,8 @@ anyenv install plenv
 anyenv install rbenv
 anyenv install nodenv
 anyenv install pyenv
+mkdir -p $(anyenv root)/plugins
+git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
 brew install direnv
 brew install keychain
