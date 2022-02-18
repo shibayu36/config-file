@@ -11,6 +11,7 @@ brew install pkg-config
 brew install gnutls
 brew install texinfo
 brew install git
+brew install git-delta
 brew install libxml2
 brew install openssl
 brew install shared-mime-info
