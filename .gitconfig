@@ -12,6 +12,9 @@
 	editor = code --wait
 	excludesfile = ~/.gitignore
 	quotepath = false
+	pager = delta
+[diff]
+    colorMoved = default
 [alias]
 	st = status -sb
 	di = diff
@@ -26,22 +29,21 @@
 	stat = log --stat --summary
 	showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
 	conflicts = !git ls-files -u | cut -f 2 | sort -u
+[interactive]
+    diffFilter = delta --color-only
 [push]
 	default = current
 [branch]
 	autosetuprebase = always
 [merge]
 	ff = false
+	conflictstyle = diff3
 [rerere]
 	enabled = 1
 [submodule]
 	cachedir = ~/.cache/git-submodules
 [pull]
 	rebase = true
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -53,6 +55,8 @@
 	root = ~/development/src
 [ghi]
 	token = !security find-internet-password -a shibayu36 -s github.com -l 'ghi token' -w
+[delta]
+    navigate = true  # use n and N to move between diff sections
 [tig]
 	main-view = id date author commit-title:graph=yes,refs=yes
 	vertical-split = auto
