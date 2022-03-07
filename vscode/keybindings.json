@@ -20,13 +20,23 @@
   },
   {
     "key": "ctrl+,",
-    "command": "editor.action.smartSelect.grow",
+    "command": "expand_region",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+shift+cmd+right",
-    "command": "-editor.action.smartSelect.grow",
+    "key": "ctrl+w",
+    "command": "-expand_region",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+,",
+    "command": "undo_expand_region",
+    "when": "editorHasSelection && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "-undo_expand_region",
+    "when": "editorHasSelection && editorTextFocus"
   },
   {
     "key": "cmd+[Semicolon]",
