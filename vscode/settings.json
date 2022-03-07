@@ -8,7 +8,6 @@
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
   "editor.renderControlCharacters": true, // 制御文字表示
-  "workbench.activityBar.visible": false, // ActivityBarの表示非表示
   "workbench.editor.closeEmptyGroups": false,
   "breadcrumbs.enabled": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -77,8 +76,7 @@
   ],
   "eslint.packageManager": "yarn",
   "files.exclude": {
-    "**/.next/**": true,
-    "**/vendor/bundle/**": true
+    "**/.next/**": true
   },
   "eslint.migration.2_x": "off",
   "diffEditor.renderSideBySide": false,
@@ -116,7 +114,7 @@
   "prettier.requireConfig": true,
   "githubIssues.createIssueTriggers": [],
   "emacs-mcx.useMetaPrefixMacCmd": true,
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Default",
   "typescript.suggest.autoImports": false,
   "openjunk.junkDirectory": "/Users/yuki.shibazaki/Dropbox/development/junk",
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
@@ -126,7 +124,8 @@
   },
   "go.toolsManagement.autoUpdate": true,
   "textlint.configPath": "~/.textlintrc",
-  "window.titleBarStyle": "custom",
+  "textlint.run": "onSave",
+  "window.titleBarStyle": "native",
   "leetcode.defaultLanguage": "typescript",
   "leetcode.enableStatusBar": false,
   "leetcode.workspaceFolder": "/Users/yuki.shibazaki/development/src/github.com/shibayu36/leetcode",
@@ -189,7 +188,8 @@
     "editor.formatOnSave": false
   },
   "[json]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -224,5 +224,7 @@
   },
   "beautify.language": {
     "html": ["htm", "html", "erb"]
-  }
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "workbench.activityBar.visible": false
 }
