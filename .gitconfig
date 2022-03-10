@@ -1,5 +1,6 @@
 [include]
 	path = .gitconfig.local
+	path = ~/development/config-file/delta/themes.gitconfig
 [user]
 	name = shibayu36
 	email = shibayu36@gmail.com
@@ -57,6 +58,15 @@
 	token = !security find-internet-password -a shibayu36 -s github.com -l 'ghi token' -w
 [delta]
     navigate = true  # use n and N to move between diff sections
+	# features = woolly-mammoth
+	line-numbers = true
+    line-numbers-left-format = "{nm:>1}┊"
+    line-numbers-left-style = red
+    line-numbers-minus-style = red italic black
+    line-numbers-plus-style = green italic black
+    line-numbers-right-format = "{np:>1}┊"
+    line-numbers-right-style = green
+    line-numbers-zero-style = "#545474" italic
 [tig]
 	main-view = id date author commit-title:graph=yes,refs=yes
 	vertical-split = auto
