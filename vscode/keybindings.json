@@ -288,7 +288,7 @@
   },
   {
     "key": "ctrl+z ctrl+n",
-    "command": "workbench.action.quickSwitchWindow"
+    "command": "workbench.action.switchWindow"
   },
   {
     "key": "ctrl+w",
