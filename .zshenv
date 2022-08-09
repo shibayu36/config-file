@@ -14,6 +14,9 @@ export XDG_DATA_DIRS=/usr/local/share
 # Path config
 export PATH=~/development/src/github.com/hatena/mackerel-operation-tools/bin:~/.local/bin:/Users/shibayu36/development/apache-maven/bin:/Users/shibayu36/development/Hatena/servers/bin:/usr/local/share/python:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/usr/sbin:/opt/local/sbin:/bin:/sbin
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
