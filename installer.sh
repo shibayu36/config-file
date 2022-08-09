@@ -41,7 +41,7 @@ brew install go
 brew install cmigemo
 brew install sshuttle
 brew install yarn
-brew install mysql@5.6
+brew install mysql@5.7
 brew install universal-ctags
 brew install tig
 brew install awscli
