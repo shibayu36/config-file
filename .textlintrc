@@ -10,7 +10,7 @@
       "sentence-length": {
         max: 100,
         skipPatterns: [
-          "/\[https?:\/\/[^\]]+\]/",
+          "/\\[https?:\\/\\/[^\\]]+\\]/",
         ]
       },
     },
