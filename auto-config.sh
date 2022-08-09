@@ -28,6 +28,7 @@ ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ S
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Code/User/
 ln -s ~/development/config-file/.vscode-powertools ~/
 ln -s ~/development/config-file/.textlintrc ~/
+ln -s ~/development/config-file/.asdfrc ~/
 
 
 #zsh関数群

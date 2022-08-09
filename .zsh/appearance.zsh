@@ -159,10 +159,10 @@ precmd () {
         PR_VCS="${(j: :)vcs_messages}"
     fi
 
-    PERL_VERSION_STRING="pl:"$(plenv version-name)
-    RUBY_VERSION_STRING="rb:"$(rbenv version-name)
-    NODE_VERSION_STRING="nd:"$(nodenv version-name)
-    PYTHON_VERSION_STRING="py:"$(pyenv version-name)
+    # PERL_VERSION_STRING="pl:"$(asdf current perl 2> /dev/null | awk '{print $2}')
+    RUBY_VERSION_STRING="rb:"$(asdf current ruby 2> /dev/null | awk '{print $2}')
+    NODE_VERSION_STRING="nd:"$(asdf current nodejs 2> /dev/null | awk '{print $2}')
+    # PYTHON_VERSION_STRING="py:"$(asdf current python 2> /dev/null | awk '{print $2}')
 
     PYTHON_VIRTUAL_ENV_STRING=""
     if [ -n "$VIRTUAL_ENV" ]; then
@@ -171,7 +171,7 @@ precmd () {
 }
 
 function setprompt () {
-      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${PERL_VERSION_STRING} ${RUBY_VERSION_STRING} ${NODE_VERSION_STRING} ${PYTHON_VERSION_STRING}${PYTHON_VIRTUAL_ENV_STRING}
+      PROMPT='%F{yellow}%<...<%~%<< ${PR_VCS} %F{blue}${RUBY_VERSION_STRING} ${NODE_VERSION_STRING}
 %F{blue}%D{%H:%M:%S} %F{green}${USER}%F{white}@%F{green}%m%F{white}%(!.#.$) '
 }
 

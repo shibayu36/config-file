@@ -17,9 +17,8 @@ export PATH=~/development/src/github.com/hatena/mackerel-operation-tools/bin:~/.
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # mysqlenv
 # source ~/.mysqlenv/etc/bashrc
