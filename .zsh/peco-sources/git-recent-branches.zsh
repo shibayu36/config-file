@@ -23,7 +23,7 @@ function peco-git-recent-all-branches () {
 zle -N peco-git-recent-all-branches
 
 function peco-git-recent-pull-requests () {
-    local selected_pr_number=$(gh pr list --limit 50 --search 'sort:updated-desc' | peco | awk '{ print $1 }')
+    local selected_pr_number=$(gh pr list --json number,title,author --template '{{range .}}{{printf "%.0f (%s) %s\n" .number .author.login .title}}{{end}}' --limit 50 --search 'sort:updated-desc' | peco | awk '{ print $1 }')
     if [ -n "$selected_pr_number" ]; then
         BUFFER="gh pr checkout ${selected_pr_number}"
         zle accept-line
