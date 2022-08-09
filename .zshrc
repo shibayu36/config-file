@@ -146,9 +146,9 @@ eval "$(direnv hook zsh)"
 [ -f ~/.zshrc.function ] && source ~/.zshrc.function
 
 ## create emacs env file
-perl -wle \
-    'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH > ~/.emacs.d/shellenv.el
+# perl -wle \
+#     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
+#     PATH > ~/.emacs.d/shellenv.el
 
 autoload -Uz add-zsh-hook
 
