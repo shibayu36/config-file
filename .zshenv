@@ -71,3 +71,6 @@ export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
 
 # mysql
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# helm
+export HELM_DATA_HOME="$HOME/helm"
