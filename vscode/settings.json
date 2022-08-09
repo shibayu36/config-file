@@ -193,15 +193,18 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // 基本全てlanguage serverを経由する
   "ruby.useLanguageServer": true,
   "ruby.useBundler": false,
-  "ruby.format": "rubocop",
+  "ruby.format": false,
   "ruby.lint": {
-    "rubocop": {
-      "useBundler": false
-    }
+    "rubocop": false
   },
+  "solargraph.formatting": true,
+  "solargraph.diagnostics": true,
   "[ruby]": {
+    "editor.defaultFormatter": "castwide.solargraph",
+    "editor.formatOnSave": true,
     "editor.tabSize": 2
   },
   "[slim]": {
