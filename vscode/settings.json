@@ -79,7 +79,6 @@
     "**/.next/**": true
   },
   "eslint.migration.2_x": "off",
-  "diffEditor.renderSideBySide": false,
   // 拡張子との関連付け
   "files.associations": {
     "Dockerfile.*": "dockerfile",
@@ -226,5 +225,6 @@
     "html": ["htm", "html", "erb"]
   },
   "editor.bracketPairColorization.enabled": true,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "diffEditor.renderSideBySide": false
 }
