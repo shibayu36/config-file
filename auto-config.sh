@@ -29,6 +29,7 @@ ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/C
 ln -s ~/development/config-file/.vscode-powertools ~/
 ln -s ~/development/config-file/.textlintrc ~/
 ln -s ~/development/config-file/.asdfrc ~/
+ln -s ~/development/config-file/.irbrc ~/
 
 
 #zsh関数群
