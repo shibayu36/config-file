@@ -1,2 +1,5 @@
 > 無限繰り返し
 while true; do command; sleep 1s; done;
+
+> xargsで実行するコマンドも含めて表示する
+xargs -t -n 1 ...

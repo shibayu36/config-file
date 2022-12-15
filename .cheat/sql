@@ -1,0 +1,2 @@
+> userテーブルにあるが、関連がpostsに存在しないような、1:0になっているものを探す
+SELECT * FROM users LEFT JOIN posts ON users.id = posts.user_id WHERE posts.id IS NULL;
