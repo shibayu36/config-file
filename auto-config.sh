@@ -19,7 +19,7 @@ ln -s ~/development/config-file/.copyhook ~/
 ln -s ~/development/config-file/.copyhook.js ~/
 ln -s ~/development/config-file/.proxychains ~/
 ln -s ~/development/config-file/.ctags ~/
-ln -s ~/development/config-file/.cheat ~/
+ln -s ~/development/config-file/.cheat ~/.config/cheat/cheatsheets/personal
 ln -s ~/development/config-file/.tigrc ~/
 ln -s ~/development/config-file/.hammerspoon ~/
 ln -s ~/development/config-file/karabiner ~/.config/
