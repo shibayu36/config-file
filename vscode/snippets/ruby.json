@@ -28,4 +28,8 @@
         "prefix": "it is expected",
         "body": ["it { is_expected.to $0 }"]
     },
+    "frozen literal": {
+        "prefix": "frozen literal",
+        "body": ["# frozen_string_literal: true", "$0"]
+    }
 }
