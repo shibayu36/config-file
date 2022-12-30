@@ -125,7 +125,7 @@
   "textlint.configPath": "~/.textlintrc",
   "textlint.run": "onSave",
   "window.titleBarStyle": "native",
-  "leetcode.defaultLanguage": "typescript",
+  "leetcode.defaultLanguage": "ruby",
   "leetcode.enableStatusBar": false,
   "leetcode.workspaceFolder": "/Users/yuki.shibazaki/development/src/github.com/shibayu36/leetcode",
   "leetcode.hint.commandShortcut": false,
@@ -202,6 +202,7 @@
   },
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
+  "solargraph.logLevel": "debug",
   "[ruby]": {
     "editor.defaultFormatter": "castwide.solargraph",
     "editor.formatOnSave": true,
@@ -220,7 +221,6 @@
   },
   "redhat.telemetry.enabled": false,
   "sync.quietSync": true,
-  "solargraph.logLevel": "debug",
   "emmet.includeLanguages": {
     "erb": "html"
   },
@@ -229,5 +229,12 @@
   },
   "editor.bracketPairColorization.enabled": true,
   "workbench.activityBar.visible": false,
-  "diffEditor.renderSideBySide": false
+  "diffEditor.renderSideBySide": false,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  }
 }
