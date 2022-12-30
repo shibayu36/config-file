@@ -236,5 +236,29 @@
     "yaml": false,
     "plaintext": false,
     "markdown": false
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "rdbg",
+            "name": "Debug current file with rdbg",
+            "request": "launch",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "askParameters": true
+        },
+        {
+            "type": "rdbg",
+            "name": "Debug current test with rdbg",
+            "request": "launch",
+            "command": "rspec",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "askParameters": false
+        }
+    ]
   }
 }
