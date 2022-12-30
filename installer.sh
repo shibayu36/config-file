@@ -20,11 +20,13 @@ brew install libjpeg
 brew install little-cms2
 
 brew install --cask raycast
+brew install --cask karabiner-elements
 
 # for zshrc
 brew install zplug
 brew install tmux
 brew install git-secrets
+git secrets --install ~/.git-templates/git-secrets
 brew install peco
 brew install ghq
 brew install asdf
@@ -33,7 +35,7 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin add perl
 asdf plugin-add python
 
-brew install direnv
+# brew install direnv
 brew install keychain
 brew install memcached
 brew install redis
