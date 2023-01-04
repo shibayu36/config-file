@@ -240,25 +240,23 @@
   "launch": {
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "rdbg",
-            "name": "Debug current file with rdbg",
-            "request": "launch",
-            "script": "${file}",
-            "args": [],
-            "cwd": "${workspaceRoot}",
-            "askParameters": true
-        },
-        {
-            "type": "rdbg",
-            "name": "Debug current test with rdbg",
-            "request": "launch",
-            "command": "rspec",
-            "script": "${file}",
-            "args": [],
-            "cwd": "${workspaceRoot}",
-            "askParameters": false
-        }
+      {
+        "type": "rdbg",
+        "name": "Debug current file with rdbg",
+        "request": "launch",
+        "script": "${file}",
+        "args": [],
+        "askParameters": true
+      },
+      {
+        "type": "rdbg",
+        "name": "Debug current test with rdbg",
+        "request": "launch",
+        "command": "rspec",
+        "script": "${file}",
+        "args": [],
+        "askParameters": false
+      }
     ]
   }
 }
