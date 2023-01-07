@@ -237,6 +237,7 @@
     "plaintext": false,
     "markdown": false
   },
+  "code-runner.runInTerminal": true,
   "launch": {
     "version": "0.2.0",
     "configurations": [
