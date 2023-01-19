@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# example
+# git-cherry-pick-from-other-repo <other_repo_dir> <sha1>
+
+git --git-dir=$1/.git \
+format-patch -k -1 --stdout $2 | \
+git am -3 -k
