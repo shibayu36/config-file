@@ -200,6 +200,7 @@
   "ruby.lint": {
     "rubocop": false
   },
+  "rubyLsp.rubyVersionManager": "asdf",
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
   "solargraph.logLevel": "debug",
@@ -232,7 +233,7 @@
   "diffEditor.renderSideBySide": false,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "yaml": false,
     "plaintext": false,
     "markdown": false
@@ -258,7 +259,16 @@
         "script": "${file}",
         "args": [],
         "askParameters": false
+      },
+      {
+        "type": "rdbg",
+        "name": "Attach with rdbg",
+        "request": "attach"
       }
     ]
-  }
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "partialDiff.enableTelemetry": false
 }

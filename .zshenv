@@ -72,6 +72,10 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/imagemagick@6/lib/pkgconfig:$PKG_CONFI
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig:$PKG_CONFIG_PATH"
 
+# postgresql
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig:$PKG_CONFIG_PATH"
+
 # helm
 export HELM_DATA_HOME="$HOME/helm"
 
