@@ -1,1 +1,3 @@
-~/development/config-fileにcloneして、auto-config.shを実行
+- ~/development/config-fileにclone
+- iTerm2のGeneral > Preferencesから/Users/yuki.shibazaki/development/config-file/iterm2を指定
+- ./auto-config.shを実行
