@@ -233,10 +233,11 @@
   "diffEditor.renderSideBySide": false,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "yaml": false,
     "plaintext": false,
-    "markdown": false
+    "markdown": false,
+    "scminput": false
   },
   "code-runner.runInTerminal": true,
   "launch": {
@@ -270,5 +271,6 @@
   "[python]": {
     "editor.formatOnType": true
   },
-  "partialDiff.enableTelemetry": false
+  "partialDiff.enableTelemetry": false,
+  "python.linting.mypyEnabled": true
 }
