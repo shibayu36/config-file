@@ -81,3 +81,6 @@ export HELM_DATA_HOME="$HOME/helm"
 
 # mkcert
 export CAROOT="/opt/homebrew/share/mkcert"
+
+# gettext path for when using anaconda3
+export PATH="/opt/homebrew/opt/gettext/bin:$PATH"

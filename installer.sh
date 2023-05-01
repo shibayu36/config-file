@@ -11,6 +11,7 @@ brew install automake
 brew install pkg-config
 brew install gnutls
 brew install texinfo
+brew install gettext
 brew install git
 brew install git-delta
 brew install libxml2
