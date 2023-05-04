@@ -12,4 +12,12 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
+	"Pretty print": {
+		"prefix": "pp",
+		"body": [
+			"import json",
+			"print(json.dumps($1, indent=2, ensure_ascii=False))"
+		],
+		"description": "Pretty print"
+	},
 }
