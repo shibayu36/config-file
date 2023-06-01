@@ -21,5 +21,11 @@
 			"\t$0",
 			"}"
 		]
+	},
+	"dump": {
+		"prefix": "dump",
+		"body": [
+			"spew.Dump($0)"
+		]
 	}
 }
