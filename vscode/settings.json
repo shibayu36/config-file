@@ -25,7 +25,8 @@
     "autoComplete": true
   },
   "gopls": {
-    "usePlaceholders": true
+    "usePlaceholders": true,
+    "ui.semanticTokens": true
   },
   // open in external editor
   "alt-editor.name": "emacs",
