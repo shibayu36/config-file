@@ -82,8 +82,10 @@ brew install helm
 helm plugin install https://github.com/jkroepke/helm-secrets
 brew install sops
 brew install yq
-brew install --cask aws-vault
 
+brew install golangci-lint
+
+brew install --cask aws-vault
 brew install --cask session-manager-plugin
 brew install --cask wireshark
 # brew install --cask adoptopenjdk8
