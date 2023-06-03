@@ -28,6 +28,11 @@
     "usePlaceholders": true,
     "ui.semanticTokens": true
   },
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast"
+  ],
+
   // open in external editor
   "alt-editor.name": "emacs",
   "alt-editor.binary": "~/bin/emacsclient",
