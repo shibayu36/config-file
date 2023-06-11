@@ -285,6 +285,13 @@
         "program": "${file}",
         "console": "integratedTerminal",
         "justMyCode": true
+      },
+      {
+        "name": "Go: Current File",
+        "type": "go",
+        "request": "launch",
+        "mode": "auto",
+        "program": "${fileDirname}"
       }
     ]
   },
