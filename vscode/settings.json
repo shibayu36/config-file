@@ -134,7 +134,7 @@
   "textlint.configPath": "~/.textlintrc",
   "textlint.run": "onSave",
   "window.titleBarStyle": "native",
-  "leetcode.defaultLanguage": "ruby",
+  "leetcode.defaultLanguage": "golang",
   "leetcode.enableStatusBar": false,
   "leetcode.workspaceFolder": "/Users/yuki.shibazaki/development/src/github.com/shibayu36/leetcode",
   "leetcode.hint.commandShortcut": false,
