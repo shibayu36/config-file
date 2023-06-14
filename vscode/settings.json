@@ -124,7 +124,7 @@
   "emacs-mcx.useMetaPrefixMacCmd": true,
   "python.languageServer": "Default",
   "typescript.suggest.autoImports": false,
-  "openjunk.junkDirectory": "/Users/yuki.shibazaki/Dropbox/development/junk",
+  "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
   "emacs-mcx.cursorMoveOnFindWidget": true,
   "workbench.editorAssociations": {
@@ -136,7 +136,7 @@
   "window.titleBarStyle": "native",
   "leetcode.defaultLanguage": "golang",
   "leetcode.enableStatusBar": false,
-  "leetcode.workspaceFolder": "/Users/yuki.shibazaki/development/src/github.com/shibayu36/leetcode",
+  "leetcode.workspaceFolder": "/Users/shibayu36/development/src/github.com/shibayu36/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.filePath": {
@@ -228,7 +228,7 @@
     "editor.tabSize": 2
   },
   "ctags": {
-    "executePath": "/Users/yuki.shibazaki/.anyenv/envs/rbenv/shims/ripper-tags",
+    "executePath": "/Users/shibayu36/.anyenv/envs/rbenv/shims/ripper-tags",
     "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/",
     "fileName": ".tags"
   },
