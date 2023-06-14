@@ -36,7 +36,7 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin add perl
 asdf plugin-add python
 
-# brew install direnv
+brew install direnv
 brew install keychain
 # brew install memcached
 # brew install redis
