@@ -77,6 +77,7 @@ brew install wget
 brew install itchyny/tap/fillin
 brew install mkcert
 brew install findutils
+brew install protobuf
 
 # brew install helm
 # helm plugin install https://github.com/jkroepke/helm-secrets
