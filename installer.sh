@@ -85,6 +85,7 @@ brew install sops
 
 brew install golangci-lint
 
+brew install --cask obsidian
 brew install --cask aws-vault
 brew install --cask session-manager-plugin
 brew install --cask wireshark
