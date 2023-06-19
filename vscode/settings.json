@@ -25,7 +25,6 @@
     "autoComplete": true
   },
   "gopls": {
-    "usePlaceholders": true,
     "ui.semanticTokens": true
   },
   "go.testFlags": [
