@@ -105,6 +105,7 @@ brew install --cask tableplus
 brew install --cask steam
 brew install --cask asana
 brew install --cask realforce
+brew install --cask deepl
 # brew install --cask krisp
 
 # mysqlenv
