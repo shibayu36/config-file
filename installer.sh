@@ -78,6 +78,7 @@ brew install itchyny/tap/fillin
 brew install mkcert
 brew install findutils
 brew install protobuf
+brew install git-lfs
 
 # brew install helm
 # helm plugin install https://github.com/jkroepke/helm-secrets
@@ -106,6 +107,7 @@ brew install --cask steam
 brew install --cask asana
 brew install --cask realforce
 brew install --cask deepl
+brew install --cask discord
 # brew install --cask krisp
 
 # mysqlenv
