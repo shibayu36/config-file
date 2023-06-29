@@ -12,6 +12,7 @@
   "breadcrumbs.enabled": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false, // searchバーはパネルで表示
+  "workbench.colorTheme": "Default Dark+",
   "workbench.colorCustomizations": {
     "[Default Dark+]": {
       "editor.findMatchBorder": "#FDFF0C"
