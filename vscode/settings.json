@@ -30,7 +30,8 @@
     "ui.completion.usePlaceholders": false
   },
   "go.testFlags": [
-    "-v"
+    "-v",
+    "-count=1",
   ],
   "go.lintTool": "golangci-lint",
   "go.lintFlags": [
