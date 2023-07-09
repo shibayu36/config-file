@@ -162,6 +162,7 @@ alias ls='ls -a -G'
 alias ll='ls -a -lG'
 alias rm='rm -i'
 alias cg='code $(git ls-files | peco --query "$LBUFFER")'
+alias sed='gsed'
 
 # alias git=hub
 alias glgg='git logg'
