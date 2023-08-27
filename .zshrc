@@ -138,6 +138,9 @@ bindkey '^x^f' peco-open-code-by-git-ls-files
 
 # direnv
 eval "$(direnv hook zsh)"
+if direnv status | grep -q 'Loaded RC'; then
+    direnv reload
+fi
 
 #if .zshrc.mine exist, do source this
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
@@ -163,6 +166,7 @@ alias ll='ls -a -lG'
 alias rm='rm -i'
 alias cg='code $(git ls-files | peco --query "$LBUFFER")'
 alias sed='gsed'
+alias awk='gawk'
 
 # alias git=hub
 alias glgg='git logg'
