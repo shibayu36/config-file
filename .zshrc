@@ -122,7 +122,7 @@ function chpwd() {
 
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-bindkey '^@' peco-cd
+# bindkey '^@' peco-cd
 # bindkey '^r' peco-select-history
 # bindkey '^x^b' peco-git-recent-branches
 # bindkey '^xb' peco-git-recent-all-branches
@@ -154,6 +154,7 @@ bindkey '^r' fzf-history-widget
 bindkey '^x^b' fzf-git-recent-branches
 bindkey '^xb' fzf-git-recent-all-branches
 bindkey '^xB' fzf-git-recent-pull-requests
+bindkey '^@' fzf-cd
 
 ## create emacs env file
 # perl -wle \
