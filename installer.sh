@@ -29,6 +29,8 @@ brew install tmux
 brew install git-secrets
 git secrets --install ~/.git-templates/git-secrets
 brew install peco
+brew install fzf
+brew install bat
 brew install ghq
 brew install asdf
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
