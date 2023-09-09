@@ -245,3 +245,5 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # copilot for cli
 eval "$(github-copilot-cli alias -- "$0")"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
