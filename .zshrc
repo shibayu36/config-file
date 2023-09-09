@@ -123,7 +123,7 @@ function chpwd() {
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
 bindkey '^@' peco-cd
-bindkey '^r' peco-select-history
+# bindkey '^r' peco-select-history
 bindkey '^x^b' peco-git-recent-branches
 bindkey '^xb' peco-git-recent-all-branches
 bindkey '^xB' peco-git-recent-pull-requests
@@ -147,6 +147,10 @@ fi
 
 #if .zshrc.function exist, do source this
 [ -f ~/.zshrc.function ] && source ~/.zshrc.function
+
+# setting for fzf
+[ -e ~/.zsh/fzf.zsh ] && source ~/.zsh/fzf.zsh
+bindkey '^r' fzf-history-widget
 
 ## create emacs env file
 # perl -wle \
@@ -245,5 +249,3 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # copilot for cli
 eval "$(github-copilot-cli alias -- "$0")"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
