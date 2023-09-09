@@ -12,6 +12,9 @@ fi
 # ------------
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
-export FZF_DEFAULT_OPTS='--height 90% --layout=reverse'
+export FZF_DEFAULT_OPTS='
+--height 90% --layout=reverse
+--color="hl:#b58900"
+'
 
 for f (~/.zsh/fzf-sources/*) source "${f}" # load fzf sources
