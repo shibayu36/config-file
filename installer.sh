@@ -28,7 +28,6 @@ brew install zplug
 brew install tmux
 brew install git-secrets
 git secrets --install ~/.git-templates/git-secrets
-brew install peco
 brew install fzf
 brew install bat
 brew install ghq

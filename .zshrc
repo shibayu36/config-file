@@ -120,16 +120,6 @@ function chpwd() {
     _reg_pwd_screennum
 }
 
-# setting for peco
-for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-# bindkey '^@' peco-cd
-# bindkey '^r' peco-select-history
-# bindkey '^x^b' peco-git-recent-branches
-# bindkey '^xb' peco-git-recent-all-branches
-# bindkey '^xB' peco-git-recent-pull-requests
-# bindkey '^x^h' peco-complete-mackerel-host-ip
-# bindkey '^x^f' peco-open-code-by-git-ls-files
-
 # ------------- setting for tmux ----------------------------
 [ -n "$TMUX" ] && export TERM=screen-256color
 
@@ -172,7 +162,6 @@ fi
 alias ls='ls -a -G'
 alias ll='ls -a -lG'
 alias rm='rm -i'
-alias cg='code $(git ls-files | peco --query "$LBUFFER")'
 alias sed='gsed'
 alias awk='gawk'
 
@@ -196,15 +185,8 @@ alias ce='carton exec --'
 
 alias pc='proxychains4'
 
-# peco
-alias cdsrc='cd $(ghq list --full-path | peco --query "$LBUFFER")'
-p() { peco | while read LINE; do $@ $LINE; done }
-
 # psを選択して殺す
-alias pskl="ps aux | peco | awk '{ print \$2 }' | xargs kill -9"
-
-# gibo
-alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
+alias pskl="ps aux | fzf -m --header-lines 1 | awk '{ print \$2 }' | xargs kill -9"
 
 # IntelliJ
 alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
