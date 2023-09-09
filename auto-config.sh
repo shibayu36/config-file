@@ -3,7 +3,6 @@ ln -s ~/development/config-file/.tscreenrc ~/
 ln -s ~/development/config-file/.zprofile  ~/
 ln -s ~/development/config-file/.zshenv ~/
 ln -s ~/development/config-file/.zshrc ~/
-ln -s ~/development/config-file/.fzf.zsh ~/
 ln -s ~/development/config-file/.gitignore ~/
 ln -s ~/development/config-file/.proverc ~/
 ln -s ~/development/config-file/.my.cnf ~/
