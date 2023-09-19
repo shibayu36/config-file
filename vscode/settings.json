@@ -19,6 +19,7 @@
     }
   },
   "go.alternateTools": {
+    "go": "/opt/homebrew/bin/go",
     "go-langserver": "gopls"
   },
   "go.languageServerExperimentalFeatures": {
@@ -32,6 +33,7 @@
   "go.testFlags": [
     "-v",
     "-count=1",
+    "-timeout=120s",
   ],
   "go.lintTool": "golangci-lint",
   "go.lintFlags": [
