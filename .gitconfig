@@ -92,3 +92,10 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[fixup]
+    menu = fzf --height '60%' \
+                --bind 'tab:toggle-preview' \
+                --preview 'git show --color {+1}' \
+                --preview-window=up:80% \
+                --prompt 'Select commit: '
+	commit = true
