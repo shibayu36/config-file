@@ -30,6 +30,7 @@ ln -s ~/development/config-file/.textlintrc ~/
 ln -s ~/development/config-file/.asdfrc ~/
 ln -s ~/development/config-file/.irbrc ~/
 ln -s ~/development/config-file/.rdbgrc ~/
+ln -s ~/development/config-file/starship.toml ~/.config/
 
 
 #zsh関数群

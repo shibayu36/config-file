@@ -124,7 +124,8 @@ function chpwd() {
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 # 表示の設定
-[ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
+# [ -e ~/.zsh/appearance.zsh ] && source ~/.zsh/appearance.zsh
+eval "$(starship init zsh)"
 
 # direnv
 eval "$(direnv hook zsh)"

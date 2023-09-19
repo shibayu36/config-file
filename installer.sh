@@ -80,6 +80,7 @@ brew install mkcert
 brew install findutils
 brew install protobuf
 brew install git-lfs
+brew install starship
 
 # brew install helm
 # helm plugin install https://github.com/jkroepke/helm-secrets
@@ -88,6 +89,7 @@ brew install sops
 
 brew install golangci-lint
 
+brew install --cask fig
 brew install --cask obsidian
 brew install --cask aws-vault
 brew install --cask session-manager-plugin
@@ -109,6 +111,7 @@ brew install --cask asana
 brew install --cask realforce
 brew install --cask deepl
 brew install --cask discord
+brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 # brew install --cask krisp
 
 # mysqlenv
