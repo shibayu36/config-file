@@ -22,10 +22,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # mysqlenv
 # source ~/.mysqlenv/etc/bashrc
 
-# Go PATH
-# export GOPATH=$HOME/development/go
-# export GOROOT=/opt/homebrew/opt/go/libexec
-# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# Go
+export PATH="$HOME/go/bin:$PATH"
 
 # Scala
 export SCALA_HOME=/usr/local/opt/scala
