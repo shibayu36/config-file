@@ -95,7 +95,8 @@
   // 拡張子との関連付け
   "files.associations": {
     "Dockerfile.*": "dockerfile",
-    "*.nginx.conf.*": "nginx"
+    "*.nginx.conf.*": "nginx",
+    "*.ghosttext": "markdown"
   },
   "cSpell.userWords": [
     "Hatena",
@@ -246,14 +247,14 @@
   },
   "editor.bracketPairColorization.enabled": true,
   "workbench.activityBar.visible": false,
-  "diffEditor.renderSideBySide": false,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
-    "yaml": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
+    "yaml": false,
+    "ini": true
   },
   "code-runner.runInTerminal": true,
   "launch": {
@@ -303,5 +304,10 @@
     "editor.formatOnType": true
   },
   "partialDiff.enableTelemetry": false,
-  "python.linting.mypyEnabled": true
+  "python.linting.mypyEnabled": true,
+  "commentTranslate.targetLanguage": "ja",
+  "commentTranslate.multiLineMerge": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  }
 }
