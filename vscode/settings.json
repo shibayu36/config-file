@@ -4,6 +4,7 @@
   "editor.minimap.enabled": false, // minimap表示非表示
   "editor.folding": false, // foldingアイコンの表示非表示
   "editor.glyphMargin": false, // デバッガ領域の表示非表示
+  "workbench.activityBar.location": "hidden",
   "editor.lineNumbers": "off", // 行数表示
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
@@ -160,12 +161,12 @@
         {
           "editor.folding": false,
           "editor.glyphMargin": false,
-          "workbench.activityBar.visible": false
+          "workbench.activityBar.location": "hidden",
         },
         {
           "editor.folding": true,
           "editor.glyphMargin": true,
-          "workbench.activityBar.visible": true
+          "workbench.activityBar.location": "side",
         }
       ]
     }
@@ -246,7 +247,6 @@
     "html": ["htm", "html", "erb"]
   },
   "editor.bracketPairColorization.enabled": true,
-  "workbench.activityBar.visible": false,
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
