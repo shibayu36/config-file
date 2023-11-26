@@ -112,6 +112,7 @@ brew install --cask realforce
 brew install --cask deepl
 brew install --cask discord
 brew install --cask homebrew/cask-fonts/font-hack-nerd-font
+brew install --cask git-credential-manager
 # brew install --cask krisp
 
 # mysqlenv
