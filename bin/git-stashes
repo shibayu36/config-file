@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+while out=$(git stash list "$@" |
+            fzf --ansi --no-sort --reverse --print-query --query="$query" \
+                --expect=enter,bspace                                     \
+                --bind="ctrl-space:preview-page-up"                       \
+                --bind="space:preview-page-down"                          \
+                --bind="k:preview-up"                                     \
+                --bind="j:preview-down"                                   \
+                --preview="echo {} | cut -d':' -f1 | xargs git stash show --color=always -p"  \
+                --preview-window='down:85%');
+do
+    # Tokenize selection by newline
+    selection=("${(f)out}")
+
+    # Keep the query accross fzf calls
+    query="$selection[1]"
+
+    # Represents the stash, e.g. stash{1}
+    reflog_selector=$(echo "$selection[3]" | cut -d ':' -f 1)
+
+    case "$selection[2]" in
+        # enter applies the stash to the current tree
+        enter)
+            git stash apply "$reflog_selector"
+            break
+            ;;
+        # backspace will drop the stash
+        bspace)
+            git stash drop "$reflog_selector"
+            ;;
+    esac
+done
