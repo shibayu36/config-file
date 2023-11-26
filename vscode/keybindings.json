@@ -564,5 +564,9 @@
     "key": "ctrl+c shift+p",
     "command": "mymacro.open-pr-from-line",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+h",
+    "command": "editor.action.showDefinitionPreviewHover"
   }
 ]
