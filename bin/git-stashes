@@ -15,11 +15,12 @@ do
 
     # Keep the query accross fzf calls
     query="$selection[1]"
-
+    # Represents the key pressed
+    key="$selection[2]"
     # Represents the stash, e.g. stash{1}
     reflog_selector=$(echo "$selection[3]" | cut -d ':' -f 1)
 
-    case "$selection[2]" in
+    case "$key" in
         # enter applies the stash to the current tree
         enter)
             git stash apply "$reflog_selector"
