@@ -19,6 +19,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
+# tfenv
+export PATH=$PATH:$HOME/.tfenv/bin
+
 # mysqlenv
 # source ~/.mysqlenv/etc/bashrc
 
