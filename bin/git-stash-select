@@ -10,7 +10,7 @@ instructions="Select multiple files by TAB, and then press Enter to stash them."
 selected_files=$(git status --porcelain |
                  fzf --multi \
                      --header="$instructions" \
-                     --preview-window='down:85%' \
+                     --preview-window='down:70%' \
                      --preview="
                         if [[ {} =~ '^\?\?' ]]; then
                           cat $git_repo_root/{2};
