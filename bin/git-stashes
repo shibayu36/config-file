@@ -8,7 +8,7 @@ while out=$(git stash list "$@" |
                 --bind="k:preview-up" \
                 --bind="j:preview-down" \
                 --preview="echo {} | cut -d':' -f1 | xargs -I {STASH} sh -c 'git stash show --color=always -p {STASH}; git show --color=always --format="" -p {STASH}^3'" \
-                --preview-window='down:70%');
+                --preview-window='down:85%');
 do
     # Tokenize selection by newline
     selection=("${(f)out}")
