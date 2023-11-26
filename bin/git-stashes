@@ -2,12 +2,12 @@
 
 while out=$(git stash list "$@" |
             fzf --ansi --no-sort --reverse --print-query --query="$query" \
-                --expect=enter,bspace                                     \
-                --bind="ctrl-space:preview-page-up"                       \
-                --bind="space:preview-page-down"                          \
-                --bind="k:preview-up"                                     \
-                --bind="j:preview-down"                                   \
-                --preview="echo {} | cut -d':' -f1 | xargs git stash show --color=always -p"  \
+                --expect=enter,bspace \
+                --bind="ctrl-space:preview-page-up" \
+                --bind="space:preview-page-down" \
+                --bind="k:preview-up" \
+                --bind="j:preview-down" \
+                --preview="echo {} | cut -d':' -f1 | xargs git stash show --color=always -p" \
                 --preview-window='down:85%');
 do
     # Tokenize selection by newline
