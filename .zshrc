@@ -196,9 +196,10 @@ alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
 alias e='emacsclient -n'
 
 alias c='code'
+alias code='cursor'
 
 # editor
-export EDITOR='code -w'
+export EDITOR='cursor -w'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

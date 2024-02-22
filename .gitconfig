@@ -10,7 +10,7 @@
 	status = auto
 	branch = auto
 [core]
-	editor = code --wait
+	editor = cursor --wait
 	excludesfile = ~/.gitignore
 	quotepath = false
 	pager = delta
