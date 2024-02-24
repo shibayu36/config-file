@@ -34,6 +34,7 @@ ln -s ~/development/config-file/starship.toml ~/.config/
 ln -s ~/development/config-file/cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Cursor/User/
+ln -s ~/development/config-file/.myclirc ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
