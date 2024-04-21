@@ -1,316 +1,326 @@
 {
-    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
-    "editor.minimap.enabled": false,
-    "editor.folding": false,
-    "editor.glyphMargin": false,
-    "workbench.activityBar.location": "hidden",
-    "editor.lineNumbers": "off",
-    "editor.wordWrap": "on",
-    "files.insertFinalNewline": true,
-    "editor.renderControlCharacters": true,
-    "workbench.editor.closeEmptyGroups": false,
-    "breadcrumbs.enabled": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.colorCustomizations": {
-        "[Default Dark+]": {
-            "editor.findMatchBorder": "#FDFF0C"
-        }
+  "[github-actions-workflow]": {
+    "editor.tabSize": 2
+  },
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
     },
-    "go.alternateTools": {
-        "go": "/opt/homebrew/bin/go",
-        "go-langserver": "gopls"
-    },
-    "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true
-    },
-    "gopls": {
-        "ui.semanticTokens": true,
-        "ui.completion.usePlaceholders": false
-    },
-    "go.testFlags": [
-        "-v",
-        "-count=1",
-        "-timeout=120s"
-    ],
-    "go.lintTool": "golangci-lint",
-    "go.lintFlags": [
-        "--fast"
-    ],
-    "alt-editor.name": "emacs",
-    "alt-editor.binary": "~/bin/emacsclient",
-    "alt-editor.args": "-n +{line}:{column} {filename}",
-    "vsicons.dontShowNewVersionMessage": true,
-    "editor.multiCursorModifier": "alt",
-    "bracketPairColorizer.excludedLanguages": [],
-    "workbench.list.keyboardNavigation": "filter",
-    "ego.power-tools": {
-        "commands": {
-            "emacs.better-C-y": {
-                "name": "emacs better C-y",
-                "description": "emacs better C-y",
-                "script": "emacs-better-c-y.js"
-            },
-            "mymacro.open-pr-from-line": {
-                "name": "Open PR from current line",
-                "description": "Open PR from current line",
-                "script": "open-pr-from-line.js"
-            }
-        }
-    },
-    "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
-    "sync.autoUpload": true,
-    "formattingToggle.affects": [
-        "formatOnSave"
-    ],
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": false,
-    "editor.formatOnType": false,
-    "json.schemas": [
+    "editor.snippetSuggestions": "none"
+  },
+  "[graphql]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[haml]": {
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "castwide.solargraph",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[slim]": {
+    "editor.tabSize": 2
+  },
+  "[sql]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "alt-editor.args": "-n +{line}:{column} {filename}",
+  "alt-editor.binary": "~/bin/emacsclient",
+  "alt-editor.name": "emacs",
+  "auto-close-tag.SublimeText3Mode": true,
+  "beautify.language": {
+    "html": [
+      "htm",
+      "html",
+      "erb"
+    ]
+  },
+  "bracketPairColorizer.excludedLanguages": [],
+  "breadcrumbs.enabled": true,
+  "cSpell.userWords": [
+    "Hatena",
+    "checkstyle",
+    "junit",
+    "kakuyomu",
+    "typecheck"
+  ],
+  "code-runner.runInTerminal": true,
+  "commentTranslate.multiLineMerge": true,
+  "commentTranslate.targetLanguage": "ja",
+  "ctags": {
+    "executePath": "/Users/shibayu36/.anyenv/envs/rbenv/shims/ripper-tags",
+    "fileName": ".tags",
+    "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/"
+  },
+  "cursor.cpp.disabledLanguages": [
+    "markdown",
+    "plaintext",
+    "scminput",
+    "yaml"
+  ],
+  "customizeUI.stylesheet": {
+    ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.folding": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.glyphMargin": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "off",
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "alt",
+  "editor.renderControlCharacters": true,
+  "editor.suggestSelection": "first",
+  "editor.wordWrap": "on",
+  "ego.power-tools": {
+    "commands": {
+      "emacs.better-C-y": {
+        "description": "emacs better C-y",
+        "name": "emacs better C-y",
+        "script": "emacs-better-c-y.js"
+      },
+      "mymacro.open-pr-from-line": {
+        "description": "Open PR from current line",
+        "name": "Open PR from current line",
+        "script": "open-pr-from-line.js"
+      }
+    }
+  },
+  "emacs-mcx.cursorMoveOnFindWidget": true,
+  "emacs-mcx.useMetaPrefixMacCmd": true,
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.migration.2_x": "off",
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.associations": {
+    "*.ghosttext": "markdown",
+    "*.nginx.conf.*": "nginx",
+    "Dockerfile.*": "dockerfile"
+  },
+  "files.exclude": {
+    "**/.next/**": true
+  },
+  "files.insertFinalNewline": true,
+  "files.watcherExclude": {
+    "**/.ammonite": true,
+    "**/.bloop": true,
+    "**/.metals": true
+  },
+  "formattingToggle.affects": [
+    "formatOnSave"
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "ini": true,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false,
+    "yaml": false
+  },
+  "githubIssues.createIssueTriggers": [],
+  "go.alternateTools": {
+    "go": "/opt/homebrew/bin/go",
+    "go-langserver": "gopls"
+  },
+  "go.languageServerExperimentalFeatures": {
+    "autoComplete": true,
+    "format": true
+  },
+  "go.lintFlags": [
+    "--fast"
+  ],
+  "go.lintTool": "golangci-lint",
+  "go.testFlags": [
+    "-v",
+    "-count=1",
+    "-timeout=120s"
+  ],
+  "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    "ui.completion.usePlaceholders": false,
+    "ui.semanticTokens": true
+  },
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W10sXCJmb3JtYXRXaWR0aFwiOlwiMjQwXCIsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
+  "hediet.vscode-drawio.theme": "min",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "renovate.json"
+      ],
+      "url": "https://raw.githubusercontent.com/renovatebot/renovate/master/renovate-schema.json"
+    },
+    {
+      "fileMatch": [
+        "tslint.json"
+      ],
+      "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
+    }
+  ],
+  "launch": {
+    "configurations": [
+      {
+        "args": [],
+        "askParameters": true,
+        "name": "Debug current file with rdbg",
+        "request": "launch",
+        "script": "${file}",
+        "type": "rdbg",
+        "useTerminal": true
+      },
+      {
+        "args": [],
+        "askParameters": false,
+        "command": "rspec",
+        "name": "Debug current test with rdbg",
+        "request": "launch",
+        "script": "${file}",
+        "type": "rdbg"
+      },
+      {
+        "name": "Attach with rdbg",
+        "request": "attach",
+        "type": "rdbg"
+      },
+      {
+        "console": "integratedTerminal",
+        "justMyCode": true,
+        "name": "Python: Current File",
+        "program": "${file}",
+        "request": "launch",
+        "type": "python"
+      },
+      {
+        "mode": "auto",
+        "name": "Go: Current File",
+        "program": "${fileDirname}",
+        "request": "launch",
+        "type": "go"
+      }
+    ],
+    "version": "0.2.0"
+  },
+  "leetcode.defaultLanguage": "golang",
+  "leetcode.enableStatusBar": false,
+  "leetcode.filePath": {
+    "default": {
+      "filename": "${id}.${kebab-case-name}.${ext}",
+      "folder": ""
+    }
+  },
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.hint.commentDescription": false,
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.workspaceFolder": "/Users/shibayu36/development/src/github.com/shibayu36/leetcode",
+  "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
+  "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
+  "partialDiff.enableTelemetry": false,
+  "prettier.requireConfig": true,
+  "python.languageServer": "Default",
+  "python.linting.mypyEnabled": true,
+  "redhat.telemetry.enabled": false,
+  "ruby.format": false,
+  "ruby.lint": {
+    "rubocop": false
+  },
+  "ruby.useBundler": false,
+  "ruby.useLanguageServer": true,
+  "rubyLsp.rubyVersionManager": "asdf",
+  "search.exclude": {
+    "**/tsconfig.build.tsbuildinfo": true
+  },
+  "search.searchOnType": true,
+  "settings.cycle": [
+    {
+      "id": "zen",
+      "values": [
         {
-            "fileMatch": [
-                "renovate.json"
-            ],
-            "url": "https://raw.githubusercontent.com/renovatebot/renovate/master/renovate-schema.json"
+          "editor.folding": false,
+          "editor.glyphMargin": false,
+          "workbench.activityBar.location": "hidden"
         },
         {
-            "fileMatch": [
-                "tslint.json"
-            ],
-            "url": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tslint.json"
+          "editor.folding": true,
+          "editor.glyphMargin": true,
+          "workbench.activityBar.location": "side"
         }
-    ],
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "eslint.alwaysShowStatus": true,
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    "eslint.packageManager": "yarn",
-    "files.exclude": {
-        "**/.next/**": true
-    },
-    "eslint.migration.2_x": "off",
-    "files.associations": {
-        "Dockerfile.*": "dockerfile",
-        "*.nginx.conf.*": "nginx",
-        "*.ghosttext": "markdown"
-    },
-    "cSpell.userWords": [
-        "Hatena",
-        "checkstyle",
-        "junit",
-        "kakuyomu",
-        "typecheck"
-    ],
-    "customizeUI.stylesheet": {
-        ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
-    },
-    "search.searchOnType": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "auto-close-tag.SublimeText3Mode": true,
-    "search.exclude": {
-        "**/tsconfig.build.tsbuildinfo": true
-    },
-    "tabnine.experimentalAutoImports": true,
-    "files.watcherExclude": {
-        "**/.ammonite": true,
-        "**/.bloop": true,
-        "**/.metals": true
-    },
-    "zentabs.maximumOpenedTabs": 30,
-    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W10sXCJmb3JtYXRXaWR0aFwiOlwiMjQwXCIsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
-    "hediet.vscode-drawio.theme": "min",
-    "prettier.requireConfig": true,
-    "githubIssues.createIssueTriggers": [],
-    "emacs-mcx.useMetaPrefixMacCmd": true,
-    "python.languageServer": "Default",
-    "typescript.suggest.autoImports": false,
-    "openjunk.junkDirectory": "/Users/shibayu36/Dropbox/development/junk",
-    "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
-    "emacs-mcx.cursorMoveOnFindWidget": true,
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "go.toolsManagement.autoUpdate": true,
-    "textlint.configPath": "~/.textlintrc",
-    "textlint.run": "onSave",
-    "window.titleBarStyle": "native",
-    "leetcode.defaultLanguage": "golang",
-    "leetcode.enableStatusBar": false,
-    "leetcode.workspaceFolder": "/Users/shibayu36/development/src/github.com/shibayu36/leetcode",
-    "leetcode.hint.commandShortcut": false,
-    "leetcode.hint.configWebviewMarkdown": false,
-    "leetcode.filePath": {
-        "default": {
-            "folder": "",
-            "filename": "${id}.${kebab-case-name}.${ext}"
-        }
-    },
-    "leetcode.hint.commentDescription": false,
-    "settings.cycle": [
-        {
-            "id": "zen",
-            "values": [
-                {
-                    "editor.folding": false,
-                    "editor.glyphMargin": false,
-                    "workbench.activityBar.location": "hidden"
-                },
-                {
-                    "editor.folding": true,
-                    "editor.glyphMargin": true,
-                    "workbench.activityBar.location": "side"
-                }
-            ]
-        }
-    ],
-    "[go]": {
-        "editor.snippetSuggestions": "none",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
-        }
-    },
-    "[javascript]": {
-        "editor.tabSize": 2
-    },
-    "[typescript]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[graphql]": {
-        "editor.tabSize": 2,
-        "editor.formatOnSave": false
-    },
-    "[typescriptreact]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.tabSize": 2
-    },
-    "[github-actions-workflow]": {
-        "editor.tabSize": 2
-    },
-    "[markdown]": {
-        "editor.formatOnSave": false
-    },
-    "[json]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[sql]": {
-        "editor.formatOnSave": false
-    },
-    "ruby.useLanguageServer": true,
-    "ruby.useBundler": false,
-    "ruby.format": false,
-    "ruby.lint": {
-        "rubocop": false
-    },
-    "rubyLsp.rubyVersionManager": "asdf",
-    "solargraph.formatting": true,
-    "solargraph.diagnostics": true,
-    "solargraph.logLevel": "debug",
-    "[ruby]": {
-        "editor.defaultFormatter": "castwide.solargraph",
-        "editor.formatOnSave": true,
-        "editor.tabSize": 2
-    },
-    "[slim]": {
-        "editor.tabSize": 2
-    },
-    "[haml]": {
-        "editor.tabSize": 2
-    },
-    "ctags": {
-        "executePath": "/Users/shibayu36/.anyenv/envs/rbenv/shims/ripper-tags",
-        "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/",
-        "fileName": ".tags"
-    },
-    "redhat.telemetry.enabled": false,
-    "sync.quietSync": true,
-    "emmet.includeLanguages": {
-        "erb": "html"
-    },
-    "beautify.language": {
-        "html": [
-            "htm",
-            "html",
-            "erb"
-        ]
-    },
-    "editor.bracketPairColorization.enabled": true,
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "yaml": false,
-        "ini": true
-    },
-    "code-runner.runInTerminal": true,
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "type": "rdbg",
-                "name": "Debug current file with rdbg",
-                "request": "launch",
-                "script": "${file}",
-                "args": [],
-                "askParameters": true,
-                "useTerminal": true
-            },
-            {
-                "type": "rdbg",
-                "name": "Debug current test with rdbg",
-                "request": "launch",
-                "command": "rspec",
-                "script": "${file}",
-                "args": [],
-                "askParameters": false
-            },
-            {
-                "type": "rdbg",
-                "name": "Attach with rdbg",
-                "request": "attach"
-            },
-            {
-                "name": "Python: Current File",
-                "type": "python",
-                "request": "launch",
-                "program": "${file}",
-                "console": "integratedTerminal",
-                "justMyCode": true
-            },
-            {
-                "name": "Go: Current File",
-                "type": "go",
-                "request": "launch",
-                "mode": "auto",
-                "program": "${fileDirname}"
-            }
-        ]
-    },
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "partialDiff.enableTelemetry": false,
-    "python.linting.mypyEnabled": true,
-    "commentTranslate.targetLanguage": "ja",
-    "commentTranslate.multiLineMerge": true,
-    "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1"
-    },
-    "workbench.colorTheme": "Default Dark+"
+      ]
+    }
+  ],
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.logLevel": "debug",
+  "sync.autoUpload": true,
+  "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
+  "sync.quietSync": true,
+  "tabnine.experimentalAutoImports": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "textlint.configPath": "~/.textlintrc",
+  "textlint.run": "onSave",
+  "typescript.suggest.autoImports": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
+  "window.titleBarStyle": "native",
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorCustomizations": {
+    "[Default Dark+]": {
+      "editor.findMatchBorder": "#FDFF0C"
+    }
+  },
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.list.keyboardNavigation": "filter",
+  "zentabs.maximumOpenedTabs": 30,
+  "cursor.chat.alwaysSearchWeb": true,
+  "SQL-Formatter-VSCode.expressionWidth": 80
 }
