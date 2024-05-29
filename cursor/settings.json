@@ -1,4 +1,5 @@
 {
+  "SQL-Formatter-VSCode.expressionWidth": 80,
   "[github-actions-workflow]": {
     "editor.tabSize": 2
   },
@@ -326,5 +327,5 @@
   },
   "workbench.list.keyboardNavigation": "filter",
   "zentabs.maximumOpenedTabs": 30,
-  "SQL-Formatter-VSCode.expressionWidth": 80
+  "prisma.showPrismaDataPlatformNotification": false
 }
