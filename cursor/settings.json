@@ -83,11 +83,13 @@
     "fileName": ".tags",
     "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/"
   },
+  "cursor.chat.alwaysSearchWeb": true,
   "cursor.cpp.disabledLanguages": [
     "markdown",
     "plaintext",
     "scminput",
-    "yaml"
+    "yaml",
+    "magit"
   ],
   "customizeUI.stylesheet": {
     ".quick-input-widget": "width: 1000px !important; left: calc(50% - 200px);"
@@ -321,6 +323,5 @@
   },
   "workbench.list.keyboardNavigation": "filter",
   "zentabs.maximumOpenedTabs": 30,
-  "cursor.chat.alwaysSearchWeb": true,
   "SQL-Formatter-VSCode.expressionWidth": 80
 }
