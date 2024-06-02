@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pattern=$1
+
+file=$(git grep -C 10 -n --recurse-submodule --color=always "$pattern" | fzf --ansi | sed 's/-/:/g' | cut -d: -f1-2)
+
+if [ -n "$file" ]; then
+    cursor --goto $file
+fi
