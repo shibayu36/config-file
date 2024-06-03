@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file=$(git grep -n --recurse-submodule --color=always $@ | fzf --ansi | sed 's/-/:/g' | cut -d: -f1-2)
+file=$(git grep -n --recurse-submodule --color=always $@ | fzf --ansi | sed -E 's/-(\d+)-/:\1:/' | cut -d: -f1-2)
 
 if [ -n "$file" ]; then
     cursor --goto $file
