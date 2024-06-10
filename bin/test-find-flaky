@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 for i in {1..100}; do
-  go test -timeout 30s -v -count=1 $@
+  $@
   if [ $? -ne 0 ]; then
     echo "Test failed on iteration $i. Stopping the loop."
     break
