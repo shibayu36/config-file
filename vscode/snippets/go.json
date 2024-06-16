@@ -12,7 +12,14 @@
 	"dump": {
 		"prefix": "dump",
 		"body": [
-			"spew.Dump($0)"
+			"scs := spew.ConfigState{",
+			"\tIndent:                  \"    \",",
+			"\tDisablePointerAddresses: true,",
+			"\tDisableCapacities:       true,",
+			"\tSortKeys:                true,",
+			"\tSpewKeys:                true,",
+			"}",
+			"scs.Dump($0)"
 		]
 	},
 	"t.Run": {
