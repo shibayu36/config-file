@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-file=$(git grep -n --recurse-submodule --color=always $@ | fzf --ansi | sed -E 's/-(\d+)-/:\1:/' | cut -d: -f1-2)
+file=$(
+    git grep -n --recurse-submodule --color=always $@ |
+    fzf --ansi |
+    # replace - with : for line numbers
+    sed -E 's/-([0-9]+)-/:\1:/' |
+    # cut the file path and line number
+    cut -d: -f1-2
+)
 
 if [ -n "$file" ]; then
     cursor --goto $file
