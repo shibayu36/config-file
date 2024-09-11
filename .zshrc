@@ -176,6 +176,7 @@ alias gst='git st'
 alias gch='git cherry -v'
 alias gg='git grep -H --break -n --recurse-submodule'
 alias ggg='git grep -H --break -C 5 -n --recurse-submodule'
+alias gggg='git-grep-fzf'
 
 alias P='percol --match-method migemo'
 
