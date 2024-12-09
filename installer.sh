@@ -81,6 +81,7 @@ brew install findutils
 brew install protobuf
 brew install git-lfs
 brew install starship
+brew install jordanbaird-ice
 
 # brew install helm
 # helm plugin install https://github.com/jkroepke/helm-secrets
@@ -103,7 +104,6 @@ brew install --cask docker
 # brew install --cask clipy
 brew install --cask istat-menus
 brew install --cask authy
-brew install --cask bartender
 # brew install --cask postman
 brew install --cask tableplus
 brew install --cask steam
