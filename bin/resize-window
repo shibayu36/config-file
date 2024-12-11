@@ -1,0 +1,13 @@
+#!/bin/bash
+
+APP_NAME=$1
+WIDTH=$2
+HEIGHT=$3
+
+osascript \
+-e "set theSize to {$WIDTH, $HEIGHT}" \
+-e 'tell application "System Events"' \
+-e "    tell process \"$APP_NAME\"" \
+-e '        set size of every window to theSize' \
+-e '    end tell' \
+-e 'end tell'
