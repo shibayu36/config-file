@@ -331,5 +331,8 @@
   "lldb.library": "/Applications/Xcode-15.0.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
   "glTF.Validation.maxIssues": 2000,
-  "editor.find.seedSearchStringFromSelection": "selection"
+  "editor.find.seedSearchStringFromSelection": "selection",
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "githubPullRequests.commentExpandState": "collapseAll",
+  "comments.visible": false,
 }
