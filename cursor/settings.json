@@ -283,13 +283,11 @@
       "values": [
         {
           "editor.folding": false,
-          "editor.glyphMargin": false,
-          "workbench.activityBar.location": "hidden"
+          "editor.glyphMargin": false
         },
         {
           "editor.folding": true,
-          "editor.glyphMargin": true,
-          "workbench.activityBar.location": "side"
+          "editor.glyphMargin": true
         }
       ]
     }
@@ -312,7 +310,6 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
   "window.titleBarStyle": "native",
-  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "[Default Dark+]": {
       "editor.findMatchBorder": "#FDFF0C"
