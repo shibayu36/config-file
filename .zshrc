@@ -114,8 +114,12 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
+# functions/配下の関数を読み込む
+for f in ~/.zsh/functions/*; do
+    source $f
+done
+
 # setting for cdd
-source ~/.zsh/functions/cdd
 function chpwd() {
     _reg_pwd_screennum
 }

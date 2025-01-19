@@ -1,0 +1,29 @@
+# git grepをさらに使いやすくするツール
+#
+# Usage例:
+#   git-grep-extend -i "fuga" --exclude "docs/" --exclude "vendor/"
+function git-grep-extend() {
+    # 検索パターンやオプション
+    local grep_opts=()
+    # 除外パスを格納
+    local exclude_opts=()
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --exclude)
+                # 除外パスを指定できるオプション
+                exclude_opts+=( ":(exclude)$2" )
+                shift 2
+                ;;
+            *)
+                # grepに渡す他のパラメータ(検索パターンやオプション)を格納
+                grep_opts+=( "$1" )
+                shift
+                ;;
+        esac
+    done
+
+    # コマンドをヒストリに追加
+    print -s "git grep ${grep_opts[*]} ${exclude_opts[*]}"
+    git grep "${grep_opts[@]}" "${exclude_opts[@]}"
+}
