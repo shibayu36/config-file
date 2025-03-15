@@ -45,7 +45,7 @@ table_format = ascii
 # fruity.
 # Screenshots at http://mycli.net/syntax
 # Can be further modified in [colors]
-syntax_style = default
+syntax_style = native
 
 # Keybindings: Possible values: emacs, vi.
 # Emacs mode: Ctrl-A is home, Ctrl-E is end. All emacs keybindings are available in the REPL.
