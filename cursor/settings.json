@@ -54,7 +54,8 @@
     "editor.tabSize": 2
   },
   "[yaml]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false
   },
   "alt-editor.args": "-n +{line}:{column} {filename}",
   "alt-editor.binary": "~/bin/emacsclient",
