@@ -69,9 +69,11 @@ export SDKMAN_DIR="/Users/shibayu36/.sdkman"
 export PATH="/opt/homebrew/opt/imagemagick@6/bin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/imagemagick@6/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-# mysql
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@5.7/lib/pkgconfig:$PKG_CONFIG_PATH"
+# mysql8
+export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/mysql@8.4/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/mysql@8.4/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@8.4/lib/pkgconfig"
 
 # postgresql
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
