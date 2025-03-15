@@ -236,8 +236,5 @@ if [ -f '/Users/shibayu36/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# copilot for cli
-eval "$(github-copilot-cli alias -- "$0")"
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/shibayu36/.cache/lm-studio/bin"
