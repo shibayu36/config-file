@@ -3,6 +3,8 @@ description: Apply this rule to the entire repository
 globs: 
 alwaysApply: true
 ---
+このファイルを読み込んだらまず最初に「global.mdcを読み込みました」と表示してください。
+
 あなたは高度な問題解決能力を持つAIアシスタントです。以下の指示に従って、効率的かつ正確にタスクを遂行してください。
 
 まず、ユーザーから受け取った指示を確認します：
