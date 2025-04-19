@@ -14,6 +14,9 @@
     "editor.formatOnSave": false,
     "editor.tabSize": 2
   },
+  "[less]": {
+    "editor.formatOnSave": false,
+  },
   "[haml]": {
     "editor.tabSize": 2
   },
@@ -46,7 +49,7 @@
     "editor.tabSize": 2
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.tabSize": 2
   },
   "[typescriptreact]": {
@@ -90,7 +93,6 @@
     "markdown",
     "plaintext",
     "scminput",
-    "yaml",
     "magit"
   ],
   "customizeUI.stylesheet": {
@@ -141,7 +143,8 @@
   "files.associations": {
     "*.ghosttext": "markdown",
     "*.nginx.conf.*": "nginx",
-    "Dockerfile.*": "dockerfile"
+    "Dockerfile.*": "dockerfile",
+    "*.gohtml": "html"
   },
   "files.exclude": {
     "**/.next/**": true
@@ -185,9 +188,15 @@
   "gopls": {
     "ui.completion.usePlaceholders": false,
     "ui.semanticTokens": true,
+    "ui.semanticTokenTypes": {
+      // For Grammars extentions
+      // なぜかこれが効いてなくてui.noSemanticを指定している
+      "string": false,
+      "number": false
+    },
     // For Grammars extentions
     "ui.noSemanticString": true,
-    "ui.noSemanticNumber": true
+    "ui.noSemanticNumber": true,
   },
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W10sXCJmb3JtYXRXaWR0aFwiOlwiMjQwXCIsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
   "hediet.vscode-drawio.theme": "min",
@@ -321,7 +330,8 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter.notebook.ipynb",
+    "git-rebase-todo": "gitlens.rebase"
   },
   "workbench.list.keyboardNavigation": "filter",
   "zentabs.maximumOpenedTabs": 30,
@@ -333,4 +343,6 @@
   "cursor.composer.collapsePaneInputBoxPills": true,
   "githubPullRequests.commentExpandState": "collapseAll",
   "comments.visible": false,
+  "extensions.ignoreRecommendations": true,
+  "cursor.composer.shouldAllowCustomModes": true
 }
