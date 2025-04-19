@@ -82,6 +82,7 @@ brew install protobuf
 brew install git-lfs
 brew install starship
 brew install jordanbaird-ice
+brew install uv
 
 # brew install helm
 # helm plugin install https://github.com/jkroepke/helm-secrets
@@ -113,6 +114,7 @@ brew install --cask deepl
 brew install --cask discord
 brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 brew install --cask git-credential-manager
+brew install --cask claude
 # brew install --cask krisp
 
 # mysqlenv
