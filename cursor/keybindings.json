@@ -598,5 +598,26 @@
     "key": "ctrl+s",
     "command": "actions.find",
     "when": "!findInputFocussed"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  // ターミナルでCtrl+@を扱えるように
+  {
+    "key": "ctrl+[BracketLeft]",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u0000" },
+    "when": "terminalFocus"
   }
 ]
