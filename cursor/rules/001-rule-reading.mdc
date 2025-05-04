@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+どのような.cursor/rules/を読み込んだか把握しながら作業したい。常に読み込んだrulesの名前をリストアップして。
