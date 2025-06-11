@@ -568,5 +568,10 @@
   {
     "key": "ctrl+x ctrl+h",
     "command": "editor.action.showDefinitionPreviewHover"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-emacs-mcx.transformToLowercase",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
   }
 ]

@@ -2,9 +2,9 @@
   // 基本設定
   "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
   "editor.minimap.enabled": false, // minimap表示非表示
-  "editor.folding": false, // foldingアイコンの表示非表示
-  "editor.glyphMargin": false, // デバッガ領域の表示非表示
-  "workbench.activityBar.location": "hidden",
+  "editor.folding": true, // foldingアイコンの表示非表示
+  "editor.glyphMargin": true, // デバッガ領域の表示非表示
+  "workbench.activityBar.location": "default",
   "editor.lineNumbers": "off", // 行数表示
   "editor.wordWrap": "on", // 折り返し表示
   "files.insertFinalNewline": true, // 行末に改行自動入力
@@ -177,7 +177,7 @@
     "editor.snippetSuggestions": "none",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[javascript]": {
@@ -210,6 +210,9 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[sql]": {
+    "editor.formatOnSave": false
   },
   // 基本全てlanguage serverを経由する
   "ruby.useLanguageServer": true,
