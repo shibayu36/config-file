@@ -6,6 +6,8 @@
 	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>10E9D630-B729-4A20-8335-E81976777136</string>
+	<key>GlobalKeyMap</key>
+	<dict/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>Hotkey</key>
@@ -300,7 +302,7 @@
 			<key>Disable Window Resizing</key>
 			<true/>
 			<key>Flashing Bell</key>
-			<false/>
+			<true/>
 			<key>Foreground Color</key>
 			<dict>
 				<key>Alpha Component</key>

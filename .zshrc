@@ -241,3 +241,6 @@ export PATH="$PATH:/Users/shibayu36/.cache/lm-studio/bin"
 
 # Added by Windsurf
 export PATH="/Users/shibayu36/.codeium/windsurf/bin:$PATH"
+
+# Claude Code
+alias claude="/Users/shibayu36/.claude/local/claude"

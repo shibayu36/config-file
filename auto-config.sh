@@ -35,6 +35,8 @@ ln -s ~/development/config-file/cursor/settings.json ~/Library/Application\ Supp
 ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Cursor/User/
 ln -s ~/development/config-file/.myclirc ~/
+ln -s ~/development/config-file/.claude/CLAUDE.md ~/.claude/
+ln -s ~/development/config-file/.claude/settings.json ~/.claude/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
