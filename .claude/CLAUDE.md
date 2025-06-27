@@ -29,3 +29,4 @@ These rules apply to all projects and all file edits.
 
 ## Bashコマンド
 - rmはインタラクティブにする設定をしているため、削除するときはrm -fを使うこと
+- ファイル内容の検索をしたい場合、git grepを用いること。もしgitレポジトリでない場合、ripgrepを用いること
