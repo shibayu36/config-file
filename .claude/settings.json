@@ -2,11 +2,15 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
+      "Read(*)",
+
       "Bash(rg:*)",
       "Bash(git grep:*)",
+
       "Bash(go test:*)",
       "Bash(go build:*)",
       "Bash(go mod tidy:*)",
+
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(head:*)",
@@ -16,13 +20,16 @@
       "Bash(sort:*)",
       "Bash(uniq:*)",
       "Bash(wc:*)",
+
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
+
       "Bash(git ls-tree:*)",
       "Bash(git diff:*)",
       "Bash(git show:*)",
       "Bash(git log:*)",
-      "Read(*)"
+      "Bash(git status:*)"
+
     ],
     "deny": [
       "Bash(sudo:*)",
