@@ -3,6 +3,7 @@
   "permissions": {
     "allow": [
       "Read(*)",
+      "Search(*)",
 
       "Bash(rg:*)",
       "Bash(git grep:*)",
@@ -10,6 +11,11 @@
       "Bash(go test:*)",
       "Bash(go build:*)",
       "Bash(go mod tidy:*)",
+      "Bash(go mod graph:*)",
+      "Bash(go mod why:*)",
+      "Bash(go list:*)",
+
+      "Bash(npm outdated:*)",
 
       "Bash(ls:*)",
       "Bash(find:*)",
@@ -28,8 +34,9 @@
       "Bash(git diff:*)",
       "Bash(git show:*)",
       "Bash(git log:*)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
 
+      "WebFetch(domain:github.com)"
     ],
     "deny": [
       "Bash(sudo:*)",
