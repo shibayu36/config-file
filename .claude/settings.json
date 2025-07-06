@@ -26,6 +26,8 @@
       "Bash(sort:*)",
       "Bash(uniq:*)",
       "Bash(wc:*)",
+      "Bash(echo:*)",
+      "Bash(tree:*)",
 
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
@@ -35,6 +37,15 @@
       "Bash(git show:*)",
       "Bash(git log:*)",
       "Bash(git status:*)",
+      "Bash(git mv:*)",
+      "Bash(git add:*)",
+
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(ln:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
 
       "WebFetch(domain:github.com)"
     ],
