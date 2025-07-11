@@ -47,7 +47,9 @@
       "Bash(chmod:*)",
       "Bash(chown:*)",
 
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:blog.shibayu36.org)"
     ],
     "deny": [
       "Bash(sudo:*)",
