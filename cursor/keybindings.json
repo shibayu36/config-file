@@ -150,6 +150,16 @@
     "when": "editorTextFocus && resourceLangId == go"
   },
   {
+    "key": "ctrl+c t",
+    "command": "pytest-runner.run-test",
+    "when": "editorTextFocus && resourceLangId == python"
+  },
+  {
+    "key": "ctrl+c ctrl+t",
+    "command": "pytest-runner.run-module-test",
+    "when": "editorTextFocus && resourceLangId == python"
+  },
+  {
     "key": "ctrl+c ctrl+e",
     "command": "alt-editor.openFile",
     "when": "editorTextFocus"
