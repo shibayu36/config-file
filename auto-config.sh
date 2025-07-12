@@ -37,6 +37,7 @@ ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/C
 ln -s ~/development/config-file/.myclirc ~/
 ln -s ~/development/config-file/.claude/CLAUDE.md ~/.claude/
 ln -s ~/development/config-file/.claude/settings.json ~/.claude/
+ln -s ~/development/config-file/.claude/commands ~/.claude/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
