@@ -26,13 +26,7 @@
 ## TDDやテスト実装を行うときの指針
 TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）の推奨する進め方に従って。
 
-## Code Formatting Rules
-
-- Ensure no newline at end of file
-- Blank lines are good, but don't leave any whitespace on them.  Don't leave trailing whitespace at the end of lines.
-
-These rules apply to all projects and all file edits.
-
 ## Bashコマンド
 - rmはインタラクティブにする設定をしているため、削除するときはrm -fを使うこと
 - ファイル内容の検索をしたい場合、git grepを用いること。もしgitレポジトリでない場合、ripgrepを用いること
+- GitHubの情報を取得するときは、ghコマンドを用いる
