@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat ~/.claude.json | jq '
+  { user: (.mcpServers // {}) }
+  + (
+    .projects
+    | with_entries(select(.value.mcpServers and (.value.mcpServers | length > 0)))
+    | map_values(.mcpServers)
+  )
+'
