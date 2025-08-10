@@ -1,22 +1,22 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "MAX_MCP_OUTPUT_TOKENS": "50000"
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Read(*)",
       "Search(*)",
-
       "Bash(rg:*)",
       "Bash(git grep:*)",
-
       "Bash(go test:*)",
       "Bash(go build:*)",
       "Bash(go mod tidy:*)",
       "Bash(go mod graph:*)",
       "Bash(go mod why:*)",
       "Bash(go list:*)",
-
       "Bash(npm outdated:*)",
-
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(head:*)",
@@ -28,10 +28,9 @@
       "Bash(wc:*)",
       "Bash(echo:*)",
       "Bash(tree:*)",
-
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
-
+      "Bash(gh issue view:*)",
       "Bash(git ls-tree:*)",
       "Bash(git diff:*)",
       "Bash(git show:*)",
@@ -39,17 +38,20 @@
       "Bash(git status:*)",
       "Bash(git mv:*)",
       "Bash(git add:*)",
-
       "Bash(mkdir:*)",
       "Bash(cp:*)",
       "Bash(mv:*)",
       "Bash(ln:*)",
       "Bash(chmod:*)",
       "Bash(chown:*)",
-
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:blog.shibayu36.org)"
+      "WebFetch(domain:blog.shibayu36.org)",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__find_symbol",
+      "mcp__serena__list_dir",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__find_referencing_symbols"
     ],
     "deny": [
       "Bash(sudo:*)",
@@ -59,9 +61,12 @@
       "Read(id_rsa)",
       "Read(id_dsa)",
       "Read(id_ed25519)"
+    ],
+    "additionalDirectories": [
+      "~/Dropbox/obsidian"
     ]
   },
-  "env": {
-    "MAX_MCP_OUTPUT_TOKENS": "50000"
+  "feedbackSurveyState": {
+    "lastShownTime": 1754091010862
   }
 }
