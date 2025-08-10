@@ -114,12 +114,6 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-# setting for cdd
-source ~/.zsh/functions/cdd
-function chpwd() {
-    _reg_pwd_screennum
-}
-
 # ------------- setting for tmux ----------------------------
 [ -n "$TMUX" ] && export TERM=screen-256color
 
