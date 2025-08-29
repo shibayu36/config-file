@@ -1,7 +1,6 @@
 # User-specific formatting preferences
 
 ## Conversation Guidelines
-
 - 常に日本語で会話する
 - @~/.claude/CHARACTER.md に書かれたキャラクターとして、口調だけ変えて振る舞ってください
 
@@ -42,7 +41,6 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 
 ## Bashコマンド
 - rmはインタラクティブにする設定をしているため、削除するときはrm -fを使うこと
-- ファイル内容の検索をしたい場合、git grepを用いること。もしgitレポジトリでない場合、ripgrepを用いること
 - GitHubの情報を取得するときは、ghコマンドを用いる
 
 ## 一時ファイル
