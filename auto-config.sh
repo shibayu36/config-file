@@ -40,6 +40,7 @@ ln -s ~/development/config-file/.claude/settings.json ~/.claude/
 ln -s ~/development/config-file/.claude/commands ~/.claude/
 ln -s ~/development/config-file/.claude/scripts ~/.claude/
 ln -s ~/development/config-file/.claude/agents ~/.claude/
+ln -s ~/development/config-file/deck ~/.config/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
