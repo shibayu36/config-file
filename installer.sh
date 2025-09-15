@@ -19,6 +19,7 @@ brew install openssl
 brew install shared-mime-info
 brew install libjpeg
 brew install little-cms2
+brew install pam-reattach
 
 brew install --cask raycast
 brew install --cask karabiner-elements
