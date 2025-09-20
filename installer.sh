@@ -74,6 +74,8 @@ brew install sops
 
 brew install golangci-lint
 
+brew install 1password-cli
+
 brew install --cask fig
 brew install --cask obsidian
 brew install --cask aws-vault
