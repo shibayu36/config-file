@@ -51,3 +51,6 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 
 ## Slackから情報を取得する場合
 - Slackから情報を収集して返す時、実際のログも見れるようにしたい。permalinkも一緒に返信に含めるようにしてください
+## JIRAから情報を取得する場合
+- CLIの `jira` を活用すること
+- チケット情報取得は `jira issue view <JIRA number>` を活用
