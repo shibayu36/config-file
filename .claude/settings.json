@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "includeCoAuthoredBy": false,
   "env": {
     "MAX_MCP_OUTPUT_TOKENS": "50000"
   },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Read(*)",
@@ -70,11 +70,36 @@
       "~/Dropbox/obsidian"
     ]
   },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754091010862
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message '許可待ち' -sound Sosumi -appIcon 'https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c33859cc6cd903686c66a2_apple-touch-icon.png'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/notify-end.sh"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/scripts/statusline.js"
+  },
+  "alwaysThinkingEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754091010862
   }
 }
