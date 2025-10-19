@@ -1,148 +1,272 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "control-英数の無効化",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "japanese_eisuu",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "control-かなの無効化",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "japanese_kana",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change ¥ to Alt+¥",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "international3" },
-                                "to": [
-                                    {
-                                        "key_code": "international3",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Alt+¥ to ¥",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "international3",
-                                    "modifiers": { "mandatory": ["option"] }
-                                },
-                                "to": [{ "key_code": "international3" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "open Google Chrome by Option+c",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "c", "modifiers": { "mandatory": ["option"] } },
-                                "to": [ { "shell_command": "open -a 'Google Chrome'" } ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "open Cursor by Option+v",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "v", "modifiers": { "mandatory": ["option"] } },
-                                "to": [ { "shell_command": "open -a 'Cursor'" } ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "open Obsidian by Option+n",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "n", "modifiers": { "mandatory": ["option"] } },
-                                "to": [ { "shell_command": "open -a 'Obsidian'" } ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "open Finder by Option+a",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "a", "modifiers": { "mandatory": ["option"] } },
-                                "to": [ { "shell_command": "open -a 'Finder'" } ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 337,
-                        "vendor_id": 2131
-                    },
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "grave_accent_and_tilde" },
-                            "to": [{ "key_code": "escape" }]
-                        }
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "control-英数の無効化",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "japanese_eisuu",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
                     ]
+                  }
+                },
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "control-かなの無効化",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "japanese_kana",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  }
+                },
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Change ¥ to Alt+¥",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "international3"
+                },
+                "to": [
+                  {
+                    "key_code": "international3",
+                    "modifiers": [
+                      "option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Change Alt+¥ to ¥",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "international3",
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "international3"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "open Google Chrome by Option+c",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Google Chrome'"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "open Cursor by Option+v",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "v",
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Cursor'"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "open Obsidian by Option+n",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Obsidian'"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "open Finder by Option+a",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Finder'"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Command+1 to Command+F1",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f1",
+                    "modifiers": [
+                      "command"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "product_id": 337,
+            "vendor_id": 2131
+          },
+          "manipulate_caps_lock_led": false,
+          "simple_modifications": [
+            {
+              "from": {
+                "key_code": "grave_accent_and_tilde"
+              },
+              "to": [
+                {
+                  "key_code": "escape"
                 }
-            ],
-            "fn_function_keys": [
-                {
-                    "from": { "key_code": "f3" },
-                    "to": [{ "key_code": "mission_control" }]
-                },
-                {
-                    "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "launchpad" }]
-                },
-                {
-                    "from": { "key_code": "f5" },
-                    "to": [{ "key_code": "illumination_decrement" }]
-                },
-                {
-                    "from": { "key_code": "f6" },
-                    "to": [{ "key_code": "illumination_increment" }]
-                },
-                {
-                    "from": { "key_code": "f9" },
-                    "to": [{ "consumer_key_code": "fastforward" }]
-                }
-            ],
-            "name": "Default profile",
-            "selected": true,
-            "virtual_hid_keyboard": {
-                "caps_lock_delay_milliseconds": 0,
-                "country_code": 1,
-                "keyboard_type": "jis",
-                "keyboard_type_v2": "jis"
+              ]
             }
+          ]
         }
-    ]
+      ],
+      "fn_function_keys": [
+        {
+          "from": {
+            "key_code": "f3"
+          },
+          "to": [
+            {
+              "key_code": "mission_control"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f4"
+          },
+          "to": [
+            {
+              "key_code": "launchpad"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f5"
+          },
+          "to": [
+            {
+              "key_code": "illumination_decrement"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f6"
+          },
+          "to": [
+            {
+              "key_code": "illumination_increment"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f9"
+          },
+          "to": [
+            {
+              "consumer_key_code": "fastforward"
+            }
+          ]
+        }
+      ],
+      "name": "Default profile",
+      "selected": true,
+      "virtual_hid_keyboard": {
+        "caps_lock_delay_milliseconds": 0,
+        "country_code": 1,
+        "keyboard_type": "jis",
+        "keyboard_type_v2": "jis"
+      }
+    }
+  ]
 }
