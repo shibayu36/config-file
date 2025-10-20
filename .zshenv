@@ -55,9 +55,6 @@ export PATH="/usr/local/opt/texinfo/bin:$PATH"
 # cheat
 export CHEATPATH="/Users/shibayu36/.cheat-private:$CHEATPATH"
 
-# GCP
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/shibayu36/.config/gcloud/application_default_credentials.json"
-
 # AWS CLI v1
 # export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
