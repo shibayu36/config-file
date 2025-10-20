@@ -238,3 +238,6 @@ export PATH="/Users/shibayu36/.codeium/windsurf/bin:$PATH"
 
 # Claude Code
 export PATH="/Users/shibayu36/.claude/local:$PATH"
+
+# op
+source /Users/shibayu36/.config/op/plugins.sh
