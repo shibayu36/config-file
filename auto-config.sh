@@ -43,6 +43,7 @@ ln -s ~/development/config-file/.claude/agents ~/.claude/
 ln -s ~/development/config-file/.codex/config.toml ~/.codex/
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/deck ~/.config/
+ln -s ~/development/config-file/.coderabbit.yml ~/
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
