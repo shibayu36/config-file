@@ -364,7 +364,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.openai\\.atlas\\.web$"
+                      "^com\\.openai\\.atlas$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -393,7 +393,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.openai\\.atlas\\.web$"
+                      "^com\\.openai\\.atlas$"
                     ],
                     "type": "frontmost_application_if"
                   }
