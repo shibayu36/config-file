@@ -89,7 +89,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "osascript -e 'tell application \"System Events\"' -e 'set frontmost of process \"ChatGPT Atlas\" to true' -e 'end tell'"
+                    "shell_command": "open -a 'Google Chrome'"
                   }
                 ],
                 "type": "basic"
