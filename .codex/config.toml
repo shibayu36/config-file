@@ -5,4 +5,4 @@ model = "gpt-5-codex"
 model_reasoning_effort = "high"
 
 [tools]
-web_search = true
+web_search_request = true
