@@ -629,5 +629,15 @@
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "\u0000" },
     "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+y",
+    "command": "emacs-mcx.yankPop",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly && !inlineDiffs.activeEditorWithDiffs"
+  },
+  {
+    "key": "cmd+y",
+    "command": "-emacs-mcx.yankPop",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
   }
 ]
