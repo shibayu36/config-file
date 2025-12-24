@@ -1,0 +1,13 @@
+breaks: true
+defaults:
+  - if: page == 1
+    layout: top
+  - if: topHeadingLevel == 3
+    layout: big_text
+  - if: titles.size() == 0 && subtitles.size() == 0 && bodies.size() == 0
+    layout: empty
+  - if: titles.size() > 0 && subtitles.size() == 0 && bodies.size() == 0
+    layout: title
+  # Default layout for all other pages
+  - if: true
+    layout: title_body
