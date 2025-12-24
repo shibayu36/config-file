@@ -46,9 +46,6 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 ## 一時ファイル
 - 開発の過程で生成した一時ファイルはプロジェクト以下の `.claude/tmp` 以下に保存してください
 
-## Serena利用について
-- symbol検索を行うときは、symbol名を推測せずに、必ずget_symbols_overviewを実行して正しいsymbol名を取得すること
-
 ## Slackから情報を取得する場合
 - Slackから情報を収集して返す時、実際のログも見れるようにしたい。permalinkも一緒に返信に含めるようにしてください
 
