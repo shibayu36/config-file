@@ -72,7 +72,7 @@
       "Read(id_ed25519)"
     ],
     "additionalDirectories": [
-      "~/Dropbox/obsidian"
+      "~/obsidian"
     ]
   },
   "hooks": {
