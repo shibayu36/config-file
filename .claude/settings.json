@@ -33,9 +33,12 @@
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
       "Bash(gh pr list:*)",
+      "Bash(gh pr checks:*)",
       "Bash(gh issue view:*)",
       "Bash(gh search:*)",
       "Bash(gh run view:*)",
+      "Bash(gh search:*)",
+      "Bash(gh run list:*)",
       "Bash(git ls-tree:*)",
       "Bash(git diff:*)",
       "Bash(git show:*)",
@@ -103,7 +106,10 @@
     "type": "command",
     "command": "~/.claude/scripts/statusline.js"
   },
-  "alwaysThinkingEnabled": false,
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
   }
