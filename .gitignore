@@ -29,3 +29,5 @@ ensime.sbt
 /vscode/workspaces/mackerel.code-workspace
 /.vscode-powertools/*.log
 .metals/
+/.claude/tmp/
+/.claude/settings.local.json
