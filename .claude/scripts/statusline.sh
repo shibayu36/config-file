@@ -36,7 +36,7 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
-GRAY='\033[0;90m'
+GRAY='\033[0;96m'
 NC='\033[0m' # No Color
 
 # Change to the current directory to get git info
