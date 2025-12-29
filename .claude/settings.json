@@ -104,11 +104,12 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/scripts/statusline.js"
+    "command": "~/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
