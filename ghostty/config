@@ -48,6 +48,9 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+font-family = "Hack Nerd Font Mono"
+font-family = "Hiragino Kaku Gothic ProN"
+
 window-width = 190
 window-height = 50
 
