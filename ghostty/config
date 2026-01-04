@@ -55,5 +55,7 @@ font-size = 14
 window-width = 190
 window-height = 50
 
+minimum-contrast = 1.3
+
 keybind = global:ctrl+2=toggle_visibility
 keybind = shift+enter=text:\n
