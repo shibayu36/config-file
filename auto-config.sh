@@ -44,6 +44,7 @@ ln -s ~/development/config-file/.codex/config.toml ~/.codex/
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
+ln -s ~/development/config-file/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
