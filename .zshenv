@@ -88,3 +88,6 @@ export PATH="/opt/homebrew/opt/gettext/bin:$PATH"
 # dotnet
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
+
+# ghostty
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"

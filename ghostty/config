@@ -55,11 +55,14 @@ font-size = 14
 window-width = 190
 window-height = 50
 
+# 背景と文字が同化する場合に見えるように
 minimum-contrast = 1.3
 
 background = #002b36
 palette = 0=#073642
 palette = 8=#002b36
 
+# Ctrl+2で表示・非表示
 keybind = global:ctrl+2=toggle_visibility
+# Shift+Enterで改行を送る(Claude Codeなど用)
 keybind = shift+enter=text:\n
