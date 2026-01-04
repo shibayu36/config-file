@@ -57,5 +57,9 @@ window-height = 50
 
 minimum-contrast = 1.3
 
+background = #002b36
+palette = 0=#073642
+palette = 8=#002b36
+
 keybind = global:ctrl+2=toggle_visibility
 keybind = shift+enter=text:\n
