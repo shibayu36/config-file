@@ -21,6 +21,8 @@ brew install libjpeg
 brew install little-cms2
 brew install pam-reattach
 
+brew install --cask homebrew/cask-fonts/font-hack-nerd-font
+
 brew install --cask raycast
 brew install --cask karabiner-elements
 
@@ -90,6 +92,5 @@ brew install --cask asana
 brew install --cask realforce
 brew install --cask deepl
 brew install --cask discord
-brew install --cask homebrew/cask-fonts/font-hack-nerd-font
 brew install --cask git-credential-manager
 brew install --cask claude
