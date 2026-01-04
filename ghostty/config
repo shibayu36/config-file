@@ -52,3 +52,4 @@ window-width = 190
 window-height = 50
 
 keybind = global:ctrl+2=toggle_visibility
+keybind = shift+enter=text:\n
