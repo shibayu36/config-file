@@ -62,6 +62,8 @@ background = #002b36
 palette = 0=#073642
 palette = 8=#002b36
 
+# macOSのOptionキーをAltキーとして扱う
+macos-option-as-alt = true
 # Ctrl+2で表示・非表示
 keybind = global:ctrl+2=toggle_visibility
 # Shift+Enterで改行を送る(Claude Codeなど用)
