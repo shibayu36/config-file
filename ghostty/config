@@ -63,8 +63,11 @@ palette = 0=#073642
 palette = 8=#002b36
 
 # macOSのOptionキーをAltキーとして扱う
+# Claude CodeなどのツールでAltを使いやすくなる
 macos-option-as-alt = true
 # Ctrl+2で表示・非表示
 keybind = global:ctrl+2=toggle_visibility
 # Shift+Enterで改行を送る(Claude Codeなど用)
 keybind = shift+enter=text:\n
+# option as altの影響でkarabinarでの切り替えが使いづらい。こちらで設定
+keybind = ¥=text:\\
