@@ -18,6 +18,8 @@
       "Bash(go mod why:*)",
       "Bash(go list:*)",
       "Bash(go doc:*)",
+      "Bash(go get:*)",
+      "Bash(gopls references:*)",
       "Bash(npm outdated:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
@@ -30,6 +32,7 @@
       "Bash(wc:*)",
       "Bash(echo:*)",
       "Bash(tree:*)",
+      "Bash(gh issue list:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
       "Bash(gh pr list:*)",
@@ -63,7 +66,9 @@
       "mcp__serena__find_referencing_symbols",
       "mcp__slack-explorer-mcp__search_messages",
       "mcp__slack-explorer-mcp__get_thread_replies",
-      "mcp__slack-explorer-mcp__get_user_profiles"
+      "mcp__slack-explorer-mcp__get_user_profiles",
+      "mcp__slack-explorer-mcp__search_files",
+      "mcp__slack-explorer-mcp__get_canvas_content"
     ],
     "deny": [
       "Bash(sudo:*)",
