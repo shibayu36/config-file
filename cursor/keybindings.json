@@ -639,5 +639,20 @@
     "key": "cmd+y",
     "command": "-emacs-mcx.yankPop",
     "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+v",
+    "command": "-emacs-mcx.scrollDownCommand",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !findInputFocussed && !replaceInputFocussed && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+cmd+v",
+    "command": "-emacs-mcx.scrollOtherWindow",
+    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+cmd+v",
+    "command": "emacs-mcx.scrollDownCommand",
+    "when": "config.emacs-mcx.useMetaPrefixAlt && editorTextFocus && !suggestWidgetVisible"
   }
 ]
