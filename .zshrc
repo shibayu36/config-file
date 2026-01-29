@@ -251,3 +251,7 @@ source /Users/shibayu36/.config/op/plugins.sh
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# git wt
+# 別でgitをwrapしていると壊れるので注意
+eval "$(git wt --init zsh)"
