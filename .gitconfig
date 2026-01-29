@@ -115,3 +115,5 @@
   gpgsign = true
 [coderabbit]
 	machineId = cli/44574cdb0bf04a6180ce480eb3bd511b
+[wt]
+	basedir = .worktrees
