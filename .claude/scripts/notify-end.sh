@@ -29,4 +29,4 @@ terminal-notifier -title 'Claude Code' \
     -message "$MSG" \
     -sound Glass \
     -contentImage 'https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c33859cc6cd903686c66a2_apple-touch-icon.png' \
-    -activate "com.googlecode.iterm2"
+    -activate "com.mitchellh.ghostty"
