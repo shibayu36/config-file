@@ -25,6 +25,7 @@ else
     MSG="Task completed"
 fi
 
+open -g 'raycast://extensions/raycast/raycast/confetti?emojis=💻💻🔥🔥'
 terminal-notifier -title 'Claude Code' \
     -message "$MSG" \
     -sound Glass \
