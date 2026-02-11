@@ -55,6 +55,7 @@
       "Bash(chown:*)",
       "Bash(sed:*)",
       "Bash(gsed:*)",
+      "Bash(awk:*)",
       "Bash(jq:*)",
       "Bash(open:*)",
       "WebFetch(domain:github.com)",
@@ -71,10 +72,12 @@
       "mcp__slack-explorer-mcp__search_files",
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
+    "ask": [
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
+    ],
     "deny": [
       "Bash(sudo:*)",
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)",
       "Read(.env*)",
       "Read(id_rsa)",
       "Read(id_dsa)",
