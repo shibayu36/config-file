@@ -9,17 +9,34 @@ SESSION_DIR=$(basename "$(pwd)")
 # transcript_pathを抽出
 TRANSCRIPT_PATH=$(echo "$INPUT" | jq -r '.transcript_path')
 
-# transcript_pathが存在する場合、最新のassistantメッセージを取得
+# transcript_pathが存在する場合、最新のassistantメッセージから通知テキストを取得
 if [ -f "$TRANSCRIPT_PATH" ]; then
-    # 最後の10行から assistant のメッセージを抽出し、最新のもの（最後）を取得
-    # 改行を削除して60文字に制限
-    MSG=$(tail -10 "$TRANSCRIPT_PATH" | \
-          jq -r 'select(.message.role == "assistant") | .message.content[0].text' | \
-          tail -1 | \
-          tr '\n' ' ' | \
-          cut -c1-60)
+    # Stop hook発火時にはtranscript書き込みが完了していないことがあるため、sleepで待機
+    sleep 1
 
-    # メッセージが取得できない場合のフォールバック
+    # contentのtypeに応じて通知テキストを取得
+    #   text → .text
+    #   tool_use → Bash: .input.description / AskUserQuestion: .input.questions[0].question
+    #              Write/Edit: "Edit: " + file_path
+    #   それ以外 → スキップ
+    MSG=$(tail -30 "$TRANSCRIPT_PATH" | \
+          jq -r '
+            select(.message.role == "assistant") |
+            .message.content[0] |
+            if .type == "text" then
+              .text
+            elif .type == "tool_use" then
+              if .name == "Bash" then (.input.description // empty)
+              elif .name == "AskUserQuestion" then (.input.questions[0].question // empty)
+              elif .name == "Write" then "Edit: " + (.input.file_path // empty)
+              elif .name == "Edit" then "Edit: " + (.input.file_path // empty)
+              else empty
+              end
+            else
+              empty
+            end
+          ' 2>/dev/null | tail -1 | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -c1-100)
+
     MSG=${MSG:-"Task completed"}
 else
     MSG="Task completed"
