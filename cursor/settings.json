@@ -1,7 +1,8 @@
 {
   "SQL-Formatter-VSCode.expressionWidth": 80,
   "[github-actions-workflow]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[go]": {
     "editor.codeActionsOnSave": {
@@ -23,12 +24,13 @@
   "[javascript]": {
     "editor.tabSize": 2
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
-  },
+  // "[json]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //   "editor.tabSize": 2
+  // },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[markdown]": {
     "editor.formatOnSave": false
@@ -90,7 +92,6 @@
   },
   "cursor.chat.alwaysSearchWeb": true,
   "cursor.cpp.disabledLanguages": [
-    "markdown",
     "plaintext",
     "scminput",
     "magit"
@@ -144,7 +145,8 @@
     "*.ghosttext": "markdown",
     "*.nginx.conf.*": "nginx",
     "Dockerfile.*": "dockerfile",
-    "*.gohtml": "html"
+    "*.gohtml": "html",
+    "*.hcl": "terraform"
   },
   "files.exclude": {
     "**/.next/**": true
@@ -273,7 +275,7 @@
   "openjunk.junkFilenameFormat": "YYYY-MM-DD-HHmmss",
   "partialDiff.enableTelemetry": false,
   "prettier.requireConfig": true,
-  "python.languageServer": "Default",
+  "python.languageServer": "None",
   "python.linting.mypyEnabled": true,
   "redhat.telemetry.enabled": false,
   "ruby.format": false,
@@ -284,6 +286,7 @@
   "ruby.useLanguageServer": true,
   "rubyLsp.rubyVersionManager": "asdf",
   "search.exclude": {
+    "**/.venv/**": true,
     "**/tsconfig.build.tsbuildinfo": true
   },
   "search.searchOnType": true,
@@ -344,5 +347,19 @@
   "githubPullRequests.commentExpandState": "collapseAll",
   "comments.visible": false,
   "extensions.ignoreRecommendations": true,
-  "cursor.composer.shouldAllowCustomModes": true
+  "cursor.composer.shouldAllowCustomModes": true,
+  "githubPullRequests.pullBranch": "never",
+  "[swift]": {
+    "editor.defaultFormatter": "swiftlang.swift-vscode"
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "claudeCode.preferredLocation": "panel",
+  "editor.dropIntoEditor.preferences": [
+    "markdown.link"
+  ]
 }
