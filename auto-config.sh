@@ -40,6 +40,7 @@ ln -s ~/development/config-file/.claude/settings.json ~/.claude/
 ln -s ~/development/config-file/.claude/commands ~/.claude/
 ln -s ~/development/config-file/.claude/scripts ~/.claude/
 ln -s ~/development/config-file/.claude/agents ~/.claude/
+ln -s ~/development/config-file/.claude/skills ~/.claude/
 ln -s ~/development/config-file/.codex/config.toml ~/.codex/
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/deck ~/.config/
