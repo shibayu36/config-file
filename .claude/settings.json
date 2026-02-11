@@ -120,6 +120,7 @@
     "gopls-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
+  "plansDirectory": "./tmp/plans",
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
   }
