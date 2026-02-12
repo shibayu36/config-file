@@ -37,7 +37,10 @@ ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/C
 ln -s ~/development/config-file/.myclirc ~/
 ln -s ~/development/config-file/.claude/CLAUDE.md ~/.claude/
 ln -s ~/development/config-file/.claude/settings.json ~/.claude/
-ln -s ~/development/config-file/.claude/commands ~/.claude/
+mkdir -p ~/.claude/commands
+for item in ~/development/config-file/.claude/commands/*; do
+  ln -s "$item" ~/.claude/commands/
+done
 ln -s ~/development/config-file/.claude/scripts ~/.claude/
 ln -s ~/development/config-file/.claude/agents ~/.claude/
 ln -s ~/development/config-file/.claude/skills ~/.claude/
