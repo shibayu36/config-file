@@ -47,7 +47,12 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 
 ## GitHub上の情報やコンテンツを取得する場合
 - GitHubの情報を取得するときは、ghコマンドを用いる
+- Pull Request(PR)のdiffを取得するときは、gh pr diffを使う
 - ファイル内容を取得するとき、Fetchを使うと取れない。ghコマンドを使うこと
+
+## git
+- デフォルトブランチとの変更を取得するときは、localのmainブランチではなくorigin/mainブランチと比較する
+    - 例: `git diff origin/main...HEAD`
 
 ## Slackから情報を取得する場合
 - Slackから情報を収集して返す時、実際のログも見れるようにしたい。permalinkも一緒に返信に含めるようにしてください
