@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 876000,
   "env": {
-    "MAX_MCP_OUTPUT_TOKENS": "50000"
+    "MAX_MCP_OUTPUT_TOKENS": "50000",
+    "ENABLE_TOOL_SEARCH": "auto:5"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
@@ -72,16 +73,16 @@
       "mcp__slack-explorer-mcp__search_files",
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
-    "ask": [
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)"
-    ],
     "deny": [
       "Bash(sudo:*)",
       "Read(.env*)",
       "Read(id_rsa)",
       "Read(id_dsa)",
       "Read(id_ed25519)"
+    ],
+    "ask": [
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
     ],
     "additionalDirectories": [
       "~/obsidian"
