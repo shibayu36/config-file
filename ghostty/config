@@ -48,6 +48,8 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+auto-update-channel = tip
+
 font-family = "Hack Nerd Font Mono"
 font-family = "Hiragino Kaku Gothic ProN"
 font-size = 14
