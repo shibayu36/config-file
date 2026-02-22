@@ -31,3 +31,4 @@ ensime.sbt
 .metals/
 /.claude/tmp/
 /.claude/settings.local.json
+/tmp/
