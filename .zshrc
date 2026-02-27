@@ -255,3 +255,10 @@ source /Users/shibayu36/.config/op/plugins.sh
 # git wt
 # 別でgitをwrapしていると壊れるので注意
 eval "$(git wt --init zsh)"
+
+# bun completions
+[ -s "/Users/shibayu36/.bun/_bun" ] && source "/Users/shibayu36/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
