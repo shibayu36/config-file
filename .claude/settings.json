@@ -22,6 +22,7 @@
       "Bash(go get:*)",
       "Bash(gopls references:*)",
       "Bash(npm outdated:*)",
+      "Bash(date:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(head:*)",
@@ -119,7 +120,8 @@
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "gopls-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "plansDirectory": "./tmp/plans",
   "feedbackSurveyState": {
