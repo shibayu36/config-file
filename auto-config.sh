@@ -43,7 +43,10 @@ for item in ~/development/config-file/.claude/commands/*; do
   ln -s "$item" ~/.claude/commands/
 done
 ln -s ~/development/config-file/.claude/scripts ~/.claude/
-ln -s ~/development/config-file/.claude/agents ~/.claude/
+mkdir -p ~/.claude/agents
+for item in ~/development/config-file/.claude/agents/*; do
+  ln -s "$item" ~/.claude/agents/
+done
 mkdir -p ~/.claude/skills
 for item in ~/development/config-file/.claude/skills/*; do
   ln -s "$item" ~/.claude/skills/
