@@ -14,6 +14,7 @@ $ARGUMENTS を以下のルールで解釈してください：
 利用可能なreviewer名:
 - `reviewer` - Claude自身による詳細レビュー
 - `codex-reviewer` - Codex CLIを使ったレビュー
+- `simplify-reviewer` - 可読性・一貫性・保守性に特化したレビュー
 
 reviewer名が上記のいずれにも一致しない場合は、エラーとしてユーザーに利用可能なreviewer名を案内してください。
 
