@@ -51,7 +51,6 @@ mkdir -p ~/.claude/skills
 for item in ~/development/config-file/.claude/skills/*; do
   ln -s "$item" ~/.claude/skills/
 done
-ln -s ~/development/config-file/.codex/config.toml ~/.codex/
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
