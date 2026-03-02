@@ -17,5 +17,5 @@ allowed-tools: Bash(git push:*), Bash(open:*)
           - 文字数の傾向
           - その他の特徴的なパターン
     - 情報が不足していたら、わたしに聞いてください
-3. 取得した情報をもとにPullRequestを作成する
+3. 取得した情報をもとにPullRequestを作成する。わたしをアサインする。
 4. openコマンドでPullRequestのURLを開く
