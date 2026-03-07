@@ -44,11 +44,14 @@
       "Bash(gh run view:*)",
       "Bash(gh search:*)",
       "Bash(gh run list:*)",
+      "Bash(ghro:*)",
       "Bash(git ls-tree:*)",
+      "Bash(git ls-files:*)",
       "Bash(git diff:*)",
       "Bash(git show:*)",
       "Bash(git log:*)",
       "Bash(git status:*)",
+      "Bash(git add:*)",
       "Bash(mkdir:*)",
       "Bash(cp:*)",
       "Bash(mv:*)",
@@ -60,6 +63,7 @@
       "Bash(awk:*)",
       "Bash(jq:*)",
       "Bash(open:*)",
+      "Bash(codex review:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:blog.shibayu36.org)",
@@ -121,10 +125,12 @@
     "document-skills@anthropic-agent-skills": true,
     "gopls-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "dig@kuu-marketplace": true
   },
   "plansDirectory": "./tmp/plans",
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  }
+  },
+  "effortLevel": "high"
 }
