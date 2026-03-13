@@ -1,0 +1,80 @@
+#!/bin/sh
+# gitro - A read-only git command wrapper for Claude Code
+# Only allows read-only git subcommands to execute.
+
+set -eu
+
+READONLY_COMMANDS="
+  blame
+  branch
+  cat-file
+  config
+  describe
+  diff
+  for-each-ref
+  log
+  ls-files
+  ls-tree
+  merge-base
+  name-rev
+  reflog
+  rev-list
+  rev-parse
+  shortlog
+  show
+  stash
+  status
+  symbolic-ref
+  tag
+"
+
+if [ $# -eq 0 ]; then
+  echo "Usage: gitro [git-options] <subcommand> [args...]" >&2
+  exit 1
+fi
+
+# Skip global options to find the actual subcommand
+subcmd=""
+for arg in "$@"; do
+  case "$arg" in
+    -C|-c|--git-dir|--work-tree|--namespace|--exec-path)
+      # Options that take a following argument: skip this and next
+      skip_next=1
+      continue
+      ;;
+    --git-dir=*|--work-tree=*|--namespace=*|--exec-path=*)
+      continue
+      ;;
+    -*)
+      if [ "${skip_next:-}" = "1" ]; then
+        skip_next=
+        continue
+      fi
+      # Other flags (--bare, --no-replace-objects, etc.)
+      continue
+      ;;
+    *)
+      if [ "${skip_next:-}" = "1" ]; then
+        skip_next=
+        continue
+      fi
+      subcmd="$arg"
+      break
+      ;;
+  esac
+done
+
+if [ -z "$subcmd" ]; then
+  echo "Error: no subcommand specified." >&2
+  exit 1
+fi
+
+for cmd in $READONLY_COMMANDS; do
+  if [ "$subcmd" = "$cmd" ]; then
+    exec git "$@"
+  fi
+done
+
+echo "Error: '$subcmd' is not allowed as a read-only git operation." >&2
+echo "Allowed commands: $(echo $READONLY_COMMANDS | tr '\n' ' ')" >&2
+exit 1
