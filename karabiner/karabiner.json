@@ -92,6 +92,35 @@
             ]
           },
           {
+            "description": "In Ghostty, switch to Eisu before sending Ctrl-t",
+            "manipulators": [
+              {
+                "type": "basic",
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$"
+                    ]
+                  }
+                ],
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  { "key_code": "japanese_eisuu" },
+                  {
+                    "key_code": "t",
+                    "modifiers": ["control"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "open Google Chrome by Option+c",
             "manipulators": [
               {
