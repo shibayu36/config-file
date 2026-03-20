@@ -32,3 +32,4 @@ ensime.sbt
 /.claude/tmp/
 /.claude/settings.local.json
 /tmp/
+__pycache__/
