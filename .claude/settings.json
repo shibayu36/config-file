@@ -132,9 +132,10 @@
     "swift-lsp@claude-plugins-official": true,
     "dig@kuu-marketplace": true
   },
+  "effortLevel": "high",
   "plansDirectory": "./tmp/plans",
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
   },
-  "effortLevel": "high"
+  "autoMemoryEnabled": false
 }
