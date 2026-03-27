@@ -64,6 +64,8 @@
       "Bash(awk:*)",
       "Bash(jq:*)",
       "Bash(open:*)",
+      "Bash(jira issue view:*)",
+      "Bash(jira issue list:*)",
       "Bash(codex -a never review *)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
