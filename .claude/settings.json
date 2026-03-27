@@ -25,7 +25,6 @@
       "Bash(npm outdated:*)",
       "Bash(date:*)",
       "Bash(ls:*)",
-      "Bash(find:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(cat:*)",
@@ -81,6 +80,7 @@
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
     "deny": [
+      "Bash(find:*)",
       "Bash(sudo:*)",
       "Read(.env*)",
       "Read(id_rsa)",
