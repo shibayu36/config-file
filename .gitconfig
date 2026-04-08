@@ -67,6 +67,8 @@
     line-numbers-right-format = "{np:>1}┊"
     line-numbers-right-style = green
     line-numbers-zero-style = "#545474" italic
+	# 日本語の単語をdiffで表示するための正規表現
+	word-diff-regex = "[a-zA-Z0-9_]+|\\p{Hiragana}+|\\p{Katakana}+|\\p{Han}+|[^\\s]"
 [tig]
 	main-view = id date author commit-title:graph=yes,refs=yes
 	vertical-split = auto
