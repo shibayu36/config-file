@@ -124,7 +124,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/block-cd-git-compound.sh"
+            "command": "~/.claude/scripts/block-bash-commands.sh"
           }
         ]
       }
