@@ -86,7 +86,7 @@
       "Bash(jira issue view:*)",
       "Bash(jira issue list:*)",
       "Bash(codex -a never review *)",
-      "Bash(/Users/shibayu36/.claude/skills/google-docs-reader/scripts/read_gdoc.sh:*)",
+      "Bash(/Users/shibayu36/.claude/skills/gws-docs-to-markdown/scripts/read_gdoc.sh:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:blog.shibayu36.org)",
