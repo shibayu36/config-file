@@ -1,5 +1,6 @@
 ---
 description: git-commit-message-generatorエージェントを利用して、commitメッセージを生成する
+model: haiku
 ---
 
 以下の手順でcommitを行ってください。
