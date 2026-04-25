@@ -117,6 +117,16 @@
       "~/obsidian"
     ]
   },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "allowWrite": [
+        "~/obsidian",
+        "~/Library/Caches"
+      ]
+    }
+  },
   "hooks": {
     "PreToolUse": [
       {
