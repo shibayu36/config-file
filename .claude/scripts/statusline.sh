@@ -7,6 +7,10 @@ input=$(cat)
 model_name=$(echo "$input" | jq -r '.model.display_name')
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 
+# Shorten model name: "Opus 4.7 (1M context)" -> "Opus[1M]", "Sonnet 4.6" -> "Sonnet"
+short_model="${model_name%% *}"
+[[ "$model_name" == *"(1M context)"* ]] && short_model="${short_model}[1M]"
+
 # Extract context window information
 context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
 current_usage=$(echo "$input" | jq '.context_window.current_usage')
@@ -19,8 +23,8 @@ else
     context_percent=0
 fi
 
-# Build context progress bar (20 chars wide)
-bar_width=15
+# Build context progress bar
+bar_width=10
 filled=$((context_percent * bar_width / 100))
 empty=$((bar_width - filled))
 bar=""
@@ -84,7 +88,7 @@ seven_d_segment=""
 [ -n "$seven_d_pct" ] && seven_d_segment=$(build_ring_segment "7d" "$seven_d_pct")
 
 # Output the status line
-output="${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${model_name}${NC} ${GRAY}|${NC} ${context_info}"
+output="${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${short_model}${NC} ${GRAY}|${NC} ${context_info}"
 [ -n "$five_h_segment" ] && output="${output} ${GRAY}|${NC} ${five_h_segment}"
 [ -n "$seven_d_segment" ] && output="${output} ${GRAY}|${NC} ${seven_d_segment}"
 echo -e "$output"
