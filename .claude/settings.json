@@ -161,6 +161,16 @@
           }
         ]
       }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/direnv-on-cwd-changed.sh"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
