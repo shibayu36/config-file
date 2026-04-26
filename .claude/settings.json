@@ -104,6 +104,7 @@
     "deny": [
       "Bash(find:*)",
       "Bash(sudo:*)",
+      "Bash(rm -rf:*)",
       "Read(.env*)",
       "Read(id_rsa)",
       "Read(id_dsa)",
