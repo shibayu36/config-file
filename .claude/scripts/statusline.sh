@@ -53,6 +53,7 @@ RINGS=('○' '◔' '◑' '◕' '●')
 build_ring_segment() {
     local label="$1"
     local pct="$2"
+    local extra="$3"  # optional suffix, e.g. " (4h12m)"
     # Clamp pct: bash 3.2 (macOS) returns "" for negative array index, bash 4+ wraps.
     # Also guards display width when API returns >100 in quota-over edge cases.
     [ "$pct" -lt 0 ] && pct=0
@@ -75,16 +76,32 @@ build_ring_segment() {
         color="\033[38;2;255;${g};60m"
     fi
 
-    echo -n "${label} ${color}${ring}${NC} ${pct}%"
+    echo -n "${label} ${color}${ring}${NC} ${pct}%${extra}"
+}
+
+# Format remaining seconds as " (4h12m)" or " (42m)"; empty if non-positive
+format_remaining() {
+    local resets_at="$1"
+    [ -z "$resets_at" ] && return
+    local remaining=$((resets_at - $(date +%s)))
+    [ "$remaining" -le 0 ] && return
+    local h=$((remaining / 3600))
+    local m=$(((remaining % 3600) / 60))
+    if [ "$h" -gt 0 ]; then
+        printf ' (%dh%dm)' "$h" "$m"
+    else
+        printf ' (%dm)' "$m"
+    fi
 }
 
 # rate_limits is absent for non-Pro/Max users or before the first API response
 five_h_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty | floor')
+five_h_resets_at=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_d_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty | floor')
 
 five_h_segment=""
 seven_d_segment=""
-[ -n "$five_h_pct" ] && five_h_segment=$(build_ring_segment "5h" "$five_h_pct")
+[ -n "$five_h_pct" ] && five_h_segment=$(build_ring_segment "5h" "$five_h_pct" "$(format_remaining "$five_h_resets_at")")
 [ -n "$seven_d_pct" ] && seven_d_segment=$(build_ring_segment "7d" "$seven_d_pct")
 
 # Output the status line
