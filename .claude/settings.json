@@ -53,6 +53,7 @@
       "Bash(git log:*)",
       "Bash(git status:*)",
       "Bash(git add:*)",
+      "Bash(git fetch:*)",
       "Bash(gws schema:*)",
       "Bash(gws docs documents get:*)",
       "Bash(gws drive files get:*)",
