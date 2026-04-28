@@ -91,8 +91,6 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:blog.shibayu36.org)",
-      "WebFetch(domain:chatgpt.com)",
-      "WebFetch(domain:ab.chatgpt.com)",
       "mcp__serena__search_for_pattern",
       "mcp__serena__find_symbol",
       "mcp__serena__list_dir",
@@ -128,6 +126,17 @@
       "allowWrite": [
         "~/obsidian",
         "~/Library/Caches"
+      ]
+    },
+    "network": {
+      "allowedDomains": [
+        "chatgpt.com",
+        "ab.chatgpt.com",
+        "www.googleapis.org",
+        "proxy.golang.org",
+        "go.opentelemetry.io",
+        "google.golang.org",
+        "api.github.com"
       ]
     }
   },
