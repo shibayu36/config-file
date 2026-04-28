@@ -198,6 +198,9 @@
   },
   "effortLevel": "xhigh",
   "plansDirectory": "./tmp/plans",
+  "preferredNotifChannel": "terminal_bell",
+  "agentPushNotifEnabled": true,
+  "remoteControlAtStartup": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
   },
