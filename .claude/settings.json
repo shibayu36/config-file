@@ -122,6 +122,7 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
+    "enableWeakerNetworkIsolation": true,
     "excludedCommands": [
       "git commit *"
     ],
