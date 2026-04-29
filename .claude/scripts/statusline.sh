@@ -79,15 +79,18 @@ build_ring_segment() {
     echo -n "${label} ${color}${ring}${NC} ${pct}%${extra}"
 }
 
-# Format remaining seconds as " (4h12m)" or " (42m)"; empty if non-positive
+# Format remaining seconds as " (5d3h)", " (4h12m)" or " (42m)"; empty if non-positive
 format_remaining() {
     local resets_at="$1"
     [ -z "$resets_at" ] && return
     local remaining=$((resets_at - $(date +%s)))
     [ "$remaining" -le 0 ] && return
+    local d=$((remaining / 86400))
     local h=$((remaining / 3600))
     local m=$(((remaining % 3600) / 60))
-    if [ "$h" -gt 0 ]; then
+    if [ "$d" -gt 0 ]; then
+        printf ' (%dd%dh)' "$d" "$((h % 24))"
+    elif [ "$h" -gt 0 ]; then
         printf ' (%dh%dm)' "$h" "$m"
     else
         printf ' (%dm)' "$m"
@@ -98,11 +101,12 @@ format_remaining() {
 five_h_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty | floor')
 five_h_resets_at=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_d_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty | floor')
+seven_d_resets_at=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 
 five_h_segment=""
 seven_d_segment=""
 [ -n "$five_h_pct" ] && five_h_segment=$(build_ring_segment "5h" "$five_h_pct" "$(format_remaining "$five_h_resets_at")")
-[ -n "$seven_d_pct" ] && seven_d_segment=$(build_ring_segment "7d" "$seven_d_pct")
+[ -n "$seven_d_pct" ] && seven_d_segment=$(build_ring_segment "7d" "$seven_d_pct" "$(format_remaining "$seven_d_resets_at")")
 
 # Output the status line
 output="${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${short_model}${NC} ${GRAY}|${NC} ${context_info}"
