@@ -122,6 +122,9 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
+    "excludedCommands": [
+      "git commit *"
+    ],
     "filesystem": {
       "allowWrite": [
         "~/obsidian",
