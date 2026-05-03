@@ -124,7 +124,10 @@
     "autoAllowBashIfSandboxed": true,
     "enableWeakerNetworkIsolation": true,
     "excludedCommands": [
-      "git commit *"
+      "git commit *",
+      "git push*",
+      "open *",
+      "codex *"
     ],
     "filesystem": {
       "allowWrite": [
