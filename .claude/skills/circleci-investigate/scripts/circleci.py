@@ -326,6 +326,43 @@ def make_output_path(
     return os.path.join(os.path.abspath(out_dir), file_name)
 
 
+def make_output_dir(
+    ctx: Context, subcmd: str, out_dir: str, job_name: str
+) -> str:
+    """Create a fresh output directory for a per-job bundle and return its
+    absolute path.
+
+    Dies if the target directory already exists, so each invocation produces
+    a clean, well-defined snapshot (avoids mixing logs from different runs of
+    the same build_num if re-fetched). The directory is created with mode
+    0o700 since downstream files (meta.json, step logs) may contain
+    env-derived secrets.
+    """
+    if out_dir:
+        try:
+            os.makedirs(out_dir, exist_ok=True)
+        except OSError as e:
+            die(f"Cannot create --output-dir: {out_dir}: {e}")
+    else:
+        out_dir = os.getcwd()
+    dir_name = (
+        f"circleci-{subcmd}-{_sanitize_name(ctx.org)}-"
+        f"{_sanitize_name(ctx.project)}-{_sanitize_name(job_name)}-"
+        f"{ctx.build_num}"
+    )
+    target = os.path.join(os.path.abspath(out_dir), dir_name)
+    try:
+        os.mkdir(target, mode=0o700)
+    except FileExistsError:
+        die(
+            f"Output directory already exists: {target} "
+            "(remove it first to take a fresh snapshot)"
+        )
+    except OSError as e:
+        die(f"Cannot create output directory {target}: {e}")
+    return target
+
+
 def open_secure(path: str):
     """Open `path` for writing with mode 0o600.
 
@@ -547,33 +584,89 @@ def cmd_artifacts(ctx: Context, args: argparse.Namespace) -> None:
     print_json(result)
 
 
-def _format_action(a: dict) -> dict:
-    return {
-        "index": a.get("index"),
-        "status": a.get("status"),
-        "exit_code": a.get("exit_code"),
-        "run_time_millis": a.get("run_time_millis"),
-    }
+def _step_log_filename(step_index: int, step_name: str, action_index: int) -> str:
+    """Return the per-action log filename used inside a steps bundle.
+
+    Format: step-<step_index zero-padded 3>-<sanitized step name>-<action_index>.log
+    The action_index is always present (even when parallelism == 1) so callers
+    can read meta.json and open the file by name without checking for variants.
+    """
+    return (
+        f"step-{step_index:03d}-{_sanitize_name(step_name)}-{action_index}.log"
+    )
 
 
-def _format_step(s: dict) -> dict:
-    return {
-        "name": s.get("name"),
-        "actions": [_format_action(a) for a in s.get("actions", [])],
-    }
+def cmd_steps(ctx: Context, args: argparse.Namespace) -> None:
+    """Save step metadata (resource_class / parallelism / per-step durations)
+    and raw per-action logs to a directory.
 
+    CircleCI API v2 has no endpoint for per-step stdout/stderr, so we use the
+    legacy v1.1 endpoint to get both job-level metadata (picard, workflows)
+    and presigned S3 output_url for each action in a single call. Logs are
+    fetched sequentially from the S3 URLs.
 
-def cmd_usage(ctx: Context, args: argparse.Namespace) -> None:
-    """Show resource usage (resource_class, parallelism, build/step durations)."""
+    Output layout:
+        <out_dir>/circleci-steps-<org>-<project>-<jobname>-<build>/
+            meta.json                                  # job + step metadata
+            step-NNN-<sanitized name>-<action>.log     # one per action
+    """
     resolve_context(ctx, args)
-    require_job_context(ctx, "usage")
+    require_job_context(ctx, "steps")
     emit_resolved_if_any(ctx)
+
     response = api_v1(
         f"/project/{ctx.vcs_type}/{ctx.org}/{ctx.project}/{ctx.build_num}"
     )
-    picard = response.get("picard", {})
-    workflows = response.get("workflows", {})
-    result = {
+    picard = response.get("picard") or {}
+    workflows = response.get("workflows") or {}
+    job_name = workflows.get("job_name") or response.get("job_name") or "job"
+
+    out_dir = make_output_dir(ctx, "steps", args.output_dir, job_name)
+
+    meta_steps: list[dict] = []
+    for step_index, step in enumerate(response.get("steps", [])):
+        step_name = step.get("name", "")
+        meta_actions: list[dict] = []
+        for action_index, action in enumerate(step.get("actions", [])):
+            log_path: str | None = _step_log_filename(
+                step_index, step_name, action_index
+            )
+            output_url = action.get("output_url")
+            if not output_url:
+                log_path = None
+            else:
+                try:
+                    raw = fetch_public(output_url)
+                    parts = json.loads(raw)
+                except (urllib.error.URLError, json.JSONDecodeError) as e:
+                    print(
+                        f"Warning: failed to fetch step output "
+                        f"(step={step_index} '{step_name}' action={action_index}): "
+                        f"{type(e).__name__}: {e}",
+                        file=sys.stderr,
+                    )
+                    log_path = None
+                else:
+                    abs_log_path = os.path.join(out_dir, log_path)
+                    with open_secure(abs_log_path) as lf:
+                        for part in parts:
+                            msg = part.get("message", "")
+                            if msg:
+                                lf.write(msg)
+            meta_actions.append({
+                "action_index": action_index,
+                "status": action.get("status"),
+                "exit_code": action.get("exit_code"),
+                "run_time_millis": action.get("run_time_millis"),
+                "log_path": log_path,
+            })
+        meta_steps.append({
+            "step_index": step_index,
+            "name": step_name,
+            "actions": meta_actions,
+        })
+
+    meta = {
         "build_num": response.get("build_num"),
         "job_name": workflows.get("job_name") or response.get("job_name"),
         "status": response.get("status"),
@@ -584,63 +677,15 @@ def cmd_usage(ctx: Context, args: argparse.Namespace) -> None:
         "started_at": response.get("start_time"),
         "stopped_at": response.get("stop_time"),
         "build_time_millis": response.get("build_time_millis"),
-        "steps": [_format_step(s) for s in response.get("steps", [])],
+        "steps": meta_steps,
     }
-    print_json(result)
 
+    meta_path = os.path.join(out_dir, "meta.json")
+    with open_secure(meta_path) as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
 
-def cmd_steplog(ctx: Context, args: argparse.Namespace) -> None:
-    """Save all step logs of a job into a single file and print its path.
-
-    CircleCI API v2 has no endpoint for per-step stdout/stderr, so we use
-    the legacy v1.1 endpoint to get presigned S3 output_url for each
-    action, then download them sequentially.
-    """
-    resolve_context(ctx, args)
-    require_job_context(ctx, "steplog")
-    emit_resolved_if_any(ctx)
-
-    response = api_v1(
-        f"/project/{ctx.vcs_type}/{ctx.org}/{ctx.project}/{ctx.build_num}"
-    )
-    workflows = response.get("workflows", {})
-    job_name = workflows.get("job_name") or response.get("job_name") or "job"
-
-    out_path = make_output_path(ctx, "steplog", "log", args.output_dir, job_name)
-
-    with open_secure(out_path) as f:
-        for step in response.get("steps", []):
-            step_name = step.get("name", "")
-            for action in step.get("actions", []):
-                f.write("========================================\n")
-                f.write(
-                    f"Step: {step_name}  (action[{action.get('index')}], "
-                    f"status={action.get('status', '')}, "
-                    f"exit_code={action.get('exit_code')}, "
-                    f"duration_ms={action.get('run_time_millis')})\n"
-                )
-                f.write("========================================\n")
-                output_url = action.get("output_url")
-                if not output_url:
-                    f.write("(no output for this step)\n\n")
-                    continue
-                try:
-                    raw = fetch_public(output_url)
-                    parts = json.loads(raw)
-                except (urllib.error.URLError, json.JSONDecodeError) as e:
-                    f.write(
-                        f"(failed to fetch step output: "
-                        f"{type(e).__name__}: {e})\n\n"
-                    )
-                    continue
-                for part in parts:
-                    msg = part.get("message", "")
-                    if msg:
-                        f.write(msg)
-                f.write("\n")
-
-    print(f"Wrote step log: {out_path}", file=sys.stderr)
-    print(out_path)
+    print(f"Wrote steps bundle: {out_dir}", file=sys.stderr)
+    print(out_dir)
 
 
 def cmd_tests(ctx: Context, args: argparse.Namespace) -> None:
@@ -712,21 +757,18 @@ def build_parser() -> argparse.ArgumentParser:
     add_context_args(p_artifacts)
     p_artifacts.set_defaults(func=cmd_artifacts)
 
-    p_usage = sub.add_parser(
-        "usage",
-        help="Show resource_class / parallelism / step durations",
+    p_steps = sub.add_parser(
+        "steps",
+        help=(
+            "Save step metadata (resource_class / parallelism / per-step "
+            "durations) and raw per-action logs to a directory"
+        ),
     )
-    add_context_args(p_usage)
-    p_usage.set_defaults(func=cmd_usage)
-
-    p_steplog = sub.add_parser(
-        "steplog", help="Save raw step logs to a single file"
-    )
-    add_context_args(p_steplog)
-    p_steplog.add_argument(
+    add_context_args(p_steps)
+    p_steps.add_argument(
         "--output-dir", default="", help="output directory (default: $PWD)"
     )
-    p_steplog.set_defaults(func=cmd_steplog)
+    p_steps.set_defaults(func=cmd_steps)
 
     p_tests = sub.add_parser(
         "tests", help="Save the full test result list to a JSON file"

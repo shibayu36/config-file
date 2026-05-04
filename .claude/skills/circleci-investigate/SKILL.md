@@ -55,19 +55,36 @@ ${SKILL_DIR}/scripts/circleci.py <subcommand> <input> [flags...]
 | `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力。パイプライン URL の場合は workflow ごとに集約 | ジョブ URL / パイプライン URL / ブランチ+ジョブ名 |
 | `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る。**用途**: 最新ではない過去 run を調査する / 同じブランチで並走している複数 pipeline から目的の pipelineURL を選ぶ。最新 run でいいなら他のサブコマンドが `--branch --project --job` で自動解決するのでこれは不要 | ブランチ+プロジェクト (URL 入力非対応) |
 | `artifacts` | artifact 一覧 (path, url, node_index) をインライン出力 (next_page_token を辿って全件) | ジョブ URL or ブランチ+ジョブ名 |
-| `usage`     | 割り当て resource_class / parallelism / step ごとの所要時間をインライン出力 (※ 実 CPU/メモリ使用率は CircleCI の公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
-| `steplog`   | 全 step の生 stdout/stderr を 1 ファイル (`circleci-steplog-...log`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定 | ジョブ URL or ブランチ+ジョブ名 |
+| `steps`     | step メタ (resource_class / parallelism / 各 step・action の status / 所要時間) と 各 action の生 stdout/stderr をディレクトリ (`circleci-steps-...`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定。**1 度の API コールで「リソース使用量の調査」と「ログの読解」の両方をカバー** (※ 実 CPU/メモリ使用率は CircleCI 公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
 | `tests`     | テスト結果全件 (next_page_token を辿る) を 1 ファイル (`circleci-tests-...json`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定。フィルタは無し — 読み取り側で `jq` する | ジョブ URL or ブランチ+ジョブ名 |
 
-### ファイル出力 (steplog / tests)
+### ファイル/ディレクトリ出力 (steps / tests)
 
-- ファイル名: `circleci-<subcmd>-<org>-<project>-<job_name>-<build_num>.<ext>`
-  - 例: `circleci-steplog-ClusterVR-ClusterONE-api_lint-2661609.log`
-  - 例: `circleci-tests-ClusterVR-ClusterONE-api_test-2661613.json`
+#### 共通
+
 - 保存先は `--output-dir` が無ければ `$PWD` 直下
-- パーミッションは 0600 (CI ログには env 由来の secret が混じることがあるため)
+- パーミッションは ファイル 0600 / ディレクトリ 0700 (CI ログには env 由来の secret が混じることがあるため)
 - Claude が呼び出す場合は、ユーザーの CLAUDE.md ルール (例: プロジェクトの `tmp/`) に従って `--output-dir` を明示的に指定すること
-- 保存後は Read tool / `jq` でファイルを読んで分析する
+
+#### `steps` の出力 (ディレクトリ)
+
+- ディレクトリ名: `circleci-steps-<org>-<project>-<job_name>-<build_num>/`
+  - 例: `circleci-steps-ClusterVR-ClusterONE-api_test-2661613/`
+- **既存ディレクトリがあるとエラー終了**する (古い run と混ざらないようにするため)。再取得したいときは事前に削除する
+- 構成:
+  - `meta.json` — job 全体のメタ + `steps[].actions[]` 配列 (各 action に `log_path` で対応するログファイル名)
+  - `step-NNN-<sanitized name>-<action_index>.log` — 1 action 1 ファイルの生ログ。parallelism > 1 のときは `-0`, `-1`, ... と分かれる
+- 解析の典型フロー: まず `meta.json` を Read してどの step を見るか決める → 該当する `.log` だけ Read する (大きなジョブで巨大ログを全件 Read しなくて済む)
+- jq 例:
+  - 失敗 step 抽出: `jq '.steps[] | select(.actions[].status == "failed")' <dir>/meta.json`
+  - 遅い step トップ 5: `jq '[.steps[] | {name, ms: ([.actions[].run_time_millis] | add)}] | sort_by(-.ms) | .[0:5]' <dir>/meta.json`
+  - 失敗 action のログパス一覧: `jq -r '.steps[].actions[] | select(.status == "failed") | .log_path' <dir>/meta.json`
+
+#### `tests` の出力 (ファイル)
+
+- ファイル名: `circleci-tests-<org>-<project>-<job_name>-<build_num>.json`
+  - 例: `circleci-tests-ClusterVR-ClusterONE-api_test-2661613.json`
+- 保存後は `jq` で抽出する
   - 失敗テスト抽出例: `jq '.items[] | select(.result == "failure")' <path>`
   - 結果別カウント例: `jq '[.items[].result] | group_by(.) | map({result: .[0], count: length})' <path>`
 
@@ -80,17 +97,19 @@ SKILL_DIR=/Users/shibayu36/.claude/skills/circleci-investigate
 "$SKILL_DIR/scripts/circleci.py" status \
   'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609'
 
-# 2. ジョブ URL から step ログを保存
-"$SKILL_DIR/scripts/circleci.py" steplog \
+# 2. ジョブ URL から step メタ + 全 step の生ログを保存 → 失敗 step だけ抽出
+DIR=$("$SKILL_DIR/scripts/circleci.py" steps \
   'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609' \
-  --output-dir /Users/shibayu36/development/config-file/tmp
+  --output-dir /Users/shibayu36/development/config-file/tmp)
+jq '.steps[] | select(.actions[].status == "failed")' "$DIR/meta.json"
 
-# 3. ブランチ + ジョブ名で最新 run の step ログを保存
-"$SKILL_DIR/scripts/circleci.py" steplog \
+# 3. ブランチ + ジョブ名で最新 run の steps を保存 → 遅い step トップ 5
+DIR=$("$SKILL_DIR/scripts/circleci.py" steps \
   --branch 'feature/server/shibayu36/linter-cache' \
   --project 'gh/ClusterVR/ClusterONE' \
   --job 'api_lint' \
-  --output-dir ./tmp
+  --output-dir ./tmp)
+jq '[.steps[] | {name, ms: ([.actions[].run_time_millis] | add)}] | sort_by(-.ms) | .[0:5]' "$DIR/meta.json"
 
 # 4. 失敗テスト一覧 (tests を保存 → jq で抽出)
 TESTS_FILE=$("$SKILL_DIR/scripts/circleci.py" tests \
@@ -102,9 +121,11 @@ jq '.items[] | select(.result == "failure")' "$TESTS_FILE"
 "$SKILL_DIR/scripts/circleci.py" jobs \
   'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552'
 
-# 6. リソース使用量
-"$SKILL_DIR/scripts/circleci.py" usage \
-  'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609'
+# 6. リソース使用量だけが知りたい場合も steps で取れる (meta.json に集約)
+DIR=$("$SKILL_DIR/scripts/circleci.py" steps \
+  'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609' \
+  --output-dir ./tmp)
+jq '{parallelism, executor, resource_class, build_time_millis}' "$DIR/meta.json"
 
 # 7. ブランチの pipeline 一覧 (新しい順、各 pipeline に配下 workflow を含む)
 "$SKILL_DIR/scripts/circleci.py" pipelines \
@@ -130,6 +151,7 @@ PIPELINE_URL=$("$SKILL_DIR/scripts/circleci.py" pipelines \
 - `Error: No pipeline found for branch '...' in <slug>` → ブランチ名のタイポ or プロジェクトが間違っている可能性
 - `Error: Job '<name>' not found in any workflow of the latest pipeline ...` → ジョブ名のタイポ、または対象 run でそのジョブが skip された可能性
 - `Error: URL input and --branch/--project/--job are mutually exclusive` → URL 指定とフラグ指定は併用不可
+- `Error: Output directory already exists: ...` → `steps` の出力先ディレクトリが既存。古い snapshot を削除してから再実行
 
 ## 実装メモ
 
