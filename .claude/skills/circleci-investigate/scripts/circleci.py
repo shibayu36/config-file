@@ -417,14 +417,6 @@ def resolve_context(ctx: Context, args: argparse.Namespace) -> None:
 # ---------------------------------------------------------------
 
 
-def cmd_status(ctx: Context, args: argparse.Namespace) -> None:
-    resolve_context(ctx, args)
-    require_job_context(ctx, "status")
-    emit_resolved_if_any(ctx)
-    result = api_v2(f"/project/{ctx.project_slug}/job/{ctx.build_num}")
-    print_json(result)
-
-
 def cmd_jobs(ctx: Context, args: argparse.Namespace) -> None:
     """List jobs in workflows.
 
@@ -742,10 +734,6 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     sub = parser.add_subparsers(dest="subcommand", required=True)
-
-    p_status = sub.add_parser("status", help="Show job metadata")
-    add_context_args(p_status)
-    p_status.set_defaults(func=cmd_status)
 
     p_jobs = sub.add_parser("jobs", help="List jobs in workflow(s)")
     add_context_args(p_jobs)

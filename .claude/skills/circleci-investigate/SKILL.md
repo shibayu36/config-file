@@ -51,8 +51,7 @@ ${SKILL_DIR}/scripts/circleci.py <subcommand> <input> [flags...]
 
 | subcommand | 出力 | 必要な input |
 |---|---|---|
-| `status`    | ジョブ状態 JSON をインライン出力 | ジョブ URL or ブランチ+ジョブ名 |
-| `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力。パイプライン URL の場合は workflow ごとに集約 | ジョブ URL / パイプライン URL / ブランチ+ジョブ名 |
+| `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力 (status / started_at / stopped_at / job_number / name 等を含む)。パイプライン URL の場合は workflow ごとに集約。**単一ジョブの状態確認もこれで行う** | ジョブ URL / パイプライン URL / ブランチ+ジョブ名 |
 | `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る。**用途**: 最新ではない過去 run を調査する / 同じブランチで並走している複数 pipeline から目的の pipelineURL を選ぶ。最新 run でいいなら他のサブコマンドが `--branch --project --job` で自動解決するのでこれは不要 | ブランチ+プロジェクト (URL 入力非対応) |
 | `artifacts` | artifact 一覧 (path, url, node_index) をインライン出力 (next_page_token を辿って全件) | ジョブ URL or ブランチ+ジョブ名 |
 | `steps`     | step メタ (resource_class / parallelism / 各 step・action の status / 所要時間) と 各 action の生 stdout/stderr をディレクトリ (`circleci-steps-...`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定。**1 度の API コールで「リソース使用量の調査」と「ログの読解」の両方をカバー** (※ 実 CPU/メモリ使用率は CircleCI 公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
@@ -93,9 +92,10 @@ ${SKILL_DIR}/scripts/circleci.py <subcommand> <input> [flags...]
 ```bash
 SKILL_DIR=/Users/shibayu36/.claude/skills/circleci-investigate
 
-# 1. ジョブ URL から状態確認
-"$SKILL_DIR/scripts/circleci.py" status \
-  'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609'
+# 1. ジョブ URL から状態確認 (jobs の出力から該当ジョブを抽出)
+"$SKILL_DIR/scripts/circleci.py" jobs \
+  'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609' \
+  | jq '.items[] | select(.job_number == 2661609)'
 
 # 2. ジョブ URL から step メタ + 全 step の生ログを保存 → 失敗 step だけ抽出
 DIR=$("$SKILL_DIR/scripts/circleci.py" steps \
