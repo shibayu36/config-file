@@ -433,6 +433,110 @@ def cmd_jobs(ctx: Context, args: argparse.Namespace) -> None:
     print_json(payload)
 
 
+def _strip_pipeline_fields(p: dict) -> dict:
+    """Drop noisy / redundant fields from a pipeline list item.
+
+    Removed because they duplicate the input args (project_slug, vcs.branch,
+    vcs URLs/provider) or carry little signal in this listing view
+    (state, updated_at, trigger.received_at, trigger.actor.avatar_url,
+    vcs.review_url/review_id).
+    """
+    out = dict(p)
+    out.pop("project_slug", None)
+    out.pop("state", None)
+    out.pop("updated_at", None)
+
+    trigger = out.get("trigger")
+    if isinstance(trigger, dict):
+        trigger = dict(trigger)
+        trigger.pop("received_at", None)
+        actor = trigger.get("actor")
+        if isinstance(actor, dict):
+            actor = dict(actor)
+            actor.pop("avatar_url", None)
+            trigger["actor"] = actor
+        out["trigger"] = trigger
+
+    vcs = out.get("vcs")
+    if isinstance(vcs, dict):
+        vcs = dict(vcs)
+        for key in (
+            "origin_repository_url",
+            "target_repository_url",
+            "provider_name",
+            "branch",
+            "review_url",
+            "review_id",
+        ):
+            vcs.pop(key, None)
+        out["vcs"] = vcs
+
+    return out
+
+
+def _strip_workflow_fields(w: dict) -> dict:
+    """Drop fields that duplicate the parent pipeline (project_slug,
+    pipeline_id, pipeline_number) or are unreadable UUIDs (started_by,
+    canceled_by)."""
+    out = dict(w)
+    for key in (
+        "project_slug",
+        "pipeline_id",
+        "pipeline_number",
+        "started_by",
+        "canceled_by",
+    ):
+        out.pop(key, None)
+    return out
+
+
+def cmd_pipelines(ctx: Context, args: argparse.Namespace) -> None:
+    """List pipelines on a branch (newest first), with workflows attached.
+
+    Returns the CircleCI v2 pipeline list API response with each item
+    enriched by `pipelineURL` and a `workflows` array fetched per pipeline.
+    Noisy / redundant fields are stripped (see `_strip_pipeline_fields` /
+    `_strip_workflow_fields`). The API's `next_page_token` is passed through
+    verbatim so callers can paginate via `--page-token`. Does not loop
+    across pages.
+    """
+    if not parse_project_slug(ctx, args.project):
+        die(
+            f"Invalid --project slug: '{args.project}' "
+            "(expected <vcs>/<org>/<project> e.g. gh/ClusterVR/cluster)"
+        )
+    params = {"branch": args.branch}
+    if args.page_token:
+        params["page-token"] = args.page_token
+    page = api_v2(f"/project/{ctx.project_slug}/pipeline", params)
+
+    enriched: list[dict] = []
+    for p in page.get("items", []):
+        pipeline_id = p.get("id")
+        pipeline_number = p.get("number")
+        workflows: list = []
+        if pipeline_id:
+            wf_resp = api_v2(f"/pipeline/{pipeline_id}/workflow")
+            workflows = [
+                _strip_workflow_fields(w) for w in wf_resp.get("items", [])
+            ]
+        pipeline_url = None
+        if pipeline_number is not None:
+            pipeline_url = (
+                f"https://app.circleci.com/pipelines/{ctx.vcs_type}/"
+                f"{ctx.org}/{ctx.project}/{pipeline_number}"
+            )
+        item = _strip_pipeline_fields(p)
+        item["pipelineURL"] = pipeline_url
+        item["workflows"] = workflows
+        enriched.append(item)
+
+    print_json({
+        "items": enriched,
+        "next_page_token": page.get("next_page_token"),
+    })
+
+
 def cmd_artifacts(ctx: Context, args: argparse.Namespace) -> None:
     resolve_context(ctx, args)
     require_job_context(ctx, "artifacts")
@@ -632,6 +736,23 @@ def build_parser() -> argparse.ArgumentParser:
         "--output-dir", default="", help="output directory (default: $PWD)"
     )
     p_tests.set_defaults(func=cmd_tests)
+
+    p_pipelines = sub.add_parser(
+        "pipelines",
+        help="List pipelines on a branch (newest first) with workflows attached",
+    )
+    p_pipelines.add_argument("--branch", required=True, help="branch name")
+    p_pipelines.add_argument(
+        "--project",
+        required=True,
+        help="project slug, e.g. gh/<org>/<project>",
+    )
+    p_pipelines.add_argument(
+        "--page-token",
+        default=None,
+        help="page token from a previous response's next_page_token",
+    )
+    p_pipelines.set_defaults(func=cmd_pipelines)
 
     return parser
 

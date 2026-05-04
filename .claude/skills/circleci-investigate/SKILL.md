@@ -53,6 +53,7 @@ ${SKILL_DIR}/scripts/circleci.py <subcommand> <input> [flags...]
 |---|---|---|
 | `status`    | ジョブ状態 JSON をインライン出力 | ジョブ URL or ブランチ+ジョブ名 |
 | `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力。パイプライン URL の場合は workflow ごとに集約 | ジョブ URL / パイプライン URL / ブランチ+ジョブ名 |
+| `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る | ブランチ+プロジェクト (URL 入力非対応) |
 | `artifacts` | artifact 一覧 (path, url, node_index) をインライン出力 (next_page_token を辿って全件) | ジョブ URL or ブランチ+ジョブ名 |
 | `usage`     | 割り当て resource_class / parallelism / step ごとの所要時間をインライン出力 (※ 実 CPU/メモリ使用率は CircleCI の公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
 | `steplog`   | 全 step の生 stdout/stderr を 1 ファイル (`circleci-steplog-...log`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定 | ジョブ URL or ブランチ+ジョブ名 |
@@ -104,6 +105,22 @@ jq '.items[] | select(.result == "failure")' "$TESTS_FILE"
 # 6. リソース使用量
 "$SKILL_DIR/scripts/circleci.py" usage \
   'https://app.circleci.com/pipelines/github/ClusterVR/ClusterONE/255552/workflows/b02f666d.../jobs/2661609'
+
+# 7. ブランチの pipeline 一覧 (新しい順、各 pipeline に配下 workflow を含む)
+"$SKILL_DIR/scripts/circleci.py" pipelines \
+  --branch 'feature/server/shibayu36/linter-cache' \
+  --project 'gh/ClusterVR/ClusterONE'
+
+# 8. pipelines の出力から pipelineURL を取り出して jobs サブコマンドに繋ぐ
+PIPELINE_URL=$("$SKILL_DIR/scripts/circleci.py" pipelines \
+  --branch dev/server --project gh/ClusterVR/ClusterONE \
+  | jq -r '.items[0].pipelineURL')
+"$SKILL_DIR/scripts/circleci.py" jobs "$PIPELINE_URL"
+
+# 9. pipelines の続きを取得 (next_page_token を渡す)
+"$SKILL_DIR/scripts/circleci.py" pipelines \
+  --branch dev/server --project gh/ClusterVR/ClusterONE \
+  --page-token '<next_page_token>'
 ```
 
 ## トラブルシューティング
