@@ -53,7 +53,7 @@ ${SKILL_DIR}/scripts/circleci.py <subcommand> <input> [flags...]
 |---|---|---|
 | `status`    | ジョブ状態 JSON をインライン出力 | ジョブ URL or ブランチ+ジョブ名 |
 | `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力。パイプライン URL の場合は workflow ごとに集約 | ジョブ URL / パイプライン URL / ブランチ+ジョブ名 |
-| `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る | ブランチ+プロジェクト (URL 入力非対応) |
+| `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る。**用途**: 最新ではない過去 run を調査する / 同じブランチで並走している複数 pipeline から目的の pipelineURL を選ぶ。最新 run でいいなら他のサブコマンドが `--branch --project --job` で自動解決するのでこれは不要 | ブランチ+プロジェクト (URL 入力非対応) |
 | `artifacts` | artifact 一覧 (path, url, node_index) をインライン出力 (next_page_token を辿って全件) | ジョブ URL or ブランチ+ジョブ名 |
 | `usage`     | 割り当て resource_class / parallelism / step ごとの所要時間をインライン出力 (※ 実 CPU/メモリ使用率は CircleCI の公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
 | `steplog`   | 全 step の生 stdout/stderr を 1 ファイル (`circleci-steplog-...log`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定 | ジョブ URL or ブランチ+ジョブ名 |
