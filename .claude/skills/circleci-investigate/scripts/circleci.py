@@ -232,7 +232,7 @@ def resolve_latest_run(
     if not parse_project_slug(ctx, project_slug):
         die(
             f"Invalid --project slug: '{project_slug}' "
-            "(expected <vcs>/<org>/<project> e.g. gh/ClusterVR/cluster)"
+            "(expected <vcs>/<org>/<project>)"
         )
     ctx.branch = branch
     ctx.job_name = job_name
@@ -532,7 +532,7 @@ def cmd_pipelines(ctx: Context, args: argparse.Namespace) -> None:
     if not parse_project_slug(ctx, args.project):
         die(
             f"Invalid --project slug: '{args.project}' "
-            "(expected <vcs>/<org>/<project> e.g. gh/ClusterVR/cluster)"
+            "(expected <vcs>/<org>/<project>)"
         )
     params = {"branch": args.branch}
     if args.page_token:
