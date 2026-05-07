@@ -44,11 +44,35 @@ URL を受け付けるサブコマンド (`jobs` / `artifacts` / `steps` / `test
 
 | subcommand | 出力 | 必要な input |
 |---|---|---|
-| `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力 (status / started_at / stopped_at / job_number / name 等を含む)。パイプライン URL の場合は workflow ごとに集約。**単一ジョブの状態確認もこれで行う** | URL 入力 3 形式すべて |
+| `jobs`      | ワークフロー内ジョブ一覧 JSON をインライン出力 (status / started_at / stopped_at / job_number / name 等を含む)。**単一ジョブの状態確認もこれで行う**。出力トップレベルは入力形式により 2 形式に分岐 (下記「`jobs` の出力スキーマ」参照) | URL 入力 3 形式すべて |
 | `pipelines` | ブランチ上の pipeline 一覧 (新しい順) を JSON でインライン出力。各 pipeline に `pipelineURL` と配下 workflow の生配列を含める。1ページのみ取得し、続きは `--page-token` で辿る。**用途**: 最新ではない過去 run を調査する / 同じブランチで並走している複数 pipeline から目的の pipelineURL を選ぶ。最新 run でいいなら他のサブコマンドが `--branch --project --job` で自動解決するのでこれは不要 | `--branch --project` のみ (URL 入力非対応) |
 | `artifacts` | artifact 一覧 (path, url, node_index) をインライン出力 (next_page_token を辿って全件) | ジョブ URL or ブランチ+ジョブ名 |
 | `steps`     | step メタ (resource_class / parallelism / 各 step・action の status / 所要時間) と 各 action の生 stdout/stderr をディレクトリ (`circleci-steps-...`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定。**1 度の API コールで「リソース使用量の調査」と「ログの読解」の両方をカバー** (※ 実 CPU/メモリ使用率は CircleCI 公式 API では取得不可) | ジョブ URL or ブランチ+ジョブ名 |
 | `tests`     | テスト結果全件 (next_page_token を辿る) を 1 ファイル (`circleci-tests-...json`) に保存し、絶対パスを stdout に出力。`--output-dir DIR` で保存先指定。フィルタは無し — 読み取り側で `jq` する | ジョブ URL or ブランチ+ジョブ名 |
+
+### `jobs` の出力スキーマ
+
+入力形式によってトップレベル構造が異なる。jq を書く前に必ずこちらを確認すること。
+
+- **ジョブ URL / `--branch --project --job`**: 単一 workflow の job 一覧
+  ```
+  {"items": [<job, ...>], "next_page_token": null}
+  ```
+  抽出例: `jq '.items[] | {name, status}'`
+
+- **パイプライン URL**: workflow ごとに集約
+  ```
+  {
+    "pipeline_number": 12345,
+    "pipeline_id": "...",
+    "workflows": [
+      {"id": "...", "name": "<workflow_name>", "jobs": [<job, ...>]}
+    ]
+  }
+  ```
+  抽出例: `jq '.workflows[] | {wf: .name, jobs: [.jobs[] | {name, status}]}'`
+
+各 `<job>` には `name` / `status` / `job_number` / `started_at` / `stopped_at` 等が含まれる。
 
 ### ファイル/ディレクトリ出力 (steps / tests)
 
@@ -90,9 +114,10 @@ URL を受け付けるサブコマンド (`jobs` / `artifacts` / `steps` / `test
   'https://app.circleci.com/pipelines/github/myorg/myproject/12345/workflows/abcdef01-2345-6789-abcd-ef0123456789/jobs/9876' \
   | jq '.items[] | select(.job_number == 9876)'
 
-# パイプライン URL から workflow ごとの全ジョブ一覧
+# パイプライン URL から workflow ごとの全ジョブ一覧 (出力は workflows 配列)
 "${SKILL_DIR}/scripts/circleci.py" jobs \
-  'https://app.circleci.com/pipelines/github/myorg/myproject/12345'
+  'https://app.circleci.com/pipelines/github/myorg/myproject/12345' \
+  | jq '.workflows[] | {wf: .name, jobs: [.jobs[] | {name, status}]}'
 ```
 
 ### `steps`
