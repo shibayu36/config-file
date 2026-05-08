@@ -88,6 +88,7 @@
       "Bash(jira issue list:*)",
       "Bash(codex -a never review *)",
       "Bash(/Users/shibayu36/.claude/skills/gws-docs-to-markdown/scripts/read_gdoc.sh:*)",
+      "Bash(/Users/shibayu36/.claude/skills/circleci-investigate/scripts/circleci.py:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:blog.shibayu36.org)",
@@ -118,34 +119,6 @@
     "additionalDirectories": [
       "~/obsidian"
     ]
-  },
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "enableWeakerNetworkIsolation": true,
-    "excludedCommands": [
-      "git commit *",
-      "git push*",
-      "open *",
-      "codex *"
-    ],
-    "filesystem": {
-      "allowWrite": [
-        "~/obsidian",
-        "~/Library/Caches"
-      ]
-    },
-    "network": {
-      "allowedDomains": [
-        "chatgpt.com",
-        "ab.chatgpt.com",
-        "www.googleapis.org",
-        "proxy.golang.org",
-        "go.opentelemetry.io",
-        "google.golang.org",
-        "api.github.com"
-      ]
-    }
   },
   "hooks": {
     "PreToolUse": [
@@ -201,19 +174,50 @@
     "command": "~/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
-    "document-skills@anthropic-agent-skills": true,
+    "document-skills@anthropic-agent-skills": false,
     "gopls-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "dig@kuu-marketplace": true
   },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [
+        "chatgpt.com",
+        "ab.chatgpt.com",
+        "www.googleapis.org",
+        "proxy.golang.org",
+        "go.opentelemetry.io",
+        "google.golang.org",
+        "api.github.com"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/obsidian",
+        "~/Library/Caches",
+        "~/go/pkg/mod/cache",
+        "~/.cache"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true,
+    "excludedCommands": [
+      "git commit *",
+      "git push*",
+      "git rebase *",
+      "open *",
+      "codex *"
+    ]
+  },
   "effortLevel": "xhigh",
   "plansDirectory": "./tmp/plans",
   "preferredNotifChannel": "terminal_bell",
-  "agentPushNotifEnabled": true,
   "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  },
-  "skipAutoPermissionPrompt": true
+  }
 }
