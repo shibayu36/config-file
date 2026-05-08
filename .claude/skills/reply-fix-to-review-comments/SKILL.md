@@ -130,51 +130,22 @@ gh api "repos/OWNER/REPO/pulls/NUMBER/comments/COMMENT_ID/replies" \
 
 ## 最終サマリーの形式
 
-実行後、以下のテンプレートでサマリーを出力する。各エントリには `path:line` と `comment_id` を必ず含めること（投稿の追跡可能性のため）。
+実行後、以下の 2 セクションだけを箇条書きで出力する。重複でスキップ・自分の補足コメント等の判定済み項目はサマリーに出さない（必要なら実行ログで個別に確認すれば足りる）。
 
 ```markdown
 ## Reply 投稿サマリー
 
-対象 PR: <URL>
+### 対応したもの
 
-### 対応した（Reply 投稿済み）
+指摘の要旨と対応 commit のメッセージを並べる（ダブルチェック用）。
 
-#### <path>:<line> (comment_id=<id>)
-- 指摘要旨: <冒頭 1〜2 行>
-- 投稿 Reply: `https://github.com/OWNER/REPO/commit/<sha> で修正しました`
+- 指摘: <冒頭 1〜2 行>
+  - `<sha>` <commit subject>
+  - （複数 commit ある場合は追加で並べる）
 
-### ユーザー確認後に投稿
+### 迷ったけど対応を見送ったもの
 
-#### <path>:<line> (comment_id=<id>)
-- 指摘要旨: ...
-- 候補 sha: <sha1>, <sha2>
-- ユーザー判断: <sha1> を採用
-- 投稿 Reply: `https://github.com/OWNER/REPO/commit/<sha1> で修正しました`
-
-### 重複でスキップ
-
-#### <path>:<line> (comment_id=<id>)
-- 既存 Reply: 「<commit URL> で修正しました」相当を検出（投稿者: <login>, <created_at>）
-
-### 自分の補足コメント（対象外）
-
-#### <path>:<line> (comment_id=<id>)
-- 指摘要旨: <冒頭 1〜2 行>
-- 理由: 起点コメントが自分かつ他者の返信なし（補足コメント扱い）
-
-### 対象外（commit 未紐付け）
-
-#### <path>:<line> (comment_id=<id>)
-- 指摘要旨: ...
-- 理由: 直前の会話に対応 commit が見当たらない
-
-### ユーザー判断でスキップ
-
-（あれば）
-
-### エラー
-
-（あれば: comment_id と stderr 抜粋）
+- `<path>:<line>`: <理由（候補なし／候補が絞れず skip／投稿失敗 など）>
 ```
 
 該当エントリがないセクションは省略してよい。
