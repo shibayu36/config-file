@@ -67,26 +67,13 @@ todo 案の表示は確認なしで提示してそのまま実行する。
 
 git は `GIT_SEQUENCE_EDITOR` / `GIT_EDITOR` の値を `/bin/sh -c "<EDITOR>" <EDITOR> <todofile>` の形でシェル経由起動し、編集対象ファイルパスを末尾引数として渡す。これを利用して事前に書いた一時ファイルで上書きする。
 
-### 一時ファイルの作り方（堅牢な書式）
+### 一時ファイルの作り方
 
-`$TMPDIR` を直書きすると、設定されてない場合や空白入りの場合に壊れる。`mktemp` で作って `sh -c '... "$1"'` の形で渡すと、引用符・空白に強い。
+todo / message 用の一時ファイルを作って対応する。ユーザーの一時ファイル配置方針があればそれに従う。
 
-`$TMPDIR` 配下に置きたい環境（sandbox 等で `mktemp` のデフォルト出力先が write 不可な場合）は、テンプレート指定で `$TMPDIR` を尊重させる：
-
-```bash
-# 標準: mktemp 単独
-TODO_FILE=$(mktemp)
-
-# $TMPDIR を尊重させる形（sandbox 互換）
-TODO_FILE=$(mktemp "${TMPDIR:-/tmp}/git-rebase-todo.XXXXXX")
-```
-
-以降の例は `mktemp` 単独で示すが、上記どちらの形でも動く。
+以降の例では作成済み一時ファイルのパスを `$TODO_FILE`（todo 用） / `$MSG_FILE`（commit message 用）というプレースホルダーで表す。
 
 ```bash
-TODO_FILE=$(mktemp)
-MSG_FILE=$(mktemp)
-
 cat > "$TODO_FILE" <<'EOF'
 pick abc1234 first commit subject
 squash def5678 typo fix
@@ -103,10 +90,7 @@ GIT_SEQUENCE_EDITOR='sh -c '\''cp "'$TODO_FILE'" "$1"'\'' --' \
 ### todo 差し替えと commit message 差し替えを併用する（squash で新メッセージを与える例）
 
 ```bash
-TODO_FILE=$(mktemp)
-MSG_FILE=$(mktemp)
-
-# 略：TODO_FILE と MSG_FILE に内容を書く
+# $TODO_FILE と $MSG_FILE に内容を書いた前提
 
 GIT_SEQUENCE_EDITOR='sh -c '\''cp "'$TODO_FILE'" "$1"'\'' --' \
 GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' \
