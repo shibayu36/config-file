@@ -1,6 +1,6 @@
 ---
 name: git-rebase
-description: git rebase を自然言語の指示から非対話で実行する。commit 整理（squash / fixup / reword / drop / 順序入替 / split）、fixup workflow（既存 commit に修正を混ぜる）、upstream 取り込み（origin/main 等）、conflict 解消支援、stacked branch 構成での `--update-refs` 自動付与（下位 ref の追従更新）を扱う。「rebase して」「commit まとめて」「squash して」「fixup して」「main 取り込んで」「XX commit にくっつけて」「reword」「split」「conflict 解消」「stacked rebase」「下位 branch も追従させて」などのリクエストで使用。push 済みブランチでは確認後に rebase は実行するが、force push 自体は skill では実行しない。
+description: git rebase を自然言語指示から非対話で実行する。commit 整理（squash / fixup / reword / drop / split / 順序入替）、upstream 取り込み、conflict 解消、stacked rebase（`--update-refs`）を扱う。「rebase して」「squash」「fixup」「reword」「split」「main 取り込んで」「conflict 解消」などのリクエストで使用。
 user_invocable: true
 ---
 
