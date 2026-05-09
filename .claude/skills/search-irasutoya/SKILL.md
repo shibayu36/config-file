@@ -1,7 +1,9 @@
 ---
-argument-hint: 欲しいイラストや表現したいこと（例: 猫、リモートワークの課題を説明したい）
+name: search-irasutoya
 description: いらすとやから画像を検索、または表現に適したイラストの組み合わせを提案する
+argument-hint: 欲しいイラストや表現したいこと（例: 猫、リモートワークの課題を説明したい）
 allowed-tools: WebFetch(domain:www.irasutoya.com)
+user-invocable: true
 ---
 
 ## あなたの役割
