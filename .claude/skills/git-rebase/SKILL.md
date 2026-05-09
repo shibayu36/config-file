@@ -1,6 +1,6 @@
 ---
 name: git-rebase
-description: git rebase を自然言語の指示から非対話で実行する。commit 整理（squash / fixup / reword / drop / 順序入替 / split）、fixup workflow（既存 commit に修正を混ぜる）、upstream 取り込み（origin/main 等）、conflict 解消支援を扱う。「rebase して」「commit まとめて」「squash して」「fixup して」「main 取り込んで」「XX commit にくっつけて」「reword」「split」「conflict 解消」などのリクエストで使用。push 済みブランチでは確認後に rebase は実行するが、force push 自体は skill では実行しない。
+description: git rebase を自然言語の指示から非対話で実行する。commit 整理（squash / fixup / reword / drop / 順序入替 / split）、fixup workflow（既存 commit に修正を混ぜる）、upstream 取り込み（origin/main 等）、conflict 解消支援、stacked branch 構成での `--update-refs` 自動付与（下位 ref の追従更新）を扱う。「rebase して」「commit まとめて」「squash して」「fixup して」「main 取り込んで」「XX commit にくっつけて」「reword」「split」「conflict 解消」「stacked rebase」「下位 branch も追従させて」などのリクエストで使用。push 済みブランチでは確認後に rebase は実行するが、force push 自体は skill では実行しない。
 user_invocable: true
 ---
 
@@ -9,6 +9,10 @@ user_invocable: true
 git rebase を自然言語の指示から非対話で実行する skill。commit 整理・fixup workflow・upstream 取込・conflict 解消支援を扱う。`rebase -i` の todo / commit message を Claude が事前生成して `GIT_SEQUENCE_EDITOR` / `GIT_EDITOR` を差し替える方式で完遂する。
 
 対象は**ローカル branch の rebase**。push・コード修正・レビュー対応との chain は本 skill の責務外（詳細は「設計上の注意点」）。
+
+以下の特殊ケースでは、該当する references を読んでから手順を進める：
+
+- **stacked branch 構成（ユーザー指示または会話文脈で stacked と分かっている時のみ）**：`references/stacked-update-refs.md`（`--update-refs` の付与・各 ref の push 判定・サマリー追記）
 
 ## 共通の動作フロー
 
@@ -25,11 +29,16 @@ git rebase を自然言語の指示から非対話で実行する skill。commit
 5. **merge commit の検知**（base 決定後）：`git log --merges <base>..HEAD` で rebase 範囲に merge commit があるかチェック。あれば次の文言（例）でユーザーに確認する：
    > merge commit があります。drop されて linear になりますが OK ですか / `--rebase-merges` で構造保持しますか？
    `--rebase-merges` を選んだ場合は **git が生成した todo（`label / reset / merge` 行を含む）をそのまま使う**（Claude は編集しない）。
-6. **push 済み判定**（後述「push 済みブランチの扱い」）。
-7. **todo 案の提示**：rebase で組む todo（または等価な操作プラン）を 1 行ずつユーザーに提示する。
-8. **rebase 前 HEAD sha の出力**：着手直前にユーザーに見える形で 1 行表示する。
-9. **非対話で rebase を実行**：走った git コマンドは隠さずユーザーに見える形で実行する。
-10. **結果サマリーの出力**（後述「最終サマリーの形式」）。
+6. **stacked 構成の判定**：以下のいずれかに該当する場合は stacked 構成として扱い、`references/stacked-update-refs.md` を読んで `--update-refs` 付与以降の手順に従う：
+   - **ユーザーが明示指示した**：「stacked rebase」「下位 branch も追従させて」「`--update-refs` で」等
+   - **直前の会話文脈で stacked branch 構成が前提と分かっている**：`feature-base → feature-A → feature-B` のような積み上げ運用が会話で言及されている等
+   
+   いずれにも該当しなければ通常 rebase で進む（**自動検知はしない**。`git for-each-ref` 等で勝手に判定して `--update-refs` を付けない）。
+7. **push 済み判定**（後述「push 済みブランチの扱い」）。
+8. **todo 案の提示**：rebase で組む todo（または等価な操作プラン）を 1 行ずつユーザーに提示する。
+9. **rebase 前 HEAD sha の出力**：着手直前にユーザーに見える形で 1 行表示する。
+10. **非対話で rebase を実行**：走った git コマンドは隠さずユーザーに見える形で実行する。
+11. **結果サマリーの出力**（後述「最終サマリーの形式」）。
 
 Y/N 確認を取るのは以下の時のみ：
 
@@ -218,6 +227,7 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 - 含まれる → 「push 済みなので force push が必要です。続行しますか？」を Y/N 確認する。
 - 続行されたら rebase 実行、最終出力に `git push --force-with-lease` を添えて終了する。
 - **skill 自身は push しない**。
+- stacked 構成（共通フロー ステップ 6 で検知）の場合、各下位 ref ごとの push 判定が必要。`references/stacked-update-refs.md` の「push 済み判定（stacked 拡張）」を参照する。
 
 ## 候補 sha が一意に決まらない時
 
@@ -274,6 +284,8 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 ### 復旧する場合
 - `git reset --hard <rebase 前 HEAD sha>`
 ```
+
+stacked 構成（共通フロー ステップ 6 で検知）の場合は、上のサマリーに「更新された下位 branch」「下位 ref ごとの force push」「復旧時の連動更新の注意」を追記する。詳細は `references/stacked-update-refs.md` の「最終サマリーへの追加項目」を参照。
 
 ### 「対象範囲」の書式
 
