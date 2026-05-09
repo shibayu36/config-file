@@ -38,10 +38,6 @@ ln -s ~/development/config-file/.myclirc ~/
 ln -s ~/development/config-file/.claude/CLAUDE.md ~/.claude/
 ln -s ~/development/config-file/.claude/settings.json ~/.claude/
 ln -s ~/development/config-file/.claude/keybindings.json ~/.claude/
-mkdir -p ~/.claude/commands
-for item in ~/development/config-file/.claude/commands/*; do
-  ln -s "$item" ~/.claude/commands/
-done
 ln -s ~/development/config-file/.claude/scripts ~/.claude/
 mkdir -p ~/.claude/agents
 for item in ~/development/config-file/.claude/agents/*; do
