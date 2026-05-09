@@ -103,13 +103,14 @@ def api_v2_paginated(
     """Walk CircleCI API v2 next_page_token cursors and return a single
     merged `{"items": [...], "next_page_token": null}` dict.
 
-    Use this for endpoints whose first page may not contain all results
-    (tests, artifacts, etc.). All items are accumulated in memory; this
-    is fine for the multi-MB responses we have observed (e.g. ~8k tests).
+    Stops after MAX_PAGES even if the cursor keeps advancing, to avoid
+    runaway API consumption on huge projects. On truncation, prints a
+    warning to stderr; the returned `items` will be the truncated list.
     """
+    MAX_PAGES = 10
     items: list = []
     next_token: str | None = None
-    while True:
+    for _ in range(MAX_PAGES):
         page_params = dict(params) if params else {}
         if next_token:
             page_params["page-token"] = next_token
@@ -118,6 +119,12 @@ def api_v2_paginated(
         next_token = page.get("next_page_token")
         if not next_token:
             break
+    else:
+        print(
+            f"Warning: api_v2_paginated reached max pages ({MAX_PAGES}) "
+            f"for {path}; truncating remaining results",
+            file=sys.stderr,
+        )
     return {"items": items, "next_page_token": None}
 
 
