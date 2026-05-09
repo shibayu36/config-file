@@ -33,7 +33,7 @@ git rebase を自然言語の指示から非対話で実行する skill。commit
    - **ユーザーが明示指示した**：「stacked rebase」「下位 branch も追従させて」「`--update-refs` で」等
    - **直前の会話文脈で stacked branch 構成が前提と分かっている**：`feature-base → feature-A → feature-B` のような積み上げ運用が会話で言及されている等
    
-   いずれにも該当しなければ通常 rebase で進む（**自動検知はしない**。`git for-each-ref` 等で勝手に判定して `--update-refs` を付けない）。
+   いずれにも該当しなければ通常 rebase で進む。
 7. **push 済み判定**（後述「push 済みブランチの扱い」）。
 8. **todo 案の提示**：rebase で組む todo（または等価な操作プラン）を 1 行ずつユーザーに提示する。
 9. **rebase 前 HEAD sha の出力**：着手直前にユーザーに見える形で 1 行表示する。
