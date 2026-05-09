@@ -1,6 +1,8 @@
 ---
+name: my-create-draft-pull-request
 description: GitHubのDraft PullRequestを作成する
 allowed-tools: Bash(git push:*), Bash(open:*)
+user-invocable: true
 ---
 
 次の手順でGitHubのDraft PullRequestを作成してください。
