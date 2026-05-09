@@ -1,3 +1,9 @@
+---
+name: review-current-branch
+description: シニアソフトウェアエンジニアとして現在のブランチのプルリクエストをレビューする
+user-invocable: true
+---
+
 # 役割
 シニアソフトウェアエンジニアとして、現在のブランチのプルリクエストをレビューしてください。
 
