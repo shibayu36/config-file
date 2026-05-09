@@ -10,6 +10,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -18,6 +19,7 @@ from typing import Any, NoReturn
 
 CIRCLECI_API_BASE = "https://circleci.com"
 HTTP_TIMEOUT_SEC = 30
+SLEEP_BETWEEN_REQUESTS_SEC = 0.2
 
 
 # ---------------------------------------------------------------
@@ -83,6 +85,8 @@ def api_request(
             f"CircleCI API {version} request failed (network/TLS error) "
             f"for {path}: {e.reason}"
         )
+    # Throttle to avoid hammering CircleCI rate limits in pagination / N+1 loops.
+    time.sleep(SLEEP_BETWEEN_REQUESTS_SEC)
     try:
         return json.loads(body)
     except json.JSONDecodeError as e:
