@@ -1,5 +1,8 @@
 ---
+name: create-requirements
+description: ヒアリングしながら作りたい機能の要件定義を確定する
 argument-hint: 作りたい機能
+user-invocable: true
 ---
 
 ## あなたの役割
