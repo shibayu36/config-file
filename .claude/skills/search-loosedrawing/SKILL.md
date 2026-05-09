@@ -1,7 +1,9 @@
 ---
-argument-hint: 欲しいイラストや表現したいこと（例: ビジネスマン、リモートワークを表現したい）
+name: search-loosedrawing
 description: Loose Drawingから画像を検索、または表現に適したイラストの組み合わせを提案する
+argument-hint: 欲しいイラストや表現したいこと（例: ビジネスマン、リモートワークを表現したい）
 allowed-tools: WebFetch(domain:loosedrawing.com)
+user-invocable: true
 ---
 
 ## あなたの役割
