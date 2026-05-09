@@ -1,6 +1,8 @@
 ---
+name: subagent-commit
 description: git-commit-message-generatorエージェントを利用して、commitメッセージを生成する
 model: sonnet
+user-invocable: true
 ---
 
 以下の手順でcommitを行ってください。
