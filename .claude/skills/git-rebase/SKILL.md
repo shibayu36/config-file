@@ -238,6 +238,13 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 
 ## 最終サマリーの形式
 
+「結果」セクションは 2 形式を使い分ける。境界は **変わるのが 1 commit に閉じるか否か**：
+
+- **形式 A（範囲全体型）**：commit 整理（squash / 順序入替 / drop）、upstream 取込、split、stacked など、複数 commit が変わるケース
+- **形式 B（1 commit ピンポイント型）**：fixup workflow、reword（1 commit）、単純ケースの amend 系（最新 commit の amend / drop / reword）など、変わるのが 1 commit に閉じるケース
+
+### 形式 A（範囲全体型）
+
 ```markdown
 ## git-rebase 実行サマリー
 
@@ -254,6 +261,22 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 - push 済みなので force push が必要: `git push --force-with-lease`
 ```
 
-失敗・中断時も同じテンプレを使い、該当しないセクションは省略する。
+### 形式 B（1 commit ピンポイント型）
 
-stacked 構成（共通フロー ステップ 6 で検知）の場合は、上のサマリーに「更新された下位 branch」「下位 ref ごとの force push」を追記する。詳細は `references/stacked-update-refs.md` の「最終サマリーへの追加項目」を参照。
+```markdown
+## git-rebase 実行サマリー
+
+### 結果（変わった commit の before / after）
+<旧 sha> <旧 subject>
+→ <新 sha> <新 subject>
+
+### 変更内容
+- <何をしたかの 1 行要約>
+
+### 次のアクション（あれば）
+- push 済みなので force push が必要: `git push --force-with-lease`
+```
+
+失敗・中断時は形式 A をベースに使い、該当しないセクションは省略する。
+
+stacked 構成（共通フロー ステップ 6 で検知）の場合は形式 A を使い、「更新された下位 branch」「下位 ref ごとの force push」を追記する。詳細は `references/stacked-update-refs.md` の「最終サマリーへの追加項目」を参照。
