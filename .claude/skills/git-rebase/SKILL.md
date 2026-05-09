@@ -8,7 +8,7 @@ user_invocable: true
 
 git rebase を自然言語の指示から非対話で実行する skill。commit 整理・fixup workflow・upstream 取込・conflict 解消支援を扱う。`rebase -i` の todo / commit message を Claude が事前生成して `GIT_SEQUENCE_EDITOR` / `GIT_EDITOR` を差し替える方式で完遂する。
 
-対象は**ローカル branch の rebase**。push・コード修正・レビュー対応との chain は本 skill の責務外（詳細は「設計上の注意点」）。
+対象は**ローカル branch の rebase**。push・コード修正・レビュー対応との chain は本 skill の責務外。
 
 以下の特殊ケースでは、該当する references を読んでから手順を進める：
 
@@ -165,7 +165,7 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 2. **事前予告**：todo 自体は autosquash が git 内部で動的に組むので事前提示は不要。代わりに「`<target_sha>` (`<subject>`) に `<対象 path 一覧>` の差分を fixup します」を 1 行でユーザーに見せてから次に進む（共通フロー ステップ 7「todo 案の提示」のモード固有版）。
 3. fixup 対象の差分を確認し、必要な path を `git add <paths>` で stage する（未 stage のままだと `git commit --fixup` が「nothing added」で失敗するため）。部分 staging を壊さないよう、対象 path をユーザーに確認してから add する。
 4. `git commit --fixup=<target_sha>` で fixup commit を作る。
-5. **commit 失敗時の挙動**：commit 作成が失敗した場合は **rebase に進まずその時点で停止**し、エラー出力をそのままユーザーに見せる。原因切り分けと対応は「設計上の注意点 / commit 失敗の原因切り分け」を参照。
+5. **commit 失敗時の挙動**：commit 作成が失敗した場合は **rebase に進まずその時点で停止**し、エラー出力をそのままユーザーに見せる。原因切り分けと対応は「作業の注意点 / commit 失敗の原因切り分け」を参照。
 6. 成功したら `GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <BASE_ARG>` で実行する。
 
 ### 3. upstream 取り込み
@@ -229,22 +229,15 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
   ```
 - 最後の砦：`git reflog` で過去の HEAD を辿り、戻したい状態の sha を見つけて `git reset --hard <sha>`。
 
-## 設計上の注意点
+## 作業の注意点
 
-- **責務境界**：以下は本 skill の対象外。
-  - **push の実行**：force push が必要な場面でも `git push --force-with-lease` の**コマンド提示のみ**。skill は push を実行しない。
-  - **コード修正**：通常のコード修正は扱わない（conflict 解消の merge 提案のみ例外）。
-  - **レビュー対応との chain**：`fix-review-comments` 等で commit 済みの状態から呼ぶ前提。
 - **destructive 操作はユーザー確認**：rebase は破壊的操作なので、Y/N 確認を取るタイミングは「共通の動作フロー」末尾のリストに集約。失敗時の `git rebase --abort` も自動実行せずユーザーに確認する（自動 abort で意図せず作業を破棄しない）。
-- **rebase 後の影響**：sha が変わるため、`reply-fix-to-review-comments` を続けて呼ぶ場合は新しい sha 基準になる旨を最終出力で告げる。
 - **commit 失敗の原因切り分け**：rebase 中・fixup workflow 中・amend 中の commit 作成失敗には複数の原因がある。skill は **どの原因でも勝手に回避せず、エラー出力と原因の見立てをユーザーに伝えて指示を仰ぐ**。
   - **pre-commit / commit-msg hook 失敗**：hook 起因。`--no-verify` を skill が勝手に付けない。「hook を直してリトライ」「`--no-verify` で進めて」のいずれかをユーザーが選ぶまで skill は何もしない。
-  - **commit 署名失敗**（`commit.gpgsign=true` で gpg/ssh agent が応答しない等）：環境起因。「`-c commit.gpgsign=false` を付けて再試行する」「signing agent を直して再試行する」のいずれかをユーザーが選ぶまで skill は何もしない。
   - **index / working tree 不整合**：未解決 conflict や index lock 等。状況を提示して、`git status` の確認をユーザーに促す。
   - rebase 前 HEAD sha は事前チェックで保持済みなので、いずれの場合も追加の `git reset` は不要（rebase 中なら `git rebase --abort` で着手前に戻せる）。
 - **rebase 中の hook 挙動の注意**：git バージョン・バックエンド（apply / merge）によって hook の発火タイミングが違う。途中で hook が発火して止まった場合の continue/abort はユーザー判断。
 - **empty commit**：`rebase -i` のデフォルトでは保持される（`pick` のまま）。drop したい場合はユーザーが明示する。
-- **dirty 判定の方針**：`git status --porcelain` の出力で判定する（git config の `rebase.autoStash` は読まない・書かない）。skill 側で先に判定することで autoStash 設定の有無に関わらず一貫した動きになる。dirty 拒否の場合は「`git stash push -u` してから再度呼ぶ」をユーザーに促す（skill が stash → rebase → pop を自動化することはしない）。
 - **実行コマンドの可視化**：走った git コマンドは隠さずユーザーに見える形で実行する。
 
 ## 最終サマリーの形式
