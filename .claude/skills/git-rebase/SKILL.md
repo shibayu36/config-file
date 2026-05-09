@@ -23,7 +23,7 @@ git rebase を自然言語の指示から非対話で実行する skill。commit
    3. **dirty 判定**：`git status --porcelain` の出力で判定する。**ただしモード別に許容範囲が違う**：
       - commit 整理 / upstream 取込 / reword / split（過去 commit 対象）：dirty なら commit/stash を促して中止
       - fixup workflow / amend 系 / 最新 commit の split：差分そのものが入力なので dirty を許容（rebase 開始前に staging 状況を確認）
-   4. **rebase 前 HEAD sha の保持**：`git rev-parse HEAD` で現在 sha を取得し、skill 内で保持する。成功・失敗どちらの最終出力にも含めて、`git reset --hard <sha>` で戻れるようにする。
+   4. **rebase 前 HEAD sha の保持**：`git rev-parse HEAD` で現在 sha を取得し、skill 内で保持する。ユーザーが「戻して」等を要求した時に `git reset --hard <sha>` で戻すために使う（ユーザーには表示しない）。
 3. **対象 sha の特定**：`git log` を見て対象 sha を確定する。曖昧なら「候補 sha が一意に決まらない時」へ。
 4. **base の解決**：rebase 範囲の base を決める（モード別。単独 revision として渡す。`<sha>^` が root で死ぬ場合は `--root` に切替、後述）。
 5. **merge commit の検知**（base 決定後）：`git log --merges <base>..HEAD` で rebase 範囲に merge commit があるかチェック。あれば次の文言（例）でユーザーに確認する：
@@ -36,9 +36,8 @@ git rebase を自然言語の指示から非対話で実行する skill。commit
    いずれにも該当しなければ通常 rebase で進む。
 7. **push 済み判定**（後述「push 済みブランチの扱い」）。
 8. **todo 案の提示**：rebase で組む todo（または等価な操作プラン）を 1 行ずつユーザーに提示する。
-9. **rebase 前 HEAD sha の出力**：着手直前にユーザーに見える形で 1 行表示する。
-10. **非対話で rebase を実行**：走った git コマンドは隠さずユーザーに見える形で実行する。
-11. **結果サマリーの出力**（後述「最終サマリーの形式」）。
+9. **非対話で rebase を実行**：走った git コマンドは隠さずユーザーに見える形で実行する。
+10. **結果サマリーの出力**（後述「最終サマリーの形式」）。
 
 Y/N 確認を取るのは以下の時のみ：
 
@@ -198,7 +197,7 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 - **デフォルトは 1 ファイルずつ**：「両側の意図要約 → 解決案 diff → 承認 → 適用 → 次のファイル」を繰り返す。
 - ユーザーが「まとめて」「一括で」「全部いい感じに」等を指示した時のみ、全 conflict の解決案 diff を一気に提示し 1 度の承認で全適用に切り替える。
 - 解消ごとに `git add <file>` → 全部解消したら `GIT_EDITOR=true git rebase --continue`。
-- ユーザーが abort を選んだら `git rebase --abort` を実行し、rebase 前 HEAD sha と reflog 案内を表示する。
+- ユーザーが abort を選んだら `git rebase --abort` を実行し、abort した旨を伝える。
 
 ## push 済みブランチの扱い
 
@@ -220,14 +219,11 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 
 ## 復旧（rebase 失敗・中断時）
 
-- 最終出力には**事前チェックで保持した「rebase 前 HEAD sha」を必ず含める**（成功時も失敗時も）。
-- 復旧コマンド：
+ユーザーが「戻して」等を要求した時の対応方針：
 
-  ```bash
-  git rebase --abort                # rebase 進行中ならまずこれ
-  git reset --hard <rebase 前 HEAD sha>  # それでも戻したい場合
-  ```
-- 最後の砦：`git reflog` で過去の HEAD を辿り、戻したい状態の sha を見つけて `git reset --hard <sha>`。
+- rebase 進行中なら `git rebase --abort`。
+- 着手前の状態に戻したい場合は、事前チェックで保持した「rebase 前 HEAD sha」を使って `git reset --hard <sha>`。
+- 保持した sha が無い／さらに前に戻りたい場合は `git reflog` で過去の HEAD を辿る。
 
 ## 作業の注意点
 
@@ -245,45 +241,19 @@ GIT_EDITOR='sh -c '\''cp "'$MSG_FILE'" "$1"'\'' --' git rebase --continue
 ```markdown
 ## git-rebase 実行サマリー
 
-### 実行内容
-- モード: <commit整理 / fixup / upstream取込 / reword / split / conflict解消>
-- 対象範囲: <下記「対象範囲の書式」参照>
+### 結果（rebase 後の commit log）
+<git log --oneline <base>..HEAD の出力をそのまま貼る>
 
-### 結果
-- rebase 前 HEAD sha: `<sha>` <subject>
-- rebase 後 HEAD sha: `<sha>` <subject>
-- 変わった commit 数: N
+### 変更内容
+- <モードに応じた要約を 1〜数行で>
+  - 例: 「def5678 と xyz9876 を fixup として abc1234 に統合」
+  - 例: 「順序を A → B に入れ替え」
+  - 例: 「origin/main を取り込み（N commit が再適用）」
 
-### 続けて必要な操作（あれば）
-- push 済みだった場合: `git push --force-with-lease`
-- レビュー Reply を続ける場合: rebase で sha が変わったため、新しい sha 基準で `reply-fix-to-review-comments` を呼んでください
-
-### 復旧する場合
-- `git reset --hard <rebase 前 HEAD sha>`
+### 次のアクション（あれば）
+- push 済みなので force push が必要: `git push --force-with-lease`
 ```
 
-stacked 構成（共通フロー ステップ 6 で検知）の場合は、上のサマリーに「更新された下位 branch」「下位 ref ごとの force push」「復旧時の連動更新の注意」を追記する。詳細は `references/stacked-update-refs.md` の「最終サマリーへの追加項目」を参照。
+失敗・中断時も同じテンプレを使い、該当しないセクションは省略する。
 
-### 「対象範囲」の書式
-
-`git log --oneline <base>..HEAD` 相当の短縮 1 行リストを使う。具体例：
-
-- **通常ケース**（base が単独 sha）：
-  ```
-  abc1234 first commit
-  def5678 fix typo
-  ghi9012 minor refactor
-  ```
-- **root ケース**（base が `--root`）：先頭に「(root)」と書き、対象 commit を全件並べる：
-  ```
-  (root) abc1234 initial commit
-  def5678 follow-up
-  ```
-- **fixup workflow** の場合は target commit と fixup commit の組を 1 行で書く：
-  ```
-  fixup `<new_sha>` (`fixup! <target subject>`) → squashed into `<target_sha>` (`<target subject>`)
-  ```
-
-**複合ケース**（fixup × root, split × root など書式が複数該当する場合）は、**該当する書式を全て併記**する（優先順位はつけない）。読み手が「root 起点であった事実」と「どの commit に何を fixup したか」を両方すぐ取れるようにする。
-
-失敗・中断時のサマリーには**「rebase 前 HEAD sha」と復旧コマンドを必ず含める**。
+stacked 構成（共通フロー ステップ 6 で検知）の場合は、上のサマリーに「更新された下位 branch」「下位 ref ごとの force push」を追記する。詳細は `references/stacked-update-refs.md` の「最終サマリーへの追加項目」を参照。

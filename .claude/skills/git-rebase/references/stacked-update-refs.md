@@ -68,5 +68,6 @@ done
 通常のサマリー（SKILL.md「最終サマリーの形式」参照）に加えて、以下を追記する：
 
 - **結果**ブロック：「更新された下位 branch: feature-A, feature-base」を追加
-- **続けて必要な操作**ブロック：stacked 用の force push コマンド一覧を追加（上記の bash ブロックの形式）
-- **復旧する場合**ブロック：「stacked の下位 branch は `--update-refs` で連動更新されているため、HEAD を戻すと下位もそれぞれ古い sha に戻すかユーザー判断（skill 側で自動巻き戻しはしない）」を追記
+- **次のアクション**ブロック：stacked 用の force push コマンド一覧を追加（上記の bash ブロックの形式）
+
+ユーザーが「戻して」等を要求した時は、stacked の下位 branch は `--update-refs` で連動更新されているため、HEAD を戻しても下位 ref は自動では戻らない。下位 ref も巻き戻すかユーザーに確認する（skill 側で自動巻き戻しはしない）。
