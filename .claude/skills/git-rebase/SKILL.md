@@ -19,7 +19,7 @@ git rebase を自然言語の指示から非対話で実行する skill。commit
 1. **モード判定**：自然言語指示を解釈してモードを決定する（commit 整理 / fixup / upstream / reword / split / conflict 解消）。
 2. **事前チェック**：以下を順に実施する。
    1. **進行中 rebase の検知**：`.git/rebase-merge` または `.git/rebase-apply` が存在すれば前回の rebase が中断したまま。ユーザーに `--continue / --abort / --skip` のどれにするか確認する。
-   2. **detached HEAD の検知**：`git symbolic-ref -q HEAD` で branch 名取得。失敗すれば detached HEAD と判定し、警告して続行確認。続行する場合は最終出力に `git branch <name>` のコマンドを添える。
+   2. **detached HEAD の検知**：`git branch --show-current` で branch 名取得。出力が空なら detached HEAD と判定し、警告して続行確認。続行する場合は最終出力に `git branch <name>` のコマンドを添える。
    3. **dirty 判定**：`git status --porcelain` の出力で判定する。**ただしモード別に許容範囲が違う**：
       - commit 整理 / upstream 取込 / reword / split（過去 commit 対象）：dirty なら commit/stash を促して中止
       - fixup workflow / amend 系 / 最新 commit の split：差分そのものが入力なので dirty を許容（rebase 開始前に staging 状況を確認）
