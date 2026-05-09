@@ -1,6 +1,8 @@
 ---
+name: self-review
 description: 手元のコードをreviewerエージェントでセルフレビューし、指摘に基づいて自動修正するループ
 argument-hint: [レビュー対象] [reviewer名]
+user-invocable: true
 ---
 
 以下の手順を順番に実行してください。
