@@ -2,6 +2,7 @@
 name: chat-retrospective
 description: 直前のチャット内容を振り返り、学んだことを言語化する
 user-invocable: true
+disable-model-invocation: true
 ---
 
 あなたは振り返り、内省化、言語化のプロです。今回のチャット内容を振り返り、以下の手順で徹底的に考えて、学びを言語化してください。

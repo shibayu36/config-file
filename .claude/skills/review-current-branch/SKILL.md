@@ -2,6 +2,7 @@
 name: review-current-branch
 description: シニアソフトウェアエンジニアとして現在のブランチのプルリクエストをレビューする
 user-invocable: true
+disable-model-invocation: true
 ---
 
 # 役割

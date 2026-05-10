@@ -3,6 +3,7 @@ name: memo-tech
 description: 現在のセッションから汎用知識のみを抽出し、話題ごとに自動タイトルで分割・保存（Obsidian直下、引数不要）
 allowed-tools: Bash(date:*)
 user-invocable: true
+disable-model-invocation: true
 ---
 
 ## 前提
