@@ -16,7 +16,7 @@ function fzf-cd () {
     # git worktree (git wt) で作成したディレクトリは候補から除外
     local selected_dir
     selected_dir=$(
-        (cdr -l | awk '{ print $2 }' | sed "s|^~/|$HOME/|"; ghq list --full-path) | grep -v '/.worktrees/' |
+        (cdr -l | awk '{ print $2 }' | sed "s|^~/|$HOME/|"; ghq list --full-path) | grep -v '/.worktrees/' | awk '!seen[$0]++' |
         fzf "${fzf_opts[@]}"
     )
     if [ -n "$selected_dir" ]; then
