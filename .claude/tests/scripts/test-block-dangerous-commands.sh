@@ -82,6 +82,12 @@ run_case "rm bypass single quote"       "'r''m' -rf /tmp/foo"                   
 run_case "rm bypass double quote"       "\"r\"m -rf /tmp/foo"                   2
 run_case "rm bypass backslash"          "r\\m -rf /tmp/foo"                     2
 run_case "rm absolute path"             "/bin/rm -rf /tmp/foo"                  2
+run_case "find -delete basic"           "find . -delete"                        2
+run_case "find -delete with cond"       "find . -name '*.tmp' -delete"          2
+run_case "find -delete no path"         "find -delete"                          2
+run_case "xargs rm -rf"                 "find . -name '*.tmp' | xargs rm -rf"   2
+run_case "xargs rm -r"                  "echo foo | xargs rm -r"                2
+run_case "xargs -I {} rm -rf"           "xargs -I {} rm -rf {}"                 2
 run_case "git push --force"             "git push --force"                      2
 run_case "git push -f"                  "git push -f origin master"             2
 run_case "git push --force end"         "git push origin master --force"        2
@@ -110,6 +116,10 @@ echo "=== 許可されるべきケース (expected exit 0) ==="
 run_case "rm -i"                        "rm -i file"                            0
 run_case "rm plain"                     "rm file"                               0
 run_case "rm -f no recursive"           "rm -f file"                            0
+run_case "find no delete"               "find . -name '*.tmp'"                  0
+run_case "find name deletefoo"          "find . -name deletefoo"                0
+run_case "xargs rm no recursive"        "echo foo.txt | xargs rm"               0
+run_case "xargs echo"                   "echo foo | xargs echo"                 0
 run_case "git push plain"               "git push origin master"                0
 run_case "git push --force-with-lease"  "git push --force-with-lease"           0
 run_case "git push --force-with-lease args" "git push --force-with-lease origin feature" 0

@@ -29,6 +29,8 @@ fi
 
 names=(
     "rm 再帰削除"
+    "find -delete"
+    "xargs rm 再帰削除"
     "git force push"
     "git reset --hard"
     "git branch -D"
@@ -41,6 +43,8 @@ names=(
 
 patterns=(
     '(^|[^[:alnum:]_])rm[[:space:]]+(-[a-zA-Z]*[rR][a-zA-Z]*|--recursive)'
+    '(^|[^[:alnum:]_])find[[:space:]].*-delete($|[[:space:]])'
+    '(^|[^[:alnum:]_])xargs[[:space:]].*rm[[:space:]]+(-[a-zA-Z]*[rR][a-zA-Z]*|--recursive)'
     '(^|[^[:alnum:]_])git[[:space:]]+push[[:space:]](.*[[:space:]])?(--force([^-]|$)|-f($|[[:space:]]))'
     '(^|[^[:alnum:]_])git[[:space:]]+reset[[:space:]].*--hard'
     '(^|[^[:alnum:]_])git[[:space:]]+branch[[:space:]](.*[[:space:]])?-D($|[[:space:]])'
@@ -53,6 +57,8 @@ patterns=(
 
 messages=(
     "rm の再帰削除 (-r/-R/-rf/--recursive) は禁止です。削除対象を明示するか、対話的に確認してください。"
+    "find -delete は禁止です。一括削除を伴うため、削除対象を確認した上で個別に rm してください。"
+    "xargs 経由の rm 再帰削除 (-r/-R/-rf/--recursive) は禁止です。削除対象を明示するか、対話的に確認してください。"
     "git push --force / -f は禁止です。必要なら --force-with-lease を使ってください。"
     "git reset --hard は禁止です。コミット履歴の破壊を伴うため事前に人間に確認してください。"
     "git branch -D (強制削除) は禁止です。-d を使うか人間に確認してください。"
