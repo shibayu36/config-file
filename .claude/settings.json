@@ -104,7 +104,6 @@
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
     "deny": [
-      "Bash(find:*)",
       "Bash(sudo:*)",
       "Bash(rm -rf:*)",
       "Read(.env*)",
@@ -199,7 +198,8 @@
         "~/obsidian",
         "~/Library/Caches",
         "~/go/pkg/mod/cache",
-        "~/.cache"
+        "~/.cache",
+        "/tmp"
       ]
     },
     "enableWeakerNetworkIsolation": true,
@@ -207,6 +207,8 @@
       "git commit *",
       "git push*",
       "git rebase *",
+      "git fetch *",
+      "git pull *",
       "open *",
       "codex *"
     ]
