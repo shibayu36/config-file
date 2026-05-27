@@ -24,9 +24,12 @@ python3 ${SKILL_DIR}/scripts/search.py "キーワード"
 
 ### download.py - 型定義ファイルの更新
 ```bash
-python3 ${SKILL_DIR}/scripts/download.py
+python3 ${SKILL_DIR}/scripts/download.py [--output-dir DIR]
 ```
-最新のindex.d.tsをダウンロードして保存する。型定義を最新に更新したい場合に手動実行する。
+最新のindex.d.tsをダウンロードして `<output-dir>/cluster-script-index.d.ts` に保存する。型定義を最新に更新したい場合に手動実行する。
+
+- 保存先は `--output-dir` が無ければ `$PWD` 直下
+- ユーザーの一時ファイル配置方針があれば、それに従って `--output-dir` を明示的に指定すること
 
 ## ワークフロー
 

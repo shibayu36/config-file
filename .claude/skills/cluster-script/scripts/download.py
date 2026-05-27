@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
 """Cluster Script APIの型定義ファイル(index.d.ts)をダウンロードして保存する"""
 
+import argparse
 import os
 import sys
 import urllib.error
 import urllib.request
 
 URL = "https://docs.cluster.mu/script/index.d.ts"
+FILENAME = "cluster-script-index.d.ts"
 
 
 def get_data_path():
-    """スクリプトの位置から保存先パスを算出する"""
+    """スクリプトの位置から保存先パスを算出する (search.pyの自動DLキャッシュ用)"""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     # scripts/ -> cluster-script/ -> skills/ -> .claude/
     skill_dir = os.path.dirname(script_dir)
     skills_dir = os.path.dirname(skill_dir)
     claude_dir = os.path.dirname(skills_dir)
-    return os.path.join(claude_dir, "tmp", "cluster-script-index.d.ts")
+    return os.path.join(claude_dir, "tmp", FILENAME)
 
 
 def download(dest_path):
@@ -42,7 +44,16 @@ def download(dest_path):
 
 
 def main():
-    dest_path = get_data_path()
+    parser = argparse.ArgumentParser(
+        description="Download Cluster Script API type definitions (index.d.ts)"
+    )
+    parser.add_argument(
+        "--output-dir", default="", help="output directory (default: $PWD)"
+    )
+    args = parser.parse_args()
+
+    out_dir = args.output_dir or os.getcwd()
+    dest_path = os.path.join(out_dir, FILENAME)
     download(dest_path)
 
 
