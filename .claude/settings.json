@@ -89,6 +89,8 @@
       "Bash(codex -a never review *)",
       "Bash(/Users/shibayu36/.claude/skills/gws-docs-to-markdown/scripts/read_gdoc.sh:*)",
       "Bash(/Users/shibayu36/.claude/skills/circleci-investigate/scripts/circleci.py:*)",
+      "Bash(python3 /Users/shibayu36/.claude/skills/cluster-creator-kit-script/scripts/search.py:*)",
+      "Bash(python3 /Users/shibayu36/.claude/skills/cluster-creator-kit-script/scripts/download.py:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:blog.shibayu36.org)",
@@ -213,7 +215,7 @@
       "codex *"
     ]
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "plansDirectory": "./tmp/plans",
   "preferredNotifChannel": "terminal_bell",
   "remoteControlAtStartup": true,
@@ -221,5 +223,6 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  }
+  },
+  "model": "claude-opus-4-8"
 }
