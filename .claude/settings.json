@@ -121,15 +121,12 @@
       "~/obsidian"
     ]
   },
+  "model": "claude-opus-4-8",
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/block-bash-commands.sh"
-          },
           {
             "type": "command",
             "command": "~/.claude/scripts/block-dangerous-commands.sh"
@@ -223,6 +220,5 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  },
-  "model": "claude-opus-4-8"
+  }
 }
