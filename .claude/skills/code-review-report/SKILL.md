@@ -26,6 +26,7 @@ $ARGUMENTS を以下のルールで解釈してください：
 - `reviewer` - Claude自身による詳細レビュー
 - `codex-reviewer` - Codex CLIを使ったレビュー
 - `simplify-reviewer` - 可読性・一貫性・保守性に特化したレビュー
+- `code-comment-reviewer` - コードコメントに特化したレビュー（不要・有害なコメントの削除提案）
 
 reviewer名が上記のいずれにも一致しない場合は、エラーとしてユーザーに利用可能なreviewer名を案内してください。
 
