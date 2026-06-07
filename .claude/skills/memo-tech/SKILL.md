@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## 前提
 - 今日: !`date +%F`
-- base_dir: $HOME/obsidian/知識メモ
+- base_dir: $HOME/obsidian/llm-wiki/raw/research
 
 ## あなたの役割
 あなたはベテランの技術系編集者として今回のタスクを実行してください。
@@ -24,7 +24,7 @@ disable-model-invocation: true
 - 具体語優先。プロジェクト名や社内語は入れない。
 
 ### ファイル名
-- 保存先: `$HOME/obsidian/知識メモ/<YYYYMMDD>-<slug>.md`
+- 保存先: `$HOME/obsidian/llm-wiki/raw/research/<YYYYMMDD>-<slug>.md`
     - 日付は **必ず** `date +%Y%m%d` で取得してファイル名に使う
 - `<slug>` はタイトルを自動生成する。具体語優先。プロジェクト名や社内語は入れない。ファイル名に使えない文字は`-`に置換する。必ず日本語を使う。
 
@@ -49,7 +49,7 @@ disable-model-invocation: true
 ultrathinkで実行する。
 
 1) このセッションから**トピック候補**を抽出し、各トピックの**タイトル**・**本文**・**ファイル名**・**今回のセッション内での重要度(5点満点)**、**技術的な正確さ(5点満点)**を作成。この時Web検索などで一次情報を参照し**必ず正当性の再チェックをすること**
-2) ~/obsidian/知識メモ/ 以下に同じような知識があるかを確認
+2) ~/obsidian/llm-wiki/raw/research/ 以下に同じような知識があるかを確認
 3) **プレビューを表示**。このターンでは `Edit` を使わない
     - 本文全文
     - ファイル名一覧(重要度と正確さ付き)
