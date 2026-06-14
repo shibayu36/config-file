@@ -1,0 +1,4 @@
+{
+    /* ctrl+/ はmacOS標準キーバインドでinsertRightToLeftSlash:に割り当てられているが、通常のLTRテキストビューでは処理されずNSBeep(標準警告音)が鳴る。この発火はアプリ(VSCode等)のキーバインドでは抑止できないため、OS層でnoop:に上書きして無音化する。undo自体はemacs-mcx等のアプリ側キーバインドが担う */
+    "^/" = "noop:";
+}
