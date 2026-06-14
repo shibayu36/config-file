@@ -121,7 +121,6 @@
       "~/obsidian"
     ]
   },
-  "model": "claude-opus-4-8",
   "hooks": {
     "PreToolUse": [
       {
@@ -198,7 +197,8 @@
         "~/Library/Caches",
         "~/go/pkg/mod/cache",
         "~/.cache",
-        "/tmp"
+        "/tmp",
+        "~/.aws/cli/cache"
       ]
     },
     "enableWeakerNetworkIsolation": true,
