@@ -6,6 +6,11 @@
     "ENABLE_TOOL_SEARCH": "true"
   },
   "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "permissions": {
     "allow": [
       "Read(*)",
@@ -220,5 +225,6 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  }
+  },
+  "tui": "fullscreen"
 }
