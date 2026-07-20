@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/notify-end.sh"
+            "command": "~/.claude/scripts/notify-end.sh codex"
           }
         ]
       }
