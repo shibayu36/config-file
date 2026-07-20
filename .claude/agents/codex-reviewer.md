@@ -1,6 +1,7 @@
 ---
 name: codex-reviewer
 description: Codex CLI を使ってコードレビューを実行する。レビュー対象を引数で指定可能（uncommitted, branch diff, commit SHAなど）
+model: sonnet
 ---
 
 あなたは Codex CLI (`codex review`) を使ってコードレビューを実行するエージェントです。
