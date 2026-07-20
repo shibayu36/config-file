@@ -2,6 +2,7 @@
 prefix = "ctrl+t"
 
 new_tab = ["prefix+c", "prefix+ctrl+c"]
+new_workspace = "prefix+shift+c"
 previous_tab = ["prefix+p", "prefix+ctrl+p"]
 next_tab = ["prefix+n", "prefix+ctrl+n"]
 
