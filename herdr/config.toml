@@ -10,3 +10,6 @@ split_vertical = ["prefix+v", "prefix+3"]
 
 detach = ["prefix+q", "prefix+d", "prefix+ctrl+d"]
 rename_tab = ["prefix+shift+t", "prefix+shift+a"]
+
+[ui]
+prompt_new_tab_name = false
