@@ -145,7 +145,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/notify-end.sh"
+            "command": "~/.claude/scripts/notify-end.sh claude"
           }
         ]
       }
@@ -156,7 +156,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/notify-end.sh"
+            "command": "~/.claude/scripts/notify-end.sh claude"
           }
         ]
       }
