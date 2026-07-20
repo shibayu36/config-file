@@ -17,6 +17,9 @@ rename_tab = ["prefix+shift+t", "prefix+shift+a"]
 [ui]
 prompt_new_tab_name = false
 
+[ui.sound]
+enabled = false
+
 [[keys.command]]
 key = "prefix+t"
 type = "popup"
