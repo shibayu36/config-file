@@ -49,6 +49,7 @@ for item in ~/development/config-file/.claude/skills/*; do
   ln -s "$item" ~/.claude/skills/
 done
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
+ln -s ~/development/config-file/.codex/hooks.json ~/.codex/
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
 ln -s ~/development/config-file/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
