@@ -14,3 +14,11 @@ rename_tab = ["prefix+shift+t", "prefix+shift+a"]
 
 [ui]
 prompt_new_tab_name = false
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "Open scratch terminal"
+width = "95%"
+height = "95%"
