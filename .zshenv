@@ -91,3 +91,9 @@ export PATH=$PATH:$HOME/dotnet
 
 # ghostty
 export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
+
+# git: 別プロセス（IDE 拡張・shell prompt・hook 内の read-only な git 等）が
+# index.lock を取りに行って rebase と衝突するのを抑止する。
+# shell を起動すると GUI app 用の launchctl env も同時に更新されるので、
+# 以降に Finder/Dock から起動するアプリ（Cursor 等）にも伝播する。
+launchctl setenv GIT_OPTIONAL_LOCKS 0 2>/dev/null
