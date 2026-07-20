@@ -6,10 +6,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/block-bash-commands.sh"
-          },
-          {
-            "type": "command",
             "command": "~/.claude/scripts/block-dangerous-commands.sh"
           }
         ]
