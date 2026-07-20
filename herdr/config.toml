@@ -3,8 +3,10 @@ prefix = "ctrl+t"
 
 new_tab = ["prefix+c", "prefix+ctrl+c"]
 new_workspace = "prefix+shift+c"
-previous_tab = ["prefix+p", "prefix+ctrl+p"]
-next_tab = ["prefix+n", "prefix+ctrl+n"]
+previous_tab = "prefix+ctrl+p"
+next_tab = "prefix+ctrl+n"
+previous_workspace = "prefix+p"
+next_workspace = "prefix+n"
 
 split_horizontal = ["prefix+minus", "prefix+2"]
 split_vertical = ["prefix+v", "prefix+3"]
