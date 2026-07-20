@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# 第1引数で通知元アプリを指定（claude / codex）。省略時はclaude
+APP="${1:-claude}"
+case "$APP" in
+  codex)
+    TITLE="Codex"
+    SOUND="Submarine"
+    EMOJIS="🤖🤖⚡⚡"
+    ICON="https://avatars.githubusercontent.com/u/14957082?v=4"
+    ;;
+  *)
+    TITLE="Claude Code"
+    SOUND="Glass"
+    EMOJIS="💻💻🔥🔥"
+    ICON="https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c33859cc6cd903686c66a2_apple-touch-icon.png"
+    ;;
+esac
+
 # 標準入力からhookのInputデータを読み取り
 INPUT=$(cat)
 
@@ -42,9 +59,9 @@ else
     MSG="Task completed"
 fi
 
-open -g 'raycast://extensions/raycast/raycast/confetti?emojis=💻💻🔥🔥'
-terminal-notifier -title 'Claude Code' \
+open -g "raycast://extensions/raycast/raycast/confetti?emojis=${EMOJIS}"
+terminal-notifier -title "$TITLE" \
     -message "$MSG" \
-    -sound Glass \
-    -contentImage 'https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c33859cc6cd903686c66a2_apple-touch-icon.png' \
+    -sound "$SOUND" \
+    -contentImage "$ICON" \
     -activate "com.mitchellh.ghostty"
