@@ -33,3 +33,5 @@ ensime.sbt
 /.claude/settings.local.json
 /tmp/
 __pycache__/
+
+**/.claude/.cc-writes/
