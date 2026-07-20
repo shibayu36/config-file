@@ -5,12 +5,12 @@
     "MAX_MCP_OUTPUT_TOKENS": "50000",
     "ENABLE_TOOL_SEARCH": "true"
   },
-  "includeCoAuthoredBy": false,
   "attribution": {
     "commit": "",
     "pr": "",
     "sessionUrl": false
   },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Read(*)",
@@ -126,6 +126,7 @@
       "~/obsidian"
     ]
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -219,12 +220,12 @@
   },
   "effortLevel": "high",
   "plansDirectory": "./tmp/plans",
+  "tui": "fullscreen",
   "preferredNotifChannel": "terminal_bell",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754091010862
-  },
-  "tui": "fullscreen"
+  }
 }
