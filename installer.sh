@@ -29,6 +29,7 @@ brew install --cask karabiner-elements
 # for zshrc
 brew install zplug
 brew install tmux
+brew install herdr
 brew install git-secrets
 git secrets --install ~/.git-templates/git-secrets
 brew install fzf

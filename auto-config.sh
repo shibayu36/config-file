@@ -50,6 +50,8 @@ for item in ~/development/config-file/.claude/skills/*; do
 done
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/.codex/hooks.json ~/.codex/
+mkdir -p ~/.config/herdr
+ln -s ~/development/config-file/herdr/config.toml ~/.config/herdr/config.toml
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
 ln -s ~/development/config-file/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config

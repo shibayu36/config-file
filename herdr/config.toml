@@ -1,0 +1,12 @@
+[keys]
+prefix = "ctrl+t"
+
+new_tab = ["prefix+c", "prefix+ctrl+c"]
+previous_tab = ["prefix+p", "prefix+ctrl+p"]
+next_tab = ["prefix+n", "prefix+ctrl+n"]
+
+split_horizontal = ["prefix+minus", "prefix+2"]
+split_vertical = ["prefix+v", "prefix+3"]
+
+detach = ["prefix+q", "prefix+d", "prefix+ctrl+d"]
+rename_tab = ["prefix+shift+t", "prefix+shift+a"]
