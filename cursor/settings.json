@@ -358,5 +358,9 @@
   "claudeCode.preferredLocation": "panel",
   "editor.dropIntoEditor.preferences": [
     "markdown.link"
-  ]
+  ],
+  "window.autoDetectColorScheme": false,
+  "accessibility.signals.voiceRecordingStarted": {
+    "sound": "auto"
+  }
 }
