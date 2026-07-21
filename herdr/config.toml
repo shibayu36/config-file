@@ -1,8 +1,8 @@
 [keys]
 prefix = "ctrl+t"
 
-new_tab = ["prefix+c", "prefix+ctrl+c"]
-new_workspace = "prefix+shift+c"
+new_tab = "prefix+ctrl+c"
+new_workspace = "prefix+c"
 previous_tab = "prefix+ctrl+p"
 next_tab = "prefix+ctrl+n"
 previous_workspace = "prefix+p"
