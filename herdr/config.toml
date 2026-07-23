@@ -1,3 +1,4 @@
+onboarding = false
 [keys]
 prefix = "ctrl+t"
 
@@ -18,6 +19,8 @@ rename_tab = ["prefix+shift+t", "prefix+shift+a"]
 
 [ui]
 prompt_new_tab_name = false
+
+agent_panel_sort = "spaces"
 
 [ui.sound]
 enabled = false
