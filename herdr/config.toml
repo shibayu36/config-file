@@ -7,6 +7,8 @@ previous_tab = "prefix+ctrl+p"
 next_tab = "prefix+ctrl+n"
 previous_workspace = "prefix+p"
 next_workspace = "prefix+n"
+open_notification_target = ""
+cycle_pane_next = ["prefix+tab", "prefix+o"]
 
 split_horizontal = ["prefix+minus", "prefix+2"]
 split_vertical = ["prefix+v", "prefix+3"]
