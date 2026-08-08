@@ -3,6 +3,7 @@ name: create-implement-plan
 description: 要件定義書から実装計画（フェーズ分解・commit分解）を作成する
 argument-hint: 要件定義書のパス
 user-invocable: true
+disable-model-invocation: true
 ---
 
 ## あなたの役割

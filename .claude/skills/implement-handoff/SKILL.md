@@ -2,6 +2,7 @@
 name: implement-handoff
 description: 実装計画に従って作業後、次のフェーズ担当者への申し送り事項を作成する
 user-invocable: true
+disable-model-invocation: true
 ---
 
 ## あなたの役割
