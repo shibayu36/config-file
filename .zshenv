@@ -37,6 +37,9 @@ export PATH=$PATH:$SCALA_HOME/bin
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export PATH=$PATH:$HOME/.poetry/bin
 
+# Rust
+. "$HOME/.cargo/env"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
