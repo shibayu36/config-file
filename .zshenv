@@ -44,7 +44,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 OPENSSL_PATH=/opt/homebrew/opt/openssl@3
 if [ -d "$OPENSSL_PATH" ];then
   export PATH=$OPENSSL_PATH/bin:$PATH
-  export LD_LIBRARY_PATH=$OPENSSL_PATH/lib:$LD_LIBRARY_PATH
   export LIBRARY_PATH=$OPENSSL_PATH/lib:$LIBRARY_PATH
   export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
 fi
