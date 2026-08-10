@@ -40,14 +40,6 @@ export PATH=$PATH:$HOME/.poetry/bin
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# openssl
-OPENSSL_PATH=/opt/homebrew/opt/openssl@3
-if [ -d "$OPENSSL_PATH" ];then
-  export PATH=$OPENSSL_PATH/bin:$PATH
-  export LIBRARY_PATH=$OPENSSL_PATH/lib:$LIBRARY_PATH
-  export CPATH=$OPENSSL_PATH/include:$CPATH
-fi
-
 # texinfo
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
