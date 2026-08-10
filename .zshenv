@@ -45,7 +45,7 @@ OPENSSL_PATH=/opt/homebrew/opt/openssl@3
 if [ -d "$OPENSSL_PATH" ];then
   export PATH=$OPENSSL_PATH/bin:$PATH
   export LIBRARY_PATH=$OPENSSL_PATH/lib:$LIBRARY_PATH
-  export CPATH=$OPENSSL_PATH/include:$LD_LIBRARY_PATH
+  export CPATH=$OPENSSL_PATH/include:$CPATH
 fi
 
 # texinfo
