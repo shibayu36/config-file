@@ -6,8 +6,10 @@ new_tab = "prefix+ctrl+c"
 new_workspace = "prefix+c"
 previous_tab = "prefix+ctrl+p"
 next_tab = "prefix+ctrl+n"
-previous_workspace = "prefix+p"
-next_workspace = "prefix+n"
+previous_workspace = "prefix+shift+p"
+next_workspace = "prefix+shift+n"
+previous_agent = "prefix+p"
+next_agent = "prefix+n"
 open_notification_target = ""
 cycle_pane_next = ["prefix+tab", "prefix+o"]
 
