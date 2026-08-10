@@ -362,5 +362,6 @@
   "window.autoDetectColorScheme": false,
   "accessibility.signals.voiceRecordingStarted": {
     "sound": "auto"
-  }
+  },
+  "python.defaultInterpreterPath": "/Library/Developer/CommandLineTools/usr/bin/python3"
 }
