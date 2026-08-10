@@ -45,6 +45,8 @@
 	cachedir = ~/.cache/git-submodules
 [pull]
 	rebase = true
+[fetch]
+	prune = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
