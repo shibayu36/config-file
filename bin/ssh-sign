@@ -1,0 +1,3 @@
+#!/bin/sh
+export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+exec /usr/bin/ssh-keygen "$@"

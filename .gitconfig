@@ -4,7 +4,7 @@
 [user]
 	name = shibayu36
 	email = shibayu36@gmail.com
-	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7C2s+kOm3eiUzIFIFuSD/SslYoE0sIUYx6tyiObc/orZvNBJGXdLWNxB7XVNuPl950aMw1qRi5uiylz25yS3YJLswMZJx85PqF0TqCcbgKFBs/qZBLM1X8VpifFfRP6V1OI9agdeMLA9fYKEp2YxWYWenQlm20jXNgoPtG0aPRfabxpZW3YDeSM9UuijVSGHqc7RNr9MtbvwHuvxMffBEOfLEli37LiqOdjpDXLQb4vAVKnlQsVBP6/nm8Sg5waQvxSAS75+XZKmaOaqGp3X/D+Kuqwpu0Y9eGwF/3ON+Us0o0avP8eJrOEkdZ1GNioeL+MVkkgkyEm3cM1BTSQID
+	signingkey = ~/.ssh/id_git_sign
 [color]
 	ui = auto
 	diff = auto
@@ -112,10 +112,13 @@
   format = ssh
 
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  program = ~/bin/ssh-sign
 
 [commit]
   gpgsign = true
+[tag]
+  gpgSign = true
+
 [coderabbit]
 	machineId = cli/44574cdb0bf04a6180ce480eb3bd511b
 [wt]
