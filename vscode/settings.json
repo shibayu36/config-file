@@ -41,10 +41,6 @@
     "--fast"
   ],
 
-  // open in external editor
-  "alt-editor.name": "emacs",
-  "alt-editor.binary": "~/bin/emacsclient",
-  "alt-editor.args": "-n +{line}:{column} {filename}",
   "vsicons.dontShowNewVersionMessage": true,
   "editor.multiCursorModifier": "alt",
   "bracketPairColorizer.excludedLanguages": [],

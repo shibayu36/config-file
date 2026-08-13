@@ -62,9 +62,6 @@
     "editor.tabSize": 2,
     "editor.formatOnSave": false
   },
-  "alt-editor.args": "-n +{line}:{column} {filename}",
-  "alt-editor.binary": "~/bin/emacsclient",
-  "alt-editor.name": "emacs",
   "auto-close-tag.SublimeText3Mode": true,
   "beautify.language": {
     "html": [
