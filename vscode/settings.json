@@ -305,8 +305,5 @@
   "partialDiff.enableTelemetry": false,
   "python.linting.mypyEnabled": true,
   "commentTranslate.targetLanguage": "ja",
-  "commentTranslate.multiLineMerge": true,
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  }
+  "commentTranslate.multiLineMerge": true
 }

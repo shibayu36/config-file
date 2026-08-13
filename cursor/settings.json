@@ -306,9 +306,6 @@
   "sync.gist": "5d81a7339c28f9d0c6ad6b0345086a9c",
   "sync.quietSync": true,
   "tabnine.experimentalAutoImports": true,
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
   "textlint.configPath": "~/.textlintrc",
   "textlint.run": "onSave",
   "typescript.suggest.autoImports": false,
