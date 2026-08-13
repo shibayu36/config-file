@@ -176,23 +176,13 @@ alias gg='git-grep-extend -H --break -n --recurse-submodule'
 alias ggg='git-grep-extend -H --break -C 5 -n --recurse-submodule'
 alias gggg='git-grep-fzf'
 
-alias P='percol --match-method migemo'
-
 alias ssh='TERM=xterm-256color ssh'
 
 # alias for perl
 alias ce='carton exec --'
 
-alias pc='proxychains4'
-
 # psを選択して殺す
 alias pskl="ps aux | fzf -m --header-lines 1 | awk '{ print \$2 }' | xargs kill -9"
-
-# IntelliJ
-alias ij="open -a /Applications/IntelliJ\ IDEA\ CE.app"
-
-# alias for emacsclient
-alias e='emacsclient -n'
 
 alias c='code'
 alias code='cursor'
@@ -207,7 +197,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias clear2="echo -e '\026\033c'"
 
 alias tssh="tssh --ssh-option '-o StrictHostKeyChecking=no'"
-alias pctssh="proxychains4 ssh"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi

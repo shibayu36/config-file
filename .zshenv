@@ -46,9 +46,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # texinfo
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
-# cheat
-export CHEATPATH="/Users/shibayu36/.cheat-private:$CHEATPATH"
-
 # AWS CLI v1
 # export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
