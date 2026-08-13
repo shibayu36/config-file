@@ -6,6 +6,8 @@ set -eu
 
 # development fundamental
 brew install coreutils
+brew install gnu-sed
+brew install gawk
 brew install autoconf
 brew install automake
 brew install pkg-config
@@ -21,18 +23,18 @@ brew install libjpeg
 brew install little-cms2
 brew install pam-reattach
 
-brew install --cask homebrew/cask-fonts/font-hack-nerd-font
+brew install --cask font-hack-nerd-font
 
 brew install --cask raycast
 brew install --cask karabiner-elements
+brew install --cask ghostty
 
 # for zshrc
 brew install tmux
 brew install herdr
-brew install git-secrets
-git secrets --install ~/.git-templates/git-secrets
 brew install fzf
 brew install bat
+brew install ripgrep
 brew install ghq
 brew install asdf
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
@@ -55,7 +57,7 @@ brew install prettier
 brew install tree
 brew install gibo
 brew install colordiff
-brew install terraform
+brew install tfenv
 brew install graphviz
 brew install gojq
 brew install gh
@@ -69,16 +71,16 @@ brew install findutils
 brew install protobuf
 brew install git-lfs
 brew install starship
-brew install jordanbaird-ice
+brew install deck
 brew install uv
 
 brew install sops
 
 brew install golangci-lint
 
-brew install 1password-cli
+brew install --cask jordanbaird-ice
+brew install --cask 1password-cli
 
-brew install --cask fig
 brew install --cask obsidian
 brew install --cask aws-vault
 brew install --cask session-manager-plugin
@@ -86,7 +88,6 @@ brew install --cask wireshark
 brew install --cask spotify
 brew install --cask docker
 brew install --cask istat-menus
-brew install --cask authy
 brew install --cask steam
 brew install --cask asana
 brew install --cask realforce
