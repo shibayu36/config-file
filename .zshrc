@@ -209,23 +209,6 @@ alias clear2="echo -e '\026\033c'"
 alias tssh="tssh --ssh-option '-o StrictHostKeyChecking=no'"
 alias pctssh="proxychains4 ssh"
 
-# ---------------- setting for zplug --------------------------
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "Tarrasch/zsh-autoenv"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# プラグインを読み込み、コマンドにパスを通す
-zplug load
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi
 

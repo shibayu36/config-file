@@ -27,7 +27,6 @@ brew install --cask raycast
 brew install --cask karabiner-elements
 
 # for zshrc
-brew install zplug
 brew install tmux
 brew install herdr
 brew install git-secrets
