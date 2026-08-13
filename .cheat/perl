@@ -1,2 +1,0 @@
-# 変更のあったファイルのみproveする
-prove $(git diff --name-only | grep '\.t$')
