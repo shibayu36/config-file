@@ -16,11 +16,9 @@
     "swift-lsp@claude-plugins-official": false
   },
   "env": {
+    "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
     "ENABLE_TOOL_SEARCH": "true",
     "MAX_MCP_OUTPUT_TOKENS": "50000"
-  },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754091010862
   },
   "hooks": {
     "CwdChanged": [
@@ -95,7 +93,6 @@
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(cat:*)",
-      "Bash(xargs:*)",
       "Bash(sort:*)",
       "Bash(uniq:*)",
       "Bash(wc:*)",
@@ -144,8 +141,6 @@
       "Bash(cp:*)",
       "Bash(mv:*)",
       "Bash(ln:*)",
-      "Bash(chmod:*)",
-      "Bash(chown:*)",
       "Bash(sed:*)",
       "Bash(gsed:*)",
       "Bash(awk:*)",
