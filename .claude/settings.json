@@ -1,77 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "agentPushNotifEnabled": true,
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
   "cleanupPeriodDays": 876000,
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "dig@kuu-marketplace": false,
-    "document-skills@anthropic-agent-skills": false,
-    "gopls-lsp@claude-plugins-official": false,
-    "pyright-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": false
-  },
   "env": {
     "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
     "ENABLE_TOOL_SEARCH": "true",
     "MAX_MCP_OUTPUT_TOKENS": "50000"
   },
-  "hooks": {
-    "CwdChanged": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/scripts/direnv-on-cwd-changed.sh",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/scripts/notify-end.sh claude",
-            "type": "command"
-          }
-        ],
-        "matcher": "permission_prompt|auth_success|elicitation_dialog"
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/scripts/block-dangerous-commands.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/scripts/notify-end.sh claude",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      }
-    ]
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
   },
   "includeCoAuthoredBy": false,
-  "language": "日本語",
-  "model": "claude-fable-5[1m]",
   "permissions": {
-    "additionalDirectories": [
-      "~/obsidian"
-    ],
     "allow": [
       "Read(*)",
       "Search(*)",
@@ -167,11 +108,6 @@
       "mcp__slack-explorer-mcp__search_files",
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
-    "ask": [
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)"
-    ],
-    "defaultMode": "auto",
     "deny": [
       "Bash(sudo:*)",
       "Bash(rm -rf:*)",
@@ -179,34 +115,83 @@
       "Read(id_rsa)",
       "Read(id_dsa)",
       "Read(id_ed25519)"
+    ],
+    "ask": [
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
+    ],
+    "defaultMode": "auto",
+    "additionalDirectories": [
+      "~/obsidian"
     ]
   },
-  "plansDirectory": "./tmp/plans",
-  "preferredNotifChannel": "terminal_bell",
-  "remoteControlAtStartup": true,
-  "sandbox": {
-    "autoAllowBashIfSandboxed": true,
-    "enableWeakerNetworkIsolation": true,
-    "enabled": true,
-    "excludedCommands": [
-      "git commit *",
-      "git push*",
-      "git rebase *",
-      "git fetch *",
-      "git pull *",
-      "open *",
-      "codex *"
+  "model": "claude-fable-5[1m]",
+  "skillOverrides": {
+    "chat-retrospective": "off",
+    "find-skills": "off",
+    "gws-calendar-agenda": "off",
+    "gws-calendar-insert": "off"
+  },
+  "hooks": {
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/direnv-on-cwd-changed.sh"
+          }
+        ]
+      }
     ],
-    "filesystem": {
-      "allowWrite": [
-        "~/obsidian",
-        "~/Library/Caches",
-        "~/go/pkg/mod/cache",
-        "~/.cache",
-        "/tmp",
-        "~/.aws/cli/cache"
-      ]
-    },
+    "Notification": [
+      {
+        "matcher": "permission_prompt|auth_success|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/notify-end.sh claude"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/block-dangerous-commands.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/notify-end.sh claude"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh"
+  },
+  "enabledPlugins": {
+    "dig@kuu-marketplace": false,
+    "document-skills@anthropic-agent-skills": false,
+    "gopls-lsp@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": false
+  },
+  "language": "日本語",
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
     "network": {
       "allowedDomains": [
         "chatgpt.com",
@@ -217,23 +202,38 @@
         "google.golang.org",
         "api.github.com"
       ]
-    }
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/obsidian",
+        "~/Library/Caches",
+        "~/go/pkg/mod/cache",
+        "~/.cache",
+        "/tmp",
+        "~/.aws/cli/cache"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true,
+    "excludedCommands": [
+      "git commit *",
+      "git push*",
+      "git rebase *",
+      "git fetch *",
+      "git pull *",
+      "open *",
+      "codex *"
+    ]
   },
-  "skillOverrides": {
-    "chat-retrospective": "off",
-    "find-skills": "off",
-    "gws-calendar-agenda": "off",
-    "gws-calendar-insert": "off"
-  },
-  "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "command": "~/.claude/scripts/statusline.sh",
-    "type": "command"
-  },
+  "effortLevel": "high",
+  "plansDirectory": "./tmp/plans",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
+  "preferredNotifChannel": "terminal_bell",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": true
 }
