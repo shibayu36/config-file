@@ -24,6 +24,10 @@ prompt_new_tab_name = false
 
 agent_panel_sort = "spaces"
 
+# $cwdは.zshrcのchpwdフックからpane metadataとして報告している
+[ui.sidebar.agents]
+rows = [["state_icon", "workspace", "tab"], ["$cwd"]]
+
 [ui.sound]
 enabled = false
 

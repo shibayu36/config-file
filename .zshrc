@@ -152,6 +152,15 @@ bindkey '^@' fzf-cd
 
 autoload -Uz add-zsh-hook
 
+# herdrのagentサイドバーに作業ディレクトリを表示するため、cwdをpane metadataとして報告する
+if [ -n "$HERDR_PANE_ID" ]; then
+    _herdr_report_cwd() {
+        herdr pane report-metadata "$HERDR_PANE_ID" --source shell-cwd --token cwd="${PWD:t}" >/dev/null 2>&1 &!
+    }
+    add-zsh-hook chpwd _herdr_report_cwd
+    _herdr_report_cwd
+fi
+
 # tmuxにもWINDOWを設定
 if [ "$TMUX" != "" ] ; then
     export WINDOW=`tmux respawn-window 2>&1 > /dev/null | cut -d ':' -f 3`
