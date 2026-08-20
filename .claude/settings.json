@@ -216,6 +216,7 @@
     "enableWeakerNetworkIsolation": true,
     "excludedCommands": [
       "git commit *",
+      "git -C * commit*",
       "git push*",
       "git rebase *",
       "git fetch *",
