@@ -1,0 +1,96 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use IO::Socket::UNIX;
+use JSON::PP;
+use List::Util qw(max);
+
+my $TIMEOUT = 2;
+my $JSON    = JSON::PP->new;
+my $SOCKET  = $ENV{HERDR_SOCKET_PATH}
+    or die "equalize-panes: HERDR_SOCKET_PATH is not set\n";
+
+my $tab_id = target_tab_id();
+exit 0 unless defined $tab_id;
+
+my $layout  = request('layout.export', { tab_id => $tab_id })->{result}{layout};
+my @updates = split_ratio_updates($layout->{root}, []);
+exit 0 unless @updates;
+
+for my $update (@updates) {
+    request('layout.set_split_ratio',
+        { tab_id => $tab_id, path => $update->{path}, ratio => $update->{ratio} });
+}
+
+# pane.created / pane.exited と手動アクションでは HERDR_TAB_ID が渡るが、pane.closed では
+# pane が既に消えているため渡らない。その場合は workspace のアクティブタブで代用する。
+# pane を閉じたタブが裏に回っていると表のタブを均等化してしまうが、閉じた pane が
+# どのタブにいたかを事後に特定する手段が herdr 側に無い。
+# タブを特定できないときは、無関係なタブを書き換えないよう何もしない。
+sub target_tab_id {
+    return $ENV{HERDR_TAB_ID} if $ENV{HERDR_TAB_ID};
+    return undef unless $ENV{HERDR_WORKSPACE_ID};
+
+    my $res = request('workspace.list', {});
+    for my $workspace (@{ $res->{result}{workspaces} || [] }) {
+        return $workspace->{active_tab_id}
+            if $workspace->{workspace_id} eq $ENV{HERDR_WORKSPACE_ID};
+    }
+    return undef;
+}
+
+# レイアウトは二分木。split ノードの ratio は first 側の取り分で、path は root から
+# 対象 split までの辿り方（false=first / true=second、root 自身は空配列）。
+sub split_ratio_updates {
+    my ($node, $path) = @_;
+    return () if $node->{type} ne 'split';
+
+    my $axis   = $node->{direction};
+    my $first  = pane_span($node->{first},  $axis);
+    my $second = pane_span($node->{second}, $axis);
+
+    return (
+        { path => $path, ratio => $first / ($first + $second) },
+        split_ratio_updates($node->{first},  [@$path, JSON::PP::false]),
+        split_ratio_updates($node->{second}, [@$path, JSON::PP::true]),
+    );
+}
+
+# 指定軸に沿って部分木が占める pane の数。直交する split はその軸では分割にならないので
+# 大きい方を取る。そのため、深くネストした側と並ぶ 1 枚の pane が極端に広くなることがある。
+sub pane_span {
+    my ($node, $axis) = @_;
+    return 1 if $node->{type} ne 'split';
+
+    my $first  = pane_span($node->{first},  $axis);
+    my $second = pane_span($node->{second}, $axis);
+    return $node->{direction} eq $axis ? $first + $second : max($first, $second);
+}
+
+# herdrのAPIソケットは1リクエスト・1レスポンスで接続を閉じるため、毎回接続し直す。
+sub request {
+    my ($method, $params) = @_;
+
+    my $sock = IO::Socket::UNIX->new(
+        Peer => $SOCKET, Type => SOCK_STREAM, Timeout => $TIMEOUT)
+        or die "equalize-panes: cannot connect to $SOCKET: $!\n";
+    print {$sock} $JSON->encode(
+        { id => "equalize-panes:$method", method => $method, params => $params }), "\n";
+    $sock->flush;
+
+    my $line = eval {
+        local $SIG{ALRM} = sub { die "timeout\n" };
+        alarm $TIMEOUT;
+        my $response = <$sock>;
+        alarm 0;
+        $response;
+    };
+    alarm 0;
+    close $sock;
+    die "equalize-panes: no response for $method\n" unless defined $line;
+
+    my $res = eval { $JSON->decode($line) }
+        or die "equalize-panes: invalid response for $method\n";
+    die "equalize-panes: $method failed: $res->{error}{message}\n" if $res->{error};
+    return $res;
+}

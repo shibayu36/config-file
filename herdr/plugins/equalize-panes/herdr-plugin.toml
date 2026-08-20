@@ -1,0 +1,24 @@
+id = "shibayu36.equalize-panes"
+name = "Equalize Panes"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Evenly size panes on split/close (tmux select-layout -E equivalent)"
+platforms = ["macos"]
+
+[[events]]
+on = "pane.created"
+command = ["bin/equalize-panes"]
+
+[[events]]
+on = "pane.closed"
+command = ["bin/equalize-panes"]
+
+[[events]]
+on = "pane.exited"
+command = ["bin/equalize-panes"]
+
+[[actions]]
+id = "equalize"
+title = "Equalize panes"
+contexts = ["pane"]
+command = ["bin/equalize-panes"]
