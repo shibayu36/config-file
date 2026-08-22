@@ -187,7 +187,16 @@
     "document-skills@anthropic-agent-skills": false,
     "gopls-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": false
+    "swift-lsp@claude-plugins-official": false,
+    "reviewable-html-workbench@reviewable-html-workbench-local": true
+  },
+  "extraKnownMarketplaces": {
+    "reviewable-html-workbench-local": {
+      "source": {
+        "source": "github",
+        "repo": "u-ichi/reviewable-html-workbench"
+      }
+    }
   },
   "language": "日本語",
   "sandbox": {
