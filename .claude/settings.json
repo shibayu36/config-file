@@ -210,7 +210,8 @@
         "proxy.golang.org",
         "go.opentelemetry.io",
         "google.golang.org",
-        "api.github.com"
+        "api.github.com",
+        "127.0.0.1"
       ]
     },
     "filesystem": {
