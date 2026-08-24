@@ -62,6 +62,7 @@ AIが生成したコードの差分を、人間が理解して判断できるよ
 
 difitの起動方法・コメントの渡し方は difit-review スキルに従う。Skillツールで `difit-review` を呼び出して手順を読み込み、次の点だけこのスキルの方針で上書きする。
 
+- difitの起動コマンドは `pnpx difit` を使う（difit-review側の `difit` / `npx difit` の判定には従わない）
 - `--comment` の `body` には手順3で作成した説明コメントを渡す（レビュー指摘中心にしない）
 - コメントJSONの形式・`position.side` の使い分け・range指定・`--include-untracked` などは difit-review の記載どおりに行う
 
