@@ -146,7 +146,7 @@
     ],
     "Notification": [
       {
-        "matcher": "permission_prompt|auth_success|elicitation_dialog",
+        "matcher": "permission_prompt|auth_success|elicitation_dialog|idle_prompt",
         "hooks": [
           {
             "type": "command",
@@ -165,17 +165,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/notify-end.sh claude"
-          }
-        ]
-      }
     ]
   },
   "disableArtifact": true,
@@ -186,12 +175,19 @@
   "enabledPlugins": {
     "dig@kuu-marketplace": false,
     "document-skills@anthropic-agent-skills": false,
+    "eli5@claude-community": true,
     "gopls-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": false,
     "reviewable-html-workbench@reviewable-html-workbench-local": true
   },
   "extraKnownMarketplaces": {
+    "claude-community": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-community"
+      }
+    },
     "reviewable-html-workbench-local": {
       "source": {
         "source": "github",
@@ -234,7 +230,8 @@
       "git fetch *",
       "git pull *",
       "open *",
-      "codex *"
+      "codex *",
+      "git worktree *"
     ]
   },
   "effortLevel": "high",
