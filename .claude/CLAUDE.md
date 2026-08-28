@@ -102,8 +102,9 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
     - 例: `gitro diff origin/main...HEAD`
 
 ## Slackから情報を取得する場合
-- Slackからの情報取得（slack-explorer-mcpのツール利用）は、メインの会話で直接行わず、必ずSubAgent（general-purpose等）に委譲すること。検索結果やスレッドログが大量になりメインのコンテキストを圧迫するため
-  - SubAgentには、調査目的・検索条件・期待する成果物（要約 + 関連メッセージのpermalink）を明確に指示する
+- Slackからの情報取得（slack-explorer-mcpのツール利用）は、メインの会話で直接行わず、必ずカスタムagentの `slack-researcher` に委譲すること。検索結果やスレッドログが大量になりメインのコンテキストを圧迫するため
+  - slack-researcherには、調査目的・検索条件・期待する成果物（要約 + 関連メッセージのpermalink）を明確に指示する
+  - このルールはメインの会話にのみ適用される。general-purpose等の汎用SubAgentには委譲しない
 - Slackから情報を収集して返す時、実際のログも見れるようにしたい。permalinkも一緒に返信に含めるようにしてください
 
 ## JIRAから情報を取得する場合

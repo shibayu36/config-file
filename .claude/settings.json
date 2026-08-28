@@ -105,6 +105,7 @@
       "mcp__slack-explorer-mcp__search_messages",
       "mcp__slack-explorer-mcp__get_thread_replies",
       "mcp__slack-explorer-mcp__get_user_profiles",
+      "mcp__slack-explorer-mcp__search_users_by_name",
       "mcp__slack-explorer-mcp__search_files",
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
