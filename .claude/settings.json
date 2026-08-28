@@ -1,18 +1,83 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "cleanupPeriodDays": 876000,
-  "env": {
-    "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
-    "ENABLE_TOOL_SEARCH": "true",
-    "MAX_MCP_OUTPUT_TOKENS": "50000"
-  },
+  "agentPushNotifEnabled": true,
   "attribution": {
     "commit": "",
     "pr": "",
     "sessionUrl": false
   },
+  "cleanupPeriodDays": 876000,
+  "disableArtifact": true,
+  "effortLevel": "high",
+  "enabledPlugins": {
+    "dig@kuu-marketplace": false,
+    "document-skills@anthropic-agent-skills": false,
+    "eli5@claude-community": true,
+    "gopls-lsp@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true,
+    "reviewable-html-workbench@reviewable-html-workbench-local": true,
+    "swift-lsp@claude-plugins-official": false
+  },
+  "env": {
+    "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
+    "ENABLE_TOOL_SEARCH": "true",
+    "MAX_MCP_OUTPUT_TOKENS": "50000"
+  },
+  "extraKnownMarketplaces": {
+    "claude-community": {
+      "source": {
+        "repo": "anthropics/claude-plugins-community",
+        "source": "github"
+      }
+    },
+    "reviewable-html-workbench-local": {
+      "source": {
+        "repo": "u-ichi/reviewable-html-workbench",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/scripts/direnv-on-cwd-changed.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/scripts/notify-end.sh claude",
+            "type": "command"
+          }
+        ],
+        "matcher": "permission_prompt|auth_success|elicitation_dialog|idle_prompt"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/scripts/block-dangerous-commands.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ]
+  },
   "includeCoAuthoredBy": false,
+  "language": "日本語",
+  "model": "claude-fable-5[1m]",
   "permissions": {
+    "additionalDirectories": [
+      "~/obsidian"
+    ],
     "allow": [
       "Read(*)",
       "Search(*)",
@@ -109,6 +174,11 @@
       "mcp__slack-explorer-mcp__search_files",
       "mcp__slack-explorer-mcp__get_canvas_content"
     ],
+    "ask": [
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
+    ],
+    "defaultMode": "auto",
     "deny": [
       "Bash(sudo:*)",
       "Bash(rm -rf:*)",
@@ -116,89 +186,36 @@
       "Read(id_rsa)",
       "Read(id_dsa)",
       "Read(id_ed25519)"
-    ],
-    "ask": [
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)"
-    ],
-    "defaultMode": "auto",
-    "additionalDirectories": [
-      "~/obsidian"
     ]
   },
-  "model": "claude-fable-5[1m]",
-  "skillOverrides": {
-    "chat-retrospective": "off",
-    "find-skills": "off",
-    "gws-calendar-agenda": "off",
-    "gws-calendar-insert": "off"
-  },
-  "hooks": {
-    "CwdChanged": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/direnv-on-cwd-changed.sh"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "permission_prompt|auth_success|elicitation_dialog|idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/notify-end.sh claude"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/block-dangerous-commands.sh"
-          }
-        ]
-      }
-    ]
-  },
-  "disableArtifact": true,
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/scripts/statusline.sh"
-  },
-  "enabledPlugins": {
-    "dig@kuu-marketplace": false,
-    "document-skills@anthropic-agent-skills": false,
-    "eli5@claude-community": true,
-    "gopls-lsp@claude-plugins-official": false,
-    "pyright-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": false,
-    "reviewable-html-workbench@reviewable-html-workbench-local": true
-  },
-  "extraKnownMarketplaces": {
-    "claude-community": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-community"
-      }
-    },
-    "reviewable-html-workbench-local": {
-      "source": {
-        "source": "github",
-        "repo": "u-ichi/reviewable-html-workbench"
-      }
-    }
-  },
-  "language": "日本語",
+  "plansDirectory": "./tmp/plans",
+  "preferredNotifChannel": "terminal_bell",
+  "remoteControlAtStartup": true,
   "sandbox": {
-    "enabled": true,
     "autoAllowBashIfSandboxed": true,
+    "enableWeakerNetworkIsolation": true,
+    "enabled": true,
+    "excludedCommands": [
+      "git commit *",
+      "git -C * commit*",
+      "git push*",
+      "git rebase *",
+      "git fetch *",
+      "git pull *",
+      "open *",
+      "codex *",
+      "git worktree *"
+    ],
+    "filesystem": {
+      "allowWrite": [
+        "~/obsidian",
+        "~/Library/Caches",
+        "~/go/pkg/mod/cache",
+        "~/.cache",
+        "/tmp",
+        "~/.aws/cli/cache"
+      ]
+    },
     "network": {
       "allowedDomains": [
         "chatgpt.com",
@@ -210,40 +227,23 @@
         "api.github.com",
         "127.0.0.1"
       ]
-    },
-    "filesystem": {
-      "allowWrite": [
-        "~/obsidian",
-        "~/Library/Caches",
-        "~/go/pkg/mod/cache",
-        "~/.cache",
-        "/tmp",
-        "~/.aws/cli/cache"
-      ]
-    },
-    "enableWeakerNetworkIsolation": true,
-    "excludedCommands": [
-      "git commit *",
-      "git -C * commit*",
-      "git push*",
-      "git rebase *",
-      "git fetch *",
-      "git pull *",
-      "open *",
-      "codex *",
-      "git worktree *"
-    ]
+    }
   },
-  "effortLevel": "high",
-  "plansDirectory": "./tmp/plans",
+  "skillOverrides": {
+    "chat-retrospective": "off",
+    "find-skills": "off",
+    "gws-calendar-agenda": "off",
+    "gws-calendar-insert": "off"
+  },
+  "skipAutoPermissionPrompt": true,
+  "statusLine": {
+    "command": "~/.claude/scripts/statusline.sh",
+    "type": "command"
+  },
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
-  "preferredNotifChannel": "terminal_bell",
-  "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
   "voiceEnabled": true
 }
