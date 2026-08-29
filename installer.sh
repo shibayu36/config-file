@@ -73,6 +73,7 @@ brew install git-lfs
 brew install starship
 brew install deck
 brew install uv
+brew install vjeantet/tap/alerter
 
 brew install sops
 
