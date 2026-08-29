@@ -22,6 +22,13 @@ INPUT=$(cat)
 
 # transcriptの最新のassistantメッセージから通知テキストを組み立てる
 build_message() {
+  # CodexのStop hookはlast_assistant_messageをhook inputに直接含むため、transcriptを読まずに使う
+  LAST_MSG=$(echo "$INPUT" | jq -r '.last_assistant_message // empty' 2>/dev/null)
+  if [ -n "$LAST_MSG" ]; then
+    echo "$LAST_MSG" | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -c1-100
+    return
+  fi
+
   TRANSCRIPT_PATH=$(echo "$INPUT" | jq -r '.transcript_path')
   if [ ! -f "$TRANSCRIPT_PATH" ]; then
     echo "Task completed"
