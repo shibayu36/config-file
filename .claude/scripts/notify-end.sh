@@ -75,13 +75,13 @@ notify_and_handle_click() {
   GROUP="notify-end-${APP}-${HERDR_PANE_ID:-${SESSION_ID:-$SESSION_DIR}}"
 
   # 通知センターに接続できない時はalerterの--timeoutが効かないため、外側からも強制終了する
-  ACTIVATION_TYPE=$(timeout 3660 alerter \
+  ACTIVATION_TYPE=$(timeout 30 alerter \
     --title "$TITLE" \
     --message "$MSG" \
     --sound "$SOUND" \
     --app-icon "$ICON" \
     --group "$GROUP" \
-    --timeout 3600 \
+    --timeout 20 \
     --json | jq -r '.activationType // empty')
 
   [ "$ACTIVATION_TYPE" = "contentsClicked" ] || return
