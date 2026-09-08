@@ -12,7 +12,7 @@ ln -s ~/development/config-file/.gitconfig ~/
 ln -s ~/development/config-file/.ctags ~/
 ln -s ~/development/config-file/.tigrc ~/
 ln -s ~/development/config-file/karabiner ~/.config/
-ln -s ~/development/config-file/KeyBindings ~/Library/KeyBindings
+ln -sn ~/development/config-file/KeyBindings ~/Library/KeyBindings
 ln -s ~/development/config-file/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Code/User/
