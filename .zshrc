@@ -200,7 +200,6 @@ alias code='cursor'
 export EDITOR='cursor -w'
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # 文字化けした時の対処用
 alias clear2="echo -e '\026\033c'"
