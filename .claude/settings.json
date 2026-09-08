@@ -209,7 +209,7 @@
   },
   "language": "日本語",
   "sandbox": {
-    "enabled": true,
+    "enabled": false,
     "autoAllowBashIfSandboxed": true,
     "network": {
       "allowedDomains": [
