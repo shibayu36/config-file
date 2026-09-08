@@ -1,0 +1,18 @@
+[
+  {
+    "command": "newTask",
+    "key": "Command+N"
+  },
+  {
+    "command": "openAvatarOverlay",
+    "key": null
+  },
+  {
+    "command": "quickChat",
+    "key": "Command+Alt+N"
+  },
+  {
+    "command": "toggleSidebar",
+    "key": null
+  }
+]

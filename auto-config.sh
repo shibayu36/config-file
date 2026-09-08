@@ -39,6 +39,7 @@ done
 mkdir -p ~/.codex
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/.codex/hooks.json ~/.codex/
+ln -s ~/development/config-file/.codex/keybindings.json ~/.codex/
 # config.toml は Codex がローカル固有の値を書き込むためリンクせず、共通設定をマージする
 ~/development/config-file/bin/sync-codex-config
 mkdir -p ~/.config/herdr
