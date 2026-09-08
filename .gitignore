@@ -30,9 +30,9 @@ ensime.sbt
 /.vscode-powertools/*.log
 .metals/
 /.claude/tmp/
-/.claude/settings.local.json
 /.codex/config.toml
 /tmp/
 __pycache__/
 
 **/.claude/.cc-writes/
+**/.claude/settings.local.json
