@@ -2,6 +2,9 @@
 - iTerm2のGeneral > Preferencesから/Users/yuki.shibazaki/development/config-file/iterm2を指定
 - ./auto-config.shを実行
 
+## 外部スキルのインストール
+- Node.jsとpnpmを用意し、./install-skills.shを実行する
+
 ## Codexの設定
 - 共通設定は.codex/config.base.tomlで管理する。~/.codex/config.tomlはCodexがローカル固有の値（[projects.*]やトークン）を書き込むためGit管理しない
 - .codex/config.base.tomlを変更したらsync-codex-configを実行すると、ローカル固有の値を残したまま~/.codex/config.tomlへ反映される（auto-config.shからも呼ばれる）
