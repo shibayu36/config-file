@@ -11,6 +11,22 @@ sandbox_mode = "workspace-write"
 approvals_reviewer = "auto_review"
 notify = ["/Users/shibayu36/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
+[agents.reviewer]
+description = "コードレビューを実行し、品質・セキュリティ・パフォーマンスの観点から改善提案を行う"
+config_file = "agents/reviewer.toml"
+
+[agents.simplify-reviewer]
+description = "コードの可読性・一貫性・保守性の観点からレビューを実行し、改善提案を行う。修正は行わない。"
+config_file = "agents/simplify-reviewer.toml"
+
+[agents.code-comment-reviewer]
+description = "コードコメントに特化してレビューを実行し、不要・有害なコメントの削除提案を行う。修正は行わない。"
+config_file = "agents/code-comment-reviewer.toml"
+
+[agents.claude-reviewer]
+description = "Claude Code CLIを使ってコードレビューを実行する。指定された差分・PR・コミットをレビューする。修正は行わない。"
+config_file = "agents/claude-reviewer.toml"
+
 [features]
 js_repl = false
 # 短周期の待機タイムアウトによる親の再推論と利用枠消費を抑える。

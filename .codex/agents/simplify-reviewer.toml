@@ -1,0 +1,5 @@
+name = "simplify-reviewer"
+description = "コードの可読性・一貫性・保守性の観点からレビューを実行し、改善提案を行う。修正は行わない。"
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+developer_instructions = "~/.agents/skills/simplify-reviewer/SKILL.md を読み、そのSkillに従って渡された対象をレビューする。読み込めなければレビュー未完了として報告する。"

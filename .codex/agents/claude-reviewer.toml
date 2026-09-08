@@ -1,0 +1,5 @@
+name = "claude-reviewer"
+description = "Claude Code CLIを使ってコードレビューを実行する。指定された差分・PR・コミットをレビューする。修正は行わない。"
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
+developer_instructions = "~/.agents/skills/claude-reviewer/SKILL.md を読み、そのSkillに従って渡された対象をレビューする。読み込めなければレビュー未完了として報告する。"

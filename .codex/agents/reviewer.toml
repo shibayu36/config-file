@@ -1,0 +1,5 @@
+name = "reviewer"
+description = "コードレビューを実行し、品質・セキュリティ・パフォーマンスの観点から改善提案を行う"
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+developer_instructions = "~/.agents/skills/reviewer/SKILL.md を読み、そのSkillに従って渡された対象をレビューする。読み込めなければレビュー未完了として報告する。"
