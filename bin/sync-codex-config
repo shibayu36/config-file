@@ -1,0 +1,272 @@
+#!/usr/bin/env python3
+"""dotfiles の Codex 共通設定を $CODEX_HOME/config.toml に同期する。
+
+config.toml は Codex 自身が [projects.*] や機密情報を書き込むため Git 管理しない。
+代わりに、既存の config.toml を TOML としてパースし、共通設定
+(.codex/config.base.toml) のキーで上書きマージして書き戻す。
+共通設定に無いキーは既存の値がそのまま残る。
+
+python3 3.11 以上の標準ライブラリだけで動く (tomllib は読み取り専用なので書き出しは自前)。
+テスト: .codex/tests/test-sync-codex-config.sh
+"""
+
+import sys
+
+# tomllib は 3.11 未満に無いので、import より前に判定する
+if sys.version_info < (3, 11):
+    sys.exit("sync-codex-config: python3 3.11 以上が必要です (tomllib を使うため)")
+
+import argparse
+import datetime
+import fnmatch
+import json
+import math
+import os
+import re
+import tempfile
+import tomllib
+from pathlib import Path
+
+PROG = "sync-codex-config"
+DEFAULT_BASE = Path(__file__).resolve().parent.parent / ".codex" / "config.base.toml"
+BARE_KEY_RE = re.compile(r"[A-Za-z0-9_-]+")
+# --drift の「base に無いキー」から除外するパス (各要素は fnmatch パターン)。
+# 秘密 (MCP の env)、公開したくない projects、Codex や ChatGPT アプリが自動で書き換える状態が対象
+LOCAL_ONLY_PATHS = [
+    ("projects",),
+    ("hooks",),
+    ("notice",),
+    ("tui",),
+    ("mcp_servers", "*", "env"),
+    ("mcp_servers", "node_repl"),
+    ("mcp_servers", "computer-use"),
+    ("marketplaces", "openai-*"),
+    ("marketplaces", "*", "last_updated"),
+    ("marketplaces", "*", "last_revision"),
+    ("shell_environment_policy", "set", "NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S"),
+]
+MISSING = object()
+
+
+def die(message):
+    sys.exit(f"{PROG}: {message}")
+
+
+# --- TOML の書き出し ---
+
+
+def escape_string(s):
+    # JSON のエスケープは TOML の basic string と互換だが、DEL だけは TOML 側で生のまま許されない
+    return json.dumps(s, ensure_ascii=False).replace("\x7f", "\\u007f")
+
+
+def format_key(key):
+    return key if BARE_KEY_RE.fullmatch(key) else escape_string(key)
+
+
+def format_value(value):
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, float):
+        if math.isnan(value):
+            return "nan"
+        if math.isinf(value):
+            return "inf" if value > 0 else "-inf"
+        return repr(value)
+    if isinstance(value, str):
+        return escape_string(value)
+    if isinstance(value, (datetime.datetime, datetime.date, datetime.time)):
+        return value.isoformat()
+    if isinstance(value, list):
+        return "[" + ", ".join(format_value(v) for v in value) + "]"
+    if isinstance(value, dict):
+        items = ", ".join(f"{format_key(k)} = {format_value(v)}" for k, v in value.items())
+        return "{" + items + "}"
+    raise TypeError(f"unsupported TOML value: {value!r}")
+
+
+def emit_table(table, path, lines):
+    scalars = {k: v for k, v in table.items() if not isinstance(v, dict)}
+    subtables = {k: v for k, v in table.items() if isinstance(v, dict)}
+    # サブテーブルしか持たない中間テーブルはヘッダを省き、空テーブルは残すためにヘッダだけ出す
+    if path and (scalars or not subtables):
+        if lines:
+            lines.append("")
+        lines.append("[" + format_path(path) + "]")
+    for key, value in scalars.items():
+        lines.append(f"{format_key(key)} = {format_value(value)}")
+    for key, value in subtables.items():
+        emit_table(value, path + [key], lines)
+
+
+def dumps(data):
+    lines = []
+    emit_table(data, [], lines)
+    return "\n".join(lines) + "\n"
+
+
+def format_path(path):
+    return ".".join(format_key(p) for p in path)
+
+
+# --- 入出力 ---
+
+
+def parse_toml(data, source):
+    try:
+        return tomllib.loads(data.decode("utf-8"))
+    except (UnicodeDecodeError, tomllib.TOMLDecodeError) as e:
+        die(f"{source} を TOML としてパースできません: {e}")
+
+
+def write_private(target, data):
+    fd, tmp = tempfile.mkstemp(dir=target.parent, prefix=f".{target.name}.")
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(data)
+        os.replace(tmp, target)
+    except BaseException:
+        os.unlink(tmp)
+        raise
+
+
+# --- マージと drift 検出 ---
+
+
+def deep_merge(local, base):
+    merged = dict(local)
+    for key, value in base.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
+def collect_overridden(base, local, path, found):
+    """base が管理するキーのうち、ローカルの値が違うものを (path, local, base) で集める。"""
+    for key, base_value in base.items():
+        local_value = local.get(key, MISSING)
+        if isinstance(base_value, dict) and isinstance(local_value, dict):
+            collect_overridden(base_value, local_value, path + [key], found)
+        elif local_value != base_value:
+            found.append((path + [key], local_value, base_value))
+
+
+def is_local_only(path):
+    return any(
+        len(pattern) == len(path) and all(fnmatch.fnmatchcase(p, q) for p, q in zip(path, pattern))
+        for pattern in LOCAL_ONLY_PATHS
+    )
+
+
+def collect_local_only(base, local, path, found):
+    """base に無いキーのパスを集める。LOCAL_ONLY_PATHS に一致するものは配下ごと除外する。"""
+    for key, local_value in local.items():
+        if is_local_only(path + [key]):
+            continue
+        if key not in base:
+            found.append(path + [key])
+        elif isinstance(local_value, dict) and isinstance(base[key], dict):
+            collect_local_only(base[key], local_value, path + [key], found)
+
+
+def format_drift_value(value):
+    if value is MISSING:
+        return "<missing>"
+    if isinstance(value, dict):
+        return "{...}"
+    return format_value(value)
+
+
+def print_overridden(base, local, heading):
+    found = []
+    collect_overridden(base, local, [], found)
+    if found:
+        print(heading)
+        for path, local_value, base_value in found:
+            print(f"{format_path(path)}: local={format_drift_value(local_value)} base={format_drift_value(base_value)}")
+    return bool(found)
+
+
+def report_drift(base, local, base_path):
+    """ローカルにしか無いキーは機密を含みうるので、値は出さずパスだけ表示する。"""
+    overridden = print_overridden(base, local, f"# 次の sync で base の値になるキー (残すなら {base_path} を更新する)")
+    local_only = []
+    collect_local_only(base, local, [], local_only)
+    if local_only:
+        print(f"# base に無いキー (共有するなら {base_path} に追加する)")
+        for path in local_only:
+            print(format_path(path))
+    if not overridden and not local_only:
+        print("drift なし")
+    return overridden or bool(local_only)
+
+
+# --- CLI ---
+
+
+def run_sync(base, local, current, target, dry_run):
+    merged = deep_merge(local, base)
+    new_text = dumps(merged)
+    try:
+        reparsed = tomllib.loads(new_text)
+    except tomllib.TOMLDecodeError as e:
+        die(f"内部エラー: 生成した TOML をパースできません: {e}")
+    if reparsed != merged:
+        die("内部エラー: 生成した TOML がマージ結果と一致しません")
+
+    if local == merged:
+        print(f"{target}: 変更なし")
+        return
+    if dry_run:
+        print_overridden(base, local, f"# {target} に書き込まれる変更")
+        return
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if current is not None:
+        write_private(target.with_name(target.name + ".bak"), current)
+    write_private(target, new_text.encode("utf-8"))
+    print(f"{target}: {'更新' if current is not None else '作成'}しました")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="dotfiles の Codex 共通設定を config.toml にマージする")
+    parser.add_argument("--base", type=Path, default=DEFAULT_BASE, help="共通設定の TOML (default: %(default)s)")
+    parser.add_argument(
+        "--codex-home",
+        type=Path,
+        default=Path(os.environ.get("CODEX_HOME") or Path.home() / ".codex"),
+        help="config.toml を置くディレクトリ (default: $CODEX_HOME または ~/.codex)",
+    )
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--dry-run", action="store_true", help="書き込まずに、変更されるキーを表示する")
+    mode.add_argument(
+        "--drift",
+        action="store_true",
+        help="書き込まずに、共通設定とローカルのずれを報告する (ずれがあれば exit 1)",
+    )
+    args = parser.parse_args()
+
+    if not args.base.is_file():
+        die(f"共通設定が見つかりません: {args.base}")
+    base = parse_toml(args.base.read_bytes(), args.base)
+
+    target = args.codex_home / "config.toml"
+    if args.drift:
+        if not target.exists():
+            die(f"{target} がありません。先に sync を実行してください")
+        local = parse_toml(target.read_bytes(), target)
+        sys.exit(1 if report_drift(base, local, args.base) else 0)
+
+    if target.is_symlink():
+        die(f"{target} はシンボリックリンクです。リンク先の内容を実体ファイルとして置き直してから再実行してください")
+    current = target.read_bytes() if target.exists() else None
+    local = parse_toml(current, target) if current is not None else {}
+    run_sync(base, local, current, target, args.dry_run)
+
+
+if __name__ == "__main__":
+    main()

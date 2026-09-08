@@ -1,0 +1,80 @@
+# Codex CLI の共通設定。~/.codex/config.toml にはリンクせず、
+# bin/sync-codex-config がここのキーを ~/.codex/config.toml へマージする。
+# ここに無いキー ([projects.*]、MCP の env にあるトークン、Codex が自動で書く状態など) は
+# 各マシンの ~/.codex/config.toml に残るので、秘密の値はここに書かないこと。
+
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
+network_access = true
+personality = "pragmatic"
+sandbox_mode = "workspace-write"
+approvals_reviewer = "auto_review"
+notify = ["/Users/shibayu36/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+[features]
+js_repl = false
+
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+ENABLE_TOOL_SEARCH = "true"
+MAX_MCP_OUTPUT_TOKENS = "50000"
+
+[mcp_servers.circleci-mcp-server]
+command = "pnpx"
+args = ["@circleci/mcp-server-circleci"]
+
+[mcp_servers.circleci-mcp-server.env]
+CIRCLECI_BASE_URL = "https://circleci.com"
+
+[mcp_servers.slack-explorer-mcp]
+command = "/Users/shibayu36/go/bin/slack-explorer-mcp"
+
+[marketplaces.claude-plugins-official]
+source_type = "git"
+source = "https://github.com/anthropics/claude-plugins-official.git"
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "queue"
+dock-icon-preference = "app-default"
+composerEnterBehavior = "enter"
+notifications-turn-mode = "unfocused"
+conversationDetailMode = "STEPS_PROSE"
+show-context-window-usage = true
+
+[desktop.open-in-target-preferences]
+global = "cursor"

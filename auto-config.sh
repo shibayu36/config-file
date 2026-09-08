@@ -36,8 +36,11 @@ mkdir -p ~/.claude/skills
 for item in ~/development/config-file/.claude/skills/*; do
   ln -s "$item" ~/.claude/skills/
 done
+mkdir -p ~/.codex
 ln -s ~/development/config-file/.codex/AGENTS.md ~/.codex/
 ln -s ~/development/config-file/.codex/hooks.json ~/.codex/
+# config.toml は Codex がローカル固有の値を書き込むためリンクせず、共通設定をマージする
+~/development/config-file/bin/sync-codex-config
 mkdir -p ~/.config/herdr
 ln -s ~/development/config-file/herdr/config.toml ~/.config/herdr/config.toml
 herdr integration install claude

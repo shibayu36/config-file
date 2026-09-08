@@ -31,6 +31,7 @@ ensime.sbt
 .metals/
 /.claude/tmp/
 /.claude/settings.local.json
+/.codex/config.toml
 /tmp/
 __pycache__/
 
