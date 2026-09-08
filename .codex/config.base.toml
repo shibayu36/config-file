@@ -14,6 +14,9 @@ notify = ["/Users/shibayu36/.codex/computer-use/Codex Computer Use.app/Contents/
 [features]
 js_repl = false
 
+[tui]
+status_line = ["project-name", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit"]
+
 [shell_environment_policy]
 inherit = "core"
 
