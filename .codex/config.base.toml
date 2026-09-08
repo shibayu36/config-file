@@ -13,6 +13,10 @@ notify = ["/Users/shibayu36/.codex/computer-use/Codex Computer Use.app/Contents/
 
 [features]
 js_repl = false
+# 短周期の待機タイムアウトによる親の再推論と利用枠消費を抑える。
+# 参考: https://x.com/u1/status/2096890699883123119
+multi_agent_v2.min_wait_timeout_ms = 120000
+multi_agent_v2.default_wait_timeout_ms = 120000
 
 [tui]
 status_line = ["project-name", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit"]
