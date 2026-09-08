@@ -3,6 +3,7 @@
   "cleanupPeriodDays": 876000,
   "env": {
     "CLAUDE_CODE_PLUGIN_PREFER_HTTPS": "1",
+    "CLAUDE_CODE_THRIFTY_SONIC": "false",
     "ENABLE_TOOL_SEARCH": "true",
     "MAX_MCP_OUTPUT_TOKENS": "50000"
   },
