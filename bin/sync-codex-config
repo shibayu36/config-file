@@ -3,11 +3,11 @@
 
 config.toml は Codex 自身が [projects.*] や機密情報を書き込むため Git 管理しない。
 代わりに、既存の config.toml を TOML としてパースし、共通設定
-(.codex/config.base.toml) のキーで上書きマージして書き戻す。
+(codex/config.base.toml) のキーで上書きマージして書き戻す。
 共通設定に無いキーは既存の値がそのまま残る。
 
 python3 3.11 以上の標準ライブラリだけで動く (tomllib は読み取り専用なので書き出しは自前)。
-テスト: .codex/tests/test-sync-codex-config.sh
+テスト: codex/tests/test-sync-codex-config.sh
 """
 
 import sys
@@ -28,7 +28,7 @@ import tomllib
 from pathlib import Path
 
 PROG = "sync-codex-config"
-DEFAULT_BASE = Path(__file__).resolve().parent.parent / ".codex" / "config.base.toml"
+DEFAULT_BASE = Path(__file__).resolve().parent.parent / "codex" / "config.base.toml"
 BARE_KEY_RE = re.compile(r"[A-Za-z0-9_-]+")
 # --drift の「base に無いキー」から除外するパス (各要素は fnmatch パターン)。
 # 秘密 (MCP の env)、公開したくない projects、Codex や ChatGPT アプリが自動で書き換える状態が対象

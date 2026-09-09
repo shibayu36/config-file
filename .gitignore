@@ -29,10 +29,13 @@ ensime.sbt
 /vscode/workspaces/mackerel.code-workspace
 /.vscode-powertools/*.log
 .metals/
-/.claude/tmp/
-/.codex/config.toml
+/claude/tmp/
+/codex/config.toml
 /tmp/
 __pycache__/
 
 **/.claude/.cc-writes/
 **/.claude/settings.local.json
+
+/claude/.cc-writes/
+/claude/settings.local.json

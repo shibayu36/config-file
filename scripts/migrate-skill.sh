@@ -33,9 +33,9 @@ fi
 destination=$(cd "$destination" && pwd -P)
 repo=$(cd "$(dirname "$0")/.." && pwd -P)
 source_relative=''
-for candidate in "skills/$skill" ".claude/skills/$skill"; do
+for candidate in "skills/$skill" "claude/skills/$skill"; do
   if [[ -e $repo/$candidate || -L $repo/$candidate ]]; then
-    [[ -z $source_relative ]] || die "同名スキルが skills/ と .claude/skills/ の両方にあります"
+    [[ -z $source_relative ]] || die "同名スキルが skills/ と claude/skills/ の両方にあります"
     source_relative=$candidate
   fi
 done

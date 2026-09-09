@@ -2,7 +2,7 @@
 
 ## スキルの移行
 
-安定した `skills/<名前>` または `.claude/skills/<名前>` を個人の `shibayu36/agent-skills` に移し、Claude Code と Codex のグローバルインストールへ切り替える。
+安定した `skills/<名前>` または `claude/skills/<名前>` を個人の `shibayu36/agent-skills` に移し、Claude Code と Codex のグローバルインストールへ切り替える。
 
 ```bash
 ./scripts/migrate-skill.sh copy reviewer

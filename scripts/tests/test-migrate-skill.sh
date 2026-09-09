@@ -185,27 +185,27 @@ expect_failure 'リンク先を解決できません' run switch example
 echo 'PASS: dangling link reports its cause without changing the link'
 
 setup ambiguous
-mkdir -p "$fixture/config/.claude/skills"
-cp -R "$fixture/config/skills/example" "$fixture/config/.claude/skills/example"
-expect_failure '同名スキルが skills/ と .claude/skills/ の両方にあります' run copy example
-expect_failure '同名スキルが skills/ と .claude/skills/ の両方にあります' run switch example
+mkdir -p "$fixture/config/claude/skills"
+cp -R "$fixture/config/skills/example" "$fixture/config/claude/skills/example"
+expect_failure '同名スキルが skills/ と claude/skills/ の両方にあります' run copy example
+expect_failure '同名スキルが skills/ と claude/skills/ の両方にあります' run switch example
 [[ ! -e $fixture/agent\ skills/skills/example ]]
 echo 'PASS: ambiguous source is rejected without copying'
 
-setup_switch claude_success .claude/skills
-diff -r "$fixture/config/.claude/skills/example" "$fixture/agent skills/skills/example"
+setup_switch claude_success claude/skills
+diff -r "$fixture/config/claude/skills/example" "$fixture/agent skills/skills/example"
 run switch example
-[[ ! -e $fixture/config/.claude/skills/example ]]
+[[ ! -e $fixture/config/claude/skills/example ]]
 [[ -d $fixture/user/.agents/skills/example && ! -L $fixture/user/.agents/skills/example ]]
 diff -r "$fixture/agent skills/skills/example" "$fixture/user/.agents/skills/example"
 [[ $(cd "$fixture/user/.claude/skills/example" && pwd -P) == "$fixture/user/.agents/skills/example" ]]
 git -C "$fixture/config" diff --cached --name-status > "$fixture/staged.txt"
-printf 'D\t.claude/skills/example/SKILL.md\nD\t.claude/skills/example/references/guide.md\n' > "$fixture/expected-staged.txt"
+printf 'D\tclaude/skills/example/SKILL.md\nD\tclaude/skills/example/references/guide.md\n' > "$fixture/expected-staged.txt"
 diff -u "$fixture/expected-staged.txt" "$fixture/staged.txt"
 echo 'PASS: Claude-only skill is installed for both agents and its actual source deletion is staged'
 
 for failure_mode in fail mismatch wrong-link; do
-  setup_switch "claude_$failure_mode" .claude/skills
+  setup_switch "claude_$failure_mode" claude/skills
   touch "$fixture/$failure_mode"
   case $failure_mode in
     fail) expected='Simulated install failure' ;;
@@ -217,16 +217,16 @@ for failure_mode in fail mismatch wrong-link; do
   echo "PASS: Claude-only skill restores its original state after $failure_mode"
 done
 
-setup_switch claude_conflict .claude/skills
+setup_switch claude_conflict claude/skills
 mkdir "$fixture/user/.agents/skills/example"
 printf '%s\n' 'Preserve me' > "$fixture/user/.agents/skills/example/personal.txt"
 expect_failure 'Codex 側に同名スキルが存在します' run switch example
 [[ $(cat "$fixture/user/.agents/skills/example/personal.txt") == 'Preserve me' ]]
-[[ $(readlink "$fixture/user/.claude/skills/example") == "$fixture/config/.claude/skills/example" ]]
+[[ $(readlink "$fixture/user/.claude/skills/example") == "$fixture/config/claude/skills/example" ]]
 cmp "$fixture/installer-before.sh" "$fixture/config/install-skills.sh"
 echo 'PASS: existing Codex skill blocks Claude-only migration without changes'
 
-setup_switch claude_dangling_conflict .claude/skills
+setup_switch claude_dangling_conflict claude/skills
 ln -s "$fixture/missing" "$fixture/user/.agents/skills/example"
 expect_failure 'Codex 側に同名スキルが存在します' run switch example
 [[ $(readlink "$fixture/user/.agents/skills/example") == "$fixture/missing" ]]
@@ -234,7 +234,7 @@ echo 'PASS: dangling Codex link also blocks Claude-only migration'
 
 for interrupted_link in canonical claude claude_only; do
   if [[ $interrupted_link == claude_only ]]; then
-    setup_switch interrupted_claude_only .claude/skills
+    setup_switch interrupted_claude_only claude/skills
     interrupted_link=claude
   else
     setup_switch "interrupted_$interrupted_link"

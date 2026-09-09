@@ -260,6 +260,16 @@ assert_eq "往復: テーブル配列" '[{"name": "a"}, {"name": "b"}]' "$(toml_
 assert_eq "往復: エスケープ入り文字列" "$(printf 'line1\nline2\ttab "quoted"')" "$(toml_get "$CONFIG" multi text)"
 assert_eq "往復: 改行入りキー" "1" "$(toml_get "$CONFIG" multi "$(printf 'key\nwith newline')")"
 
+CODEX_HOME="$WORK/default-home" "$TARGET" > /dev/null
+assert_eq "デフォルト入力: exit 0" 0 $?
+python3 - "$SCRIPT_DIR/../config.base.toml" "$WORK/default-home/config.toml" <<'PYTEST'
+import sys, tomllib
+from pathlib import Path
+base, actual = (tomllib.loads(Path(p).read_text()) for p in sys.argv[1:])
+assert actual == base
+PYTEST
+assert_eq "デフォルト入力: リポジトリの共通設定と一致する" 0 $?
+
 echo "PASS: $PASS, FAIL: $FAIL"
 if [ "$FAIL" -ne 0 ]; then
     for line in "${FAIL_LOG[@]}"; do

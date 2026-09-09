@@ -26,14 +26,14 @@ ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/C
 ln -s ~/development/config-file/.myclirc ~/
 # Claude／Codexの設定ディレクトリにはローカルデータもあるため、管理対象だけをリンクする。
 mkdir -p ~/.claude/agents ~/.claude/skills ~/.agents/skills
-ln -sn ~/development/config-file/.claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -sn ~/development/config-file/.claude/settings.json ~/.claude/settings.json
-ln -sn ~/development/config-file/.claude/keybindings.json ~/.claude/keybindings.json
-ln -sn ~/development/config-file/.claude/scripts ~/.claude/scripts
-for item in ~/development/config-file/.claude/agents/*; do
+ln -sn ~/development/config-file/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sn ~/development/config-file/claude/settings.json ~/.claude/settings.json
+ln -sn ~/development/config-file/claude/keybindings.json ~/.claude/keybindings.json
+ln -sn ~/development/config-file/claude/scripts ~/.claude/scripts
+for item in ~/development/config-file/claude/agents/*; do
   ln -s "$item" ~/.claude/agents/
 done
-for item in ~/development/config-file/.claude/skills/*; do
+for item in ~/development/config-file/claude/skills/*; do
   ln -s "$item" ~/.claude/skills/
 done
 for item in ~/development/config-file/skills/*; do
@@ -43,11 +43,11 @@ done
 
 ai_codex_home="${CODEX_HOME:-$HOME/.codex}"
 mkdir -p "$ai_codex_home/agents" "$ai_codex_home/rules"
-ln -sn ~/development/config-file/.codex/AGENTS.md "$ai_codex_home/AGENTS.md"
-ln -sn ~/development/config-file/.codex/hooks.json "$ai_codex_home/hooks.json"
-ln -sn ~/development/config-file/.codex/keybindings.json "$ai_codex_home/keybindings.json"
-ln -sn ~/development/config-file/.codex/rules/common.rules "$ai_codex_home/rules/common.rules"
-for item in ~/development/config-file/.codex/agents/*.toml; do
+ln -sn ~/development/config-file/codex/AGENTS.md "$ai_codex_home/AGENTS.md"
+ln -sn ~/development/config-file/codex/hooks.json "$ai_codex_home/hooks.json"
+ln -sn ~/development/config-file/codex/keybindings.json "$ai_codex_home/keybindings.json"
+ln -sn ~/development/config-file/codex/rules/common.rules "$ai_codex_home/rules/common.rules"
+for item in ~/development/config-file/codex/agents/*.toml; do
   ln -s "$item" "$ai_codex_home/agents/"
 done
 # config.toml は Codex がローカル固有の値を書き込むためリンクせず、共通設定をマージする
