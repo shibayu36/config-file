@@ -99,7 +99,10 @@ notify_and_handle_click() {
 
   # herdr内のセッションなら該当paneへフォーカスする
   if [ -n "${HERDR_PANE_ID:-}" ]; then
-    herdr agent focus "$HERDR_PANE_ID"
+    FOCUS_RESULT=$(herdr agent focus "$HERDR_PANE_ID") || return
+    TAB_ID=$(printf '%s' "$FOCUS_RESULT" | jq -er '.result.agent.tab_id') || return
+    # Herdr 0.9.0のagent focusは表示クライアントのタブを切り替えないため、明示的に反映する
+    herdr tab focus "$TAB_ID"
   fi
 }
 
