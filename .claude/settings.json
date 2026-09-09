@@ -188,19 +188,12 @@
   "enabledPlugins": {
     "dig@kuu-marketplace": false,
     "document-skills@anthropic-agent-skills": false,
-    "eli5@claude-community": true,
     "gopls-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
     "reviewable-html-workbench@reviewable-html-workbench-local": false,
     "swift-lsp@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
-    "claude-community": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-community"
-      }
-    },
     "reviewable-html-workbench-local": {
       "source": {
         "source": "github",
