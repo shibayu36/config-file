@@ -4,6 +4,9 @@
 # shibayu36 のスキルは最新を取得し、それ以外はコミットSHA-1で固定する。手元での編集内容は復元しない。
 set -eu
 
+pnpx skills add anthropics/claude-plugins-community#a727be1c7bd6064419b6f60d71993a19198adc17 -g -a claude-code codex -y --skill \
+  eli5
+
 pnpx skills add googleworkspace/cli#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd -g -a claude-code codex -y --skill \
   gws-calendar \
   gws-calendar-agenda \
