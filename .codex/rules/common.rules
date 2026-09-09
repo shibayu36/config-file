@@ -1,0 +1,2 @@
+prefix_rule(pattern=["just", "test-one"], decision="allow")
+prefix_rule(pattern=["just", "check"], decision="allow")

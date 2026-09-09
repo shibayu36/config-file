@@ -42,10 +42,11 @@ for item in ~/development/config-file/skills/*; do
 done
 
 ai_codex_home="${CODEX_HOME:-$HOME/.codex}"
-mkdir -p "$ai_codex_home/agents"
+mkdir -p "$ai_codex_home/agents" "$ai_codex_home/rules"
 ln -sn ~/development/config-file/.codex/AGENTS.md "$ai_codex_home/AGENTS.md"
 ln -sn ~/development/config-file/.codex/hooks.json "$ai_codex_home/hooks.json"
 ln -sn ~/development/config-file/.codex/keybindings.json "$ai_codex_home/keybindings.json"
+ln -sn ~/development/config-file/.codex/rules/common.rules "$ai_codex_home/rules/common.rules"
 for item in ~/development/config-file/.codex/agents/*.toml; do
   ln -s "$item" "$ai_codex_home/agents/"
 done
