@@ -29,7 +29,11 @@ pnpx skills add shibayu36/agent-skills -g -a claude-code codex -y --skill \
   git-rebase \
   cluster-creator-kit-script \
   search-cluster-creators-guide \
-  create-requirements
+  create-requirements \
+  my-create-draft-pull-request \
+  clarify-message \
+  core-message-writing \
+  difit-explain
 
 pnpx skills add mizchi/skills#7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4 -g -a claude-code codex -y --skill \
   empirical-prompt-tuning
