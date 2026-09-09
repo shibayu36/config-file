@@ -3,6 +3,7 @@
 
 ## 外部スキルのインストール
 - Node.jsとpnpmを用意し、./install-skills.shを実行する
+- shibayu36のスキルは最新を取得し、それ以外はinstall-skills.sh内のコミットSHA-1で固定する。更新する際は対象のowner/repo#SHA-1の40桁のSHA-1を書き換える
 
 ## Codexの設定
 - 共通設定は.codex/config.base.tomlで管理する。~/.codex/config.tomlはCodexがローカル固有の値（[projects.*]やトークン）を書き込むためGit管理しない
