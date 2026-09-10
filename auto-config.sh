@@ -22,7 +22,6 @@ ln -s ~/development/config-file/starship.toml ~/.config/
 ln -s ~/development/config-file/cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 ln -s ~/development/config-file/cursor/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Cursor/User/
-ln -s ~/development/config-file/.myclirc ~/
 # Claude／Codexの設定ディレクトリにはローカルデータもあるため、管理対象だけをリンクする。
 mkdir -p ~/.claude/agents ~/.claude/skills ~/.agents/skills
 ln -sn ~/development/config-file/claude/CLAUDE.md ~/.claude/CLAUDE.md
