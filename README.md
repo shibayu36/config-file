@@ -1,6 +1,18 @@
-- ~/development/config-fileにclone
+- Xcode Command Line Toolsを入れる（`xcode-select --install`）。初期状態のmacOSにはgitの実体がないため
+- ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
 - ./installer.shを実行（HomebrewとBrewfileの内容、asdfのpluginを入れる）
 - ./auto-config.shを実行
+- 1Passwordデスクトップ版を入れてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
+- originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
+- 署名鍵を作る（後述の「コミット署名鍵」を参照）
+
+## コミット署名鍵
+- 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
+- .gitconfigとbin/ssh-signはこのリポジトリで管理しているので、端末ごとにやるのは鍵の生成とGitHubへの登録だけ
+  - `sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none`
+  - `ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N ""` で~/.ssh/id_git_sign・id_git_sign.pubを書き出す
+  - id_git_sign.pubを https://github.com/settings/keys にSigning keyとして登録する
+- 古いMacの署名鍵はGitHubから削除しない。SSH署名鍵を削除すると、その鍵で署名した過去のコミットがUnverified表示になる
 
 ## Brewfile
 - 新しいMacでも必ず入れたいものだけをBrewfileに書く。アドホックにbrew installしたものは書かなくてよい
