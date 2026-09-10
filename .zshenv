@@ -43,9 +43,6 @@ export PATH=$PATH:$HOME/.poetry/bin
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# texinfo
-export PATH="/usr/local/opt/texinfo/bin:$PATH"
-
 # AWS CLI v1
 # export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
@@ -63,18 +60,8 @@ export LDFLAGS="-L/opt/homebrew/opt/mysql@8.4/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/mysql@8.4/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql@8.4/lib/pkgconfig"
 
-# postgresql
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig:$PKG_CONFIG_PATH"
-
 # helm
 export HELM_DATA_HOME="$HOME/helm"
-
-# mkcert
-export CAROOT="/opt/homebrew/share/mkcert"
-
-# gettext path for when using anaconda3
-export PATH="/opt/homebrew/opt/gettext/bin:$PATH"
 
 # dotnet
 export DOTNET_ROOT=$HOME/dotnet
