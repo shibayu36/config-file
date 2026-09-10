@@ -2,6 +2,9 @@
 # Homebrewと、これが無いと作業にならないアプリ・ツールを入れる。Brewfile全体はinstaller.shで入れる
 set -eu
 
+# 更新は brew upgrade で意図的に行うため、インストール済みのものは触らない
+export HOMEBREW_NO_INSTALL_UPGRADE=1
+
 if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
