@@ -232,11 +232,6 @@
   "[haml]": {
     "editor.tabSize": 2
   },
-  "ctags": {
-    "executePath": "/Users/shibayu36/.anyenv/envs/rbenv/shims/ripper-tags",
-    "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/",
-    "fileName": ".tags"
-  },
   "redhat.telemetry.enabled": false,
   "sync.quietSync": true,
   "emmet.includeLanguages": {
