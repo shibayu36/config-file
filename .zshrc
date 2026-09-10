@@ -161,11 +161,6 @@ if [ -n "$HERDR_PANE_ID" ]; then
     _herdr_report_cwd
 fi
 
-# tmuxにもWINDOWを設定
-if [ "$TMUX" != "" ] ; then
-    export WINDOW=`tmux respawn-window 2>&1 > /dev/null | cut -d ':' -f 3`
-fi
-
 #alias
 alias ls='ls -a -G'
 alias ll='ls -a -lG'
@@ -203,8 +198,6 @@ export EDITOR='cursor -w'
 
 # 文字化けした時の対処用
 alias clear2="echo -e '\026\033c'"
-
-alias tssh="tssh --ssh-option '-o StrictHostKeyChecking=no'"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/shibayu36/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shibayu36/google-cloud-sdk/path.zsh.inc'; fi
