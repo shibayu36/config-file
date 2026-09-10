@@ -5,6 +5,10 @@
 	name = shibayu36
 	email = shibayu36@gmail.com
 	signingkey = ~/.ssh/id_git_sign
+# GitHubのHTTPS認証はghのトークンを使う
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [color]
 	ui = auto
 	diff = auto
