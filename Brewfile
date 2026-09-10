@@ -89,3 +89,12 @@ cask "readdle-spark"
 cask "slack"
 cask "spotify"
 cask "xbar"
+
+# App Store
+brew "mas"
+mas "Amazon Kindle", id: 302584613
+mas "Gifski", id: 1351639930
+mas "LINE", id: 539883307
+mas "Thor Launcher", id: 1120999687
+mas "Todoist", id: 585829637
+mas "Tomato 2", id: 1494210770
