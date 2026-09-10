@@ -11,7 +11,7 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # --adoptは手動で入れた既存アプリをbrew管理下に取り込むため
-brew install --cask --adopt 1password google-chrome karabiner-elements ghostty raycast font-hack-nerd-font
+brew install --cask --adopt 1password google-chrome dropbox karabiner-elements ghostty raycast font-hack-nerd-font
 # pythonはauto-config.shが呼ぶsync-codex-configがpython3 3.11以上を必要とするため
 brew install herdr python
 
