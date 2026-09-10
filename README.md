@@ -5,6 +5,8 @@
 - 1Passwordデスクトップ版を入れてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
 - 署名鍵を作る（後述の「コミット署名鍵」を参照）
+- sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
+  - `auth sufficient pam_tid.so`
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
