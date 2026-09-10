@@ -1,12 +1,17 @@
 - Xcode Command Line Toolsを入れる（`xcode-select --install`）。初期状態のmacOSにはgitの実体がないため
 - ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
-- ./installer.shを実行（HomebrewとBrewfileの内容、asdfのpluginを入れる）
+- ./bootstrap.shを実行（Homebrewと、作業に必須のアプリ・ツール）。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
+- ./macos-defaults.shを実行（キーリピートなどのシステム設定）。警告が出た項目は案内に従って手動で設定する
 - ./auto-config.shを実行
-- 1Passwordデスクトップ版を入れてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
+- ./installer.shを実行。時間がかかるので、待つ間に以下を進める
+- Karabiner-Elementsを起動し、求められる入力監視・アクセシビリティの権限を許可する
+- Raycastを起動してホットキーを^⌘Spaceに設定する
+- 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
 - 署名鍵を作る（後述の「コミット署名鍵」を参照）
 - sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
   - `auth sufficient pam_tid.so`
+- Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
@@ -15,6 +20,10 @@
   - `ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N ""` で~/.ssh/id_git_sign・id_git_sign.pubを書き出す
   - id_git_sign.pubを https://github.com/settings/keys にSigning keyとして登録する
 - 古いMacの署名鍵はGitHubから削除しない。SSH署名鍵を削除すると、その鍵で署名した過去のコミットがUnverified表示になる
+
+## macOSのシステム設定
+- defaultsコマンドで再現できる設定だけをmacos-defaults.shに書く。それ以外は冒頭の手順に手動作業として書く
+- 設定を変えたら`defaults read <domain> <key>`で現在値を確認し、スクリプトに反映する
 
 ## Brewfile
 - 新しいMacでも必ず入れたいものだけをBrewfileに書く。アドホックにbrew installしたものは書かなくてよい

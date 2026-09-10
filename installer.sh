@@ -1,10 +1,6 @@
 #!/bin/bash
+# Brewfileの内容とasdfのpluginを入れる。Homebrew自体はbootstrap.shで入れる
 set -eu
-
-# homebrew
-if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
 
 # 更新は brew upgrade で意図的に行うため、ここでは不足分のインストールだけを行う
 brew bundle install --no-upgrade --file="$(cd "$(dirname "$0")" && pwd)/Brewfile"

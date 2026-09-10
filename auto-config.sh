@@ -10,8 +10,10 @@ ln -s ~/development/config-file/.inputrc ~/
 ln -s ~/development/config-file/.tmux.conf ~/
 ln -s ~/development/config-file/.gitconfig ~/
 ln -s ~/development/config-file/.tigrc ~/
+mkdir -p ~/.config
 ln -s ~/development/config-file/karabiner ~/.config/
 ln -sn ~/development/config-file/KeyBindings ~/Library/KeyBindings
+mkdir -p ~/Library/Application\ Support/Code/User
 ln -s ~/development/config-file/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/development/config-file/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Code/User/
@@ -19,6 +21,7 @@ ln -s ~/development/config-file/.vscode-powertools ~/
 ln -s ~/development/config-file/.textlintrc ~/
 ln -s ~/development/config-file/.asdfrc ~/
 ln -s ~/development/config-file/starship.toml ~/.config/
+mkdir -p ~/Library/Application\ Support/Cursor/User
 ln -s ~/development/config-file/cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 ln -s ~/development/config-file/cursor/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ln -s ~/development/config-file/vscode/snippets ~/Library/Application\ Support/Cursor/User/
@@ -56,10 +59,12 @@ herdr integration install claude
 herdr plugin install shibayu36/herdr-equalize-panes --yes
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
+mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
 ln -s ~/development/config-file/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 
 #zsh関数群
 ln -s ~/development/config-file/.zshrc.function ~/
 
 #bin
+mkdir -p ~/bin
 ln -s ~/development/config-file/bin/* ~/bin/
