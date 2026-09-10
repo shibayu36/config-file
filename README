@@ -1,5 +1,12 @@
 - ~/development/config-fileにclone
+- ./installer.shを実行（HomebrewとBrewfileの内容、asdfのpluginを入れる）
 - ./auto-config.shを実行
+
+## Brewfile
+- 新しいMacでも必ず入れたいものだけをBrewfileに書く。アドホックにbrew installしたものは書かなくてよい
+- `brew bundle check --file=Brewfile --no-upgrade` で、Brewfileの項目が揃っているか確認できる（Brewfileにないものは無視される）
+- `brew bundle cleanup --file=Brewfile --dry-run` で、Brewfileにないインストール済みのものを一覧できる。`--dry-run` なしで実行すると実際に削除されるので注意
+- Brewfileに載せたcaskをbrewを介さず手動でインストール済みの場合、`brew install --cask --adopt <cask>` で既存アプリをbrew管理下に取り込める
 
 ## 外部スキルのインストール
 - Node.jsとpnpmを用意し、./install-skills.shを実行する
