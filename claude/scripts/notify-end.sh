@@ -67,7 +67,8 @@ build_message() {
 notify_and_handle_click() {
   MSG=$(build_message)
 
-  open -g "raycast://extensions/raycast/raycast/confetti?emojis=${EMOJIS}"
+  # raycast://extensions/... 形式だとRaycast 2.xでemojisが無視される
+  open -g "raycast://confetti?emojis=${EMOJIS}"
 
   # 同一セッションの古い通知は新しい通知で置き換える
   SESSION_ID=$(echo "$INPUT" | jq -r '.session_id // empty')
