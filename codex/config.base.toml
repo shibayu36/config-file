@@ -5,6 +5,7 @@
 
 model = "gpt-6-astra"
 model_reasoning_effort = "low"
+plan_mode_reasoning_effort = "xhigh"
 network_access = true
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
