@@ -36,6 +36,7 @@ multi_agent_v2.min_wait_timeout_ms = 120000
 multi_agent_v2.default_wait_timeout_ms = 120000
 
 [tui]
+whimsy = false
 status_line = ["project-name", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit"]
 
 [shell_environment_policy]
