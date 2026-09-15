@@ -58,6 +58,8 @@ brew "vhs"
 brew "songmu/tap/blogsync"
 brew "k1low/tap/git-wt"
 brew "k1low/tap/mo"
+brew "redpen"
+brew "temporal"
 
 # PDF / OCR（kindle-to-pdf用）
 brew "ocrmypdf"
