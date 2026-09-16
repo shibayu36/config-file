@@ -1,0 +1,7 @@
+gui:
+  enlargedSideViewLocation: top
+  showCommandLog: false
+  wrapLinesInStagingView: true
+git:
+  diffRenderers:
+    - command: delta --paging=never --max-line-length=0

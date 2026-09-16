@@ -179,6 +179,7 @@ alias gch='git cherry -v'
 alias gg='git-grep-extend -H --break -n --recurse-submodule'
 alias ggg='git-grep-extend -H --break -C 5 -n --recurse-submodule'
 alias gggg='git-grep-fzf'
+alias tig='lazygit log'
 
 alias ssh='TERM=xterm-256color ssh'
 
