@@ -1,0 +1,7 @@
+gui:
+  enlargedSideViewLocation: top
+  showCommandLog: false
+keybinding:
+  universal:
+    focusMainView: <enter>
+    goInto: '0'

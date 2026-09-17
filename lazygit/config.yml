@@ -1,7 +1,10 @@
 gui:
-  enlargedSideViewLocation: top
-  showCommandLog: false
   wrapLinesInStagingView: true
 git:
   diffRenderers:
     - command: delta --paging=never --max-line-length=0
+keybinding:
+  universal:
+    prevItem: [<up>, <ctrl+p>]
+    nextItem: [<down>, <ctrl+n>]
+    createPatchOptionsMenu: <ctrl+g>

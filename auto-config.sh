@@ -12,6 +12,7 @@ ln -s ~/development/config-file/.gitconfig ~/
 ln -s ~/development/config-file/.tigrc ~/
 mkdir -p ~/Library/Application\ Support/lazygit
 ln -s ~/development/config-file/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+ln -s ~/development/config-file/lazygit/tig.yml ~/Library/Application\ Support/lazygit/tig.yml
 mkdir -p ~/.config
 ln -s ~/development/config-file/karabiner ~/.config/
 ln -sn ~/development/config-file/KeyBindings ~/Library/KeyBindings
