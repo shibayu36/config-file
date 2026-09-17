@@ -8,4 +8,6 @@ keybinding:
     return: [<esc>, <ctrl+g>]
     prevItem: [<up>, <ctrl+p>]
     nextItem: [<down>, <ctrl+n>]
+    prevPage: [',', <ctrl+meta+v>]
+    nextPage: ['.', <ctrl+v>]
     createPatchOptionsMenu: <disabled>
