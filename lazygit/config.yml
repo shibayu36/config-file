@@ -5,6 +5,7 @@ git:
     - command: delta --paging=never --max-line-length=0
 keybinding:
   universal:
+    return: [<esc>, <ctrl+g>]
     prevItem: [<up>, <ctrl+p>]
     nextItem: [<down>, <ctrl+n>]
-    createPatchOptionsMenu: <ctrl+g>
+    createPatchOptionsMenu: <disabled>
