@@ -303,7 +303,6 @@
   "tabnine.experimentalAutoImports": true,
   "textlint.configPath": "~/.textlintrc",
   "textlint.run": "onSave",
-  "typescript.suggest.autoImports": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vsicons.dontShowNewVersionMessage": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
