@@ -34,7 +34,7 @@
 - Brewfileに載せたcaskをbrewを介さず手動でインストール済みの場合、`brew install --cask --adopt <cask>` で既存アプリをbrew管理下に取り込める
 
 ## 外部スキルのインストール
-- Node.jsとpnpmを用意し、./install-skills.shを実行する
+- ./install-skills.shを実行する
 - shibayu36のスキルは最新を取得し、それ以外はinstall-skills.sh内のコミットSHA-1で固定する。更新する際は対象のowner/repo#SHA-1の40桁のSHA-1を書き換える
 
 ## AI共通設定の配置
