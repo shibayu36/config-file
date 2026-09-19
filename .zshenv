@@ -17,7 +17,7 @@ export PATH=~/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # tfenv
 export PATH=$PATH:$HOME/.tfenv/bin
