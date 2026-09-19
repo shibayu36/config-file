@@ -10,7 +10,9 @@
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
 - 署名鍵を作る（後述の「コミット署名鍵」を参照）
 - sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
+  - `auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh`
   - `auth sufficient pam_tid.so`
+  - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
 - Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
 
 ## コミット署名鍵

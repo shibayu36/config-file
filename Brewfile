@@ -32,6 +32,9 @@ brew "asdf"
 brew "uv"
 brew "vjeantet/tap/alerter"
 
+# herdr/tmuxのpane内でもsudoのTouch IDを効かせるため
+brew "pam-reattach"
+
 # asdfでruby/python/nodeをビルドするため
 brew "autoconf"
 brew "automake"
