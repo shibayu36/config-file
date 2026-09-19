@@ -14,6 +14,7 @@
   - `auth sufficient pam_tid.so`
   - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
 - Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
+- ./install-skills.shを実行する
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
@@ -34,7 +35,6 @@
 - Brewfileに載せたcaskをbrewを介さず手動でインストール済みの場合、`brew install --cask --adopt <cask>` で既存アプリをbrew管理下に取り込める
 
 ## 外部スキルのインストール
-- ./install-skills.shを実行する
 - shibayu36のスキルは最新を取得し、それ以外はinstall-skills.sh内のコミットSHA-1で固定する。更新する際は対象のowner/repo#SHA-1の40桁のSHA-1を書き換える
 
 ## AI共通設定の配置
