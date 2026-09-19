@@ -15,6 +15,7 @@
   - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
 - Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
 - ./install-skills.shを実行する
+- ./scripts/install-cursor-extensions.shを実行する（Cursorの拡張機能）
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す

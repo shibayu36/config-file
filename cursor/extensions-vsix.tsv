@@ -1,0 +1,5 @@
+# Visual Studio Marketplaceからvsixを落として入れる拡張。scripts/README.mdを参照。
+# publisher<TAB>name<TAB>version
+hoovercj	vscode-settings-cycler	1.0.1
+3w36zj6	textlint	0.12.1
+letrieu	expand-region	0.1.4
