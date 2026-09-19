@@ -14,6 +14,9 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # F1〜F12を標準のファンクションキーとして使う
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+# Ctrl+Spaceの「前の入力ソースを選択」を無効化し、エディタ側のCtrl+Spaceを使えるようにする。入力ソースの切り替えはKarabinerの英数/かなキーで行う
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 \
+  '<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>'
 
 # トラックパッド
 # タップでクリック（内蔵・Bluetooth・ログイン画面）
