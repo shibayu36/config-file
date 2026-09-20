@@ -30,6 +30,8 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2
 # ナチュラルスクロールをOFF
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+# 「ページ間をスワイプ」をOFFにし、2本指の左右スワイプで戻る・進むが発火しないようにする
+defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Dock
 defaults write com.apple.dock autohide -bool true
