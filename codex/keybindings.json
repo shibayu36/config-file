@@ -12,6 +12,14 @@
     "key": "Command+Alt+N"
   },
   {
+    "command": "switchToMode1",
+    "key": null
+  },
+  {
+    "command": "thread1",
+    "key": null
+  },
+  {
     "command": "toggleSidebar",
     "key": null
   }
