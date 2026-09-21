@@ -49,6 +49,7 @@
 	cachedir = ~/.cache/git-submodules
 [pull]
 	rebase = true
+	autoStash = true
 [fetch]
 	prune = true
 [difftool "sourcetree"]
@@ -82,6 +83,7 @@
 	split-view-width  = 66%
 [rebase]
 	autosquash = true
+	autoStash = true
 # [url "git@github.com:"]
 # 	insteadOf = https://github.com/
 # [secrets]
