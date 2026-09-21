@@ -1,6 +1,9 @@
 #!/bin/bash
-# macOSのシステム設定をdefaultsコマンドで反映する。新しいMacの初回セットアップ時に1回実行する
+# macOSのシステム設定を反映する。新しいMacの初回セットアップ時に1回実行する
 set -eu
+
+sudo pmset -b displaysleep 20
+sudo pmset -c displaysleep 60
 
 # キーボード
 # キーリピートを最速に
