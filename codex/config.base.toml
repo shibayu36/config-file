@@ -6,11 +6,13 @@
 model = "gpt-6-astra"
 model_reasoning_effort = "medium"
 plan_mode_reasoning_effort = "xhigh"
-network_access = true
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
 approvals_reviewer = "auto_review"
 notify = ["/Users/shibayu36/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+[sandbox_workspace_write]
+network_access = true
 
 [agents.reviewer]
 description = "コードレビューを実行し、品質・セキュリティ・パフォーマンスの観点から改善提案を行う"
