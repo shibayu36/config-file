@@ -186,6 +186,9 @@ alias ssh='TERM=xterm-256color ssh'
 # alias for perl
 alias ce='carton exec --'
 
+# pnpm 10+ は依存のbuild scriptをデフォルトで拒否し、dlxではグローバル設定で許可できないため
+alias difit='pnpm dlx --allow-build=@parcel/watcher difit'
+
 # psを選択して殺す
 alias pskl="ps aux | fzf -m --header-lines 1 | awk '{ print \$2 }' | xargs kill -9"
 
