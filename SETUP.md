@@ -6,6 +6,7 @@
 - ./installer.shを実行。時間がかかるので、待つ間に以下を進める
 - Karabiner-Elementsを起動し、求められる入力監視・アクセシビリティの権限を許可する
 - Raycastを起動してホットキーを^⌘Spaceに設定する
+- システム設定 → 通知 → ターミナルで通知とサウンドを有効にする
 - 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
 - 署名鍵を作る（後述の「コミット署名鍵」を参照）
