@@ -44,7 +44,6 @@
 - 段階的に進める: 一度に全てを変更せず、小さな変更を積み重ねる。git commitしやすい単位で分解し、毎回必ず手動および自動テストによる動作確認を行う
 - 複数のタスクを同時並行で進めない
 - エラーは解決してから次へ進む
-- エラーを無視して次のステップに進まない
 - 指示にない機能を勝手に追加しない
 - 周囲の似た実装を探し、それを参考にする
 
@@ -61,9 +60,6 @@
 
 コードを読めば分かることはコメントにしない。
 コードコメントには、このセッション内の会話内容、レビュー経緯、修正依頼の理由、作業履歴を書かない。変更理由やレビュー対応の説明は、コードコメントではなく、最終報告・コミットメッセージ・PR説明に書く。
-
-## TDDやテスト実装を行うときの指針
-TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）の推奨する進め方に従って。
 
 ## エラーなど期待とは違う現象が起きた時
 - 必ず「なぜ期待とは違う現象が起きたか」について深掘りしてから、次の対処を考えること
@@ -86,7 +82,7 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 - 自分のGitHubアカウントはshibayu36
 - GitHubの情報をreadonlyで取得するときは、ghroコマンドを使う
 - Pull Request(PR)のdiffを取得するときは、ghro pr diffを使う
-- ファイル内容を取得するとき、Fetchを使うと取れない。ghroコマンドを使うこと
+- ファイル内容を取得するとき、WebFetchを使うと取れない。ghroコマンドを使うこと
 - 何らかの書き込み操作を行うときはghroではなくghコマンドを利用する
 
 ## PullRequestの編集
@@ -97,9 +93,9 @@ TDDやテスト実装を行うときは、t_wada(t-wada, twada, 和田卓人）�
 - readonlyでgitコマンドを実行するときは、gitroコマンドを使う
   - 例: `gitro diff`, `gitro log`
 - 書き込み系の操作はgitroではなくgitコマンドを使う
-  - 例: `git add .`, `git commit -m "Your commit message"`, `git push`
-- デフォルトブランチとの変更を取得するときは、localのmainブランチではなくorigin/mainブランチと比較する
-    - 例: `gitro diff origin/main...HEAD`
+  - 例: `git add <file>`, `git commit -m "Your commit message"`, `git push`
+- デフォルトブランチとの変更を取得するときは、localのブランチではなくorigin側のデフォルトブランチと比較する
+    - 例: `gitro diff origin/main...HEAD`（デフォルトブランチがmasterなら `origin/master...HEAD`）
 
 ## Slackから情報を取得する場合
 - Slackからの情報取得（slack-explorer-mcpのツール利用）は、メインの会話で直接行わず、必ずカスタムagentの `slack-researcher` に委譲すること。検索結果やスレッドログが大量になりメインのコンテキストを圧迫するため
