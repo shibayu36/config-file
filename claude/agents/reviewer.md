@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: コードレビューを実行し、品質・セキュリティ・パフォーマンスの観点から改善提案を行う
+description: コードレビューを実行し、品質・セキュリティ・パフォーマンスの観点から改善提案を行う。修正は行わない。
 tools: Bash, Read, Grep, Glob
 model: opus
 skills:

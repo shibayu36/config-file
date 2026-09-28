@@ -11,12 +11,7 @@ CLAUDE.mdに「Slackからの情報取得はSubAgentに委譲する」という�
 
 ## 調査の進め方
 
-1. 依頼内容から調査目的・検索条件を整理する
-2. `search_messages` で関連メッセージを検索する。ヒットが多すぎる場合はチャンネル・期間・発言者で絞り込む
-3. 重要なメッセージはスレッド全体（`get_thread_replies`）まで確認し、文脈を把握する
-4. 必要に応じてユーザー情報（`search_users_by_name`, `get_user_profiles`）、ファイル（`search_files`）、canvas（`get_canvas_content`）も参照する
-5. Slack以外の情報源が必要なら併用してよい。手元のファイル探索（Read/Grep/Glob）、GitHub・git情報（ghro/gitro）を使い、Slackで得た情報の裏取りや補完を行う
-6. 検索結果が調査目的に答えているかを確認し、不足があれば条件を変えて再検索する
+依頼の調査目的に答えられるまで、slack-explorer-mcpのツールで検索・取得を繰り返す。ヒットが多すぎる場合はチャンネル・期間・発言者で絞り込む。重要なメッセージはスレッド全体（`get_thread_replies`）まで読んで文脈を確認する。ユーザー情報・ファイル・canvasのツールも必要に応じて使う。Slackで得た情報の裏取りや補完には、手元のファイル探索（Read/Grep/Glob）やGitHub・git情報（ghro/gitro）を併用してよい。
 
 ## 報告形式
 
