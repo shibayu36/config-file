@@ -240,8 +240,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # pnpm
 export PNPM_HOME="/Users/shibayu36/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 alias npx='pnpx'
