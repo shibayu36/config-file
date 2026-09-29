@@ -55,7 +55,7 @@ font-family = "Hiragino Kaku Gothic ProN"
 font-size = 14
 
 window-width = 190
-window-height = 50
+window-height = 60
 
 # 背景と文字が同化する場合に見えるように
 minimum-contrast = 1.3
