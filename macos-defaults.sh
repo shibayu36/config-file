@@ -49,12 +49,5 @@ defaults write com.apple.finder FXPreferredViewStyle -string clmv
 defaults write com.apple.screencapture location -string "$HOME/Downloads"
 defaults write com.apple.screencapture show-thumbnail -bool false
 
-# アクセシビリティ
-# 修飾キー＋スクロールで画面ズーム
-# com.apple.universalaccessへの書き込みは、実行するターミナルにフルディスクアクセスが無いと失敗する
-if ! defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true 2>/dev/null; then
-  echo "警告: ズーム設定を書き込めなかった。「システム設定 > アクセシビリティ > ズーム > スクロールジェスチャと修飾キーを使ってズーム」を手動でONにする" >&2
-fi
-
 killall Dock Finder SystemUIServer
 echo "キーボード・トラックパッドの設定を完全に反映するには再ログインが必要"

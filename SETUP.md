@@ -1,22 +1,23 @@
 - Xcode Command Line Toolsを入れる（`xcode-select --install`）。初期状態のmacOSにはgitの実体がないため
 - ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
 - ./bootstrap.shを実行（Homebrewと、作業に必須のアプリ・ツール）。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
-- ./macos-defaults.shを実行（キーリピートなどのシステム設定）。警告が出た項目は案内に従って手動で設定する
+- ./macos-defaults.shを実行（キーリピートなどのシステム設定）
 - ./auto-config.shを実行
 - ./installer.shを実行。時間がかかるので、待つ間に以下を進める
-- Karabiner-Elementsを起動し、求められる入力監視・アクセシビリティの権限を許可する
 - Raycastを起動してホットキーを^⌘Spaceに設定する
-- システム設定 → 通知 → ターミナルで通知とサウンドを有効にする
 - 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
 - 署名鍵を作る（後述の「コミット署名鍵」を参照）
+- Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
+- ./install-skills.shを実行する
+- ./scripts/install-cursor-extensions.shを実行する（Cursorの拡張機能）
+- Karabiner-Elementsを起動し、求められる入力監視・アクセシビリティの権限を許可する
+- システム設定 → 通知 → ターミナルで通知とサウンドを有効にする
+- システム設定 → アクセシビリティ → ズーム機能で「スクロールジェスチャと修飾キーを使って拡大縮小」をONにする（修飾キーはControl）。defaultsでの変更にはフルディスクアクセスが必要なため手動で設定する
 - sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
   - `auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh`
   - `auth sufficient pam_tid.so`
   - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
-- Raycastの「Import Snippets」コマンドでraycast/snippets.jsonを取り込む
-- ./install-skills.shを実行する
-- ./scripts/install-cursor-extensions.shを実行する（Cursorの拡張機能）
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
