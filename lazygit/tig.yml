@@ -1,3 +1,4 @@
+quitOnTopLevelReturn: true
 gui:
   enlargedSideViewLocation: top
   showCommandLog: false
