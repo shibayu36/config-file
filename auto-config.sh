@@ -58,7 +58,7 @@ done
 ~/development/config-file/bin/sync-codex-config
 mkdir -p ~/.config/herdr
 ln -s ~/development/config-file/herdr/config.toml ~/.config/herdr/config.toml
-herdr integration install claude
+[ -f ~/.claude/hooks/herdr-agent-state.sh ] || herdr integration install claude
 herdr plugin install shibayu36/herdr-equalize-panes --yes
 ln -s ~/development/config-file/deck ~/.config/
 ln -s ~/development/config-file/.coderabbit.yml ~/
