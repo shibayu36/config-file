@@ -245,3 +245,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 alias npx='pnpx'
+
+# mise
+eval "$("$HOME/.local/bin/mise" activate zsh)"
