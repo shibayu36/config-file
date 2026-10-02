@@ -113,7 +113,7 @@
   format = ssh
 
 [gpg "ssh"]
-  program = /Users/shibayu36/bin/ssh-sign
+  program = ~/bin/ssh-sign
 
 [commit]
   gpgsign = true
