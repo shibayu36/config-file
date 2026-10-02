@@ -1,5 +1,6 @@
 [include]
 	path = .gitconfig.local
+	path = .gitconfig.work
 	path = ~/development/config-file/delta/themes.gitconfig
 [user]
 	name = shibayu36
