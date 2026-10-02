@@ -56,9 +56,6 @@ args = ["@circleci/mcp-server-circleci"]
 [mcp_servers.circleci-mcp-server.env]
 CIRCLECI_BASE_URL = "https://circleci.com"
 
-[mcp_servers.slack-explorer-mcp]
-command = "/Users/shibayu36/go/bin/slack-explorer-mcp"
-
 [marketplaces.claude-plugins-official]
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
