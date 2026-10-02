@@ -247,6 +247,7 @@
     "enabled": true,
     "mode": "hold"
   },
+  "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
