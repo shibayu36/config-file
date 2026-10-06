@@ -18,6 +18,7 @@
   - `auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh`
   - `auth sufficient pam_tid.so`
   - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
+- ghroのtokenを登録する（後述の「ghro」を参照）
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
@@ -26,6 +27,12 @@
   - `ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N ""` で~/.ssh/id_git_sign・id_git_sign.pubを書き出す
   - id_git_sign.pubを https://github.com/settings/keys にSigning keyとして登録する
 - 古いMacの署名鍵はGitHubから削除しない。SSH署名鍵を削除すると、その鍵で署名した過去のコミットがUnverified表示になる
+
+## ghro
+- bin/ghroは、キーチェーンにサービス名ghroで登録したfine-grained tokenをGH_TOKENとしてghに渡す。端末ごとにやるのはtokenの登録だけ
+  - repoのreadonly権限だけを持つfine-grained tokenを発行する
+  - `security add-generic-password -s ghro -a shibayu36 -w` でキーチェーンに登録する。更新時は `-U` を付ける
+- `GH_CONFIG_DIR=~/.config/ghro gh auth login` でログインしない。ghのkeyringはGH_CONFIG_DIRをまたいで共有されるため、gh本体のトークンが上書きされる。同じ理由で `ghro auth logout` も実行しない
 
 ## macOSのシステム設定
 - defaultsコマンドで再現できる設定だけをmacos-defaults.shに書く。それ以外は冒頭の手順に手動作業として書く
