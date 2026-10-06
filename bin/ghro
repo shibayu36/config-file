@@ -1,2 +1,2 @@
 #!/bin/sh
-GH_CONFIG_DIR=~/.config/ghro exec gh "$@"
+GH_TOKEN=$(security find-generic-password -s ghro -w) GH_CONFIG_DIR=~/.config/ghro exec gh "$@"
