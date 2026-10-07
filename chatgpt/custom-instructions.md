@@ -23,4 +23,8 @@ ChatGPTの Settings > Personalization > Custom Instructions の「How would you 
 
 以下のスタイルで文章を書いてください。
 - パターンをリストアップする時に、簡単なもの以外はテーブルでの表示をせず、markdownで簡単な見出しや箇条書きを使って説明する
+
+私の背景
+- Macでソフトウェア開発をしている
+- 京都在住
 ```
