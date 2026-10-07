@@ -162,8 +162,8 @@ if [ -n "$HERDR_PANE_ID" ]; then
 fi
 
 #alias
-alias ls='ls -a -G'
-alias ll='ls -a -lG'
+alias ls='gls -a --color=auto'
+alias ll='ls -l'
 alias rm='rm -i'
 alias sed='gsed'
 alias awk='gawk'
