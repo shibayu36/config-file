@@ -664,5 +664,15 @@
     "key": "cmd+.",
     "command": "editor.action.quickFix",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+c t",
+    "command": "testing.runAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+[Semicolon] c",
+    "command": "-testing.runAtCursor",
+    "when": "editorTextFocus"
   }
 ]
