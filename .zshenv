@@ -1,3 +1,6 @@
+# path_helperを無効にする
+setopt no_global_rcs
+
 export MANPATH=/opt/local/man:/usr/local/man:/usr/share/man:/usr/local/share/man:$MANPATH
 export TERM=xterm-color
 export LC_ALL=en_US.UTF-8

@@ -2,6 +2,11 @@
 # Kiro CLI pre block. Keep at the top of this file.
 # [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 
+# no_global_rcs で /etc/zshrc を読まないため、そこに書かれている Nix の初期化だけ取り込む
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 # 一定時間を超えたら自動でtimeする
 export REPORTTIME=10
 
