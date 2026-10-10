@@ -104,3 +104,6 @@ adopt = true
 "mas:1120999687" = "latest" # Thor Launcher
 "mas:585829637" = "latest" # Todoist
 "mas:1494210770" = "latest" # Tomato 2
+
+[dotfiles]
+"~/.gitconfig" = { source = "~/development/config-file/.gitconfig" }
