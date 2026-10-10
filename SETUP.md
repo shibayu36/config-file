@@ -3,7 +3,9 @@
 - ./bootstrap.shを実行（Homebrewと、作業に必須のアプリ・ツール）。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
 - ./macos-defaults.shを実行（キーリピートなどのシステム設定）
 - ./auto-config.shを実行
-- ./installer.shを実行。時間がかかるので、待つ間に以下を進める
+- ~/.config/mise/miserc.local.tomlに `env = ["personal"]` か `env = ["work"]` を書く
+- 新しいシェルを開いて `mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
+- ./installer.shを実行
 - Raycastを起動してホットキーを^⌘Spaceに設定する
 - 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）
@@ -38,11 +40,13 @@
 - defaultsコマンドで再現できる設定だけをmacos-defaults.shに書く。それ以外は冒頭の手順に手動作業として書く
 - 設定を変えたら`defaults read <domain> <key>`で現在値を確認し、スクリプトに反映する
 
-## Brewfile
-- 新しいMacでも必ず入れたいものだけをBrewfileに書く。アドホックにbrew installしたものは書かなくてよい
-- `brew bundle check --file=Brewfile --no-upgrade` で、Brewfileの項目が揃っているか確認できる（Brewfileにないものは無視される）
-- `brew bundle cleanup --file=Brewfile --dry-run` で、Brewfileにないインストール済みのものを一覧できる。`--dry-run` なしで実行すると実際に削除されるので注意
-- Brewfileに載せたcaskをbrewを介さず手動でインストール済みの場合、`brew install --cask --adopt <cask>` で既存アプリをbrew管理下に取り込める
+## パッケージ
+- 新しいMacでも必ず入れたいものだけをmise/config.tomlの `[bootstrap.packages]` に書く。アドホックにbrew installしたものは書かなくてよい
+- 仕事用Macで会社管理で入るアプリはmise/config.personal.tomlに書く。config.tomlに置くと仕事用Macでもadoptが走る
+- `mise bootstrap packages status --missing` で、宣言した項目が揃っているか確認できる
+- `PATH=/opt/homebrew/Library/Homebrew/vendor/portable-ruby/current/bin:$PATH mise bootstrap packages prune --dry-run` で、宣言にないformulaを一覧できる。tap formulaの評価にRuby 3が要るため、brew同梱のRubyをPATHに通す。`--dry-run` を外すと実際に削除される
+- 宣言にないcaskとmasはpruneでは検出できない。`brew list --cask` と `mas list` を目で見る
+- 手動でインストール済みのcaskは、`[bootstrap.brew] adopt = true` によりbrew管理下に取り込まれる
 
 ## 外部スキルのインストール
 - shibayu36のスキルは最新を取得し、それ以外はinstall-skills.sh内のコミットSHA-1で固定する。更新する際は対象のowner/repo#SHA-1の40桁のSHA-1を書き換える

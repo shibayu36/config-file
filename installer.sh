@@ -1,9 +1,6 @@
 #!/bin/bash
-# Brewfileの内容とasdfのplugin、Rustを入れる。Homebrew自体はbootstrap.shで入れる
+# asdfのpluginとRustを入れる
 set -eu
-
-# 更新は brew upgrade で意図的に行うため、ここでは不足分のインストールだけを行う
-brew bundle install --no-upgrade --file="$(cd "$(dirname "$0")" && pwd)/Brewfile"
 
 # asdf plugins
 asdf_plugin_add() {
