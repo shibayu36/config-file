@@ -15,6 +15,7 @@
 - ディスプレイのスリープまでの時間を設定する（`sudo pmset -b displaysleep 20`、`sudo pmset -c displaysleep 60`）。sudoが要るためmise bootstrapでは扱わない
 - システム設定 → 通知 → ターミナルで通知とサウンドを有効にする
 - システム設定 → アクセシビリティ → ズーム機能で「スクロールジェスチャと修飾キーを使って拡大縮小」をONにする（修飾キーはControl）。defaultsでの変更にはフルディスクアクセスが必要なため手動で設定する
+- システム設定 → アクセシビリティ → ディスプレイで「ポインタのサイズ」のスライダーを少し右へ動かす（`mouseDriverCursorSize` が1.35程度）。ズーム機能と同じ理由で手動で設定する
 - sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
   - `auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh`
   - `auth sufficient pam_tid.so`
