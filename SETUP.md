@@ -2,7 +2,6 @@
 - ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
 - `./bootstrap.sh personal` か `./bootstrap.sh work` を実行。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
 - `~/.local/bin/mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
-- ./installer.shを実行
 - Raycastを起動してホットキーを^⌘Spaceに設定する
 - 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
 - originをSSHに切り替える（`git remote set-url origin git@github.com:shibayu36/config-file.git`）

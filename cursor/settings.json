@@ -274,7 +274,7 @@
   },
   "ruby.useBundler": false,
   "ruby.useLanguageServer": true,
-  "rubyLsp.rubyVersionManager": "asdf",
+  "rubyLsp.rubyVersionManager": { "identifier": "mise" },
   "search.exclude": {
     "**/.venv/**": true,
     "**/tsconfig.build.tsbuildinfo": true

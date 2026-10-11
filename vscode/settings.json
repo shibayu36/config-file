@@ -217,7 +217,7 @@
   "ruby.lint": {
     "rubocop": false
   },
-  "rubyLsp.rubyVersionManager": "asdf",
+  "rubyLsp.rubyVersionManager": { "identifier": "mise" },
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
   "solargraph.logLevel": "debug",

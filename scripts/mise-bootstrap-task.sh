@@ -17,5 +17,10 @@ done
 # config.toml は Codex がローカル固有の値を書き込むためリンクせず、共通設定をマージする
 "$repo_dir"/bin/sync-codex-config
 
+# --no-modify-pathはPATHを.zshenvで管理しているため。付けないとrustupが~/.zshenvを書き換える
+if [ ! -x "$HOME/.cargo/bin/rustup" ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+fi
+
 [ -f ~/.claude/hooks/herdr-agent-state.sh ] || herdr integration install claude
 herdr plugin list | grep -F 'shibayu36.equalize-panes' >/dev/null || herdr plugin install shibayu36/herdr-equalize-panes --yes
