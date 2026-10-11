@@ -1,3 +1,9 @@
+[settings]
+idiomatic_version_file_enable_tools = ["python", "ruby", "node"]
+
+[tools]
+python = "3.14"
+
 [bootstrap.brew]
 # 手動で入れた既存アプリをbrew管理下に取り込む
 adopt = true

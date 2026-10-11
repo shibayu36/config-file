@@ -16,8 +16,8 @@ export PATH=~/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# asdf
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# mise。非対話シェルでもmiseのツールを使うため、shimsをPATHに入れる
+eval "$("$HOME/.local/bin/mise" activate zsh --shims)"
 
 # tfenv
 export PATH=$PATH:$HOME/.tfenv/bin
