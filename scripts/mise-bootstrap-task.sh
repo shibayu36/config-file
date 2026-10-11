@@ -14,9 +14,6 @@ for item in "$repo_dir"/skills/*; do
   ln -sfn "$item" ~/.agents/skills/"$(basename "$item")"
 done
 
-# config.toml は Codex がローカル固有の値を書き込むためリンクせず、共通設定をマージする
-"$repo_dir"/bin/sync-codex-config
-
 # --no-modify-pathはPATHを.zshenvで管理しているため。付けないとrustupが~/.zshenvを書き換える
 if [ ! -x "$HOME/.cargo/bin/rustup" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path

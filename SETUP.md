@@ -62,7 +62,3 @@
 
 ## Codexの設定
 - 共通設定はcodex/config.base.tomlで管理する。~/.codex/config.tomlはCodexがローカル固有の値（[projects.*]やトークン）を書き込むためGit管理しない
-- codex/config.base.tomlを変更したらsync-codex-configを実行すると、ローカル固有の値を残したまま~/.codex/config.tomlへ反映される（mise bootstrapからも呼ばれる）
-  - 書き換え時は~/.codex/config.toml全体を生成し直すため、手書きのコメントや並び順は失われる。直前の内容は~/.codex/config.toml.bakに残る
-- sync-codex-config --dry-runで、書き込まずに変更されるキーを確認できる
-- sync-codex-config --driftで、~/.codex/config.toml側だけで変えた共通設定と、共通設定に無いキー（[projects.*]、MCPのenv、CodexやChatGPTアプリが自動で書き換えるキーを除く。除外リストはbin/sync-codex-configのLOCAL_ONLY_PATHS。キー名のみで値は表示しない）を報告する。TUIの/modelなどで変えた設定を共通設定へ写し忘れていないかの確認用

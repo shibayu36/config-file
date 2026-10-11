@@ -1,7 +1,10 @@
 # Codex CLI の共通設定。~/.codex/config.toml にはリンクせず、
-# bin/sync-codex-config がここのキーを ~/.codex/config.toml へマージする。
+# mise/config.toml の [dotfiles] の merge entry がここのキーを ~/.codex/config.toml へマージする。
 # ここに無いキー ([projects.*]、MCP の env にあるトークン、Codex が自動で書く状態など) は
 # 各マシンの ~/.codex/config.toml に残るので、秘密の値はここに書かないこと。
+# ここからキーを消しても ~/.codex/config.toml からは消えないので、手で消す。
+# `mise dot diff` は、ここにあるキーが ~/.codex/config.toml 側で変わったものしか出さない。
+# Codex で足したキー (新しい MCP サーバーなど) を共通にしたい場合は、自分でここへ写す。
 
 model = "gpt-6-astra"
 model_reasoning_effort = "xhigh"

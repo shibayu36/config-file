@@ -1,3 +1,6 @@
+# [dotfiles]のmerge entryに必要
+min_version = "2026.10.4"
+
 [settings]
 idiomatic_version_file_enable_tools = ["python", "ruby", "node"]
 
@@ -40,9 +43,6 @@ adopt = true
 
 # herdr/tmuxのpane内でもsudoのTouch IDを効かせるため
 "brew:pam-reattach" = "latest"
-
-# bootstrap taskが呼ぶsync-codex-configがpython3 3.11以上を必要とするため
-"brew:python@3.15" = "latest"
 
 # miseでruby/python/nodeをビルドするため
 "brew:autoconf" = "latest"
@@ -152,6 +152,8 @@ adopt = true
 "~/.codex/hooks.json" = { source = "~/development/config-file/codex/hooks.json" }
 "~/.codex/keybindings.json" = { source = "~/development/config-file/codex/keybindings.json" }
 "~/.codex/rules/common.rules" = { source = "~/development/config-file/codex/rules/common.rules" }
+# CodexがMCPのトークンや[projects.*]を書き込むため、リンクせず共通設定のキーだけをマージする
+"~/.codex/config.toml/base" = { source = "~/development/config-file/codex/config.base.toml", merge = true }
 
 [dotfile_groups.bin]
 root = "~/development/config-file/bin"
