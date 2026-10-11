@@ -1,7 +1,6 @@
 - Xcode Command Line Toolsを入れる（`xcode-select --install`）。初期状態のmacOSにはgitの実体がないため
 - ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
-- ./bootstrap.shを実行（Homebrewと、作業に必須のアプリ・ツール）。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
-- ~/.config/mise/miserc.local.tomlに `env = ["personal"]` か `env = ["work"]` を書く
+- `./bootstrap.sh personal` か `./bootstrap.sh work` を実行。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
 - `~/.local/bin/mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
 - ./installer.shを実行
 - Raycastを起動してホットキーを^⌘Spaceに設定する
@@ -21,6 +20,9 @@
   - `auth sufficient pam_tid.so`
   - pam_reattachが無いとherdrやtmuxのpane内でTouch IDが効かない。pam_tidより前に書く
 - ghroのtokenを登録する（後述の「ghro」を参照）
+
+## 日々の同期
+- `git pull` してから `mise bootstrap` を実行する。宣言との差分だけが適用される
 
 ## コミット署名鍵
 - 署名鍵はMacのSecure Enclave内に作る（https://www.mizdra.net/entry/2026/08/07/101542 の方式）。秘密鍵はエクスポートできないため、Macを切り替えたら移行せず新しいMacで作り直す
