@@ -107,3 +107,56 @@ adopt = true
 
 [dotfiles]
 "~/.gitconfig" = { source = "~/development/config-file/.gitconfig" }
+"~/.zprofile" = { source = "~/development/config-file/.zprofile" }
+"~/.zshenv" = { source = "~/development/config-file/.zshenv" }
+"~/.zshrc" = { source = "~/development/config-file/.zshrc" }
+"~/.zshrc.function" = { source = "~/development/config-file/.zshrc.function" }
+"~/.zsh" = { source = "~/development/config-file/.zsh" }
+"~/.gitignore" = { source = "~/development/config-file/.gitignore" }
+"~/.proverc" = { source = "~/development/config-file/.proverc" }
+"~/.my.cnf" = { source = "~/development/config-file/.my.cnf" }
+"~/.inputrc" = { source = "~/development/config-file/.inputrc" }
+"~/.tmux.conf" = { source = "~/development/config-file/.tmux.conf" }
+"~/.tigrc" = { source = "~/development/config-file/.tigrc" }
+"~/.vscode-powertools" = { source = "~/development/config-file/.vscode-powertools" }
+"~/.textlintrc" = { source = "~/development/config-file/.textlintrc" }
+"~/.asdfrc" = { source = "~/development/config-file/.asdfrc" }
+"~/.coderabbit.yml" = { source = "~/development/config-file/.coderabbit.yml" }
+"~/.config/karabiner" = { source = "~/development/config-file/karabiner" }
+"~/.config/starship.toml" = { source = "~/development/config-file/starship.toml" }
+"~/.config/deck" = { source = "~/development/config-file/deck" }
+"~/.config/herdr/config.toml" = { source = "~/development/config-file/herdr/config.toml" }
+"~/Library/KeyBindings" = { source = "~/development/config-file/KeyBindings" }
+"~/Library/Application Support/lazygit/config.yml" = { source = "~/development/config-file/lazygit/config.yml" }
+"~/Library/Application Support/lazygit/tig.yml" = { source = "~/development/config-file/lazygit/tig.yml" }
+"~/Library/Application Support/com.mitchellh.ghostty/config" = { source = "~/development/config-file/ghostty/config" }
+"~/Library/Application Support/Code/User/settings.json" = { source = "~/development/config-file/vscode/settings.json" }
+"~/Library/Application Support/Code/User/keybindings.json" = { source = "~/development/config-file/vscode/keybindings.json" }
+"~/Library/Application Support/Code/User/snippets" = { source = "~/development/config-file/vscode/snippets" }
+"~/Library/Application Support/Cursor/User/settings.json" = { source = "~/development/config-file/cursor/settings.json" }
+"~/Library/Application Support/Cursor/User/keybindings.json" = { source = "~/development/config-file/cursor/keybindings.json" }
+"~/Library/Application Support/Cursor/User/snippets" = { source = "~/development/config-file/vscode/snippets" }
+# Claude／Codexの設定ディレクトリにはローカルデータもあるため、管理対象だけをリンクする
+"~/.claude/CLAUDE.md" = { source = "~/development/config-file/claude/CLAUDE.md" }
+"~/.claude/settings.json" = { source = "~/development/config-file/claude/settings.json" }
+"~/.claude/keybindings.json" = { source = "~/development/config-file/claude/keybindings.json" }
+"~/.claude/scripts" = { source = "~/development/config-file/claude/scripts" }
+"~/.codex/AGENTS.md" = { source = "~/development/config-file/codex/AGENTS.md" }
+"~/.codex/hooks.json" = { source = "~/development/config-file/codex/hooks.json" }
+"~/.codex/keybindings.json" = { source = "~/development/config-file/codex/keybindings.json" }
+"~/.codex/rules/common.rules" = { source = "~/development/config-file/codex/rules/common.rules" }
+
+[dotfile_groups.bin]
+root = "~/development/config-file/bin"
+target = "~/bin"
+
+[dotfile_groups.claude-agents]
+root = "~/development/config-file/claude/agents"
+target = "~/.claude/agents"
+
+[dotfile_groups.codex-agents]
+root = "~/development/config-file/codex/agents"
+target = "~/.codex/agents"
+
+[tasks.bootstrap]
+run = "~/development/config-file/scripts/mise-bootstrap-task.sh"
