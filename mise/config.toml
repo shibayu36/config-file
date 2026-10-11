@@ -158,5 +158,63 @@ target = "~/.claude/agents"
 root = "~/development/config-file/codex/agents"
 target = "~/.codex/agents"
 
+[bootstrap.macos.defaults.NSGlobalDomain]
+# キーリピートを最速に
+KeyRepeat = 2
+InitialKeyRepeat = 15
+# 自動テキスト置換（大文字化・ピリオド・スマート引用符・スマートダッシュ・スペル修正）をOFF
+NSAutomaticCapitalizationEnabled = false
+NSAutomaticPeriodSubstitutionEnabled = false
+NSAutomaticQuoteSubstitutionEnabled = false
+NSAutomaticDashSubstitutionEnabled = false
+NSAutomaticSpellingCorrectionEnabled = false
+# F1〜F12を標準のファンクションキーとして使う
+"com.apple.keyboard.fnState" = true
+# トラックパッドのポインタの速度を速く。statusは型も比較するのでfloatで書く
+"com.apple.trackpad.scaling" = 2.0
+# ナチュラルスクロールをOFF
+"com.apple.swipescrolldirection" = false
+# 「ページ間をスワイプ」をOFFにし、2本指の左右スワイプで戻る・進むが発火しないようにする
+AppleEnableSwipeNavigateWithScrolls = false
+
+# Ctrl+Spaceの「前の入力ソースを選択」を無効化し、エディタ側のCtrl+Spaceを使えるようにする。入力ソースの切り替えはKarabinerの英数/かなキーで行う
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["60"]
+value = { enabled = false, value = { parameters = [32, 49, 262144], type = "standard" } }
+
+# 「次のウィンドウを操作対象にする」をCommand+F1に変更する（デフォルトはCommand+`）
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["27"]
+value = { enabled = true, value = { parameters = [65535, 122, 9437184], type = "standard" } }
+
+# トラックパッドのタップでクリック
+[bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
+Clicking = true
+[bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
+Clicking = true
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+key = "com.apple.mouse.tapBehavior"
+host = "current"
+value = 1
+
+[bootstrap.macos.defaults."com.apple.dock"]
+autohide = true
+
+# 隠しファイルを表示し、デフォルトを列表示にする
+[bootstrap.macos.defaults."com.apple.finder"]
+AppleShowAllFiles = true
+FXPreferredViewStyle = "clmv"
+
+# 保存先を~/Downloadsにし、撮影後のサムネイルプレビューを出さない。
+# miseは~を展開しないが、macOSのスクリーンショット機能が~を展開する
+[bootstrap.macos.defaults."com.apple.screencapture"]
+location = "~/Downloads"
+show-thumbnail = false
+
 [tasks.bootstrap]
 run = "~/development/config-file/scripts/mise-bootstrap-task.sh"

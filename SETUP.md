@@ -1,7 +1,6 @@
 - Xcode Command Line Toolsを入れる（`xcode-select --install`）。初期状態のmacOSにはgitの実体がないため
 - ~/development/config-fileにHTTPSでclone（`git clone https://github.com/shibayu36/config-file.git ~/development/config-file`）。SSH鍵は1Passwordで管理しており、この時点では1Passwordが無いためSSHではcloneできない
 - ./bootstrap.shを実行（Homebrewと、作業に必須のアプリ・ツール）。最後に表示されるコマンドを実行して、今のシェルにbrewのPATHを通す
-- ./macos-defaults.shを実行（キーリピートなどのシステム設定）
 - ~/.config/mise/miserc.local.tomlに `env = ["personal"]` か `env = ["work"]` を書く
 - `~/.local/bin/mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
 - ./installer.shを実行
@@ -13,6 +12,7 @@
 - ./install-skills.shを実行する
 - ./scripts/install-cursor-extensions.shを実行する（Cursorの拡張機能）
 - Karabiner-Elementsを起動し、求められる入力監視・アクセシビリティの権限を許可する
+- ディスプレイのスリープまでの時間を設定する（`sudo pmset -b displaysleep 20`、`sudo pmset -c displaysleep 60`）。sudoが要るためmise bootstrapでは扱わない
 - システム設定 → 通知 → ターミナルで通知とサウンドを有効にする
 - システム設定 → アクセシビリティ → ズーム機能で「スクロールジェスチャと修飾キーを使って拡大縮小」をONにする（修飾キーはControl）。defaultsでの変更にはフルディスクアクセスが必要なため手動で設定する
 - sudoでTouch IDを使えるようにする。/etc/pam.d/はrootが所有しているためこのリポジトリでは管理せず、/etc/pam.d/sudo_localに以下を手動で追記する
@@ -36,8 +36,10 @@
 - `GH_CONFIG_DIR=~/.config/ghro gh auth login` でログインしない。ghのkeyringはGH_CONFIG_DIRをまたいで共有されるため、gh本体のトークンが上書きされる。同じ理由で `ghro auth logout` も実行しない
 
 ## macOSのシステム設定
-- defaultsコマンドで再現できる設定だけをmacos-defaults.shに書く。それ以外は冒頭の手順に手動作業として書く
-- 設定を変えたら`defaults read <domain> <key>`で現在値を確認し、スクリプトに反映する
+- defaultsコマンドで再現できる設定だけをmise/config.tomlの `[bootstrap.macos]` に書く。それ以外は冒頭の手順に手動作業として書く
+- `mise bootstrap macos defaults status` で、宣言した値と現在値の差分を確認できる
+- 設定を変えたら`defaults read <domain> <key>`で現在値と`defaults read-type <domain> <key>`で型を確認し、config.tomlに反映する。statusは型も比較するので、floatは `2.0` のように小数点を付ける
+- 書き込んだ設定はすぐには反映されない。Dock・Finder・スクリーンショットは `killall Dock Finder SystemUIServer` で反映され、キーボード・トラックパッド・ショートカットは再ログインが必要
 
 ## パッケージ
 - 新しいMacでも必ず入れたいものだけをmise/config.tomlの `[bootstrap.packages]` に書く。アドホックにbrew installしたものは書かなくてよい
