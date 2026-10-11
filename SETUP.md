@@ -4,7 +4,7 @@
 - ./macos-defaults.shを実行（キーリピートなどのシステム設定）
 - ./auto-config.shを実行
 - ~/.config/mise/miserc.local.tomlに `env = ["personal"]` か `env = ["work"]` を書く
-- 新しいシェルを開いて `mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
+- `~/.local/bin/mise bootstrap` を実行。時間がかかるので、待つ間に以下を進める
 - ./installer.shを実行
 - Raycastを起動してホットキーを^⌘Spaceに設定する
 - 1PasswordにログインしてSSH agentを有効化し、~/.ssh/configの先頭に `Include ~/development/config-file/ssh/config` を書く。
