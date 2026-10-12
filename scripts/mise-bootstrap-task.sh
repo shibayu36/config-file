@@ -6,9 +6,6 @@ repo_dir="$(cd "$(dirname "$0")/.." && pwd)"
 
 # skillはサブディレクトリを持ち、symlink-eachだとファイル単位のリンクになるため、ディレクトリごとリンクする
 mkdir -p ~/.claude/skills ~/.agents/skills
-for item in "$repo_dir"/claude/skills/*; do
-  ln -sfn "$item" ~/.claude/skills/"$(basename "$item")"
-done
 for item in "$repo_dir"/skills/*; do
   ln -sfn "$item" ~/.claude/skills/"$(basename "$item")"
   ln -sfn "$item" ~/.agents/skills/"$(basename "$item")"
