@@ -6,8 +6,8 @@
 # `mise dot diff` は、ここにあるキーが ~/.codex/config.toml 側で変わったものしか出さない。
 # Codex で足したキー (新しい MCP サーバーなど) を共通にしたい場合は、自分でここへ写す。
 
-model = "gpt-6-astra"
-model_reasoning_effort = "xhigh"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 plan_mode_reasoning_effort = "xhigh"
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
