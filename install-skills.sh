@@ -36,7 +36,8 @@ pnpx skills add shibayu36/agent-skills -g -a claude-code codex -y --skill \
   my-create-draft-pull-request \
   clarify-message \
   core-message-writing \
-  difit-explain
+  difit-explain \
+  research-before-design
 
 pnpx skills add mizchi/skills#7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4 -g -a claude-code codex -y --skill \
   empirical-prompt-tuning
