@@ -163,10 +163,6 @@ target = "~/bin"
 root = "~/development/config-file/claude/agents"
 target = "~/.claude/agents"
 
-[dotfile_groups.codex-agents]
-root = "~/development/config-file/codex/agents"
-target = "~/.codex/agents"
-
 [bootstrap.macos.defaults.NSGlobalDomain]
 # キーリピートを最速に
 KeyRepeat = 2
