@@ -133,7 +133,10 @@ eval "$(starship init zsh)"
 # direnv
 eval "$(direnv hook zsh)"
 if direnv status | grep -q 'Loaded RC'; then
-    direnv reload
+    # 親から引き継いだ direnv の状態を捨て、フックに .envrc を読み直させる（exec zsh 対策）。
+    # direnv reload は .envrc を touch するので、他のシェルや nix-direnv のキャッシュに波及する。
+    # https://github.com/direnv/direnv/wiki/Tmux
+    unset DIRENV_DIR DIRENV_WATCHES DIRENV_DIFF DIRENV_FILE
 fi
 
 #if .zshrc.mine exist, do source this
