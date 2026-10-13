@@ -2,3 +2,4 @@
 "brew-cask:1password" = "latest"
 "brew-cask:1password-cli" = "latest"
 "brew-cask:google-chrome" = "latest"
+"brew:poppler" = "latest"
