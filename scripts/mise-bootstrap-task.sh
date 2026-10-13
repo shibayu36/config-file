@@ -18,3 +18,5 @@ fi
 
 [ -f ~/.claude/hooks/herdr-agent-state.sh ] || herdr integration install claude
 herdr plugin list | grep -F 'shibayu36.equalize-panes' >/dev/null || herdr plugin install shibayu36/herdr-equalize-panes --yes
+
+gh extension list | grep -F 'github/gh-stack' >/dev/null || gh extension install github/gh-stack
