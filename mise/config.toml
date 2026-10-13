@@ -101,6 +101,7 @@ adopt = true
 "brew-cask:raycast" = "latest"
 "brew-cask:readdle-spark" = "latest"
 "brew-cask:slack" = "latest"
+"brew-cask:snapzy" = "latest"
 "brew-cask:spotify" = "latest"
 "brew-cask:xbar" = "latest"
 
