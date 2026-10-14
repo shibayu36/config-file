@@ -127,7 +127,6 @@
       "~/obsidian"
     ]
   },
-  "model": "fable[1m]",
   "skillOverrides": {
     "chat-retrospective": "off",
     "find-skills": "off",
