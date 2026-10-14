@@ -25,7 +25,7 @@ build_message() {
   # CodexのStop hookはlast_assistant_messageをhook inputに直接含むため、transcriptを読まずに使う
   LAST_MSG=$(echo "$INPUT" | jq -r '.last_assistant_message // empty' 2>/dev/null)
   if [ -n "$LAST_MSG" ]; then
-    echo "$LAST_MSG" | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -c1-100
+    echo "$LAST_MSG" | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | jq -Rr '.[0:100]'
     return
   fi
 
@@ -59,7 +59,7 @@ build_message() {
           else
             empty
           end
-        ' 2>/dev/null | tail -1 | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -c1-100)
+        ' 2>/dev/null | tail -1 | tr '\n' ' ' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | jq -Rr '.[0:100]')
 
   echo "${MSG:-Task completed}"
 }
