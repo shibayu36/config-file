@@ -114,4 +114,5 @@
 - Goのライブラリの情報を取得するときはまずgo docコマンドを使うこと。それでも必要な情報が集まらないときだけGoモジュールのディレクトリからコードを探索する
 
 ## Obsidian
+- Obsidian vault（`.obsidian/` ディレクトリを持つディレクトリ。例: `~/obsidian`, `~/obsidian-work`）内のファイルを読み書き・検索するときは、作業前にvaultルートから対象ファイルのディレクトリまでの各階層にある `CLAUDE.md` / `AGENTS.md` を読み、その指示に従うこと
 - Obsidianから参照して実装をした場合、参照したパスなどをcommitログやPR descriptionに含めてはならない。Obsidianはローカル情報であり、他人に見せるべきではない。
