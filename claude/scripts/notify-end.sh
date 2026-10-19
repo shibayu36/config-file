@@ -6,13 +6,11 @@ case "$APP" in
   codex)
     TITLE="Codex"
     SOUND="Submarine"
-    EMOJIS="🤖🤖⚡⚡"
     ICON="https://avatars.githubusercontent.com/u/14957082?v=4"
     ;;
   *)
     TITLE="Claude Code"
     SOUND="Glass"
-    EMOJIS="💻💻🔥🔥"
     ICON="https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c33859cc6cd903686c66a2_apple-touch-icon.png"
     ;;
 esac
@@ -66,9 +64,6 @@ build_message() {
 
 notify_and_handle_click() {
   MSG=$(build_message)
-
-  # raycast://extensions/... 形式だとRaycast 2.xでemojisが無視される
-  open -g "raycast://confetti?emojis=${EMOJIS}"
 
   # 同一セッションの古い通知は新しい通知で置き換える
   SESSION_ID=$(echo "$INPUT" | jq -r '.session_id // empty')
