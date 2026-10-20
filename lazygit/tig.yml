@@ -1,6 +1,4 @@
 quitOnTopLevelReturn: true
-git:
-  autoFetch: false
 gui:
   enlargedSideViewLocation: top
   showCommandLog: false

@@ -1,6 +1,7 @@
 gui:
   wrapLinesInStagingView: true
 git:
+  autoFetch: false
   diffRenderers:
     - command: delta --paging=never --max-line-length=0
 keybinding:
