@@ -222,5 +222,11 @@ FXPreferredViewStyle = "clmv"
 location = "~/Downloads"
 show-thumbnail = false
 
+[bootstrap.macos.launchd.agents.pull-config-file]
+program = "~/development/config-file/scripts/pull-config-file.sh"
+run_at_load = true
+# start_intervalと違い、スリープ中に逃した実行も復帰後にまとめて1回実行される
+start_calendar_interval = { minute = 0 }
+
 [tasks.bootstrap]
 run = "~/development/config-file/scripts/mise-bootstrap-task.sh"
