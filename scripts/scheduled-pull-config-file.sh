@@ -4,7 +4,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "$0")/.." && pwd)"
-log_file="$HOME/Library/Logs/pull-config-file.log"
+log_file="$HOME/Library/Logs/scheduled-pull-config-file.log"
 # 公開リポジトリなので、SSH鍵が使えない状態でもfetchできるHTTPSを使う
 upstream_url="https://github.com/shibayu36/config-file.git"
 
