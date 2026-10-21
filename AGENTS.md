@@ -14,4 +14,6 @@ macOSの開発環境のdotfiles・設定ファイルを一元管理するリポ�
 
 ## git
 
-このリポジトリでは、commitしたら続けて `git push` まで行う。
+commitとpushは、ユーザーに指示されたときだけ行う。変更を終えたら、commitせずに報告して指示を待つ。
+
+commitを指示されたら、続けて `git push` まで行う。
