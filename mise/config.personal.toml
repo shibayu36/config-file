@@ -1,5 +1,22 @@
 [bootstrap.packages]
+"brew:songmu/tap/blogsync" = "latest"
+"brew:redpen" = "latest"
+"brew:pandoc" = "latest"
+"brew:nkf" = "latest"
+"brew:just" = "latest"
+
+# PDF / OCR
+"brew:ocrmypdf" = "latest"
+"brew:qpdf" = "latest"
+"brew:tesseract-lang" = "latest"
+"brew:poppler" = "latest"
+
+# アプリ
 "brew-cask:1password" = "latest"
 "brew-cask:1password-cli" = "latest"
 "brew-cask:google-chrome" = "latest"
-"brew:poppler" = "latest"
+"brew-cask:istat-menus" = "latest"
+"brew-cask:orbstack" = "latest"
+
+# App Store
+"mas:1351639930" = "latest" # Gifski

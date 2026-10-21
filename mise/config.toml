@@ -60,25 +60,15 @@ adopt = true
 "brew:mysql@8.4" = "latest"
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
-"brew:pandoc" = "latest"
-"brew:nkf" = "latest"
 "brew:grpcurl" = "latest"
-"brew:just" = "latest"
 "brew:gibo" = "latest"
 "brew:terminal-notifier" = "latest"
 "brew:googleworkspace-cli" = "latest"
 "brew:deck" = "latest"
 "brew:vhs" = "latest"
-"brew:songmu/tap/blogsync" = "latest"
 "brew:k1low/tap/git-wt" = "latest"
 "brew:k1low/tap/mo" = "latest"
-"brew:redpen" = "latest"
 "brew:temporal" = "latest"
-
-# PDF / OCR
-"brew:ocrmypdf" = "latest"
-"brew:qpdf" = "latest"
-"brew:tesseract-lang" = "latest"
 
 # アプリ
 "brew-cask:aqua-voice" = "latest"
@@ -93,11 +83,9 @@ adopt = true
 "brew-cask:dropbox" = "latest"
 "brew-cask:ghostty" = "latest"
 "brew-cask:font-hack-nerd-font" = "latest"
-"brew-cask:istat-menus" = "latest"
 "brew-cask:jordanbaird-ice@beta" = "latest"
 "brew-cask:karabiner-elements" = "latest"
 "brew-cask:obsidian" = "latest"
-"brew-cask:orbstack" = "latest"
 "brew-cask:raycast" = "latest"
 "brew-cask:readdle-spark" = "latest"
 "brew-cask:slack" = "latest"
@@ -108,7 +96,6 @@ adopt = true
 # App Store
 "brew:mas" = "latest"
 "mas:302584613" = "latest" # Amazon Kindle
-"mas:1351639930" = "latest" # Gifski
 "mas:539883307" = "latest" # LINE
 "mas:1120999687" = "latest" # Thor Launcher
 "mas:585829637" = "latest" # Todoist
