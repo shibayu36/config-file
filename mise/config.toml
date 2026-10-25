@@ -75,7 +75,6 @@ adopt = true
 "brew-cask:asana" = "latest"
 "brew-cask:chatgpt" = "latest"
 "brew-cask:claude" = "latest"
-"brew-cask:cleanshot" = "latest"
 "brew-cask:codex" = "latest"
 "brew-cask:cursor" = "latest"
 "brew-cask:cursor-cli" = "latest"
