@@ -4,7 +4,7 @@
 
 実コードに適用するときは、表示確認用サンプルを実ファイルから取得したメソッド本体に置き換える。色分けは生成時に済ませ、この例のように色分け済みの要素とCSSをHTML内に含める。特定のライブラリには固定しない。
 
-注釈は対象言語のコメント記法でコード内に加え、既存コメントと同じ色・文字サイズで表示する。元の処理・既存コメント・改行・インデントは保ち、文字列の途中など行末コメントが処理を変えてしまう箇所では、安全な位置に独立したコメント行を加える。色分け用の要素で囲むときに、注釈以外の文字や改行を `<code>` 内に加えない。
+注釈は対象言語のコメント記法でコード内に加え、コメント記号を含めて `token-annotation` で囲む。文字色は通常のコードと同じにし、背景色だけで既存コメントと見分けられるようにする。色分けできないコードでも注釈は囲む。元の処理・既存コメント・改行・インデントは保ち、文字列の途中など行末コメントが処理を変えてしまう箇所では、安全な位置に独立したコメント行を加える。色分け用の要素で囲むときに、注釈以外の文字や改行を `<code>` 内に加えない。
 
 ```html
 <!doctype html>
@@ -83,6 +83,14 @@
   .token-variable { color: #9cdcfe; }
   .token-constant { color: #4fc1ff; }
   .token-comment { color: #6a9955; }
+  .token-annotation {
+    color: #d4d4d4;
+    background: rgba(255, 204, 0, 0.18);
+    border-radius: 3px;
+    padding: 0 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
 </style>
 
 <div class="layout" data-sidebar-open="false">
@@ -106,9 +114,9 @@
 <code><span class="token-keyword">function</span> <span class="token-function">formatMessage</span>(<span class="token-variable">name</span>) {
   <span class="token-keyword">const</span> <span class="token-constant">limit</span> = <span class="token-number">3</span>; <span class="token-comment">// 受信側が扱える要素数に合わせる</span>
   <span class="token-keyword">const</span> <span class="token-constant">marker</span> = <span class="token-string">"&lt;sample&gt; &amp; 日本語"</span>;
-  <span class="token-keyword">const</span> <span class="token-constant">longLabel</span> = <span class="token-string">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span>; <span class="token-comment">// 連携先が発行するラベルをそのまま保持する</span>
+  <span class="token-keyword">const</span> <span class="token-constant">longLabel</span> = <span class="token-string">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span>; <span class="token-annotation">// 連携先が発行するラベルをそのまま保持する</span>
 
-  <span class="token-control">return</span> [<span class="token-variable">name</span>, <span class="token-constant">marker</span>, <span class="token-constant">longLabel</span>].<span class="token-function">slice</span>(<span class="token-number">0</span>, <span class="token-constant">limit</span>).<span class="token-function">join</span>(<span class="token-string">" / "</span>); <span class="token-comment">// 受信側に合わせて区切り文字を固定する</span>
+  <span class="token-control">return</span> [<span class="token-variable">name</span>, <span class="token-constant">marker</span>, <span class="token-constant">longLabel</span>].<span class="token-function">slice</span>(<span class="token-number">0</span>, <span class="token-constant">limit</span>).<span class="token-function">join</span>(<span class="token-string">" / "</span>); <span class="token-annotation">// 受信側に合わせて区切り文字を固定する</span>
 }</code>
 </template>
 <template id="sample-plain">
