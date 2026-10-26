@@ -9,7 +9,6 @@
 "brew:ocrmypdf" = "latest"
 "brew:qpdf" = "latest"
 "brew:tesseract-lang" = "latest"
-"brew:poppler" = "latest"
 
 # アプリ
 "brew-cask:1password" = "latest"

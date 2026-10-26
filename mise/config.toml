@@ -60,6 +60,7 @@ adopt = true
 "brew:mysql@8.4" = "latest"
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
+"brew:poppler" = "latest"
 "brew:grpcurl" = "latest"
 "brew:gibo" = "latest"
 "brew:terminal-notifier" = "latest"
