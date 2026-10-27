@@ -1,2 +1,15 @@
 [bootstrap.packages]
 "brew-cask:google-drive" = "latest"
+
+[bootstrap.macos.launchd.agents.notify-work-memo]
+program = "~/development/config-file/scripts/notify-work-memo.sh"
+run_at_load = true
+# start_intervalと違い、スリープ中に逃した実行も復帰後にまとめて1回実行される
+start_calendar_interval = [
+  { hour = 8, minute = 0 },
+  { hour = 10, minute = 0 },
+  { hour = 12, minute = 0 },
+  { hour = 14, minute = 0 },
+  { hour = 16, minute = 0 },
+  { hour = 18, minute = 0 },
+]
