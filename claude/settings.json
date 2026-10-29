@@ -119,8 +119,7 @@
       "Read(id_ed25519)"
     ],
     "ask": [
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)"
+      "Bash(git reset:*)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
