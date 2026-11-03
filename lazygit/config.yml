@@ -1,5 +1,5 @@
 gui:
-  wrapLinesInStagingView: true
+  wrapLinesInDiffView: true
 git:
   autoFetch: false
   diffRenderers:
