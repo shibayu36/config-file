@@ -1,5 +1,4 @@
 # Cursorのマーケットプレイスから入る拡張。scripts/README.mdを参照。
-anthropic.claude-code
 anysphere.cursorpyright
 atsushieno.language-review
 bierner.markdown-mermaid
