@@ -189,7 +189,8 @@
     "gopls-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
     "reviewable-html-workbench@reviewable-html-workbench-local": false,
-    "swift-lsp@claude-plugins-official": false
+    "swift-lsp@claude-plugins-official": false,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "reviewable-html-workbench-local": {
