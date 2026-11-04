@@ -345,7 +345,6 @@
     "editor.autoIndent": "advanced",
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "claudeCode.preferredLocation": "panel",
   "editor.dropIntoEditor.preferences": [
     "markdown.link"
   ],
