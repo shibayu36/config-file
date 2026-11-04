@@ -121,6 +121,44 @@
             ]
           },
           {
+            "description": "Ctrl+I => [shibayu36] (except Cursor and VS Code)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.todesktop\\.230313mzl4w4u92$",
+                      "^com\\.microsoft\\.VSCode$"
+                    ]
+                  }
+                ],
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  { "key_code": "japanese_eisuu" },
+                  { "key_code": "close_bracket" },
+                  { "key_code": "s" },
+                  { "key_code": "h" },
+                  { "key_code": "i" },
+                  { "key_code": "b" },
+                  { "key_code": "a" },
+                  { "key_code": "y" },
+                  { "key_code": "u" },
+                  { "key_code": "3" },
+                  { "key_code": "6" },
+                  { "key_code": "backslash" },
+                  { "key_code": "spacebar" }
+                ]
+              }
+            ]
+          },
+          {
             "description": "open Google Chrome by Option+c",
             "manipulators": [
               {
