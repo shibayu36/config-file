@@ -277,6 +277,7 @@
   "rubyLsp.rubyVersionManager": { "identifier": "mise" },
   "search.exclude": {
     "**/.venv/**": true,
+    "**/dist/**": true,
     "**/tsconfig.build.tsbuildinfo": true
   },
   "search.searchOnType": true,
