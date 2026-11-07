@@ -113,12 +113,6 @@
   - このルールはメインの会話にのみ適用される。general-purpose等の汎用SubAgentには委譲しない
 - Slackから情報を収集して返す時、実際のログも見れるようにしたい。permalinkも一緒に返信に含めるようにしてください
 
-## JIRAから情報を取得する場合
-- CLIの `jira` を活用すること
-- チケット情報取得は `jira issue view <JIRA number>` を活用
-- jira CLIはBashツールから実行するとnon-TTY環境でハングする問題がある（https://github.com/ankitpokhrel/jira-cli/issues/948）
-  - issue create や comment add など書き込み系の操作をする時は `echo "" | jira issue create ...` のように `echo "" |` を先頭に付けてstdinにEOFを送ること
-
 ## Goについて
 - Goのライブラリの情報を取得するときはまずgo docコマンドを使うこと。それでも必要な情報が集まらないときだけGoモジュールのディレクトリからコードを探索する
 
