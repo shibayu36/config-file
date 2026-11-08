@@ -40,7 +40,7 @@
 - 外部を調べた結果で判断が変わりうるとき、またはやり直しが難しい判断のときは、案を出す前に `research-before-design` skillで外部調査を行う
 
 ## 私に向けて書く文章
-@~/.claude/skills/writing-for-me/SKILL.md
+@~/.claude/skills/writing-for-shibayu36/SKILL.md
 
 ## コード調査をお願いするときの指針
 私からコード調査をお願いすることがある。その時はあなたに調査してもらいつつ、その妥当性を私も一緒にチェックしたい。
