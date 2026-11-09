@@ -47,3 +47,6 @@ pnpx skills add shokai/agent-skills#92bbd7e6b8914248f956fd0139f167a7620da75c -g 
 
 pnpx skills add yoshiko-pg/difit#82a765c037ec28fe7fe90ab2f1e4b5748032b4fa -g -a claude-code codex -y --skill \
   difit-review
+
+pnpx skills add herdrdev/herdr#2ecf19a92fc3a7fff75b6ce3655ef04f4625ec01 -g -a claude-code codex -y --skill \
+  herdr
