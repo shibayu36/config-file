@@ -15,6 +15,7 @@
 "brew-cask:1password-cli" = "latest"
 "brew-cask:google-chrome" = "latest"
 "brew-cask:istat-menus" = "latest"
+"brew-cask:libreoffice" = "latest"
 "brew-cask:orbstack" = "latest"
 
 # App Store
