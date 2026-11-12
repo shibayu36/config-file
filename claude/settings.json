@@ -127,6 +127,7 @@
       "~/obsidian"
     ]
   },
+  "model": "opus",
   "skillOverrides": {
     "chat-retrospective": "off",
     "find-skills": "off",
@@ -241,6 +242,14 @@
     ]
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5-2": {
+      "effortLevel": "high"
+    }
+  },
   "plansDirectory": "./tmp/plans",
   "tui": "fullscreen",
   "voice": {
@@ -252,10 +261,5 @@
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
-  }
+  "voiceEnabled": true
 }
