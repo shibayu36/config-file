@@ -119,9 +119,6 @@
       "Read(~/.aws/credentials)",
       "Read(~/.aws/sso/**)"
     ],
-    "ask": [
-      "Bash(git reset:*)"
-    ],
     "defaultMode": "auto",
     "additionalDirectories": [
       "~/obsidian"
