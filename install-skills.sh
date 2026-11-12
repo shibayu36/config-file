@@ -50,3 +50,6 @@ pnpx skills add yoshiko-pg/difit#82a765c037ec28fe7fe90ab2f1e4b5748032b4fa -g -a 
 
 pnpx skills add herdrdev/herdr#2ecf19a92fc3a7fff75b6ce3655ef04f4625ec01 -g -a claude-code codex -y --skill \
   herdr
+
+pnpx skills add nanaism/yomiyasu#29d67ccb05e370b5958d72920a9cd1aa829dee80 -g -a claude-code codex -y --skill \
+  yomiyasu
