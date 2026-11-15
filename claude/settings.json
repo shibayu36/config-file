@@ -124,7 +124,7 @@
       "~/obsidian"
     ]
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "skillOverrides": {
     "chat-retrospective": "off",
     "find-skills": "off",
@@ -247,6 +247,7 @@
       "effortLevel": "high"
     }
   },
+  "advisorModel": "fable",
   "plansDirectory": "./tmp/plans",
   "tui": "fullscreen",
   "voice": {
@@ -258,6 +259,5 @@
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "advisorModel": "fable"
+  "voiceEnabled": true
 }
