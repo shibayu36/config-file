@@ -23,7 +23,7 @@ require "yaml"
 AUTHOR = "shibayu36"
 MENTION = /(?<![A-Za-z0-9_])@ai(?![A-Za-z0-9_])/
 POLL_INTERVAL_SEC = 1
-BATCH_WINDOW_SEC = 30
+BATCH_WINDOW_SEC = 5
 # Sidemarkが書き込んでいる途中のファイルを読んだだけの一時的な失敗では知らせない
 FAILURES_BEFORE_ERROR = 3
 
