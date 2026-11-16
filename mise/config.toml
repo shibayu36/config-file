@@ -71,6 +71,8 @@ adopt = true
 "brew:k1low/tap/git-wt" = "latest"
 "brew:k1low/tap/mo" = "latest"
 "brew:temporal" = "latest"
+"brew:docker" = "latest"
+"brew:docker-compose" = "latest"
 
 # アプリ
 "brew-cask:aqua-voice" = "latest"
