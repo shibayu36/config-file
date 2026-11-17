@@ -506,7 +506,7 @@ nav.toc a { display: block; padding: 4px 8px; border-left: 2px solid #d1d9e0; co
 nav.toc a:hover { color: #1f2328; background: #f6f8fa; }
 nav.toc a.current { border-left-color: #fd8c73; color: #1f2328; font-weight: 600; background: #f6f8fa; }
 nav.toc code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
-@media (max-width: 1100px) { .layout { display: block; } nav.toc { display: none; } }
+@media (max-width: 1100px) { .layout { display: block; } nav.toc, #toc-open { display: none; } }
 section[id] { scroll-margin-top: 56px; }
 h1 { font-size: 24px; margin: 24px 0 4px; }
 h2 { font-size: 20px; margin: 48px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #d1d9e0; }
@@ -523,6 +523,13 @@ p code, li code, td code, .file-caption code { padding: 1px 5px; border-radius: 
 .toolbar .view-switch button:first-child { border-radius: 6px 0 0 6px; }
 .toolbar .view-switch button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
 .toolbar .view-switch button[aria-pressed="true"] { background: #fff; font-weight: 600; box-shadow: inset 0 -2px 0 #fd8c73; }
+.toc-button { padding: 0 6px; border: 0; border-radius: 4px; background: none; color: #8c959f; font: 16px/1.5 inherit; cursor: pointer; }
+.toc-button:hover { color: #1f2328; background: #f6f8fa; }
+#toc-close { display: block; margin: 0 0 4px auto; }
+#toc-open { position: fixed; top: 20px; left: 4px; z-index: 3; }
+body[data-toc="open"] #toc-open { display: none; }
+body[data-toc="closed"] .layout { display: block; }
+body[data-toc="closed"] nav.toc { display: none; }
 table.map { border-collapse: collapse; margin: 8px 0; }
 table.map th, table.map td { padding: 4px 12px; border: 1px solid #d1d9e0; text-align: left; }
 table.map th { background: #f6f8fa; }
@@ -595,6 +602,15 @@ const setWs = (v) => {
 wsToggle.addEventListener("change", () => setWs(wsToggle.checked ? "hide" : "show"));
 setWs(localStorage.getItem(WS_KEY) || "hide");
 
+const TOC_KEY = "diff-reading-guide:toc";
+const setToc = (v) => {
+  document.body.dataset.toc = v;
+  localStorage.setItem(TOC_KEY, v);
+};
+document.getElementById("toc-close").addEventListener("click", () => setToc("closed"));
+document.getElementById("toc-open").addEventListener("click", () => setToc("open"));
+setToc(localStorage.getItem(TOC_KEY) || "open");
+
 // 見出しが画面の上端近くまで来た最後の節を、今読んでいる節として目次で強調する。
 // 最後の節が短いと見出しが上端まで届かないので、末尾まで来たら最後の節にする。
 const tocLinks = [...document.querySelectorAll("nav.toc a")];
@@ -640,10 +656,11 @@ ${notes}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(guide.title)}</title>
 <style>${CSS}</style>
-<body data-view="inline" data-ws="hide">
+<body data-view="inline" data-ws="hide" data-toc="open">
 ${SVG_DEFS}
 <div class="layout">
-<nav class="toc"><ol>${tocItems}</ol></nav>
+<button id="toc-open" class="toc-button" title="目次を開く" aria-label="目次を開く">»</button>
+<nav class="toc"><button id="toc-close" class="toc-button" title="目次を閉じる" aria-label="目次を閉じる">«</button><ol>${tocItems}</ol></nav>
 <main>
 <h1>${inline(guide.title)}</h1>
 <p class="meta">base <code>${esc(guide.base)}</code> → head <code>${esc(guide.head)}</code></p>
