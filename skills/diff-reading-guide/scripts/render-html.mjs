@@ -448,7 +448,15 @@ function makeRenderer(guide, highlighter, warnings) {
 const CSS = `
 * { box-sizing: border-box; }
 body { margin: 0; padding: 0 32px 64px; color: #1f2328; background: #fff; font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", sans-serif; }
-main { max-width: 1400px; margin: 0 auto; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; max-width: 1680px; margin: 0 auto; }
+nav.toc { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding: 24px 0; font-size: 13px; line-height: 1.5; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; }
+nav.toc a { display: block; padding: 4px 8px; border-left: 2px solid #d1d9e0; color: #59636e; text-decoration: none; }
+nav.toc a:hover { color: #1f2328; background: #f6f8fa; }
+nav.toc a.current { border-left-color: #fd8c73; color: #1f2328; font-weight: 600; background: #f6f8fa; }
+nav.toc code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+@media (max-width: 1100px) { .layout { display: block; } nav.toc { display: none; } }
+section[id] { scroll-margin-top: 56px; }
 h1 { font-size: 24px; margin: 24px 0 4px; }
 h2 { font-size: 20px; margin: 48px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #d1d9e0; }
 h3 { font-size: 15px; margin: 24px 0 4px; }
@@ -522,12 +530,32 @@ const setView = (v) => {
 };
 for (const b of document.querySelectorAll(".toolbar button")) b.addEventListener("click", () => setView(b.dataset.view));
 setView(localStorage.getItem(KEY) || "inline");
+
+// 見出しが画面の上端近くまで来た最後の節を、今読んでいる節として目次で強調する。
+// 最後の節が短いと見出しが上端まで届かないので、末尾まで来たら最後の節にする。
+const tocLinks = [...document.querySelectorAll("nav.toc a")];
+const tocTargets = tocLinks.map((a) => document.getElementById(a.hash.slice(1)));
+let tocQueued = false;
+const markCurrent = () => {
+  tocQueued = false;
+  let current = 0;
+  tocTargets.forEach((t, i) => { if (t.getBoundingClientRect().top <= 80) current = i; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = tocTargets.length - 1;
+  tocLinks.forEach((a, i) => a.classList.toggle("current", i === current));
+};
+addEventListener("scroll", () => { if (!tocQueued) { tocQueued = true; requestAnimationFrame(markCurrent); } }, { passive: true });
+markCurrent();
 `;
 
 function render(guide, renderBlock) {
   const mapRows = guide.units.map((u, i) => `<tr><td>${i + 1}</td><td><a href="#unit-${i + 1}">${inline(u.title)}</a></td><td>${inline(u.nature)}</td></tr>`).join("");
   const omitted = guide.omittedFiles?.length ? guide.omittedFiles.map((f) => `<code>${esc(f)}</code>`).join("、") : "なし";
   const checks = guide.checks?.length ? itemsHtml(guide.checks) : "<p>記載なし</p>";
+  const tocItems = [
+    `<li><a href="#map">地図</a></li>`,
+    `<li><a href="#checks">動作確認したこと</a></li>`,
+    ...guide.units.map((u, i) => `<li><a href="#unit-${i + 1}">${i + 1}. ${inline(u.title)}</a></li>`),
+  ].join("");
   const units = guide.units.map((unit, i) => {
     const tests = unit.tests ? `<h3>テストが確かめていること</h3>${unit.tests.groups.map((g) => `${g.title ? `<p>${inline(g.title)}</p>` : ""}${itemsHtml(g.items)}`).join("")}${(unit.tests.blocks ?? []).map(renderBlock).join("")}` : "";
     const notes = unit.notes?.length ? `<h3>特記</h3>${itemsHtml(unit.notes)}` : "";
@@ -550,23 +578,26 @@ ${notes}
 <style>${CSS}</style>
 <body data-view="inline">
 ${SVG_DEFS}
+<div class="layout">
+<nav class="toc"><ol>${tocItems}</ol></nav>
 <main>
 <h1>${inline(guide.title)}</h1>
 <p class="meta">base <code>${esc(guide.base)}</code> → head <code>${esc(guide.head)}</code></p>
 <div class="toolbar"><button data-view="inline">Inline</button><button data-view="split">Split</button></div>
-<section>
+<section id="map">
 <h2>地図</h2>
 <table class="map"><tr><th>#</th><th>読む単位</th><th>性質</th></tr>${mapRows}</table>
 ${figureHtml(guide.map?.figure)}
 <p>載せなかったファイル: ${omitted}</p>
 </section>
-<section>
+<section id="checks">
 <h2>動作確認したこと</h2>
 ${guide.checksSource ? `<p>${inline(guide.checksSource)}</p>` : ""}
 ${checks}
 </section>
 ${units.join("\n")}
 </main>
+</div>
 <script>${SCRIPT}</script>
 </body>
 </html>
