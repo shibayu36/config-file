@@ -155,6 +155,35 @@ function gitShow(ref, file) {
   }
 }
 
+// base から head へのファイル全体の diff を、行番号付きの行の配列で返す。
+function gitFullDiff(base, head, file) {
+  let out;
+  try {
+    out = execFileSync("git", ["diff", "--no-color", "--no-ext-diff", "-U1000000", base, head, "--", file], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024, stdio: ["ignore", "pipe", "ignore"] });
+  } catch {
+    return [];
+  }
+  const rows = [];
+  let inHunk = false;
+  let oldNo = 0;
+  let newNo = 0;
+  for (const line of out.split("\n")) {
+    const h = line.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
+    if (h) {
+      inHunk = true;
+      oldNo = Number(h[1]);
+      newNo = Number(h[2]);
+      continue;
+    }
+    if (!inHunk || line === "" || line[0] === "\\") continue;
+    const code = line.slice(1).trimEnd();
+    if (line[0] === "+") rows.push({ type: "add", code, newNo: newNo++ });
+    else if (line[0] === "-") rows.push({ type: "del", code, oldNo: oldNo++ });
+    else rows.push({ type: "ctx", code, oldNo: oldNo++, newNo: newNo++ });
+  }
+  return rows;
+}
+
 // 前に見つけた位置より後ろを先に探し、無ければ先頭から探す。
 function locate(source, code, from) {
   const target = code.trimEnd();
@@ -193,6 +222,57 @@ function matchRows(rows, sources, side, file, warnings, tokenizeLine) {
       row.tokens = tokenizeLine(row.code);
     }
   }
+}
+
+// "@@" の行から次の "@@" の行（無ければブロックの終わり）までを1つの区間とし、
+// 区間の中で表示した行どうしの間にある、載せなかった実際の diff の行を、その位置に "omitted" の行として差し込む。
+// ブロックが "@@" の行で終わる時は、最後に表示した行より後ろのファイルの終わりまでを、その "@@" の区間に含める。
+// 差し込むのは、省いた行に変更を含む区間だけ。行番号の分からない行や、順序が実際の diff と食い違う行がある区間は、
+// 省いた範囲を決められないので差し込まない。差し込んだ区間の "@@" の行には gapId を付ける。
+function insertOmitted(rows, full, newId) {
+  const idxByOld = new Map();
+  const idxByNew = new Map();
+  full.forEach((r, i) => {
+    if (r.type !== "add") idxByOld.set(r.oldNo, i);
+    if (r.type !== "del") idxByNew.set(r.newNo, i);
+  });
+  const position = (r) => {
+    if (r.type === "add") return idxByNew.get(r.newNo);
+    if (r.type === "del") return idxByOld.get(r.oldNo);
+    return r.newNo !== undefined ? idxByNew.get(r.newNo) : idxByOld.get(r.oldNo);
+  };
+
+  const out = [];
+  const sections = [];
+  let section = null;
+  let last = -1;
+  for (const r of rows) {
+    if (r.type === "hunk") {
+      section = { hunk: r, pieces: [], valid: last !== null, hasRows: false };
+      sections.push(section);
+    } else if (r.type !== "note") {
+      const pos = position(r);
+      if (section) {
+        section.hasRows = true;
+        if (pos === undefined || last === null || pos <= last) section.valid = false;
+        else if (pos > last + 1) section.pieces.push({ at: out.length, rows: full.slice(last + 1, pos) });
+      }
+      last = pos ?? null;
+    }
+    out.push(r);
+  }
+  if (section && !section.hasRows && last !== null && last + 1 < full.length) {
+    section.pieces.push({ at: out.length, rows: full.slice(last + 1) });
+  }
+
+  const inserts = [];
+  for (const s of sections) {
+    if (!s.valid || !s.pieces.some((p) => p.rows.some((r) => r.type !== "ctx"))) continue;
+    s.hunk.gapId = newId();
+    for (const p of s.pieces) inserts.push({ at: p.at, row: { type: "omitted", id: s.hunk.gapId, rows: p.rows.map((r) => ({ ...r })) } });
+  }
+  for (const { at, row } of inserts.sort((a, b) => b.at - a.at)) out.splice(at, 0, row);
+  return out;
 }
 
 // ---- 行内の単語の差分 ----
@@ -396,16 +476,26 @@ function fileBox(file, caption, body, label) {
   return `<div class="file"><div class="file-header">${head}</div>${body}</div>`;
 }
 
-function inlineDiffTable(rows) {
-  const trs = rows.map((r) => {
-    if (r.type === "hunk") return `<tr class="hunk"><td class="ln"></td><td class="ln"></td><td class="sign"></td><td class="code">${esc(r.text)}</td></tr>`;
+// 省いた行のある "@@" の行は、押すとその区間の省いた行を開閉できるようにする。
+// 省いた行は、ws が true なら空白の変更を隠した版を出す。
+const hunkAttrs = (r) => (r.gapId ? `class="hunk gap-toggle" data-gap="${r.gapId}" aria-expanded="false" title="省いた行を開く"` : `class="hunk"`);
+const omittedRows = (r, ws) => (ws ? r.wsRows : r.rows);
+const hideRow = (tr, id) => tr.replace(/^<tr/, `<tr hidden data-gap-row="${id}"`);
+
+function inlineDiffTrs(rows, ws) {
+  return rows.flatMap((r) => {
+    if (r.type === "omitted") return inlineDiffTrs(omittedRows(r, ws), ws).map((tr) => hideRow(tr, r.id));
+    if (r.type === "hunk") return `<tr ${hunkAttrs(r)}><td class="ln"></td><td class="ln"></td><td class="sign"></td><td class="code">${esc(r.text)}</td></tr>`;
     if (r.type === "note") return `<tr class="note"><td class="ln"></td><td class="ln"></td><td class="sign"></td><td class="code">${noteHtml(r)}</td></tr>`;
     return `<tr class="${r.type}"><td class="ln">${r.type === "add" ? "" : r.oldNo ?? ""}</td><td class="ln">${r.type === "del" ? "" : r.newNo ?? ""}</td><td class="sign">${SIGN[r.type]}</td><td class="code">${codeHtml(r)}</td></tr>`;
   });
-  return `<table class="diff inline-view"><colgroup><col class="c-ln"><col class="c-ln"><col class="c-sign"><col></colgroup>${trs.join("")}</table>`;
 }
 
-function splitDiffTable(rows) {
+function inlineDiffTable(rows, ws) {
+  return `<table class="diff inline-view"><colgroup><col class="c-ln"><col class="c-ln"><col class="c-sign"><col></colgroup>${inlineDiffTrs(rows, ws).join("")}</table>`;
+}
+
+function splitDiffTrs(rows, ws) {
   const cell = (r, kind) => {
     if (!r) return `<td class="ln empty"></td><td class="code empty"></td>`;
     const no = kind === "old" || kind === "del" ? r.oldNo : r.newNo;
@@ -415,11 +505,16 @@ function splitDiffTable(rows) {
   changeGroups(rows, (g, r) => {
     if (g) {
       for (let k = 0; k < Math.max(g.dels.length, g.adds.length); k++) trs.push(`<tr>${cell(g.dels[k], "del")}${cell(g.adds[k], "add")}</tr>`);
-    } else if (r.type === "hunk") trs.push(`<tr class="hunk"><td class="ln"></td><td class="code" colspan="3">${esc(r.text)}</td></tr>`);
+    } else if (r.type === "omitted") trs.push(...splitDiffTrs(omittedRows(r, ws), ws).map((tr) => hideRow(tr, r.id)));
+    else if (r.type === "hunk") trs.push(`<tr ${hunkAttrs(r)}><td class="ln"></td><td class="code" colspan="3">${esc(r.text)}</td></tr>`);
     else if (r.type === "note") trs.push(`<tr class="note"><td class="ln"></td><td class="code" colspan="3">${noteHtml(r)}</td></tr>`);
     else trs.push(`<tr class="ctx">${cell(r.left ?? r, "old")}${cell(r, "new")}</tr>`);
   });
-  return `<table class="diff split-view"><colgroup><col class="c-ln"><col><col class="c-ln"><col></colgroup>${trs.join("")}</table>`;
+  return trs;
+}
+
+function splitDiffTable(rows, ws) {
+  return `<table class="diff split-view"><colgroup><col class="c-ln"><col><col class="c-ln"><col></colgroup>${splitDiffTrs(rows, ws).join("")}</table>`;
 }
 
 // 行に tone（"del" / "add"）が付いていれば、diffの削除・追加と同じ色で塗る。
@@ -454,6 +549,18 @@ function makeRenderer(guide, highlighter, warnings) {
   };
   const sources = (file) => ({ base: source(guide.base, file), head: source(guide.head, file) });
   const tokenizer = (file) => (code) => highlighter.codeToTokens(code, { lang: langOf(file), theme: THEME }).tokens[0] ?? [];
+  const fullCache = new Map();
+  const fullDiff = (file) => {
+    if (!fullCache.has(file)) {
+      const src = sources(file);
+      fullCache.set(file, gitFullDiff(guide.base, guide.head, file).map((r) => ({
+        ...r,
+        tokens: r.type === "del" ? src.base.tokens[r.oldNo - 1] : src.head.tokens[r.newNo - 1],
+      })));
+    }
+    return fullCache.get(file);
+  };
+  let gapCount = 0;
 
   const codeRows = (f, side) => {
     const rows = parseCodeLines(f.lines);
@@ -464,14 +571,22 @@ function makeRenderer(guide, highlighter, warnings) {
   return (block) => {
     switch (block.kind) {
       case "diff": {
-        const rows = parseDiffLines(block.lines);
-        matchRows(rows, sources(block.file), "diff", block.file, warnings, tokenizer(block.file));
+        const shown = parseDiffLines(block.lines);
+        matchRows(shown, sources(block.file), "diff", block.file, warnings, tokenizer(block.file));
+        const rows = shown.some((r) => r.type === "hunk")
+          ? insertOmitted(shown, fullDiff(block.file), () => `gap-${++gapCount}`)
+          : shown;
         applyWordDiff(rows);
-        const tables = (rs) => inlineDiffTable(rs) + splitDiffTable(rs);
+        const omitted = rows.filter((r) => r.type === "omitted");
+        for (const r of omitted) {
+          applyWordDiff(r.rows);
+          r.wsRows = hideWhitespaceChanges(r.rows) ?? r.rows;
+        }
+        const tables = (rs, ws) => inlineDiffTable(rs, ws) + splitDiffTable(rs, ws);
         const wsHidden = hideWhitespaceChanges(rows);
-        const body = wsHidden
-          ? `<div class="ws-show">${tables(rows)}</div><div class="ws-hide">${tables(wsHidden)}</div>`
-          : tables(rows);
+        const body = wsHidden || omitted.some((r) => r.wsRows !== r.rows)
+          ? `<div class="ws-show">${tables(rows, false)}</div><div class="ws-hide">${tables(wsHidden ?? rows, true)}</div>`
+          : tables(rows, false);
         return fileBox(block.file, block.caption, body);
       }
       case "code": {
@@ -560,6 +675,10 @@ td.empty { background: #f6f8fa; }
 td.add .wd, tr.add .wd { background: #abf2bc; border-radius: 2px; }
 td.del .wd, tr.del .wd { background: rgba(255, 129, 130, 0.4); border-radius: 2px; }
 tr.hunk td { background: #ddf4ff; color: #59636e; }
+tr.gap-toggle td { cursor: pointer; }
+tr.gap-toggle:hover td { background: #b6e3ff; }
+tr.gap-toggle td.code::before { content: "▸ "; }
+tr.gap-toggle[aria-expanded="true"] td.code::before { content: "▾ "; }
 tr.note td { background: #fff8c5; }
 tr.note td.code { box-shadow: inset 3px 0 0 #d4a72c; }
 .ai-note { color: #1f2328; background: #ffe58a; border-radius: 3px; padding: 0 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
@@ -610,6 +729,16 @@ const setToc = (v) => {
 document.getElementById("toc-close").addEventListener("click", () => setToc("closed"));
 document.getElementById("toc-open").addEventListener("click", () => setToc("open"));
 setToc(localStorage.getItem(TOC_KEY) || "open");
+
+// 同じ区間の表は inline/split と空白の切り替えで複数あるので、すべての開閉を揃える。
+document.addEventListener("click", (e) => {
+  const toggle = e.target.closest("tr.gap-toggle");
+  if (!toggle) return;
+  const id = toggle.dataset.gap;
+  const open = toggle.getAttribute("aria-expanded") !== "true";
+  for (const t of document.querySelectorAll('tr.gap-toggle[data-gap="' + id + '"]')) t.setAttribute("aria-expanded", String(open));
+  for (const r of document.querySelectorAll('tr[data-gap-row="' + id + '"]')) r.hidden = !open;
+});
 
 // 見出しが画面の上端近くまで来た最後の節を、今読んでいる節として目次で強調する。
 // 最後の節が短いと見出しが上端まで届かないので、末尾まで来たら最後の節にする。
