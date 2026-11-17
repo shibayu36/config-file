@@ -295,13 +295,59 @@ function markBeforeAfter(before, after) {
   flush();
 }
 
-function applyWordDiff(rows) {
+function applyWordDiff(rows, diff = wordDiff) {
   changeGroups(rows, (g) => {
     if (!g) return;
     for (let k = 0; k < Math.min(g.dels.length, g.adds.length); k++) {
-      [g.dels[k].ranges, g.adds[k].ranges] = wordDiff(g.dels[k].code, g.adds[k].code);
+      [g.dels[k].ranges, g.adds[k].ranges] = diff(g.dels[k].code, g.adds[k].code);
     }
   });
+}
+
+// GitHub の w=1（git diff -w）のように、空白を除くと同じになる削除と追加の行を、変更の無い行にした rows を返す。
+// 組にするのは、連続する削除の行とその直後の追加の行の中だけ。組にできる行が無ければ null を返す。
+// 残った削除と追加の行の単語の差分も、字下げの違いは塗らない。
+// 変更の無い行にした行は、split の左側に変更前の行（left）を出せるよう両方を持つ。
+function hideWhitespaceChanges(rows) {
+  const key = (r) => r.code.replace(/\s+/g, "");
+  const fresh = (r) => ({ ...r, ranges: undefined });
+  const out = [];
+  let collapsed = false;
+  changeGroups(rows, (g, r) => {
+    if (!g) { out.push(r); return; }
+    const { dels, adds } = g;
+    const dp = Array.from({ length: dels.length + 1 }, () => new Uint16Array(adds.length + 1));
+    for (let i = dels.length - 1; i >= 0; i--) {
+      for (let j = adds.length - 1; j >= 0; j--) {
+        dp[i][j] = key(dels[i]) === key(adds[j]) ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+    let pendingDels = [];
+    let pendingAdds = [];
+    const flush = () => {
+      out.push(...pendingDels.map(fresh), ...pendingAdds.map(fresh));
+      pendingDels = [];
+      pendingAdds = [];
+    };
+    let i = 0;
+    let j = 0;
+    while (i < dels.length && j < adds.length) {
+      if (key(dels[i]) === key(adds[j])) {
+        flush();
+        const d = dels[i++];
+        const a = adds[j++];
+        out.push({ type: "ctx", code: a.code, tokens: a.tokens, note: a.note ?? d.note, oldNo: d.oldNo, newNo: a.newNo, left: fresh(d) });
+        collapsed = true;
+      } else if (dp[i + 1][j] >= dp[i][j + 1]) pendingDels.push(dels[i++]);
+      else pendingAdds.push(adds[j++]);
+    }
+    pendingDels.push(...dels.slice(i));
+    pendingAdds.push(...adds.slice(j));
+    flush();
+  });
+  if (!collapsed) return null;
+  applyWordDiff(out, wordDiffIgnoringIndent);
+  return out;
 }
 
 // ---- HTML の部品 ----
@@ -371,7 +417,7 @@ function splitDiffTable(rows) {
       for (let k = 0; k < Math.max(g.dels.length, g.adds.length); k++) trs.push(`<tr>${cell(g.dels[k], "del")}${cell(g.adds[k], "add")}</tr>`);
     } else if (r.type === "hunk") trs.push(`<tr class="hunk"><td class="ln"></td><td class="code" colspan="3">${esc(r.text)}</td></tr>`);
     else if (r.type === "note") trs.push(`<tr class="note"><td class="ln"></td><td class="code" colspan="3">${noteHtml(r)}</td></tr>`);
-    else trs.push(`<tr class="ctx">${cell(r, "old")}${cell(r, "new")}</tr>`);
+    else trs.push(`<tr class="ctx">${cell(r.left ?? r, "old")}${cell(r, "new")}</tr>`);
   });
   return `<table class="diff split-view"><colgroup><col class="c-ln"><col><col class="c-ln"><col></colgroup>${trs.join("")}</table>`;
 }
@@ -421,7 +467,12 @@ function makeRenderer(guide, highlighter, warnings) {
         const rows = parseDiffLines(block.lines);
         matchRows(rows, sources(block.file), "diff", block.file, warnings, tokenizer(block.file));
         applyWordDiff(rows);
-        return fileBox(block.file, block.caption, inlineDiffTable(rows) + splitDiffTable(rows));
+        const tables = (rs) => inlineDiffTable(rs) + splitDiffTable(rs);
+        const wsHidden = hideWhitespaceChanges(rows);
+        const body = wsHidden
+          ? `<div class="ws-show">${tables(rows)}</div><div class="ws-hide">${tables(wsHidden)}</div>`
+          : tables(rows);
+        return fileBox(block.file, block.caption, body);
       }
       case "code": {
         const side = block.ref ?? "head";
@@ -465,11 +516,13 @@ p, ul { margin: 8px 0; }
 ul { padding-left: 1.5em; }
 p code, li code, td code, .file-caption code { padding: 1px 5px; border-radius: 4px; background: #eff1f3; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; }
 .label { font-weight: 600; }
-.toolbar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: flex-end; padding: 8px 0; background: #fff; }
+.toolbar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: flex-end; align-items: center; gap: 16px; padding: 8px 0; background: #fff; }
+.toolbar label { display: flex; align-items: center; gap: 4px; font-size: 13px; cursor: pointer; }
+.toolbar .view-switch { display: flex; }
 .toolbar button { padding: 4px 14px; border: 1px solid #d1d9e0; background: #f6f8fa; color: #1f2328; font: 13px/1.5 inherit; cursor: pointer; }
-.toolbar button:first-child { border-radius: 6px 0 0 6px; }
-.toolbar button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
-.toolbar button[aria-pressed="true"] { background: #fff; font-weight: 600; box-shadow: inset 0 -2px 0 #fd8c73; }
+.toolbar .view-switch button:first-child { border-radius: 6px 0 0 6px; }
+.toolbar .view-switch button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
+.toolbar .view-switch button[aria-pressed="true"] { background: #fff; font-weight: 600; box-shadow: inset 0 -2px 0 #fd8c73; }
 table.map { border-collapse: collapse; margin: 8px 0; }
 table.map th, table.map td { padding: 4px 12px; border: 1px solid #d1d9e0; text-align: left; }
 table.map th { background: #f6f8fa; }
@@ -482,6 +535,7 @@ table.map th { background: #f6f8fa; }
 .file-caption { color: #59636e; }
 table.diff { width: 100%; border-collapse: collapse; table-layout: fixed; font: 13px/20px ui-monospace, SFMono-Regular, Menlo, monospace; }
 body[data-view="split"] .inline-view, body[data-view="inline"] .split-view { display: none; }
+body[data-ws="hide"] .ws-show, body[data-ws="show"] .ws-hide { display: none; }
 .before-after { display: grid; gap: 0 16px; }
 body[data-view="split"] .before-after { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
 col.c-ln { width: 52px; }
@@ -525,11 +579,21 @@ const SCRIPT = `
 const KEY = "diff-reading-guide:view";
 const setView = (v) => {
   document.body.dataset.view = v;
-  for (const b of document.querySelectorAll(".toolbar button")) b.setAttribute("aria-pressed", String(b.dataset.view === v));
+  for (const b of document.querySelectorAll(".view-switch button")) b.setAttribute("aria-pressed", String(b.dataset.view === v));
   localStorage.setItem(KEY, v);
 };
-for (const b of document.querySelectorAll(".toolbar button")) b.addEventListener("click", () => setView(b.dataset.view));
+for (const b of document.querySelectorAll(".view-switch button")) b.addEventListener("click", () => setView(b.dataset.view));
 setView(localStorage.getItem(KEY) || "inline");
+
+const WS_KEY = "diff-reading-guide:ws";
+const wsToggle = document.getElementById("ws-toggle");
+const setWs = (v) => {
+  document.body.dataset.ws = v;
+  wsToggle.checked = v === "hide";
+  localStorage.setItem(WS_KEY, v);
+};
+wsToggle.addEventListener("change", () => setWs(wsToggle.checked ? "hide" : "show"));
+setWs(localStorage.getItem(WS_KEY) || "hide");
 
 // 見出しが画面の上端近くまで来た最後の節を、今読んでいる節として目次で強調する。
 // 最後の節が短いと見出しが上端まで届かないので、末尾まで来たら最後の節にする。
@@ -576,14 +640,14 @@ ${notes}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(guide.title)}</title>
 <style>${CSS}</style>
-<body data-view="inline">
+<body data-view="inline" data-ws="hide">
 ${SVG_DEFS}
 <div class="layout">
 <nav class="toc"><ol>${tocItems}</ol></nav>
 <main>
 <h1>${inline(guide.title)}</h1>
 <p class="meta">base <code>${esc(guide.base)}</code> → head <code>${esc(guide.head)}</code></p>
-<div class="toolbar"><button data-view="inline">Inline</button><button data-view="split">Split</button></div>
+<div class="toolbar"><label><input type="checkbox" id="ws-toggle" checked>空白の変更を隠す</label><div class="view-switch"><button data-view="inline">Inline</button><button data-view="split">Split</button></div></div>
 <section id="map">
 <h2>地図</h2>
 <table class="map"><tr><th>#</th><th>読む単位</th><th>性質</th></tr>${mapRows}</table>
