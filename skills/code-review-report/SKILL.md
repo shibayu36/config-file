@@ -9,7 +9,7 @@ user-invocable: true
 
 呼び出し時のユーザー入力・会話中の対象と要件を読む。`$ARGUMENTS`が展開されていれば使ってよいが、未展開の文字列や空値だけで対象を決めない。
 
-入力は `[レビュー対象] [reviewer名]`。既知のreviewer名だけが渡された場合は対象を省略した単独指定とする。`PR #123 reviewer`のようにPR指定内の空白は対象の一部として保つ。末尾の既知名、`*-reviewer`、明示されたreviewer指定を担当名として取り出し、残りの対象・要件は自由文を含めて保持する。未知の担当名が明示された場合は対象の自由文に読み替えない。
+入力は `[レビュー対象] [reviewer名]`。既知のreviewer名だけが渡された場合は対象を省略した指定とする。`PR #123 reviewer`のようにPR指定内の空白は対象の一部として保つ。末尾に並ぶ既知名、`*-reviewer`、明示されたreviewer指定を担当名として取り出し、残りの対象・要件は自由文を含めて保持する。未知の担当名が明示された場合は対象の自由文に読み替えない。
 
 実行環境は現在のホスト（Claude CodeかCodexか）で判定する。インストール済みCLIや対象リポジトリ内の設定ファイルの有無で判定しない。
 
@@ -18,7 +18,7 @@ user-invocable: true
 | Claude Code | reviewer、simplify-reviewer、code-comment-reviewer、codex-reviewer | 通常3担当はOpus、codex-reviewerはSonnet（外部Codexはgpt-6-astra／high） |
 | Codex | reviewer、simplify-reviewer、code-comment-reviewer、claude-reviewer | 通常3担当はgpt-6-astra／high、claude-reviewerはgpt-6-astra／low（外部ClaudeはOpus） |
 
-reviewer指定時はそのホストの表にある1担当だけを実行する。対象ホストで使えない名前や未知の名前は、利用可能な4担当を案内して終了する。別のreviewerへ自動代替しない。
+reviewer指定時はそのホストの表にある担当のうち、指定された担当だけを実行する。複数指定してよい。対象ホストで使えない名前や未知の名前が含まれる場合は、利用可能な4担当を案内して終了する。別のreviewerへ自動代替しない。
 
 ## 2. 対象の確定
 
