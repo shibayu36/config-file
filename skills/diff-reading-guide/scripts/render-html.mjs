@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { diffRows } from "./diff-rows.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const { createHighlighter, THEME } = await import(join(here, "../vendor/highlight.mjs"));
@@ -153,35 +154,6 @@ function gitShow(ref, file) {
   } catch {
     return null;
   }
-}
-
-// base から head へのファイル全体の diff を、行番号付きの行の配列で返す。
-function gitFullDiff(base, head, file) {
-  let out;
-  try {
-    out = execFileSync("git", ["diff", "--no-color", "--no-ext-diff", "-U1000000", base, head, "--", file], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024, stdio: ["ignore", "pipe", "ignore"] });
-  } catch {
-    return [];
-  }
-  const rows = [];
-  let inHunk = false;
-  let oldNo = 0;
-  let newNo = 0;
-  for (const line of out.split("\n")) {
-    const h = line.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
-    if (h) {
-      inHunk = true;
-      oldNo = Number(h[1]);
-      newNo = Number(h[2]);
-      continue;
-    }
-    if (!inHunk || line === "" || line[0] === "\\") continue;
-    const code = line.slice(1).trimEnd();
-    if (line[0] === "+") rows.push({ type: "add", code, newNo: newNo++ });
-    else if (line[0] === "-") rows.push({ type: "del", code, oldNo: oldNo++ });
-    else rows.push({ type: "ctx", code, oldNo: oldNo++, newNo: newNo++ });
-  }
-  return rows;
 }
 
 // 前に見つけた位置より後ろを先に探し、無ければ先頭から探す。
@@ -553,7 +525,7 @@ function makeRenderer(guide, highlighter, warnings) {
   const fullDiff = (file) => {
     if (!fullCache.has(file)) {
       const src = sources(file);
-      fullCache.set(file, gitFullDiff(guide.base, guide.head, file).map((r) => ({
+      fullCache.set(file, diffRows(guide.base, guide.head, file).map((r) => ({
         ...r,
         tokens: r.type === "del" ? src.base.tokens[r.oldNo - 1] : src.head.tokens[r.newNo - 1],
       })));
