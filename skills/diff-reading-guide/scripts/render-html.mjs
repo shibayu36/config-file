@@ -56,6 +56,7 @@ function validate(guide) {
   };
   const codeFile = (f, at, prefixed) => {
     if (!f || typeof f !== "object") return err(at, "{ file, lines } が必要");
+    if (f.range !== undefined || f.lineNotes !== undefined) return err(at, "展開していない range / lineNotes がある。先に expand-guide.mjs で展開する");
     if (!isStr(f.file)) err(`${at}.file`, "リポジトリからのパスが必要");
     optStr(f.caption, `${at}.caption`);
     if (!Array.isArray(f.lines) || f.lines.length === 0) return err(`${at}.lines`, "1行以上の配列が必要");
