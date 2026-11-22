@@ -108,8 +108,14 @@ seven_d_segment=""
 [ -n "$five_h_pct" ] && five_h_segment=$(build_ring_segment "5h" "$five_h_pct" "$(format_remaining "$five_h_resets_at")")
 [ -n "$seven_d_pct" ] && seven_d_segment=$(build_ring_segment "7d" "$seven_d_pct" "$(format_remaining "$seven_d_resets_at")")
 
+unpushed_segment=""
+unpushed_count=$(git -C "$current_dir" --no-optional-locks rev-list --count '@{u}..HEAD' 2>/dev/null)
+if [ -n "$unpushed_count" ] && [ "$unpushed_count" -gt 0 ]; then
+    unpushed_segment=" \033[1;38;2;1;43;54;48;2;166;227;161m ↑${unpushed_count} ${NC}"
+fi
+
 # Output the status line
-output="${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${short_model}${NC} ${GRAY}|${NC} ${context_info}"
+output="${BLUE}${dir_name}${NC}${unpushed_segment} ${GRAY}|${NC} ${CYAN}${short_model}${NC} ${GRAY}|${NC} ${context_info}"
 [ -n "$five_h_segment" ] && output="${output} ${GRAY}|${NC} ${five_h_segment}"
 [ -n "$seven_d_segment" ] && output="${output} ${GRAY}|${NC} ${seven_d_segment}"
 echo -e "$output"
